@@ -63,5 +63,8 @@ markdown_extensions:
   - toc:
       permalink: true
   - footnotes
+  - attr_list
+  - md_in_html
+
 plugins:
   - search
