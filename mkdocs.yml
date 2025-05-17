@@ -43,6 +43,8 @@ theme:
   palette:
     primary: indigo
     accent: indigo
+  features:
+    - navigation.footer
 
 markdown_extensions:
   - pymdownx.arithmatex
