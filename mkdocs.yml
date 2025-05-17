@@ -47,7 +47,10 @@ theme:
 markdown_extensions:
   - pymdownx.arithmatex
   - pymdownx.highlight
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
   - pymdownx.details
   - pymdownx.tasklist:
       custom_checkbox: true
@@ -57,6 +60,6 @@ markdown_extensions:
   - admonition
   - toc:
       permalink: true
-
+  - footnotes
 plugins:
   - search
