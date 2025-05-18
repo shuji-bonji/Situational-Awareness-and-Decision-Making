@@ -74,33 +74,35 @@ graph TD
 |---|---|---|
 |一般利用者や航空ファンが、飛行中の航空機を地図上でリアルタイム追跡。航空会社や空港も自社便の状況把握に利用|世界最大規模のADS-Bネットワークを持ち、民間機ほぼ全ての動態をカバー。スマホやPCで直感的に操作可能。AR機能で空に見える機体をその場で特定できる|航空会社の運航部門、空港の案内カウンター、TV報道機関（事故・トラブル時の追跡表示）など|
 
-```typescript
-// Flightradar24 API使用例（非公式）
-interface FlightData {
-  flight_id: string;
-  callsign: string;
-  latitude: number;
-  longitude: number;
-  altitude: number;
-  speed: number;
-  heading: number;
-  aircraft_type: string;
-}
 
-class FlightTracker {
-  async getFlightsInBounds(
-    north: number, 
-    south: number, 
-    east: number, 
-    west: number
-  ): Promise<FlightData[]> {
-    const response = await fetch(
-      `https://data-cloud.flightradar24.com/zones/fcgi/feed.js?bounds=${north},${south},${east},${west}`
-    );
-    return response.json();
-  }
-}
-```
+??? TypeScript実装例
+    ```typescript
+    // Flightradar24 API使用例（非公式）
+    interface FlightData {
+      flight_id: string;
+      callsign: string;
+      latitude: number;
+      longitude: number;
+      altitude: number;
+      speed: number;
+      heading: number;
+      aircraft_type: string;
+    }
+
+    class FlightTracker {
+      async getFlightsInBounds(
+        north: number, 
+        south: number, 
+        east: number, 
+        west: number
+      ): Promise<FlightData[]> {
+        const response = await fetch(
+          `https://data-cloud.flightradar24.com/zones/fcgi/feed.js?bounds=${north},${south},${east},${west}`
+        );
+        return response.json();
+      }
+    }
+    ```
 
 #### FlightAware
 
@@ -124,50 +126,52 @@ class FlightTracker {
 |---|---|---|
 |研究者や開発者が航空機動態データを解析・可視化・シミュレーションに利用。オープンデータを活用した新規サービス開発|オープンソース・非営利でグローバルなADS-B/MLATデータを無償公開。APIやデータダンプで柔軟な研究が可能|大学・研究機関の航空交通解析、AIによる混雑予測の検証、趣味の自作フライトレーダーアプリ|
 
-```typescript
-// OpenSky Network API例（オープンソース）
-interface StateVector {
-  icao24: string;
-  callsign: string;
-  origin_country: string;
-  time_position: number;
-  last_contact: number;
-  longitude: number;
-  latitude: number;
-  baro_altitude: number;
-  on_ground: boolean;
-  velocity: number;
-  true_track: number;
-  vertical_rate: number;
-}
 
-class OpenSkyClient {
-  private readonly baseUrl = 'https://opensky-network.org/api';
-  
-  async getAllStates(): Promise<StateVector[]> {
-    const response = await fetch(`${this.baseUrl}/states/all`);
-    const data = await response.json();
-    return data.states.map(this.parseStateVector);
-  }
-  
-  private parseStateVector(state: any[]): StateVector {
-    return {
-      icao24: state[0],
-      callsign: state[1]?.trim() || null,
-      origin_country: state[2],
-      time_position: state[3],
-      last_contact: state[4],
-      longitude: state[5],
-      latitude: state[6],
-      baro_altitude: state[7],
-      on_ground: state[8],
-      velocity: state[9],
-      true_track: state[10],
-      vertical_rate: state[11]
-    };
-  }
-}
-```
+??? TypeScript実装例
+    ```typescript
+    // OpenSky Network API例（オープンソース）
+    interface StateVector {
+      icao24: string;
+      callsign: string;
+      origin_country: string;
+      time_position: number;
+      last_contact: number;
+      longitude: number;
+      latitude: number;
+      baro_altitude: number;
+      on_ground: boolean;
+      velocity: number;
+      true_track: number;
+      vertical_rate: number;
+    }
+
+    class OpenSkyClient {
+      private readonly baseUrl = 'https://opensky-network.org/api';
+      
+      async getAllStates(): Promise<StateVector[]> {
+        const response = await fetch(`${this.baseUrl}/states/all`);
+        const data = await response.json();
+        return data.states.map(this.parseStateVector);
+      }
+      
+      private parseStateVector(state: any[]): StateVector {
+        return {
+          icao24: state[0],
+          callsign: state[1]?.trim() || null,
+          origin_country: state[2],
+          time_position: state[3],
+          last_contact: state[4],
+          longitude: state[5],
+          latitude: state[6],
+          baro_altitude: state[7],
+          on_ground: state[8],
+          velocity: state[9],
+          true_track: state[10],
+          vertical_rate: state[11]
+        };
+      }
+    }
+    ```
 
 ### 専門的航空管制システム
 
@@ -221,126 +225,130 @@ graph LR
 - **可視化**: 統合データを3Dや2D画面に表示し、管制官が直感的に状況を把握できる
 - **航空安全への貢献**: これらの高度な処理により、誤認識や見落としを防ぎ、衝突リスクを大幅に低減。迅速な意思決定支援を実現
 
-```typescript
-// レーダーデータ処理の基本構造
-interface RadarContact {
-  id: string;
-  position: {
-    latitude: number;
-    longitude: number;
-    altitude: number;
-  };
-  velocity: {
-    speed: number;
-    heading: number;
-    vertical_rate: number;
-  };
-  identification: {
-    callsign?: string;
-    squawk: string;
-    aircraft_type?: string;
-  };
-  timestamp: Date;
-  confidence: number;
-}
 
-class RadarProcessor {
-  private contacts = new Map<string, RadarContact[]>();
-  
-  // 複数レーダーからのデータ統合
-  fuseRadarData(radarSources: RadarContact[][]): RadarContact[] {
-    const fusedData: RadarContact[] = [];
-    
-    // 位置ベースでの相関処理
-    for (const contact of radarSources.flat()) {
-      const existing = fusedData.find(c => 
-        this.calculateDistance(c.position, contact.position) < 0.1 // 100m以内
-      );
+??? TypeScript実装例
+    ```typescript
+    // レーダーデータ処理の基本構造
+    interface RadarContact {
+      id: string;
+      position: {
+        latitude: number;
+        longitude: number;
+        altitude: number;
+      };
+      velocity: {
+        speed: number;
+        heading: number;
+        vertical_rate: number;
+      };
+      identification: {
+        callsign?: string;
+        squawk: string;
+        aircraft_type?: string;
+      };
+      timestamp: Date;
+      confidence: number;
+    }
+
+    class RadarProcessor {
+      private contacts = new Map<string, RadarContact[]>();
       
-      if (existing) {
-        // 信頼度の高いデータで更新
-        if (contact.confidence > existing.confidence) {
-          Object.assign(existing, contact);
+      // 複数レーダーからのデータ統合
+      fuseRadarData(radarSources: RadarContact[][]): RadarContact[] {
+        const fusedData: RadarContact[] = [];
+        
+        // 位置ベースでの相関処理
+        for (const contact of radarSources.flat()) {
+          const existing = fusedData.find(c => 
+            this.calculateDistance(c.position, contact.position) < 0.1 // 100m以内
+          );
+          
+          if (existing) {
+            // 信頼度の高いデータで更新
+            if (contact.confidence > existing.confidence) {
+              Object.assign(existing, contact);
+            }
+          } else {
+            fusedData.push(contact);
+          }
         }
-      } else {
-        fusedData.push(contact);
+        
+        return fusedData;
+      }
+      
+      // 軌道予測
+      predictTrajectory(contact: RadarContact, timeAhead: number): Position {
+        const { latitude, longitude, altitude } = contact.position;
+        const { speed, heading, vertical_rate } = contact.velocity;
+        
+        // 簡単な線形予測（実際はより複雑な計算）
+        const distance = speed * timeAhead;
+        const deltaLat = (distance * Math.cos(heading * Math.PI / 180)) / 111000;
+        const deltaLng = (distance * Math.sin(heading * Math.PI / 180)) / (111000 * Math.cos(latitude * Math.PI / 180));
+        
+        return {
+          latitude: latitude + deltaLat,
+          longitude: longitude + deltaLng,
+          altitude: altitude + (vertical_rate * timeAhead)
+        };
       }
     }
-    
-    return fusedData;
-  }
-  
-  // 軌道予測
-  predictTrajectory(contact: RadarContact, timeAhead: number): Position {
-    const { latitude, longitude, altitude } = contact.position;
-    const { speed, heading, vertical_rate } = contact.velocity;
-    
-    // 簡単な線形予測（実際はより複雑な計算）
-    const distance = speed * timeAhead;
-    const deltaLat = (distance * Math.cos(heading * Math.PI / 180)) / 111000;
-    const deltaLng = (distance * Math.sin(heading * Math.PI / 180)) / (111000 * Math.cos(latitude * Math.PI / 180));
-    
-    return {
-      latitude: latitude + deltaLat,
-      longitude: longitude + deltaLng,
-      altitude: altitude + (vertical_rate * timeAhead)
-    };
-  }
-}
-```
+    ```
 
 ### 衝突回避システム（TCAS）
 
-```typescript
-// TCAS アルゴリズムの簡単な実装例
-class TCASProcessor {
-  private readonly ALERT_LEVELS = {
-    TRAFFIC_ADVISORY: 1,
-    RESOLUTION_ADVISORY: 2
-  };
-  
-  assessThreat(ownship: RadarContact, intruder: RadarContact): TCASAlert | null {
-    const separation = this.calculateSeparation(ownship, intruder);
-    const closestPointOfApproach = this.calculateCPA(ownship, intruder);
-    
-    if (this.isImmediateThreat(separation, closestPointOfApproach)) {
-      return {
-        level: this.ALERT_LEVELS.RESOLUTION_ADVISORY,
-        type: 'vertical', // climb/descend
-        intruderCallsign: intruder.identification.callsign,
-        recommendedAction: this.generateResolutionAdvisory(ownship, intruder)
-      };
-    } else if (this.isPotentialThreat(separation, closestPointOfApproach)) {
-      return {
-        level: this.ALERT_LEVELS.TRAFFIC_ADVISORY,
-        type: 'advisory',
-        intruderCallsign: intruder.identification.callsign,
-        recommendedAction: 'monitor'
-      };
-    }
-    
-    return null;
-  }
-  
-  private generateResolutionAdvisory(ownship: RadarContact, intruder: RadarContact): string {
-    // 相対的な垂直速度を計算
-    const relativeVerticalRate = ownship.velocity.vertical_rate - intruder.velocity.vertical_rate;
-    
-    if (relativeVerticalRate > 0) {
-      return 'DESCEND'; // 自機が上昇中なら降下指示
-    } else {
-      return 'CLIMB';   // 自機が降下中なら上昇指示
-    }
-  }
-}
 
-interface TCASAlert {
-  level: number;
-  type: string;
-  intruderCallsign?: string;
-  recommendedAction: string;
-}
-```
+??? TypeScript実装例
+    ```typescript
+    // TCAS アルゴリズムの簡単な実装例
+    class TCASProcessor {
+      private readonly ALERT_LEVELS = {
+        TRAFFIC_ADVISORY: 1,
+        RESOLUTION_ADVISORY: 2
+      };
+      
+      assessThreat(ownship: RadarContact, intruder: RadarContact): TCASAlert | null {
+        const separation = this.calculateSeparation(ownship, intruder);
+        const closestPointOfApproach = this.calculateCPA(ownship, intruder);
+        
+        if (this.isImmediateThreat(separation, closestPointOfApproach)) {
+          return {
+            level: this.ALERT_LEVELS.RESOLUTION_ADVISORY,
+            type: 'vertical', // climb/descend
+            intruderCallsign: intruder.identification.callsign,
+            recommendedAction: this.generateResolutionAdvisory(ownship, intruder)
+          };
+        } else if (this.isPotentialThreat(separation, closestPointOfApproach)) {
+          return {
+            level: this.ALERT_LEVELS.TRAFFIC_ADVISORY,
+            type: 'advisory',
+            intruderCallsign: intruder.identification.callsign,
+            recommendedAction: 'monitor'
+          };
+        }
+        
+        return null;
+      }
+      
+      private generateResolutionAdvisory(ownship: RadarContact, intruder: RadarContact): string {
+        // 相対的な垂直速度を計算
+        const relativeVerticalRate = ownship.velocity.vertical_rate - intruder.velocity.vertical_rate;
+        
+        if (relativeVerticalRate > 0) {
+          return 'DESCEND'; // 自機が上昇中なら降下指示
+        } else {
+          return 'CLIMB';   // 自機が降下中なら上昇指示
+        }
+      }
+    }
+
+    interface TCASAlert {
+      level: number;
+      type: string;
+      intruderCallsign?: string;
+      recommendedAction: string;
+    }
+    ```
 
 ## 気象情報システム
 
@@ -356,128 +364,130 @@ interface TCASAlert {
 |TAF|予報官が発行する24〜30時間先までの天気予報<br>フライトプラン作成や経路選定に活用|`https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=tafs&stationString=RJTT&hoursBeforeNow=4`|
 
 
-```typescript
-// 航空気象情報の統合システム
-interface WeatherData {
-  timestamp: Date;
-  location: {
-    latitude: number;
-    longitude: number;
-    altitude?: number;
-  };
-  visibility: number;        // km
-  windSpeed: number;         // knots
-  windDirection: number;     // degrees
-  temperature: number;       // Celsius
-  dewPoint: number;          // Celsius
-  pressure: number;          // hPa
-  cloudLayers: CloudLayer[];
-  precipitation?: PrecipitationType;
-  turbulence?: TurbulenceLevel;
-}
+??? TypeScript実装例
+    ```typescript
+    // 航空気象情報の統合システム
+    interface WeatherData {
+      timestamp: Date;
+      location: {
+        latitude: number;
+        longitude: number;
+        altitude?: number;
+      };
+      visibility: number;        // km
+      windSpeed: number;         // knots
+      windDirection: number;     // degrees
+      temperature: number;       // Celsius
+      dewPoint: number;          // Celsius
+      pressure: number;          // hPa
+      cloudLayers: CloudLayer[];
+      precipitation?: PrecipitationType;
+      turbulence?: TurbulenceLevel;
+    }
 
-interface CloudLayer {
-  type: 'FEW' | 'SCT' | 'BKN' | 'OVC';
-  altitude: number; // feet
-  thickness?: number;
-}
+    interface CloudLayer {
+      type: 'FEW' | 'SCT' | 'BKN' | 'OVC';
+      altitude: number; // feet
+      thickness?: number;
+    }
 
-class AviationWeatherService {
-  private readonly sources = {
-    metar: 'https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=metars',
-    taf: 'https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=tafs',
-    radar: 'https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=radars'
-  };
-  
-  async getCurrentWeather(airportCode: string): Promise<WeatherData> {
-    const metarUrl = `${this.sources.metar}&requestType=retrieve&format=xml&stationString=${airportCode}&hoursBeforeNow=1`;
-    const response = await fetch(metarUrl);
-    const xmlData = await response.text();
-    
-    return this.parseMetar(xmlData);
-  }
-  
-  async getWeatherForecast(airportCode: string): Promise<WeatherData[]> {
-    const tafUrl = `${this.sources.taf}&requestType=retrieve&format=xml&stationString=${airportCode}&hoursBeforeNow=4&timeType=issue`;
-    const response = await fetch(tafUrl);
-    const xmlData = await response.text();
-    
-    return this.parseTaf(xmlData);
-  }
-  
-  // 乱気流予測
-  async getTurbulenceForecast(
-    bounds: { north: number; south: number; east: number; west: number },
-    altitudes: number[]
-  ): Promise<TurbulenceForecast[]> {
-    // 複数の気象モデルからデータを収集
-    const gfsData = await this.getGFSData(bounds, altitudes);
-    const ecmwfData = await this.getECMWFData(bounds, altitudes);
-    
-    // アンサンブル予測
-    return this.generateTurbulenceEnsemble(gfsData, ecmwfData);
-  }
-}
-```
+    class AviationWeatherService {
+      private readonly sources = {
+        metar: 'https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=metars',
+        taf: 'https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=tafs',
+        radar: 'https://aviationweather.gov/adds/dataserver_current/httpparam?dataSource=radars'
+      };
+      
+      async getCurrentWeather(airportCode: string): Promise<WeatherData> {
+        const metarUrl = `${this.sources.metar}&requestType=retrieve&format=xml&stationString=${airportCode}&hoursBeforeNow=1`;
+        const response = await fetch(metarUrl);
+        const xmlData = await response.text();
+        
+        return this.parseMetar(xmlData);
+      }
+      
+      async getWeatherForecast(airportCode: string): Promise<WeatherData[]> {
+        const tafUrl = `${this.sources.taf}&requestType=retrieve&format=xml&stationString=${airportCode}&hoursBeforeNow=4&timeType=issue`;
+        const response = await fetch(tafUrl);
+        const xmlData = await response.text();
+        
+        return this.parseTaf(xmlData);
+      }
+      
+      // 乱気流予測
+      async getTurbulenceForecast(
+        bounds: { north: number; south: number; east: number; west: number },
+        altitudes: number[]
+      ): Promise<TurbulenceForecast[]> {
+        // 複数の気象モデルからデータを収集
+        const gfsData = await this.getGFSData(bounds, altitudes);
+        const ecmwfData = await this.getECMWFData(bounds, altitudes);
+        
+        // アンサンブル予測
+        return this.generateTurbulenceEnsemble(gfsData, ecmwfData);
+      }
+    }
+    ```
 
 ### 機上気象レーダー統合
 
-```typescript
-// 機上気象レーダーデータの統合
-class OnboardWeatherRadar {
-  private canvas: HTMLCanvasElement;
-  private context: CanvasRenderingContext2D;
-  
-  constructor(canvasElement: HTMLCanvasElement) {
-    this.canvas = canvasElement;
-    this.context = canvasElement.getContext('2d')!;
-  }
-  
-  renderWeatherData(radarData: WeatherRadarData): void {
-    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    
-    // 降水強度に基づく色分け
-    const colorMap = {
-      light: '#00FF00',      // 緑：弱い雨
-      moderate: '#FFFF00',   // 黄：中程度の雨
-      heavy: '#FF8000',      // オレンジ：強い雨
-      severe: '#FF0000',     // 赤：激しい雨
-      extreme: '#FF00FF'     // マゼンタ：極端に激しい雨
-    };
-    
-    for (const cell of radarData.cells) {
-      this.context.fillStyle = colorMap[cell.intensity];
-      this.context.fillRect(
-        cell.x - cell.width / 2,
-        cell.y - cell.height / 2,
-        cell.width,
-        cell.height
-      );
+??? TypeScript実装例
+    ```typescript
+    // 機上気象レーダーデータの統合
+    class OnboardWeatherRadar {
+      private canvas: HTMLCanvasElement;
+      private context: CanvasRenderingContext2D;
+      
+      constructor(canvasElement: HTMLCanvasElement) {
+        this.canvas = canvasElement;
+        this.context = canvasElement.getContext('2d')!;
+      }
+      
+      renderWeatherData(radarData: WeatherRadarData): void {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        // 降水強度に基づく色分け
+        const colorMap = {
+          light: '#00FF00',      // 緑：弱い雨
+          moderate: '#FFFF00',   // 黄：中程度の雨
+          heavy: '#FF8000',      // オレンジ：強い雨
+          severe: '#FF0000',     // 赤：激しい雨
+          extreme: '#FF00FF'     // マゼンタ：極端に激しい雨
+        };
+        
+        for (const cell of radarData.cells) {
+          this.context.fillStyle = colorMap[cell.intensity];
+          this.context.fillRect(
+            cell.x - cell.width / 2,
+            cell.y - cell.height / 2,
+            cell.width,
+            cell.height
+          );
+        }
+        
+        // パイロットへの推奨ルート表示
+        this.renderRecommendedPath(radarData.recommendedPath);
+      }
+      
+      private renderRecommendedPath(path: Point[]): void {
+        if (path.length < 2) return;
+        
+        this.context.strokeStyle = '#00FFFF'; // シアン色
+        this.context.lineWidth = 3;
+        this.context.setLineDash([10, 5]);
+        
+        this.context.beginPath();
+        this.context.moveTo(path[0].x, path[0].y);
+        
+        for (let i = 1; i < path.length; i++) {
+          this.context.lineTo(path[i].x, path[i].y);
+        }
+        
+        this.context.stroke();
+        this.context.setLineDash([]); // リセット
+      }
     }
-    
-    // パイロットへの推奨ルート表示
-    this.renderRecommendedPath(radarData.recommendedPath);
-  }
-  
-  private renderRecommendedPath(path: Point[]): void {
-    if (path.length < 2) return;
-    
-    this.context.strokeStyle = '#00FFFF'; // シアン色
-    this.context.lineWidth = 3;
-    this.context.setLineDash([10, 5]);
-    
-    this.context.beginPath();
-    this.context.moveTo(path[0].x, path[0].y);
-    
-    for (let i = 1; i < path.length; i++) {
-      this.context.lineTo(path[i].x, path[i].y);
-    }
-    
-    this.context.stroke();
-    this.context.setLineDash([]); // リセット
-  }
-}
-```
+    ```
 
 ## フライトシミュレーター・訓練ソフトウェア
 
@@ -493,252 +503,255 @@ class OnboardWeatherRadar {
 
 ### シミュレータープラグイン開発
 
-```typescript
-// X-Plane プラグイン例（概念的）
-interface XPlaneDataRef {
-  path: string;
-  value: number | number[] | string;
-  writable: boolean;
-}
+??? TypeScript実装例
+    ```typescript
+    // X-Plane プラグイン例（概念的）
+    interface XPlaneDataRef {
+      path: string;
+      value: number | number[] | string;
+      writable: boolean;
+    }
 
-class XPlanePlugin {
-  private datarefs: Map<string, XPlaneDataRef> = new Map();
-  
-  // データレファレンスの取得
-  getDataref(path: string): number | number[] | null {
-    const dataref = this.datarefs.get(path);
-    return dataref ? dataref.value : null;
-  }
-  
-  // 航空機状態の監視
-  monitorAircraftState(): Observable<AircraftState> {
-    return interval(100).pipe( // 10Hz更新
-      map(() => ({
-        position: {
-          latitude: this.getDataref('sim/flightmodel/position/latitude') as number,
-          longitude: this.getDataref('sim/flightmodel/position/longitude') as number,
-          altitude: this.getDataref('sim/flightmodel/position/elevation') as number
-        },
-        attitude: {
-          pitch: this.getDataref('sim/flightmodel/position/theta') as number,
-          roll: this.getDataref('sim/flightmodel/position/phi') as number,
-          heading: this.getDataref('sim/flightmodel/position/psi') as number
-        },
-        velocity: {
-          groundSpeed: this.getDataref('sim/flightmodel/position/groundspeed') as number,
-          indicatedAirspeed: this.getDataref('sim/flightmodel/position/indicated_airspeed') as number,
-          verticalSpeed: this.getDataref('sim/flightmodel/position/vh_ind_fpm') as number
-        },
-        engine: {
-          n1: this.getDataref('sim/flightmodel/engine/ENGN_N1_') as number[],
-          egt: this.getDataref('sim/flightmodel/engine/ENGN_EGT_c') as number[],
-          fuelFlow: this.getDataref('sim/flightmodel/engine/ENGN_FF_') as number[]
-        }
-      }))
-    );
-  }
-  
-  // 状況認識訓練シナリオ
-  createSituationAwarenessScenario(): TrainingScenario {
-    return {
-      name: "Weather Avoidance Training",
-      description: "Navigate around thunderstorms using onboard radar",
-      objectives: [
-        "Detect weather on radar",
-        "Plan deviation route",
-        "Execute safe weather avoidance",
-        "Maintain situational awareness"
-      ],
-      initialConditions: {
-        position: { lat: 35.0, lng: -97.0, alt: 35000 },
-        weather: [
-          {
-            type: 'thunderstorm',
-            position: { lat: 35.5, lng: -96.5 },
-            radius: 10,
-            intensity: 'severe'
-          }
-        ]
-      },
-      triggers: [
-        {
-          condition: 'distance_to_weather < 50nm',
-          action: 'enable_weather_radar'
-        },
-        {
-          condition: 'deviation_initiated',
-          action: 'evaluate_decision_quality'
-        }
-      ]
-    };
-  }
-}
+    class XPlanePlugin {
+      private datarefs: Map<string, XPlaneDataRef> = new Map();
+      
+      // データレファレンスの取得
+      getDataref(path: string): number | number[] | null {
+        const dataref = this.datarefs.get(path);
+        return dataref ? dataref.value : null;
+      }
+      
+      // 航空機状態の監視
+      monitorAircraftState(): Observable<AircraftState> {
+        return interval(100).pipe( // 10Hz更新
+          map(() => ({
+            position: {
+              latitude: this.getDataref('sim/flightmodel/position/latitude') as number,
+              longitude: this.getDataref('sim/flightmodel/position/longitude') as number,
+              altitude: this.getDataref('sim/flightmodel/position/elevation') as number
+            },
+            attitude: {
+              pitch: this.getDataref('sim/flightmodel/position/theta') as number,
+              roll: this.getDataref('sim/flightmodel/position/phi') as number,
+              heading: this.getDataref('sim/flightmodel/position/psi') as number
+            },
+            velocity: {
+              groundSpeed: this.getDataref('sim/flightmodel/position/groundspeed') as number,
+              indicatedAirspeed: this.getDataref('sim/flightmodel/position/indicated_airspeed') as number,
+              verticalSpeed: this.getDataref('sim/flightmodel/position/vh_ind_fpm') as number
+            },
+            engine: {
+              n1: this.getDataref('sim/flightmodel/engine/ENGN_N1_') as number[],
+              egt: this.getDataref('sim/flightmodel/engine/ENGN_EGT_c') as number[],
+              fuelFlow: this.getDataref('sim/flightmodel/engine/ENGN_FF_') as number[]
+            }
+          }))
+        );
+      }
+      
+      // 状況認識訓練シナリオ
+      createSituationAwarenessScenario(): TrainingScenario {
+        return {
+          name: "Weather Avoidance Training",
+          description: "Navigate around thunderstorms using onboard radar",
+          objectives: [
+            "Detect weather on radar",
+            "Plan deviation route",
+            "Execute safe weather avoidance",
+            "Maintain situational awareness"
+          ],
+          initialConditions: {
+            position: { lat: 35.0, lng: -97.0, alt: 35000 },
+            weather: [
+              {
+                type: 'thunderstorm',
+                position: { lat: 35.5, lng: -96.5 },
+                radius: 10,
+                intensity: 'severe'
+              }
+            ]
+          },
+          triggers: [
+            {
+              condition: 'distance_to_weather < 50nm',
+              action: 'enable_weather_radar'
+            },
+            {
+              condition: 'deviation_initiated',
+              action: 'evaluate_decision_quality'
+            }
+          ]
+        };
+      }
+    }
 
-interface AircraftState {
-  position: { latitude: number; longitude: number; altitude: number };
-  attitude: { pitch: number; roll: number; heading: number };
-  velocity: { groundSpeed: number; indicatedAirspeed: number; verticalSpeed: number };
-  engine: { n1: number[]; egt: number[]; fuelFlow: number[] };
-}
+    interface AircraftState {
+      position: { latitude: number; longitude: number; altitude: number };
+      attitude: { pitch: number; roll: number; heading: number };
+      velocity: { groundSpeed: number; indicatedAirspeed: number; verticalSpeed: number };
+      engine: { n1: number[]; egt: number[]; fuelFlow: number[] };
+    }
 
-interface TrainingScenario {
-  name: string;
-  description: string;
-  objectives: string[];
-  initialConditions: any;
-  triggers: Array<{ condition: string; action: string }>;
-}
-```
+    interface TrainingScenario {
+      name: string;
+      description: string;
+      objectives: string[];
+      initialConditions: any;
+      triggers: Array<{ condition: string; action: string }>;
+    }
+    ```
 
 ## 空港運営・地上支援システム
 
 ### ACDM (Airport Collaborative Decision Making)
 
-```typescript
-// 空港運営の協調的意思決定システム
-interface FlightMovement {
-  flightId: string;
-  callsign: string;
-  aircraftType: string;
-  origin?: string;
-  destination?: string;
-  scheduleTime: Date;
-  estimatedTime: Date;
-  actualTime?: Date;
-  gate?: string;
-  stand?: string;
-  runway?: string;
-  status: FlightStatus;
-}
 
-type FlightStatus = 
-  | 'scheduled' 
-  | 'delayed' 
-  | 'boarding' 
-  | 'departed' 
-  | 'arrived' 
-  | 'cancelled';
-
-class ACDMSystem {
-  private flights = new Map<string, FlightMovement>();
-  private airport: AirportConfig;
-  
-  constructor(airportConfig: AirportConfig) {
-    this.airport = airportConfig;
-  }
-  
-  // 出発時刻の予測と最適化
-  calculateOptimalDepartureTimes(): Map<string, Date> {
-    const sortedFlights = Array.from(this.flights.values())
-      .filter(f => f.status === 'scheduled')
-      .sort((a, b) => a.scheduleTime.getTime() - b.scheduleTime.getTime());
-    
-    const optimizedTimes = new Map<string, Date>();
-    let lastDepartureTime = new Date();
-    
-    for (const flight of sortedFlights) {
-      // 最小間隔の確保（航跡乱気流等を考慮）
-      const minSeparation = this.calculateMinSeparation(flight);
-      const earliestDeparture = new Date(lastDepartureTime.getTime() + minSeparation * 1000);
-      
-      // スケジュールとの比較
-      const optimalTime = new Date(Math.max(
-        flight.scheduleTime.getTime(),
-        earliestDeparture.getTime()
-      ));
-      
-      optimizedTimes.set(flight.flightId, optimalTime);
-      lastDepartureTime = optimalTime;
+??? TypeScript実装例
+    ```typescript
+    // 空港運営の協調的意思決定システム
+    interface FlightMovement {
+      flightId: string;
+      callsign: string;
+      aircraftType: string;
+      origin?: string;
+      destination?: string;
+      scheduleTime: Date;
+      estimatedTime: Date;
+      actualTime?: Date;
+      gate?: string;
+      stand?: string;
+      runway?: string;
+      status: FlightStatus;
     }
-    
-    return optimizedTimes;
-  }
-  
-  // リソース競合の解決
-  resolveResourceConflicts(): ResourceAllocation[] {
-    const allocations: ResourceAllocation[] = [];
-    const gateUsage = new Map<string, TimeSlot[]>();
-    const runwayUsage = new Map<string, TimeSlot[]>();
-    
-    // ゲート割り当ての最適化
-    for (const flight of this.flights.values()) {
-      const preferredGate = this.findPreferredGate(flight);
-      const availableSlot = this.findAvailableSlot(gateUsage, preferredGate, flight);
+
+    type FlightStatus = 
+      | 'scheduled' 
+      | 'delayed' 
+      | 'boarding' 
+      | 'departed' 
+      | 'arrived' 
+      | 'cancelled';
+
+    class ACDMSystem {
+      private flights = new Map<string, FlightMovement>();
+      private airport: AirportConfig;
       
-      if (availableSlot) {
-        allocations.push({
-          flightId: flight.flightId,
-          resourceType: 'gate',
-          resourceId: preferredGate,
-          timeSlot: availableSlot
-        });
+      constructor(airportConfig: AirportConfig) {
+        this.airport = airportConfig;
+      }
+      
+      // 出発時刻の予測と最適化
+      calculateOptimalDepartureTimes(): Map<string, Date> {
+        const sortedFlights = Array.from(this.flights.values())
+          .filter(f => f.status === 'scheduled')
+          .sort((a, b) => a.scheduleTime.getTime() - b.scheduleTime.getTime());
         
-        this.addTimeSlot(gateUsage, preferredGate, availableSlot);
+        const optimizedTimes = new Map<string, Date>();
+        let lastDepartureTime = new Date();
+        
+        for (const flight of sortedFlights) {
+          // 最小間隔の確保（航跡乱気流等を考慮）
+          const minSeparation = this.calculateMinSeparation(flight);
+          const earliestDeparture = new Date(lastDepartureTime.getTime() + minSeparation * 1000);
+          
+          // スケジュールとの比較
+          const optimalTime = new Date(Math.max(
+            flight.scheduleTime.getTime(),
+            earliestDeparture.getTime()
+          ));
+          
+          optimizedTimes.set(flight.flightId, optimalTime);
+          lastDepartureTime = optimalTime;
+        }
+        
+        return optimizedTimes;
+      }
+      
+      // リソース競合の解決
+      resolveResourceConflicts(): ResourceAllocation[] {
+        const allocations: ResourceAllocation[] = [];
+        const gateUsage = new Map<string, TimeSlot[]>();
+        const runwayUsage = new Map<string, TimeSlot[]>();
+        
+        // ゲート割り当ての最適化
+        for (const flight of this.flights.values()) {
+          const preferredGate = this.findPreferredGate(flight);
+          const availableSlot = this.findAvailableSlot(gateUsage, preferredGate, flight);
+          
+          if (availableSlot) {
+            allocations.push({
+              flightId: flight.flightId,
+              resourceType: 'gate',
+              resourceId: preferredGate,
+              timeSlot: availableSlot
+            });
+            
+            this.addTimeSlot(gateUsage, preferredGate, availableSlot);
+          }
+        }
+        
+        return allocations;
+      }
+      
+      // ターンアラウンド時間の最適化
+      optimizeTurnaround(flight: FlightMovement): TurnaroundPlan {
+        const services = [
+          { name: 'refueling', duration: 20, canParallel: true },
+          { name: 'catering', duration: 30, canParallel: true },
+          { name: 'cleaning', duration: 25, canParallel: false },
+          { name: 'maintenance', duration: 15, canParallel: true },
+          { name: 'baggage', duration: 35, canParallel: true }
+        ];
+        
+        // 並行処理可能なサービスをグループ化
+        const parallelServices = services.filter(s => s.canParallel);
+        const sequentialServices = services.filter(s => !s.canParallel);
+        
+        // 最適なスケジューリング
+        const plan: TurnaroundPlan = {
+          flightId: flight.flightId,
+          totalDuration: Math.max(
+            Math.max(...parallelServices.map(s => s.duration)),
+            sequentialServices.reduce((sum, s) => sum + s.duration, 0)
+          ),
+          schedule: this.createServiceSchedule(services, flight.actualTime || flight.estimatedTime)
+        };
+        
+        return plan;
       }
     }
-    
-    return allocations;
-  }
-  
-  // ターンアラウンド時間の最適化
-  optimizeTurnaround(flight: FlightMovement): TurnaroundPlan {
-    const services = [
-      { name: 'refueling', duration: 20, canParallel: true },
-      { name: 'catering', duration: 30, canParallel: true },
-      { name: 'cleaning', duration: 25, canParallel: false },
-      { name: 'maintenance', duration: 15, canParallel: true },
-      { name: 'baggage', duration: 35, canParallel: true }
-    ];
-    
-    // 並行処理可能なサービスをグループ化
-    const parallelServices = services.filter(s => s.canParallel);
-    const sequentialServices = services.filter(s => !s.canParallel);
-    
-    // 最適なスケジューリング
-    const plan: TurnaroundPlan = {
-      flightId: flight.flightId,
-      totalDuration: Math.max(
-        Math.max(...parallelServices.map(s => s.duration)),
-        sequentialServices.reduce((sum, s) => sum + s.duration, 0)
-      ),
-      schedule: this.createServiceSchedule(services, flight.actualTime || flight.estimatedTime)
-    };
-    
-    return plan;
-  }
-}
 
-interface AirportConfig {
-  code: string;
-  runways: Runway[];
-  gates: Gate[];
-  stands: Stand[];
-}
+    interface AirportConfig {
+      code: string;
+      runways: Runway[];
+      gates: Gate[];
+      stands: Stand[];
+    }
 
-interface ResourceAllocation {
-  flightId: string;
-  resourceType: 'gate' | 'runway' | 'stand';
-  resourceId: string;
-  timeSlot: TimeSlot;
-}
+    interface ResourceAllocation {
+      flightId: string;
+      resourceType: 'gate' | 'runway' | 'stand';
+      resourceId: string;
+      timeSlot: TimeSlot;
+    }
 
-interface TimeSlot {
-  start: Date;
-  end: Date;
-}
+    interface TimeSlot {
+      start: Date;
+      end: Date;
+    }
 
-interface TurnaroundPlan {
-  flightId: string;
-  totalDuration: number; // minutes
-  schedule: ServiceSchedule[];
-}
+    interface TurnaroundPlan {
+      flightId: string;
+      totalDuration: number; // minutes
+      schedule: ServiceSchedule[];
+    }
 
-interface ServiceSchedule {
-  service: string;
-  start: Date;
-  duration: number;
-}
-```
+    interface ServiceSchedule {
+      service: string;
+      start: Date;
+      duration: number;
+    }
+    ```
 
 ## 日本の航空ソフトウェア事例
 
@@ -801,86 +814,87 @@ graph TD
 |---|---|---|
 |従来のレーダー中心の航空管制では増加する航空交通量に対応困難。環境規制や燃料コスト上昇も課題|4D航法（位置＋時間）、デジタル通信、自動化、AI活用による効率化・安全性向上・環境負荷低減|各国・各社のシステム統合、リアルタイム大容量データ処理、サイバーセキュリティ、AIの説明責任、既存設備との互換性|
 
-```typescript
-// 4D航法システムの概念実装
-interface FourDTrajectory {
-  waypoints: Array<{
-    position: { lat: number; lng: number; alt: number };
-    timeConstraint: Date;
-    speedConstraint?: number;
-  }>;
-  uncertaintyEnvelope: {
-    lateral: number;    // nautical miles
-    vertical: number;   // feet
-    temporal: number;   // seconds
-  };
-  performance: {
-    fuel: number;       // kg
-    emissions: number;  // kg CO2
-    noise: number;      // dB
-  };
-}
-
-class FourDNavigationSystem {
-  calculateOptimalTrajectory(
-    origin: Waypoint,
-    destination: Waypoint,
-    constraints: FlightConstraints,
-    weatherData: WeatherData[],
-    trafficDensity: TrafficDensity[]
-  ): FourDTrajectory {
-    // 多目的最適化（燃費、時間、環境）
-    const costFunction = this.createCostFunction(constraints);
-    
-    // 動的計画法による最適経路計算
-    const optimalPath = this.dynamicProgramming(
-      origin,
-      destination,
-      weatherData,
-      trafficDensity,
-      costFunction
-    );
-    
-    // 不確実性の考慮
-    const uncertaintyEnvelope = this.calculateUncertainty(
-      optimalPath,
-      weatherData,
-      trafficDensity
-    );
-    
-    return {
-      waypoints: optimalPath,
-      uncertaintyEnvelope,
-      performance: this.calculatePerformance(optimalPath, weatherData)
-    };
-  }
-  
-  // リアルタイム軌道調整
-  adjustTrajectoryInFlight(
-    currentTrajectory: FourDTrajectory,
-    currentPosition: Position,
-    updatedConditions: {
-      weather?: WeatherData[];
-      traffic?: TrafficInfo[];
-      constraints?: FlightConstraints;
+??? TypeScript実装例
+    ```typescript
+    // 4D航法システムの概念実装
+    interface FourDTrajectory {
+      waypoints: Array<{
+        position: { lat: number; lng: number; alt: number };
+        timeConstraint: Date;
+        speedConstraint?: number;
+      }>;
+      uncertaintyEnvelope: {
+        lateral: number;    // nautical miles
+        vertical: number;   // feet
+        temporal: number;   // seconds
+      };
+      performance: {
+        fuel: number;       // kg
+        emissions: number;  // kg CO2
+        noise: number;      // dB
+      };
     }
-  ): FourDTrajectory {
-    // 現在位置からの軌道再計算
-    const remainingWaypoints = currentTrajectory.waypoints.filter(wp => 
-      this.isAhead(currentPosition, wp.position)
-    );
-    
-    // 新しい条件での最適化
-    return this.calculateOptimalTrajectory(
-      { position: currentPosition, time: new Date() },
-      remainingWaypoints[remainingWaypoints.length - 1],
-      updatedConditions.constraints || {},
-      updatedConditions.weather || [],
-      updatedConditions.traffic || []
-    );
-  }
-}
-```
+
+    class FourDNavigationSystem {
+      calculateOptimalTrajectory(
+        origin: Waypoint,
+        destination: Waypoint,
+        constraints: FlightConstraints,
+        weatherData: WeatherData[],
+        trafficDensity: TrafficDensity[]
+      ): FourDTrajectory {
+        // 多目的最適化（燃費、時間、環境）
+        const costFunction = this.createCostFunction(constraints);
+        
+        // 動的計画法による最適経路計算
+        const optimalPath = this.dynamicProgramming(
+          origin,
+          destination,
+          weatherData,
+          trafficDensity,
+          costFunction
+        );
+        
+        // 不確実性の考慮
+        const uncertaintyEnvelope = this.calculateUncertainty(
+          optimalPath,
+          weatherData,
+          trafficDensity
+        );
+        
+        return {
+          waypoints: optimalPath,
+          uncertaintyEnvelope,
+          performance: this.calculatePerformance(optimalPath, weatherData)
+        };
+      }
+      
+      // リアルタイム軌道調整
+      adjustTrajectoryInFlight(
+        currentTrajectory: FourDTrajectory,
+        currentPosition: Position,
+        updatedConditions: {
+          weather?: WeatherData[];
+          traffic?: TrafficInfo[];
+          constraints?: FlightConstraints;
+        }
+      ): FourDTrajectory {
+        // 現在位置からの軌道再計算
+        const remainingWaypoints = currentTrajectory.waypoints.filter(wp => 
+          this.isAhead(currentPosition, wp.position)
+        );
+        
+        // 新しい条件での最適化
+        return this.calculateOptimalTrajectory(
+          { position: currentPosition, time: new Date() },
+          remainingWaypoints[remainingWaypoints.length - 1],
+          updatedConditions.constraints || {},
+          updatedConditions.weather || [],
+          updatedConditions.traffic || []
+        );
+      }
+    }
+    ```
 
 ### 人工知能の活用
 #### AI導入の影響と効率化の具体例
@@ -889,79 +903,81 @@ class FourDNavigationSystem {
 |---|---|
 | AIにより航空交通管理や運航計画が高度自動化<br>人的判断の補助や異常検知の自動化で安全性・効率性が向上 | ・フライト混雑予測→早期に地上待機やルート変更を提案し、遅延や燃料消費を削減<br>・天候リスクの自動検出→パイロットや管制官に危険回避ルートを提示<br>・整備予知保全→AIが機体データを解析し、故障前に部品交換を提案|
 
-```typescript
-// AI支援による航空交通管理
-class AIAssistedATM {
-  private model: TensorFlow.LayersModel;
-  
-  async loadModel(): Promise<void> {
-    this.model = await tf.loadLayersModel('/models/atm-optimization.json');
-  }
-  
-  // 交通渋滞予測
-  predictCongestion(
-    currentTraffic: TrafficSnapshot,
-    weatherForecast: WeatherForecast[],
-    flightSchedules: FlightSchedule[]
-  ): Promise<CongestionPrediction> {
-    // 入力データの正規化
-    const normalizedInputs = this.normalizeInputs({
-      traffic: currentTraffic,
-      weather: weatherForecast,
-      schedules: flightSchedules
-    });
-    
-    // モデル推論
-    const prediction = this.model.predict(normalizedInputs) as tf.Tensor;
-    const predictionData = await prediction.data();
-    
-    return {
-      sectors: this.parseSectorPredictions(predictionData),
-      timeHorizon: 120, // minutes
-      confidence: this.calculateConfidence(predictionData)
-    };
-  }
-  
-  // 最適な制限措置提案
-  recommendFlowControl(
-    congestionPrediction: CongestionPrediction,
-    currentOperations: OperationalData
-  ): FlowControlMeasures[] {
-    const measures: FlowControlMeasures[] = [];
-    
-    for (const sector of congestionPrediction.sectors) {
-      if (sector.congestionLevel > 0.7) {
-        measures.push({
-          type: 'ground_delay',
-          affectedFlights: this.identifyAffectedFlights(sector),
-          delayMinutes: this.calculateOptimalDelay(sector),
-          expectedReduction: sector.congestionLevel * 0.3
+
+??? TypeScript実装例
+    ```typescript
+    // AI支援による航空交通管理
+    class AIAssistedATM {
+      private model: TensorFlow.LayersModel;
+      
+      async loadModel(): Promise<void> {
+        this.model = await tf.loadLayersModel('/models/atm-optimization.json');
+      }
+      
+      // 交通渋滞予測
+      predictCongestion(
+        currentTraffic: TrafficSnapshot,
+        weatherForecast: WeatherForecast[],
+        flightSchedules: FlightSchedule[]
+      ): Promise<CongestionPrediction> {
+        // 入力データの正規化
+        const normalizedInputs = this.normalizeInputs({
+          traffic: currentTraffic,
+          weather: weatherForecast,
+          schedules: flightSchedules
         });
+        
+        // モデル推論
+        const prediction = this.model.predict(normalizedInputs) as tf.Tensor;
+        const predictionData = await prediction.data();
+        
+        return {
+          sectors: this.parseSectorPredictions(predictionData),
+          timeHorizon: 120, // minutes
+          confidence: this.calculateConfidence(predictionData)
+        };
+      }
+      
+      // 最適な制限措置提案
+      recommendFlowControl(
+        congestionPrediction: CongestionPrediction,
+        currentOperations: OperationalData
+      ): FlowControlMeasures[] {
+        const measures: FlowControlMeasures[] = [];
+        
+        for (const sector of congestionPrediction.sectors) {
+          if (sector.congestionLevel > 0.7) {
+            measures.push({
+              type: 'ground_delay',
+              affectedFlights: this.identifyAffectedFlights(sector),
+              delayMinutes: this.calculateOptimalDelay(sector),
+              expectedReduction: sector.congestionLevel * 0.3
+            });
+          }
+        }
+        
+        return measures;
       }
     }
-    
-    return measures;
-  }
-}
 
-interface CongestionPrediction {
-  sectors: Array<{
-    id: string;
-    congestionLevel: number; // 0-1
-    peakTime: Date;
-    duration: number; // minutes
-  }>;
-  timeHorizon: number;
-  confidence: number;
-}
+    interface CongestionPrediction {
+      sectors: Array<{
+        id: string;
+        congestionLevel: number; // 0-1
+        peakTime: Date;
+        duration: number; // minutes
+      }>;
+      timeHorizon: number;
+      confidence: number;
+    }
 
-interface FlowControlMeasures {
-  type: 'ground_delay' | 'airborne_holding' | 'route_diversion';
-  affectedFlights: string[];
-  delayMinutes?: number;
-  expectedReduction: number;
-}
-```
+    interface FlowControlMeasures {
+      type: 'ground_delay' | 'airborne_holding' | 'route_diversion';
+      affectedFlights: string[];
+      delayMinutes?: number;
+      expectedReduction: number;
+    }
+    ```
 
 ## 実装時の考慮事項
 
@@ -972,61 +988,63 @@ interface FlowControlMeasures {
 |---|---|---|
 |サイバー攻撃（ランサムウェア、DoS）、<br>データ改ざん、<br>無線通信の妨害、<br>内部不正アクセス|強固な暗号化・多段階認証、<br>アクセス権限の厳格管理、<br>リアルタイム異常検知（SIEM導入）、<br>ネットワーク分離、<br>冗長化・バックアップ|法規制（GDPR等）や国際標準（DO-326A等）への準拠、<br>定期的な脆弱性診断・訓練も必須|
 
-```typescript
-// 航空システムのセキュリティ実装例
-class AviationSecurityLayer {
-  private encryptionKey: CryptoKey;
-  private auditLogger: AuditLogger;
-  
-  // データ暗号化
-  async encryptFlightData(data: FlightData): Promise<EncryptedData> {
-    const encrypted = await window.crypto.subtle.encrypt(
-      { name: 'AES-GCM', iv: crypto.getRandomValues(new Uint8Array(12)) },
-      this.encryptionKey,
-      new TextEncoder().encode(JSON.stringify(data))
-    );
-    
-    this.auditLogger.log('data_encrypted', {
-      flightId: data.flightId,
-      timestamp: new Date()
-    });
-    
-    return { data: encrypted, iv: encrypted.slice(0, 12) };
-  }
-  
-  // アクセス制御
-  validateAccess(user: User, resource: string, action: string): boolean {
-    const userRoles = user.roles;
-    const requiredPermissions = this.getRequiredPermissions(resource, action);
-    
-    const hasPermission = requiredPermissions.every(permission => 
-      userRoles.some(role => role.permissions.includes(permission))
-    );
-    
-    this.auditLogger.log('access_attempt', {
-      userId: user.id,
-      resource,
-      action,
-      granted: hasPermission,
-      timestamp: new Date()
-    });
-    
-    return hasPermission;
-  }
-  
-  // リアルタイム脅威検知
-  monitorAbnormalPatterns(): Observable<SecurityAlert> {
-    return merge(
-      this.monitorLoginPatterns(),
-      this.monitorDataAccess(),
-      this.monitorSystemPerformance()
-    ).pipe(
-      filter(event => this.isAbnormal(event)),
-      map(event => this.createSecurityAlert(event))
-    );
-  }
-}
-```
+
+??? TypeScript実装例
+    ```typescript
+    // 航空システムのセキュリティ実装例
+    class AviationSecurityLayer {
+      private encryptionKey: CryptoKey;
+      private auditLogger: AuditLogger;
+      
+      // データ暗号化
+      async encryptFlightData(data: FlightData): Promise<EncryptedData> {
+        const encrypted = await window.crypto.subtle.encrypt(
+          { name: 'AES-GCM', iv: crypto.getRandomValues(new Uint8Array(12)) },
+          this.encryptionKey,
+          new TextEncoder().encode(JSON.stringify(data))
+        );
+        
+        this.auditLogger.log('data_encrypted', {
+          flightId: data.flightId,
+          timestamp: new Date()
+        });
+        
+        return { data: encrypted, iv: encrypted.slice(0, 12) };
+      }
+      
+      // アクセス制御
+      validateAccess(user: User, resource: string, action: string): boolean {
+        const userRoles = user.roles;
+        const requiredPermissions = this.getRequiredPermissions(resource, action);
+        
+        const hasPermission = requiredPermissions.every(permission => 
+          userRoles.some(role => role.permissions.includes(permission))
+        );
+        
+        this.auditLogger.log('access_attempt', {
+          userId: user.id,
+          resource,
+          action,
+          granted: hasPermission,
+          timestamp: new Date()
+        });
+        
+        return hasPermission;
+      }
+      
+      // リアルタイム脅威検知
+      monitorAbnormalPatterns(): Observable<SecurityAlert> {
+        return merge(
+          this.monitorLoginPatterns(),
+          this.monitorDataAccess(),
+          this.monitorSystemPerformance()
+        ).pipe(
+          filter(event => this.isAbnormal(event)),
+          map(event => this.createSecurityAlert(event))
+        );
+      }
+    }
+    ```
 
 ### 国際標準への対応
 #### 標準化の意義と実装の注意点
@@ -1034,84 +1052,86 @@ class AviationSecurityLayer {
 |---|---|---|
 |ICAO、RTCA、Eurocontrolなどの標準化により、国境を越えた運航・情報共有が安全かつ円滑に実現可能|各標準のバージョン差異やローカル要件に注意<br>データ形式（AIXM、FIXM等）の正しい解釈・変換や、セキュリティ標準への適合も重要|ICAO FPLメッセージの厳格なパース、AIXMデータのXMLスキーマ検証、RTCA/DO-178Cに基づくソフトウェア品質保証など|
 
-```typescript
-// ICAO標準データフォーマット例
-interface ICAOFlightPlan {
-  // FPL message format
-  messageType: 'FPL';
-  aircraftIdentification: string;
-  flightRules: 'I' | 'V' | 'Y' | 'Z'; // IFR/VFR
-  typeOfFlight: 'S' | 'N' | 'G' | 'M' | 'X';
-  equipment: {
-    aircraft: string; // ICAO aircraft type designator
-    wakeCategory: 'L' | 'M' | 'H' | 'J'; // Light/Medium/Heavy/Super
-    transponder: string; // ICAO transponder codes
-  };
-  departure: {
-    aerodrome: string; // ICAO airport code
-    time: Date;
-  };
-  cruisingSpeed: string;
-  cruisingLevel: string;
-  route: string; // ICAO route format
-  destination: {
-    aerodrome: string;
-    totalEET: string; // Estimated Elapsed Time
-  };
-  alternate?: {
-    aerodrome1?: string;
-    aerodrome2?: string;
-  };
-  otherInformation: string;
-}
 
-class ICAOMessageProcessor {
-  // ICAO標準メッセージのパース
-  parseFlightPlan(rawMessage: string): ICAOFlightPlan {
-    const fields = rawMessage.split('-');
-    
-    return {
-      messageType: 'FPL',
-      aircraftIdentification: this.extractField(fields, 7),
-      flightRules: this.extractField(fields, 8)[0] as any,
-      typeOfFlight: this.extractField(fields, 8)[1] as any,
-      equipment: this.parseEquipment(this.extractField(fields, 9)),
-      departure: this.parseDeparture(this.extractField(fields, 13)),
-      cruisingSpeed: this.extractCruisingSpeed(this.extractField(fields, 15)),
-      cruisingLevel: this.extractCruisingLevel(this.extractField(fields, 15)),
-      route: this.extractField(fields, 15).split('/').slice(1).join(' '),
-      destination: this.parseDestination(this.extractField(fields, 16)),
-      alternate: this.parseAlternate(this.extractField(fields, 16)),
-      otherInformation: this.extractField(fields, 18)
-    };
-  }
-  
-  // AIXM (Aeronautical Information Exchange Model) 対応
-  generateAIXMData(flightPlan: ICAOFlightPlan): string {
-    const aixmTemplate = `
-      <message:AIXMBasicMessage 
-        xmlns:message="http://www.aixm.aero/schema/5.1/message"
-        xmlns:gml="http://www.opengis.net/gml/3.2">
-        <message:hasMember>
-          <aixm:RouteSegment gml:id="${this.generateId()}">
-            <aixm:timeSlice>
-              <aixm:RouteSegmentTimeSlice gml:id="${this.generateId()}">
-                <gml:validTime />
-                <aixm:interpretation>BASELINE</aixm:interpretation>
-                <aixm:start xlink:href="#${flightPlan.departure.aerodrome}" />
-                <aixm:end xlink:href="#${flightPlan.destination.aerodrome}" />
-                <aixm:route>${flightPlan.route}</aixm:route>
-              </aixm:RouteSegmentTimeSlice>
-            </aixm:timeSlice>
-          </aixm:RouteSegment>
-        </message:hasMember>
-      </message:AIXMBasicMessage>
-    `;
-    
-    return aixmTemplate.trim();
-  }
-}
-```
+??? TypeScript実装例
+    ```typescript
+    // ICAO標準データフォーマット例
+    interface ICAOFlightPlan {
+      // FPL message format
+      messageType: 'FPL';
+      aircraftIdentification: string;
+      flightRules: 'I' | 'V' | 'Y' | 'Z'; // IFR/VFR
+      typeOfFlight: 'S' | 'N' | 'G' | 'M' | 'X';
+      equipment: {
+        aircraft: string; // ICAO aircraft type designator
+        wakeCategory: 'L' | 'M' | 'H' | 'J'; // Light/Medium/Heavy/Super
+        transponder: string; // ICAO transponder codes
+      };
+      departure: {
+        aerodrome: string; // ICAO airport code
+        time: Date;
+      };
+      cruisingSpeed: string;
+      cruisingLevel: string;
+      route: string; // ICAO route format
+      destination: {
+        aerodrome: string;
+        totalEET: string; // Estimated Elapsed Time
+      };
+      alternate?: {
+        aerodrome1?: string;
+        aerodrome2?: string;
+      };
+      otherInformation: string;
+    }
+
+    class ICAOMessageProcessor {
+      // ICAO標準メッセージのパース
+      parseFlightPlan(rawMessage: string): ICAOFlightPlan {
+        const fields = rawMessage.split('-');
+        
+        return {
+          messageType: 'FPL',
+          aircraftIdentification: this.extractField(fields, 7),
+          flightRules: this.extractField(fields, 8)[0] as any,
+          typeOfFlight: this.extractField(fields, 8)[1] as any,
+          equipment: this.parseEquipment(this.extractField(fields, 9)),
+          departure: this.parseDeparture(this.extractField(fields, 13)),
+          cruisingSpeed: this.extractCruisingSpeed(this.extractField(fields, 15)),
+          cruisingLevel: this.extractCruisingLevel(this.extractField(fields, 15)),
+          route: this.extractField(fields, 15).split('/').slice(1).join(' '),
+          destination: this.parseDestination(this.extractField(fields, 16)),
+          alternate: this.parseAlternate(this.extractField(fields, 16)),
+          otherInformation: this.extractField(fields, 18)
+        };
+      }
+      
+      // AIXM (Aeronautical Information Exchange Model) 対応
+      generateAIXMData(flightPlan: ICAOFlightPlan): string {
+        const aixmTemplate = `
+          <message:AIXMBasicMessage 
+            xmlns:message="http://www.aixm.aero/schema/5.1/message"
+            xmlns:gml="http://www.opengis.net/gml/3.2">
+            <message:hasMember>
+              <aixm:RouteSegment gml:id="${this.generateId()}">
+                <aixm:timeSlice>
+                  <aixm:RouteSegmentTimeSlice gml:id="${this.generateId()}">
+                    <gml:validTime />
+                    <aixm:interpretation>BASELINE</aixm:interpretation>
+                    <aixm:start xlink:href="#${flightPlan.departure.aerodrome}" />
+                    <aixm:end xlink:href="#${flightPlan.destination.aerodrome}" />
+                    <aixm:route>${flightPlan.route}</aixm:route>
+                  </aixm:RouteSegmentTimeSlice>
+                </aixm:timeSlice>
+              </aixm:RouteSegment>
+            </message:hasMember>
+          </message:AIXMBasicMessage>
+        `;
+        
+        return aixmTemplate.trim();
+      }
+    }
+    ```
 
 ## まとめ
 

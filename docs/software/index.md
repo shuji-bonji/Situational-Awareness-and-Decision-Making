@@ -136,33 +136,35 @@ graph LR
 
 ### フロントエンド技術の役割
 
-```typescript
-// 状況認識ダッシュボードの典型的な構成
-interface SituationalAwarenessDashboard {
-  // リアルタイムデータストリーム
-  dataStream$: Observable<SensorData[]>;
-  
-  // 状態管理
-  applicationState: {
-    currentSituation: SituationState;
-    alerts: Alert[];
-    userPreferences: UserSettings;
-  };
-  
-  // コンポーネント構成
-  components: {
-    mapVisualization: MapComponent;
-    dataCharts: ChartComponent[];
-    alertPanel: AlertComponent;
-    controlPanel: ControlComponent;
-  };
-  
-  // イベントハンドリング
-  onUserAction(action: UserAction): void;
-  onDataUpdate(data: SensorData): void;
-  onAlertTriggered(alert: Alert): void;
-}
-```
+
+??? TypeScript実装例
+    ```typescript
+    // 状況認識ダッシュボードの典型的な構成
+    interface SituationalAwarenessDashboard {
+      // リアルタイムデータストリーム
+      dataStream$: Observable<SensorData[]>;
+      
+      // 状態管理
+      applicationState: {
+        currentSituation: SituationState;
+        alerts: Alert[];
+        userPreferences: UserSettings;
+      };
+      
+      // コンポーネント構成
+      components: {
+        mapVisualization: MapComponent;
+        dataCharts: ChartComponent[];
+        alertPanel: AlertComponent;
+        controlPanel: ControlComponent;
+      };
+      
+      // イベントハンドリング
+      onUserAction(action: UserAction): void;
+      onDataUpdate(data: SensorData): void;
+      onAlertTriggered(alert: Alert): void;
+    }
+    ```
 
 ## 開発・統合の観点
 
@@ -170,88 +172,94 @@ interface SituationalAwarenessDashboard {
 
 #### RESTful API設計原則
 
-```typescript
-// 状況認識API の典型的なエンドポイント設計
-interface SituationalAwarenessAPI {
-  // 現在の状況取得
-  GET: '/api/v1/situation/current';
-  
-  // 履歴データ取得
-  GET: '/api/v1/situation/history?from={timestamp}&to={timestamp}';
-  
-  // アラート管理
-  GET: '/api/v1/alerts';
-  POST: '/api/v1/alerts';
-  PUT: '/api/v1/alerts/{id}';
-  DELETE: '/api/v1/alerts/{id}';
-  
-  // リアルタイムストリーム
-  WebSocket: '/ws/realtime-updates';
-}
-```
+
+??? TypeScript実装例
+    ```typescript
+    // 状況認識API の典型的なエンドポイント設計
+    interface SituationalAwarenessAPI {
+      // 現在の状況取得
+      GET: '/api/v1/situation/current';
+      
+      // 履歴データ取得
+      GET: '/api/v1/situation/history?from={timestamp}&to={timestamp}';
+      
+      // アラート管理
+      GET: '/api/v1/alerts';
+      POST: '/api/v1/alerts';
+      PUT: '/api/v1/alerts/{id}';
+      DELETE: '/api/v1/alerts/{id}';
+      
+      // リアルタイムストリーム
+      WebSocket: '/ws/realtime-updates';
+    }
+    ```
 
 #### データフォーマット標準化
 
-```typescript
-// 共通データモデル例
-interface SituationData {
-  id: string;
-  timestamp: Date;
-  source: DataSource;
-  coordinates?: GeographicCoordinates;
-  metrics: {
-    [key: string]: number | string | boolean;
-  };
-  confidence: number; // 0-1の信頼度
-  priority: 'low' | 'medium' | 'high' | 'critical';
-}
 
-interface Alert {
-  id: string;
-  type: AlertType;
-  severity: SeverityLevel;
-  message: string;
-  actionRequired: boolean;
-  expiresAt?: Date;
-  metadata: Record<string, any>;
-}
-```
+??? TypeScript実装例
+    ```typescript
+    // 共通データモデル例
+    interface SituationData {
+      id: string;
+      timestamp: Date;
+      source: DataSource;
+      coordinates?: GeographicCoordinates;
+      metrics: {
+        [key: string]: number | string | boolean;
+      };
+      confidence: number; // 0-1の信頼度
+      priority: 'low' | 'medium' | 'high' | 'critical';
+    }
+
+    interface Alert {
+      id: string;
+      type: AlertType;
+      severity: SeverityLevel;
+      message: string;
+      actionRequired: boolean;
+      expiresAt?: Date;
+      metadata: Record<string, any>;
+    }
+    ```
 
 ### PWA・オフライン対応
 
-```typescript
-// PWA対応の状況認識アプリケーション
-@Injectable()
-export class OfflineCapabilityService {
-  private cache = new Map<string, any>();
-  
-  // オフライン時のデータ管理
-  async storeDataOffline(key: string, data: any): Promise<void> {
-    // IndexedDBを使用した永続化
-    await this.indexedDB.store(key, data);
-    this.cache.set(key, data);
-  }
-  
-  // データ同期
-  async syncWhenOnline(): Promise<void> {
-    if (navigator.onLine) {
-      const unsyncedData = await this.getUnsyncedData();
-      for (const item of unsyncedData) {
-        await this.uploadToServer(item);
+
+??? TypeScript実装例
+    ```typescript
+    // PWA対応の状況認識アプリケーション
+    @Injectable()
+    export class OfflineCapabilityService {
+      private cache = new Map<string, any>();
+      
+      // オフライン時のデータ管理
+      async storeDataOffline(key: string, data: any): Promise<void> {
+        // IndexedDBを使用した永続化
+        await this.indexedDB.store(key, data);
+        this.cache.set(key, data);
+      }
+      
+      // データ同期
+      async syncWhenOnline(): Promise<void> {
+        if (navigator.onLine) {
+          const unsyncedData = await this.getUnsyncedData();
+          for (const item of unsyncedData) {
+            await this.uploadToServer(item);
+          }
+        }
+      }
+      
+      // バックグラウンド同期
+      registerBackgroundSync(): void {
+        if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.prototype) {
+          navigator.serviceWorker.ready.then(registration => {
+            return registration.sync.register('situation-data-sync');
+          });
+        }
       }
     }
-  }
-  
-  // バックグラウンド同期
-  registerBackgroundSync(): void {
-    if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.prototype) {
-      navigator.serviceWorker.ready.then(registration => {
-        return registration.sync.register('situation-data-sync');
-      });
-    }
-  }
-}
-```
+    ```
 
 ### セキュリティ考慮事項
 
@@ -266,77 +274,81 @@ export class OfflineCapabilityService {
 
 ### フロントエンド最適化
 
-```typescript
-// 大量データの効率的な表示
-@Component({
-  selector: 'sa-data-grid',
-  template: `
-    <cdk-virtual-scroll-viewport itemSize="50" class="data-viewport">
-      <div *cdkVirtualFor="let item of dataStream$ | async" class="data-item">
-        {{ item | json }}
-      </div>
-    </cdk-virtual-scroll-viewport>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class SituationalAwarenessDataGrid {
-  // 仮想スクロールによる大量データの効率的表示
-  dataStream$ = this.dataService.getData().pipe(
-    // デバウンス処理でUI更新頻度を制御
-    debounceTime(100),
-    // 変更のあったデータのみ再描画
-    distinctUntilChanged(),
-    // エラーハンドリング
-    catchError(error => {
-      console.error('Data loading error:', error);
-      return of([]);
+
+??? TypeScript実装例
+    ```typescript
+    // 大量データの効率的な表示
+    @Component({
+      selector: 'sa-data-grid',
+      template: `
+        <cdk-virtual-scroll-viewport itemSize="50" class="data-viewport">
+          <div *cdkVirtualFor="let item of dataStream$ | async" class="data-item">
+            {{ item | json }}
+          </div>
+        </cdk-virtual-scroll-viewport>
+      `,
+      changeDetection: ChangeDetectionStrategy.OnPush
     })
-  );
-}
-```
+    export class SituationalAwarenessDataGrid {
+      // 仮想スクロールによる大量データの効率的表示
+      dataStream$ = this.dataService.getData().pipe(
+        // デバウンス処理でUI更新頻度を制御
+        debounceTime(100),
+        // 変更のあったデータのみ再描画
+        distinctUntilChanged(),
+        // エラーハンドリング
+        catchError(error => {
+          console.error('Data loading error:', error);
+          return of([]);
+        })
+      );
+    }
+    ```
 
 ### リアルタイム処理の最適化
 
-```typescript
-// WebSocketによる効率的なリアルタイム通信
-@Injectable()
-export class RealTimeDataService {
-  private ws$: WebSocketSubject<any>;
-  
-  // Connection pooling
-  private connections = new Map<string, WebSocketSubject<any>>();
-  
-  connect(endpoint: string): Observable<any> {
-    if (!this.connections.has(endpoint)) {
-      const ws$ = webSocket({
-        url: endpoint,
-        openObserver: {
-          next: () => console.log('Connection established')
-        },
-        closeObserver: {
-          next: () => console.log('Connection closed')
-        }
-      });
+
+??? TypeScript実装例
+    ```typescript
+    // WebSocketによる効率的なリアルタイム通信
+    @Injectable()
+    export class RealTimeDataService {
+      private ws$: WebSocketSubject<any>;
       
-      this.connections.set(endpoint, ws$);
+      // Connection pooling
+      private connections = new Map<string, WebSocketSubject<any>>();
+      
+      connect(endpoint: string): Observable<any> {
+        if (!this.connections.has(endpoint)) {
+          const ws$ = webSocket({
+            url: endpoint,
+            openObserver: {
+              next: () => console.log('Connection established')
+            },
+            closeObserver: {
+              next: () => console.log('Connection closed')
+            }
+          });
+          
+          this.connections.set(endpoint, ws$);
+        }
+        
+        return this.connections.get(endpoint)!.pipe(
+          // 自動再接続
+          retryWhen(errors =>
+            errors.pipe(
+              delay(5000),
+              take(3)
+            )
+          ),
+          // メッセージフィルタリング
+          filter(message => this.isValidMessage(message)),
+          // メッセージ変換
+          map(message => this.transformMessage(message))
+        );
+      }
     }
-    
-    return this.connections.get(endpoint)!.pipe(
-      // 自動再接続
-      retryWhen(errors =>
-        errors.pipe(
-          delay(5000),
-          take(3)
-        )
-      ),
-      // メッセージフィルタリング
-      filter(message => this.isValidMessage(message)),
-      // メッセージ変換
-      map(message => this.transformMessage(message))
-    );
-  }
-}
-```
+    ```
 
 ## オープンソースとクローズドソース
 
