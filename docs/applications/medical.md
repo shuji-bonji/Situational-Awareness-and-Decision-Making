@@ -312,26 +312,26 @@ graph TD
 ```mermaid
 mindmap
   root((Team STEPPS))
-    Communication
-      CallOut
-      Checkback
+    コミュニケーション
+      呼びかけ・確認発言
+      復唱確認
       SBAR
-      Handoff
-    Situational Monitoring
-      Cross-monitoring
-      Environmental scanning
-      Situation awareness
-      Shared mental models
-    Mutual Support
-      Task assistance
-      Feedback
-      Advocacy
-      Error correction
-    Leadership
-      Team formation
-      Goal setting
-      Resource management
-      Priority setting
+      引き継ぎ
+    状況監視
+      相互監視
+      環境スキャン
+      状況認識
+      共有メンタルモデル
+    相互支援
+      業務支援
+      フィードバック
+      アドボカシー
+      エラー修正
+    リーダーシップ
+      チーム形成
+      目標設定
+      リソース管理
+      優先順位設定
 ```
 
 #### SBAR コミュニケーション
