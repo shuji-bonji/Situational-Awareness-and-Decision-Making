@@ -9,7 +9,7 @@
 
 <div class="grid cards" markdown>
 
--   **[状況認識とは](./what-is-sa.md)**
+-   ### [状況認識とは](./what-is-sa.md)
 
     ---
 
@@ -19,7 +19,7 @@
     - 状況認識の重要性と応用分野
     - 状況認識の基本的な3レベル構造
 
--   **[Endsleyの3レベルモデル](./endsley-model.md)**
+-   ### [Endsleyの3レベルモデル](./endsley-model.md)
 
     ---
     
@@ -29,7 +29,7 @@
     - モデルを支える認知メカニズム
     - 状況認識を支える要因と阻害する要因
 
--   **[意思決定との関係](./decision-making.md)**
+-   ### [意思決定との関係](./decision-making.md)
 
     ---
     
