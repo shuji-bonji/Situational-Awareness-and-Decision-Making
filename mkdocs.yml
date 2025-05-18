@@ -23,7 +23,6 @@ nav:
     - 日常生活: applications/daily-life.md
   - ソフトウェア:
     - 概要: software/index.md
-    - ソフトウェア概要: software/software-overview.md
     - 航空関連ソフトウェア: software/aviation-software.md
     - 船舶関連ソフトウェア: software/maritime-software.md
     - 気象関連ソフトウェア: software/weather-software.md

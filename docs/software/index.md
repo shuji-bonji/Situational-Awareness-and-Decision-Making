@@ -34,17 +34,6 @@ graph TD
 
 <div class="grid cards" markdown>
 
-- ### [ソフトウェア全体概要](./software-overview.md)
-
-    ---
-
-    **状況認識ソフトウェアの総合的分析**
-    
-    - 市販・オープンソースソフトウェアの分類
-    - 技術アーキテクチャの比較
-    - 導入時の考慮事項
-    - ROIと効果測定
-
 - ### [航空関連ソフトウェア](./aviation-software.md)
 
     ---
