@@ -1,5 +1,14 @@
 site_name: 状況認識と意思決定
 site_url: https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/shuji-bonji/Situational-Awareness-and-Decision-Making
+    # - icon: fontawesome/brands/linkedin
+    #   link: https://linkedin.com/in/myprofile
+  # generator: false
+copyright: "Copyright © 2025 shuji-bonji | <a href='https://creativecommons.org/licenses/by/4.0/deed.ja'>CC-BY-4.0ライセンス</a>に基づく"
+
 nav:
   - ホーム: index.md
   - 基本概念:
@@ -46,6 +55,10 @@ theme:
     accent: indigo
   features:
     - navigation.footer
+    - navigation.tabs
+    # - search.highlight  # <= ハイライト機能
+    - search.suggest  
+
 
 markdown_extensions:
   - pymdownx.arithmatex
