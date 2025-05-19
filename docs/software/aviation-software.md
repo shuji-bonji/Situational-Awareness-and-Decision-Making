@@ -74,6 +74,9 @@ graph TD
 
 
 ??? TypeScript実装例
+    この TypeScript 実装では、Flightradar24 の非公式 API を使用して、指定した緯度経度の境界内に存在する全てのフライト情報を取得しています。
+    WebSocket 通信を通じてリアルタイムの位置情報を取得し、画面に表示する用途に適しています。
+
     ```typescript
     // Flightradar24 API使用例（非公式）
     interface FlightData {
@@ -125,6 +128,9 @@ graph TD
 
 
 ??? TypeScript実装例
+    この TypeScript 実装では、OpenSky Network のオープンソース API を用いて、全ての航空機の現在のステータス情報を取得しています。
+    レーダー情報や ADS-B 情報の統合を行い、機体ごとの位置、速度、高度、国籍などの情報を収集し、追跡を行います。
+
     ```typescript
     // OpenSky Network API例（オープンソース）
     interface StateVector {
@@ -228,6 +234,9 @@ graph LR
 
 
 ??? TypeScript実装例
+    この TypeScript 実装では、複数のレーダーから受信した航空機の位置情報を統合し、ノイズ除去や重複排除を行っています。
+    また、リアルタイムでの軌道予測も行い、航空機の安全な航行をサポートするためのデータ処理を行っています。
+
     ```typescript
     // レーダーデータ処理の基本構造
     interface RadarContact {
@@ -300,6 +309,9 @@ graph LR
 
 
 ??? TypeScript実装例
+    この TypeScript 実装では、TCAS（Traffic Collision Avoidance System）の基本的な検知ロジックを構築しています。
+    航空機同士の最接近点（CPA）を計算し、衝突の危険がある場合には回避指示を生成します。
+
     ```typescript
     // TCAS アルゴリズムの簡単な実装例
     class TCASProcessor {
@@ -369,6 +381,9 @@ graph LR
 
 
 ??? TypeScript実装例
+    この TypeScript 実装では、航空気象情報（METAR/TAF）をリアルタイムで取得し、解析を行っています。
+    空港周辺の視程、風向、降水量などの気象情報を統合し、パイロットや管制官に即時提供するシステムです。
+
     ```typescript
     // 航空気象情報の統合システム
     interface WeatherData {
@@ -436,6 +451,9 @@ graph LR
 ### 機上気象レーダー統合
 
 ??? TypeScript実装例
+    この TypeScript 実装では、機上の気象レーダーからのデータを処理し、画面に可視化しています。
+    降水強度や嵐の位置をリアルタイムで表示し、パイロットが最適な航路を選択できるようサポートします。
+
     ```typescript
     // 機上気象レーダーデータの統合
     class OnboardWeatherRadar {
@@ -508,6 +526,9 @@ graph LR
 ### シミュレータープラグイン開発
 
 ??? TypeScript実装例
+    この TypeScript 実装では、X-Plane のシミュレーターからリアルタイムでデータを取得し、飛行機の姿勢や位置情報を監視しています。
+    訓練シナリオを通じて、天候の変化や異常事態への対応をシミュレーションすることが可能です。
+
     ```typescript
     // X-Plane プラグイン例（概念的）
     interface XPlaneDataRef {
@@ -611,6 +632,9 @@ graph LR
 
 
 ??? TypeScript実装例
+    この TypeScript 実装では、空港のゲートや滑走路の最適なスケジューリングを行い、リソース競合を解消する役割を持っています。
+    フライトの遅延を最小限に抑え、効率的な空港運営を支援します。
+
     ```typescript
     // 空港運営の協調的意思決定システム
     interface FlightMovement {
@@ -823,6 +847,9 @@ graph TD
 |従来のレーダー中心の航空管制では増加する航空交通量に対応困難。環境規制や燃料コスト上昇も課題|4D航法（位置＋時間）、デジタル通信、自動化、AI活用による効率化・安全性向上・環境負荷低減|各国・各社のシステム統合、リアルタイム大容量データ処理、サイバーセキュリティ、AIの説明責任、既存設備との互換性。<br>**実装例:** 米国NextGenでは、SWIM（System Wide Information Management）によるデータ共有基盤、欧州SESARではCPDLC（データリンク通信）や4Dトラジェクトリ管理の実証運用。|
 
 ??? TypeScript実装例
+    この TypeScript 実装では、4D航法（位置、速度、高度、時間）に基づいて航空機の最適な飛行経路を計算します。
+    現在の気象データや混雑情報を考慮し、最適な巡航速度とルートを動的に調整します。
+
     ```typescript
     // 4D航法システムの概念実装
     interface FourDTrajectory {
@@ -913,6 +940,9 @@ graph TD
 
 
 ??? TypeScript実装例
+    この TypeScript 実装では、航空交通管理における混雑予測や経路最適化を AI モデルで行っています。
+    天候や交通状況に基づいて遅延を予測し、リアルタイムで最適なフロー制御を提案します。
+
     ```typescript
     // AI支援による航空交通管理
     class AIAssistedATM {
@@ -998,6 +1028,7 @@ graph TD
 
 
 ??? TypeScript実装例
+
     ```typescript
     // 航空システムのセキュリティ実装例
     class AviationSecurityLayer {
@@ -1062,6 +1093,7 @@ graph TD
 
 
 ??? TypeScript実装例
+
     ```typescript
     // ICAO標準データフォーマット例
     interface ICAOFlightPlan {
