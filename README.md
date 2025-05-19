@@ -1,4 +1,4 @@
-# Situational Awareness and Decision Making
+# 状況認識と意思決定
 
 [![Documentation Status](https://github.com/shuji-bonji/Situational-Awareness-and-Decision-Making/actions/workflows/deploy.yml/badge.svg)](https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
@@ -71,7 +71,8 @@ Situational-Awareness-and-Decision-Making/
   - 航空関連ソフトウェア
   - 船舶関連ソフトウェア
   - 気象関連ソフトウェア
-  - 医療・緊急対応ソフトウェア
+  - 医療関連ソフトウェア
+  - 緊急対応・危機管理ソフトウェア
   - 軍事ソフトウェア
 
 - **AIと将来展望**
