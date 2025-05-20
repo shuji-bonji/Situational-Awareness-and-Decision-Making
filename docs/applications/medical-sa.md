@@ -542,7 +542,7 @@ graph TD
 
 - [基本概念：状況認識とは](../basics/what-is-sa.md)
 - [包括的ガイド：状況認識のトレーニング](../comprehensive-guide/training-sa.md)
-- [ソフトウェア：医療・緊急対応ソフトウェア](../software/medical-emergency-software.md)
+- [ソフトウェア：医療・緊急対応ソフトウェア](../software/medical-emergency-sa-software.md)
 
 ## 参考文献
 

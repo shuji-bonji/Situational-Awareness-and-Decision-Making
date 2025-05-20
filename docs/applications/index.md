@@ -46,7 +46,7 @@ graph TB
 
 <div class="grid cards" markdown>
 
-- ### [航空分野](./aviation.md)
+- ### [航空分野](./aviation-sa.md)
 
     ---
 
@@ -58,7 +58,7 @@ graph TB
     
     **特徴**：高度の技術統合、厳格な手順、国際標準
 
-- ### [海事・船舶分野](./maritime.md)
+- ### [海事・船舶分野](./maritime-sa.md)
 
     ---
 
@@ -70,7 +70,7 @@ graph TB
     
     **特徴**：長時間監視、気象依存性、国際規則遵守
 
-- ### [医療分野](./medical.md)
+- ### [医療分野](./medical-sa.md)
 
     ---
 
@@ -82,7 +82,7 @@ graph TB
     
     **特徴**：人命重視、多職種連携、不確実性への対応
 
-- ### [緊急対応分野](./emergency.md)
+- ### [緊急対応分野](./emergency-sa.md)
 
     ---
 
@@ -94,7 +94,7 @@ graph TB
     
     **特徴**：不確実性の高い環境、時間的切迫性、多機関連携
 
-- ### [軍事・防衛分野](./military.md)
+- ### [軍事・防衛分野](./military-sa.md)
 
     ---
 

@@ -17,22 +17,22 @@ situational-awareness-docs/
 │   │   └── training-sa.md                     # 状況認識のトレーニング方法
 │   ├── applications/                          # 応用
 │   │   ├── index.md                           # セクション概要
-│   │   ├── aviation.md                        # 航空分野での応用
-│   │   ├── maritime.md                        # 海事・船舶分野での応用
-│   │   ├── medical.md                         # 医療分野での応用
-│   │   ├── emergency.md                       # 緊急対応分野での応用
+│   │   ├── aviation-sa.md                        # 航空分野での応用
+│   │   ├── maritime-sa.md                        # 海事・船舶分野での応用
+│   │   ├── medical-sa.md                         # 医療分野での応用
+│   │   ├── emergency-sa.md                       # 緊急対応分野での応用
 │   │   └── daily-life.md                      # 日常生活での応用
 │   ├── software/                              # ソフトウェア
 │   │   ├── index.md                           # セクション概要
 │   │   ├── software-overview.md               # ソフトウェア概要 (現situational-awareness-software.md)
-│   │   ├── aviation-software.md               # 航空関連ソフトウェア詳細
-│   │   ├── maritime-software.md               # 船舶関連ソフトウェア詳細
+│   │   ├── aviation-sa-software.md               # 航空関連ソフトウェア詳細
+│   │   ├── maritime-sa-software.md               # 船舶関連ソフトウェア詳細
 │   │   ├── weather-software.md                # 気象関連ソフトウェア詳細
-│   │   ├── medical-emergency-software.md      # 医療・緊急対応分野ソフトウェア詳細
-│   │   └── military-software.md               # 医療・緊急対応分野ソフトウェア詳細
+│   │   ├── medical-emergency-sa-software.md      # 医療・緊急対応分野ソフトウェア詳細
+│   │   └── military-sa-software.md               # 医療・緊急対応分野ソフトウェア詳細
 │   ├── ai-and-future/                         # AIと将来展望
 │   │   ├── index.md                           # セクション概要
-│   │   ├── ai-context.md                      # AIと状況認識 (現a-new-context-in-the-field-of-situational-awareness-and-ai.md)
+│   │   ├── ai-sa-context.md                      # AIと状況認識 (現a-new-context-in-the-field-of-situational-awareness-and-ai.md)
 │   │   └── future-trends.md                   # 将来の動向と研究
 │   ├── case-studies/                          # ケーススタディ
 │   │   ├── index.md                           # セクション概要

@@ -42,7 +42,7 @@ graph TD
 
 <div class="grid cards" markdown>
 
-- ### [航空関連ソフトウェア](./aviation-software.md)
+- ### [航空関連ソフトウェア](./aviation-sa-software.md)
 
     ---
 
@@ -53,7 +53,7 @@ graph TD
     - 気象情報システム
     - フライトシミュレーター
 
-- ### [船舶関連ソフトウェア](./maritime-software.md)
+- ### [船舶関連ソフトウェア](./maritime-sa-software.md)
 
     ---
 
@@ -75,7 +75,7 @@ graph TD
     - 農業・エネルギー向け気象データ
     - レーダー・衛星画像解析
 
-- ### [医療関連ソフトウェア](./medical-software.md)
+- ### [医療関連ソフトウェア](./medical-sa-software.md)
 
     ---
 
@@ -87,7 +87,7 @@ graph TD
     - 遠隔医療・テレヘルス
     - 薬局システム・調剤支援
 
-- ### [緊急対応・危機管理ソフト](./emergency-software.md)
+- ### [緊急対応・危機管理ソフト](./emergency-sa-software.md)
 
     ---
 
@@ -99,7 +99,7 @@ graph TD
     - 消防・救急システム
     - 防災情報配信
 
-- ### [軍事・防衛ソフトウェア](./military-software.md)
+- ### [軍事・防衛ソフトウェア](./military-sa-software.md)
 
     ---
 

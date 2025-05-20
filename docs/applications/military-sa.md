@@ -490,7 +490,7 @@ graph TD
 
 - [基本概念：状況認識とは](../basics/what-is-sa.md)
 - [包括的ガイド：状況認識の測定方法](../comprehensive-guide/measuring-sa.md)
-- [ソフトウェア：軍事ソフトウェア](../software/military-software.md)
+- [ソフトウェア：軍事ソフトウェア](../software/military-sa-software.md)
 
 ## 参考文献
 

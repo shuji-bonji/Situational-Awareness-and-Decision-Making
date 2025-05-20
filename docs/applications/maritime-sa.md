@@ -497,7 +497,7 @@ graph LR
 
 - [基本概念：状況認識とは](../basics/what-is-sa.md)
 - [包括的ガイド：状況認識の測定方法](../comprehensive-guide/measuring-sa.md)
-- [ソフトウェア：船舶関連ソフトウェア](../software/maritime-software.md)
+- [ソフトウェア：船舶関連ソフトウェア](../software/maritime-sa-software.md)
 - [ケーススタディ：海難事故事例](../case-studies/maritime-cases.md)
 
 ## 参考文献
