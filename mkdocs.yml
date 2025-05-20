@@ -22,13 +22,35 @@ nav:
     - 状況認識のガイド: comprehensive-guide/sa-guide.md
     - 状況認識の測定方法: comprehensive-guide/measuring-sa.md
     - 状況認識トレーニング: comprehensive-guide/training-sa.md
+  # - 意思決定の理論と実践:
+  #   - 概要: decision-making-guide/index.md
+  #   - 意思決定モデル: decision-making-guide/decision-models.md
+  #   - 認知バイアスと意思決定: decision-making-guide/cognitive-biases.md
+  #   - 不確実性下の意思決定: decision-making-guide/uncertainty.md
+  #   - チーム意思決定: decision-making-guide/team-decision-making.md
+  #   - 意思決定トレーニング: decision-making-guide/decision-training.md
   - 応用:
     - 概要: applications/index.md
     - 航空分野: applications/aviation.md
+    # - 航空分野: 
+    #   - 状況認識: applications/aviation-sa.md
+    #   - 意思決定: applications/aviation-dm.md
     - 海事・船舶分野: applications/maritime.md
+    # - 海事・船舶分野: 
+    #   - 状況認識: applications/maritime-sa.md
+    #   - 意思決定: applications/maritime-dm.md
     - 医療分野: applications/medical.md
+    # - 医療分野: 
+    #   - 状況認識: applications/medical-sa.md
+    #   - 意思決定: applications/medical-dm.md
     - 緊急対応・危機管理: applications/emergency.md
+    # - 緊急対応・危機管理: 
+    #   - 状況認識: applications/emergency-sa.md
+    #   - 意思決定: applications/emergency-dm.md
     - 軍事・防衛分野: applications/military.md
+    # - 軍事・防衛分野: 
+    #   - 状況認識: applications/military-sa.md
+    #   - 意思決定: applications/military-dm.md
     - 産業・インフラ: applications/industrial.md
     - 日常生活: applications/daily-life.md
   - ソフトウェア:
@@ -39,27 +61,45 @@ nav:
     - 医療関連ソフトウェア: software/medical-software.md
     - 緊急対応・危機管理ソフトウェア: software/emergency-software.md
     - 軍事ソフトウェア: software/military-software.md
+    # - 状況認識支援システム:
+    #   - 航空関連: software/aviation-sa-software.md
+    #   - 船舶関連: software/maritime-sa-software.md
+    #   - 気象関連: software/weather-software.md
+    #   - 医療関連: software/medical-sa-software.md
+    #   - 緊急対応・危機管理: software/emergency-sa-software.md
+    #   - 軍事: software/military-sa-software.md
+    # - 意思決定支援システム:
+    #   - 意思決定支援概論: software/dss-overview.md
+    #   - 航空・船舶: software/aviation-maritime-dss.md
+    #   - 医療: software/medical-dss.md
+    #   - 緊急対応・軍事: software/emergency-military-dss.md
   - AIと将来展望:
     - 概要: ai-and-future/index.md
     - AIと状況認識: ai-and-future/ai-context.md
-    - AI技術分野別概要:
-      - 機械学習・深層学習: ai-and-future/machine-learning.md
-      - 自然言語処理: ai-and-future/natural-language-processing.md
-      - コンピュータビジョン: ai-and-future/computer-vision.md
-      - 予測分析: ai-and-future/predictive-analytics.md
-      - 説明可能なAI: ai-and-future/explainable-ai.md
-      - エッジAI: ai-and-future/edge-ai.md
-    - 将来の動向: ai-and-future/future-trends.md
-    - 未来技術の展望:
-      - 量子コンピューティング: ai-and-future/quantum-computing.md
-      - メタバース: ai-and-future/metaverse.md
-      - ブロックチェーン: ai-and-future/blockchain.md
-      - バイオテクノロジー: ai-and-future/biotechnology.md
-  - ケーススタディ:
-    - 概要: case-studies/index.md
-    - 航空事故: case-studies/aviation-cases.md
-    - 海難事故: case-studies/maritime-cases.md
-    - 安全教訓: case-studies/safety-lessons.md
+    # - AIと状況認識: ai-and-future/ai-sa-context.md
+    # - AIと意思決定: ai-and-future/ai-dm-context.md
+    # - AI技術分野別概要:
+    #   - 機械学習・深層学習: ai-and-future/machine-learning.md
+    #   - 自然言語処理: ai-and-future/natural-language-processing.md
+    #   - コンピュータビジョン: ai-and-future/computer-vision.md
+    #   - 予測分析: ai-and-future/predictive-analytics.md
+    #   - 説明可能なAI: ai-and-future/explainable-ai.md
+    #   - エッジAI: ai-and-future/edge-ai.md
+    # - 将来の動向: ai-and-future/future-trends.md
+    # - 未来技術の展望:
+    #   - 量子コンピューティング: ai-and-future/quantum-computing.md
+    #   - メタバース: ai-and-future/metaverse.md
+    #   - ブロックチェーン: ai-and-future/blockchain.md
+    #   - バイオテクノロジー: ai-and-future/biotechnology.md
+  # - ケーススタディ:
+    # - 概要: case-studies/index.md
+    # - 状況認識の失敗事例:
+    #   - 航空事故: case-studies/aviation-sa-failures.md
+    #   - 海難事故: case-studies/maritime-sa-failures.md
+    # - 意思決定の失敗と成功:
+    #   - 危機的状況での意思決定: case-studies/crisis-decision-making.md
+    #   - チーム意思決定事例: case-studies/team-decision-cases.md
+    # - 安全教訓: case-studies/safety-lessons.md
 
 theme:
   name: material
