@@ -22,9 +22,9 @@ nav:
     - 状況認識のガイド: comprehensive-guide/sa-guide.md
     - 状況認識の測定方法: comprehensive-guide/measuring-sa.md
     - 状況認識トレーニング: comprehensive-guide/training-sa.md
-  # - 意思決定の理論と実践:
-  #   - 概要: decision-making-guide/index.md
-  #   - 意思決定モデル: decision-making-guide/decision-models.md
+  - 意思決定の理論と実践:
+    - 概要: decision-making-guide/index.md
+    - 意思決定モデル: decision-making-guide/decision-models.md
   #   - 認知バイアスと意思決定: decision-making-guide/cognitive-biases.md
   #   - 不確実性下の意思決定: decision-making-guide/uncertainty.md
   #   - チーム意思決定: decision-making-guide/team-decision-making.md
@@ -152,6 +152,7 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.emoji
+  - pymdownx.keys
   - admonition
   - toc:
       permalink: true
@@ -162,3 +163,4 @@ markdown_extensions:
 
 plugins:
   - search
+  - panzoom

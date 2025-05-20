@@ -42,6 +42,10 @@ graph TB
     style D fill:#e6ffe6,stroke:#4d7fff
 ```
 
+!!! info "mermaidによるダイアグラム画像について"
+    このサイトでのダイアグラム画像は、[Mermaid](https://mermaid.js.org)にて作成しております。  
+    一部細かいところは、 ++alt+"マウスホイール操作"++ で拡大・縮小して確認して下さい。
+
 ## 各分野での状況認識の特徴
 
 <div class="grid cards" markdown>
