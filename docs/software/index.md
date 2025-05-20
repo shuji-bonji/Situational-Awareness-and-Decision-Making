@@ -500,5 +500,5 @@ graph TD
 
 - [基本概念：状況認識とは](../basics/what-is-sa.md)
 - [応用分野：各分野での利用](../applications/index.md)
-- [包括的ガイド：状況認識の測定方法](../comprehensive-guide/measuring-sa.md)
+- [状況認識の理論と実践：状況認識の測定方法](../situational-awareness-guide/measuring-sa.md)
 - [AIと将来展望：技術的進化](../ai-and-future/index.md)

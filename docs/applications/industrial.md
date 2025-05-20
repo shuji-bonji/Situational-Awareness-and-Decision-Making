@@ -598,7 +598,7 @@ graph LR
 ## 関連リンク
 
 - [基本概念：状況認識とは](../basics/what-is-sa.md)
-- [包括的ガイド：状況認識の測定方法](../comprehensive-guide/measuring-sa.md)
+- [状況認識の理論と実践：状況認識の測定方法](../situational-awareness-guide/measuring-sa.md)
 - [ソフトウェア：産業・インフラ関連ソフトウェア](../software/industrial-software.md)
 
 ## 参考文献

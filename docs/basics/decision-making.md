@@ -248,5 +248,5 @@ graph TB
 ## 関連リンク
 - [状況認識とは](./what-is-sa.md)
 - [Endsleyの3レベルモデル](./endsley-model.md)
-- [包括的ガイド](../comprehensive-guide/)
+- [状況認識の理論と実践](../situational-awareness-guide/)
 - [応用分野での利用](../applications/index.md)

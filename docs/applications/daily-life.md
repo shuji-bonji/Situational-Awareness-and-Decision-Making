@@ -842,7 +842,7 @@ graph LR
 ## 関連リンク
 
 - [基本概念：状況認識とは](../basics/what-is-sa.md)
-- [包括的ガイド：状況認識のトレーニング](../comprehensive-guide/training-sa.md)
+- [状況認識の理論と実践：状況認識のトレーニング](../situational-awareness-guide/training-sa.md)
 - [応用分野：他の分野での活用](../applications/index.md)
 
 ## 参考文献

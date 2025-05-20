@@ -1783,7 +1783,7 @@ ECDISは紙海図に代わる電子海図システムで、SOLAS（海上人命�
 
 - [海事・船舶分野での状況認識](../applications/maritime-sa.md)
 - [気象関連ソフトウェア](./weather-software.md)
-- [状況認識の測定方法](../comprehensive-guide/measuring-sa.md)
+- [状況認識の測定方法](../situational-awareness-guide/measuring-sa.md)
 - [AIと将来展望](../ai-and-future/index.md)
 
 ## 参考文献

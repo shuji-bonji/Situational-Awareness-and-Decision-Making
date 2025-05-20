@@ -191,7 +191,7 @@ Endsleyの3レベルモデルは、状況認識のプロセスを知覚、理解
 
 ## 関連リンク
 - [意思決定とは](./decision-making.md)
-- [状況認識の測定方法](../comprehensive-guide/measuring-sa.md)
+- [状況認識の測定方法](../situational-awareness-guide/measuring-sa.md)
 - [応用分野での利用](../applications/index.md)
 
 次のページ「[意思決定とは](./decision-making.md)」では、状況認識に基づいてどのように意思決定が行われるかについて詳しく解説します。

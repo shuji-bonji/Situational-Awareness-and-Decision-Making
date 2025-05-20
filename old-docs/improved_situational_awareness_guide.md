@@ -1,4 +1,4 @@
-# 状況認識（Situation Awareness）に関する包括的ガイド
+# 状況認識（Situation Awareness）に関する状況認識の理論と実践
 
 ## 1. 状況認識の基本概念
 

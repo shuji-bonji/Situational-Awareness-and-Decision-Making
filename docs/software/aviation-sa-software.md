@@ -1191,7 +1191,7 @@ graph TD
 
 - [航空分野での状況認識](../applications/aviation-sa.md)
 - [気象関連ソフトウェア](./weather-software.md)
-- [状況認識のトレーニング](../comprehensive-guide/training-sa.md)
+- [状況認識のトレーニング](../situational-awareness-guide/training-sa.md)
 - [AIと将来展望](../ai-and-future/index.md)
 
 ## 参考文献

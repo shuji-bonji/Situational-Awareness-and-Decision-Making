@@ -10,9 +10,9 @@ situational-awareness-docs/
 │   │   ├── what-is-sa.md                      # 状況認識とは (現situational-awareness.md)
 │   │   ├── endsley-model.md                   # Endsleyの3レベルモデル詳細解説
 │   │   └── decision-making.md                 # 意思決定とは (現decision-making.md)
-│   ├── comprehensive-guide/                   # 包括的ガイド
+│   ├── situational-awareness-guide/                   # 状況認識の理論と実践
 │   │   ├── index.md                           # セクション概要
-│   │   ├── sa-guide.md                        # 包括的ガイド (現improved_situational_awareness_guide.md)
+│   │   ├── sa-guide.md                        # 状況認識の理論と実践 (現improved_situational_awareness_guide.md)
 │   │   ├── measuring-sa.md                    # 状況認識の測定方法
 │   │   └── training-sa.md                     # 状況認識のトレーニング方法
 │   ├── applications/                          # 応用

@@ -17,11 +17,11 @@ nav:
     - Endsleyの3レベルモデル: basics/endsley-model.md
     - 意思決定とは: basics/decision-making.md
     - OODAループ: basics/ooda-loop.md
-  - 包括的ガイド:
-    - 概要: comprehensive-guide/index.md
-    - 状況認識のガイド: comprehensive-guide/sa-guide.md
-    - 状況認識の測定方法: comprehensive-guide/measuring-sa.md
-    - 状況認識トレーニング: comprehensive-guide/training-sa.md
+  - 状況認識の理論と実践:
+    - 概要: situational-awareness-guide/index.md
+    - 状況認識の理論と実践: situational-awareness-guide/sa-guide.md
+    - 状況認識の測定方法: situational-awareness-guide/measuring-sa.md
+    - 状況認識トレーニング: situational-awareness-guide/training-sa.md
   - 意思決定の理論と実践:
     - 概要: decision-making-guide/index.md
     - 意思決定モデル: decision-making-guide/decision-models.md
