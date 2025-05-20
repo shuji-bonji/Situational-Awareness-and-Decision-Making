@@ -14,7 +14,7 @@
 Situational-Awareness-and-Decision-Making/
 ├── docs/                        # ドキュメントのMarkdownファイル
 │   ├── basics/                  # 基本概念（状況認識、意思決定）
-│   ├── situational-awareness-guide/     # 状況認識の理論と実践
+│   ├── situational-awareness-guide/     # 状況認識の基本アプローチ
 │   ├── applications/            # 各分野への応用例
 │   ├── software/                # ソフトウェア一覧と説明
 │   ├── ai-and-future/           # AIと将来の展望
@@ -53,7 +53,7 @@ Situational-Awareness-and-Decision-Making/
   - 意思決定（Decision Making）
   - Endsleyの3レベルモデル
 
-- **状況認識の理論と実践**
+- **状況認識の基本アプローチ**
   - 状況認識のガイド
   - 測定手法
   - トレーニングの手法
