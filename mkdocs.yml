@@ -16,6 +16,7 @@ nav:
     - 状況認識とは: basics/what-is-sa.md
     - Endsleyの3レベルモデル: basics/endsley-model.md
     - 意思決定とは: basics/decision-making.md
+    - OODAループ: basics/ooda-loop.md
   - 包括的ガイド:
     - 概要: comprehensive-guide/index.md
     - 状況認識のガイド: comprehensive-guide/sa-guide.md
