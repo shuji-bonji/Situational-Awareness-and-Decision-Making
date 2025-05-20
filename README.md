@@ -53,7 +53,7 @@ Situational-Awareness-and-Decision-Making/
   - 意思決定（Decision Making）
   - Endsleyの3レベルモデル
 
-- **状況認識の基本アプローチ**
+- **状況認識の理論と実践**
   - 状況認識のガイド
   - 測定手法
   - トレーニングの手法

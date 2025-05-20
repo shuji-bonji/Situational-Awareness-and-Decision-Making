@@ -25,7 +25,7 @@ nav:
   - 意思決定の理論と実践:
     - 概要: decision-making-guide/index.md
     - 意思決定モデル: decision-making-guide/decision-models.md
-  #   - 認知バイアスと意思決定: decision-making-guide/cognitive-biases.md
+    - 認知バイアスと意思決定: decision-making-guide/cognitive-biases.md
   #   - 不確実性下の意思決定: decision-making-guide/uncertainty.md
   #   - チーム意思決定: decision-making-guide/team-decision-making.md
   #   - 意思決定トレーニング: decision-making-guide/decision-training.md
