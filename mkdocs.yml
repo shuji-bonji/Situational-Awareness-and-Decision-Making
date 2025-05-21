@@ -65,6 +65,7 @@ nav:
   - AIと将来展望:
     - 概要: ai-and-future/index.md
     - AIと状況認識: ai-and-future/ai-sa-context.md
+    - 状況認識とAIの新たな文脈: ai-and-future/new-context-in-sa-ai.md
     - AIと意思決定: ai-and-future/ai-dm-context.md
     # - AI技術分野別概要:
     #   - 機械学習・深層学習: ai-and-future/machine-learning.md
