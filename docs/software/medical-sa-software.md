@@ -4103,7 +4103,6 @@ ICUにおける患者の生体情報を24時間継続して監視し、異常の
 
 ### 制度・規制
 - [厚生労働省 医療DX](https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryou/johoka/index.html)
-- [PMDA 医療機器](https://www.pmda.go.jp/medical_devices/index.html)
 - [FDA Digital Health](https://www.fda.gov/medical-devices/digital-health-center-excellence)
 
 ### 技術標準

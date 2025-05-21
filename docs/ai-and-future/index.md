@@ -1,8 +1,7 @@
 # AI・未来技術と状況認識
 
 !!! info "このセクションについて"
-
-このセクションでは、人工知能（AI）と未来技術が状況認識と意思決定にもたらす革命的変化について解説します。機械学習、深層学習、自然言語処理、コンピュータビジョンから量子コンピューティング、デジタルツイン、メタバースまで、現在そして未来の技術が如何にして人間の認知能力を拡張し、より効果的な意思決定を支援するかを探求します。
+    このセクションでは、人工知能（AI）と未来技術が状況認識と意思決定にもたらす革命的変化について解説します。機械学習、深層学習、自然言語処理、コンピュータビジョンから量子コンピューティング、デジタルツイン、メタバースまで、現在そして未来の技術が如何にして人間の認知能力を拡張し、より効果的な意思決定を支援するかを探求します。
 
 ## AI・未来技術の重要性
 
@@ -830,7 +829,6 @@ AI・未来技術は、状況認識と意思決定の概念を根本から変革
 
 #### 研究機関・学会
 - [人工知能学会](https://www.ai-gakkai.or.jp/)
-- [機械学習学会](http://www.jsml.org/)
 - [IEEE Computational Intelligence Society](https://cis.ieee.org/)
 - [AAAI - Association for the Advancement of Artificial Intelligence](https://www.aaai.org/)
 
@@ -839,11 +837,6 @@ AI・未来技術は、状況認識と意思決定の概念を根本から変革
 - [Papers With Code](https://paperswithcode.com/) - 最新研究論文・実装
 - [Hugging Face](https://huggingface.co/) - NLPモデル・データセット
 - [Google AI Research](https://ai.google/research/) - 最新AI研究
-
-#### 政府・政策関連
-- [AI戦略2019](https://www.kantei.go.jp/jp/singi/ai_senryaku/) - 統合イノベーション戦略推進会議
-- [AI社会実装アクションプラン](https://www.meti.go.jp/policy/it_policy/data.html) - 経済産業省
-- [AI原則実践のためのガバナンス・ガイドライン](https://www.meti.go.jp/press/2021/01/20220128003/20220128003.html)
 
 ### 参考文献
 
