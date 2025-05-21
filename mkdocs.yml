@@ -39,13 +39,13 @@ nav:
       - 意思決定: applications/maritime-dm.md
     - 医療分野: 
       - 状況認識: applications/medical-sa.md
-    #   - 意思決定: applications/medical-dm.md
+      - 意思決定: applications/medical-dm.md
     - 緊急対応・危機管理: 
       - 状況認識: applications/emergency-sa.md
-    #   - 意思決定: applications/emergency-dm.md
+      - 意思決定: applications/emergency-dm.md
     - 軍事・防衛分野: 
       - 状況認識: applications/military-sa.md
-    #   - 意思決定: applications/military-dm.md
+      - 意思決定: applications/military-dm.md
     - 産業・インフラ: applications/industrial.md
     - 日常生活: applications/daily-life.md
   - ソフトウェア:
