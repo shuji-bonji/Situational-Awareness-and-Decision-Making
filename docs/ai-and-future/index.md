@@ -64,8 +64,7 @@ graph TD
     - **強化学習**: 意思決定の最適化
     - **深層学習**: ニューラルネットワークによる高度なパターン認識
 
-<!-- - ### [自然言語処理（NLP）](./natural-language-processing/) -->
-- ### 自然言語処理（NLP）
+- ### [自然言語処理（NLP）](./natural-language-processing/)
 
     ---
     

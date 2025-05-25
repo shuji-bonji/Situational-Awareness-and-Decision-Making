@@ -72,7 +72,7 @@ nav:
     - AIと意思決定: ai-and-future/ai-dm-context.md
     - AI技術分野別概要:
       - 機械学習・深層学習: ai-and-future/machine-learning.md
-    #   - 自然言語処理: ai-and-future/natural-language-processing.md
+      - 自然言語処理: ai-and-future/natural-language-processing.md
     #   - コンピュータビジョン: ai-and-future/computer-vision.md
     #   - 予測分析: ai-and-future/predictive-analytics.md
     #   - 説明可能なAI: ai-and-future/explainable-ai.md
