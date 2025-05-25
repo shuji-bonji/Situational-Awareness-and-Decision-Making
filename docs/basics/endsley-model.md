@@ -23,9 +23,11 @@ Endsleyのモデルでは、状況認識は階層的な3つのレベルから構
 以下は、状況認識の3レベルを示したフロー図です。
 
 ```mermaid
-graph TD
+graph LR
+    S[環境の現状] -.-> A
     A[レベル1: 知覚<br>Perception] --> B[レベル2: 理解<br>Comprehension]
     B --> C[レベル3: 予測<br>Projection]
+    C -.-> |フィールドバック| S
     style A fill:#e6e9ff,stroke:#4d94ff
     style B fill:#e6f2ff,stroke:#4da6ff
     style C fill:#e6ffff,stroke:#4db8ff

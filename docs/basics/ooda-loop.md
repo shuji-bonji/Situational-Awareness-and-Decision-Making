@@ -12,9 +12,9 @@ OODAループの核心は、不確実性と変化の激しい環境において�
 
 ```mermaid
 graph LR
-    A[観察\nObserve] --> B[方向づけ\nOrient]
-    B --> C[決定\nDecide]
-    C --> D[行動\nAct]
+    A[観察\nObserve] --> B[方向づけ<br>Orient]
+    B --> C[決定<br>Decide]
+    C --> D[行動<br>Act]
     D -->|フィードバック| A
     
     style A fill:#f9d5e5,stroke:#333
@@ -48,7 +48,7 @@ graph LR
 
 ```mermaid
 graph TD
-    A[観察された情報] --> B[方向づけ\nOrient]
+    A[観察された情報] --> B[方向づけ<br>Orient]
     B --> C[状況モデル形成]
     
     D[文化的背景] --> B
