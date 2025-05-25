@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/sitemap.xml
