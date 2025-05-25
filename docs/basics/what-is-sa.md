@@ -35,9 +35,9 @@ SAを理解する上で重要な理論モデルとして、以下の2つがあ�
 
     #### 3つの階層で状況認識を分類
     
-    - 知覚
-    - 理解
-    - 予測 
+    - 知覚 (Perception)
+    - 理解 (Comprehension)
+    - 予測 (Projection)
     
     詳しくは [Endsleyの3レベルモデル](./endsley-model.md) を参照してください。
 

@@ -12,7 +12,7 @@ OODAループの核心は、不確実性と変化の激しい環境において�
 
 ```mermaid
 graph LR
-    A[観察\nObserve] --> B[方向づけ<br>Orient]
+    A[観察<br>Observe] --> B[方向づけ<br>Orient]
     B --> C[決定<br>Decide]
     C --> D[行動<br>Act]
     D -->|フィードバック| A
@@ -169,7 +169,7 @@ OODAループは状況認識に時間的次元と行動次元を加え、意思�
 graph LR
     A[観察<br>Observe] --> |"気象レーダー確認<br>目視確認<br>ATC通信"| B[方向づけ<br>Orient]
     B --> |"気象現象の種類判断\<br>航空機への影響評価<br>乗客安全考慮"| C[決定<br>ecide]
-    C --> |"迂回経路選択<br>高度変更判断<br>管制との調整"| D[行動\nAct]
+    C --> |"迂回経路選択<br>高度変更判断<br>管制との調整"| D[行動<br>Act]
     D --> |"操縦桿操作<br>出力調整<br>乗客への通知"| A
     
     style A fill:#f9d5e5,stroke:#333
