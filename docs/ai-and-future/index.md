@@ -53,8 +53,7 @@ graph TD
 
 <div class="grid cards" markdown>
 
-<!-- - ### [機械学習・深層学習](./machine-learning/) -->
-- ### 機械学習・深層学習
+- ### [機械学習・深層学習](./machine-learning/)
 
     ---
     
