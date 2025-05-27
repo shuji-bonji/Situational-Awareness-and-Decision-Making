@@ -76,7 +76,7 @@ nav:
       - コンピュータビジョン: ai-and-future/computer-vision.md
       - 予測分析: ai-and-future/predictive-analytics.md
       - 説明可能なAI: ai-and-future/explainable-ai.md
-    #   - エッジAI: ai-and-future/edge-ai.md
+      - エッジAI: ai-and-future/edge-ai.md
     # - 将来の動向: ai-and-future/future-trends.md
     # - 未来技術の展望:
     #   - 量子コンピューティング: ai-and-future/quantum-computing.md
