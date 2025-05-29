@@ -1,3 +1,6 @@
+---
+description: 海上分野での意思決定プロセスや支援システムについて、リスク管理や安全運航の観点から論じます。
+---
 # 海事・船舶分野での意思決定
 
 !!! info "このページについて"
@@ -591,10 +594,10 @@ graph TD
 
 ## 関連リンク
 
-- [基本概念：意思決定とは](../basics/decision-making.md)
-- [海事分野での状況認識](./maritime-sa.md)
-- [意思決定の理論と実践：不確実性下の意思決定](../decision-making-guide/uncertainty.md)
-- [意思決定トレーニング](../decision-making-guide/decision-training.md)
+- [基本概念：意思決定とは](../../basics/decision-making)
+- [海事分野での状況認識](../maritime-sa)
+- [意思決定の理論と実践：不確実性下の意思決定](../../decision-making-guide/uncertainty)
+- [意思決定トレーニング](../../decision-making-guide/decision-training)
 
 ## 参考文献
 

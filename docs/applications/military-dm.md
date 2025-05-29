@@ -1,3 +1,7 @@
+---
+description: 軍事意思決定における構造化された手法やモデルを解説し、実戦環境での適用例を取り上げます。
+---
+
 # 軍事・防衛分野での意思決定
 
 !!! info "このページについて"
@@ -734,11 +738,11 @@ graph TD
 
 ## 関連リンク
 
-- [基本概念：意思決定とは](../basics/decision-making.md)
-- [基本概念：OODAループ](../basics/ooda-loop.md)
-- [軍事分野での状況認識](./military-sa.md)
-- [意思決定の理論と実践：不確実性下の意思決定](../decision-making-guide/uncertainty.md)
-- [意思決定トレーニング](../decision-making-guide/decision-training.md)
+- [基本概念：意思決定とは](../../basics/decision-making)
+- [基本概念：OODAループ](../../basics/ooda-loop)
+- [軍事分野での状況認識](../military-sa)
+- [意思決定の理論と実践：不確実性下の意思決定](../../decision-making-guide/uncertainty)
+- [意思決定トレーニング](../../decision-making-guide/decision-training)
 
 ## 参考文献
 

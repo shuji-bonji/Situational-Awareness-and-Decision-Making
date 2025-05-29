@@ -1,3 +1,6 @@
+---
+description: 航空分野での意思決定プロセスとその訓練方法について、具体的なモデルや事例を通して体系的に解説します。
+---
 # 航空分野での意思決定
 
 !!! info "このページについて"
@@ -732,10 +735,10 @@ graph TD
 
 ## 関連リンク
 
-- [基本概念：意思決定とは](../basics/decision-making.md)
-- [航空分野での状況認識](./aviation-sa.md)
-- [意思決定の理論と実践：認知バイアスと意思決定](../decision-making-guide/cognitive-biases.md)
-- [意思決定トレーニング](../decision-making-guide/decision-training.md)
+- [基本概念：意思決定とは](../../basics/decision-making)
+- [航空分野での状況認識](../aviation-sa)
+- [意思決定の理論と実践：認知バイアスと意思決定](../../decision-making-guide/cognitive-biases)
+- [意思決定トレーニング](../../decision-making-guide/decision-training)
 
 ## 参考文献
 

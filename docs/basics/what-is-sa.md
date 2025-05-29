@@ -1,7 +1,10 @@
+---
+description: 状況認識（Situational Awareness）の定義と重要性、理論モデル（Endsleyモデル・OODAループ）を概観
+---
 # 状況認識（Situational Awareness）とは
 
 !!! info "このページについて"
-    このページでは状況認識の基本的な定義、重要性、および主要な概念を説明します。次のページ「[Endsleyの3レベルモデル](./endsley-model.md)」で詳細な理論的枠組みを解説します。
+    このページでは状況認識の基本的な定義、重要性、および主要な概念を説明します。次のページ「[Endsleyの3レベルモデル](../endsley-model)」で詳細な理論的枠組みを解説します。
 
 ## 定義
 
@@ -29,7 +32,7 @@ SAを理解する上で重要な理論モデルとして、以下の2つがあ�
 
 <div class="grid cards" markdown>
 
--   ### [Endsleyの3レベルモデル](./endsley-model.md)
+-   ### [Endsleyの3レベルモデル](../endsley-model)
 
     ---
 
@@ -39,9 +42,9 @@ SAを理解する上で重要な理論モデルとして、以下の2つがあ�
     - 理解 (Comprehension)
     - 予測 (Projection)
     
-    詳しくは [Endsleyの3レベルモデル](./endsley-model.md) を参照してください。
+    詳しくは [Endsleyの3レベルモデル](../endsley-model) を参照してください。
 
--   ### [OODAループ](./ooda-loop.md)
+-   ### [OODAループ](../ooda-loop)
 
     ---
     

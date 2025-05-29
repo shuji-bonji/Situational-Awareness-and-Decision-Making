@@ -1,3 +1,6 @@
+---
+description: 機械学習・深層学習が状況認識の各レベルにどのように貢献するかを理論と実装の両面から体系的に解説します。
+---
 # 機械学習・深層学習による状況認識
 
 !!! info "このページについて"
@@ -1288,9 +1291,9 @@ Transformerは、自己注意機構（Self-Attention）を活用して、時系�
 
 ## 関連リンク
 
-- [AIと状況認識](../ai-sa-context.md)
-- [AIと意思決定](../ai-dm-context.md)
-- [未来技術の展望](./future-trends.md)
+- [AIと状況認識](../ai-sa-context)
+- [AIと意思決定](../ai-dm-context)
+- [未来技術の展望](../future-trends)
 
 ## 参考文献
 

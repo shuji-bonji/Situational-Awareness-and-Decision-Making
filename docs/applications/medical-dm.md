@@ -1,3 +1,6 @@
+---
+description: 医療分野における意思決定プロセスとその支援方法を、診断・治療・緊急対応などの文脈で体系的に考察します。
+---
 # 医療分野での意思決定
 
 !!! info "このページについて"
@@ -716,10 +719,10 @@ graph TD
 
 ## 関連リンク
 
-- [基本概念：意思決定とは](../basics/decision-making.md)
-- [医療分野での状況認識](./medical-sa.md)
-- [意思決定の理論と実践：不確実性下の意思決定](../decision-making-guide/uncertainty.md)
-- [意思決定トレーニング](../decision-making-guide/decision-training.md)
+- [基本概念：意思決定とは](../../basics/decision-making)
+- [医療分野での状況認識](../medical-sa)
+- [意思決定の理論と実践：不確実性下の意思決定](../../decision-making-guide/uncertainty)
+- [意思決定トレーニング](../../decision-making-guide/decision-training)
 
 ## 参考文献
 

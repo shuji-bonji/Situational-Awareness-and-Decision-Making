@@ -1,3 +1,7 @@
+---
+description: 緊急対応における意思決定の構造やモデル、現場での応用事例、チーム意思決定や支援システムについて体系的に紹介します。
+---
+
 # 緊急対応分野での意思決定
 
 !!! info "このページについて"
@@ -712,10 +716,10 @@ graph TD
 
 ## 関連リンク
 
-- [基本概念：意思決定とは](../basics/decision-making.md)
-- [緊急対応分野での状況認識](./emergency-sa.md)
-- [意思決定の理論と実践：不確実性下の意思決定](../decision-making-guide/uncertainty.md)
-- [意思決定トレーニング](../decision-making-guide/decision-training.md)
+- [基本概念：意思決定とは](../../basics/decision-making)
+- [緊急対応分野での状況認識](../emergency-sa)
+- [意思決定の理論と実践：不確実性下の意思決定](../../decision-making-guide/uncertainty)
+- [意思決定トレーニング](../../decision-making-guide/decision-training)
 
 ## 参考文献
 

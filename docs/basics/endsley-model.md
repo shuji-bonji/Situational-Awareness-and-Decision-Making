@@ -1,3 +1,6 @@
+---
+description: Mica R. Endsleyによって提唱された状況認識の3レベルモデルを解説。航空や軍事、医療など多様な分野での応用も紹介
+---
 # Endsleyの3レベルモデル
 
 !!! info "このページについて"
@@ -190,11 +193,11 @@ Endsleyの3レベルモデルは、状況認識のプロセスを知覚、理解
 
 
 ## 関連リンク
-- [意思決定とは](./decision-making.md)
-- [状況認識の測定方法](../situational-awareness-guide/measuring-sa.md)
-- [応用分野での利用](../applications/index.md)
+- [意思決定とは](../decision-making)
+- [状況認識の測定方法](../../situational-awareness-guide/measuring-sa)
+- [応用分野での利用](../../applications/)
 
-次のページ「[意思決定とは](./decision-making.md)」では、状況認識に基づいてどのように意思決定が行われるかについて詳しく解説します。
+次のページ「[意思決定とは](../decision-making)」では、状況認識に基づいてどのように意思決定が行われるかについて詳しく解説します。
 
 [^1]: Endsley, M. R. (1995). Toward a theory of situation awareness in dynamic systems. *Human Factors, 37*(1), 32-64.
 [^2]: Stanton, N. A., Stewart, R., Harris, D., Houghton, R. J., Baber, C., McMaster, R., Salmon, P., Hoyle, G., Walker, G., Young, M. S., Linsell, M., Dymott, R., & Green, D. (2006). Distributed situation awareness in dynamic systems: Theoretical development and application of an ergonomics methodology. *Ergonomics, 49*(12-13), 1288-1311.

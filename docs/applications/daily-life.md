@@ -479,7 +479,7 @@ graph LR
 
 #### 防犯における環境デザイン（CPTED）
 
-CPTED（Crime Prevention Through Environmental Design）の概念を個人レベルで応用：
+CPTED（Crime Prevention Through Environmental Design）の概念を個人レベルで応用。
 
 ```mermaid
 graph TD
@@ -816,7 +816,7 @@ graph LR
 
 ## まとめ
 
-日常生活分野での状況認識は、以下の特徴を持ちます：
+日常生活分野での状況認識は、以下の特徴を持ちます。
 
 ### 重要なポイント
 
@@ -828,7 +828,7 @@ graph LR
 
 ### システム開発への示唆
 
-日常生活分野での状況認識は、システム開発の観点から以下の示唆を与えます：
+日常生活分野での状況認識は、システム開発の観点から以下の示唆を与えます。
 
 - **ユーザーフレンドリー**: 専門知識不要で直感的に使える設計
 - **パーソナライゼーション**: 個人の特性・状況に適応するシステム
@@ -841,9 +841,9 @@ graph LR
 
 ## 関連リンク
 
-- [基本概念：状況認識とは](../basics/what-is-sa.md)
-- [状況認識の理論と実践：状況認識のトレーニング](../situational-awareness-guide/training-sa.md)
-- [応用分野：他の分野での活用](../applications/index.md)
+- [基本概念：状況認識とは](../../basics/what-is-sa)
+- [状況認識の理論と実践：状況認識のトレーニング](../../situational-awareness-guide/training-sa)
+- [応用分野：他の分野での活用](../../applications/)
 
 ## 参考文献
 

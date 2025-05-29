@@ -1,3 +1,6 @@
+---
+description: 状況認識を支援するソフトウェアについて、航空・医療・軍事・気象など各分野の事例やアーキテクチャ、API設計、PWA対応まで包括的に解説します。
+---
 # 状況認識関連ソフトウェア
 
 !!! info "このセクションについて"
@@ -42,7 +45,7 @@ graph TD
 
 <div class="grid cards" markdown>
 
-- ### [航空関連ソフトウェア](./aviation-sa-software.md)
+- ### [航空関連ソフトウェア](./aviation-sa-software)
 
     ---
 
@@ -53,7 +56,7 @@ graph TD
     - 気象情報システム
     - フライトシミュレーター
 
-- ### [船舶関連ソフトウェア](./maritime-sa-software.md)
+- ### [船舶関連ソフトウェア](./maritime-sa-software)
 
     ---
 
@@ -64,7 +67,7 @@ graph TD
     - 気象・海象情報
     - 港湾管理システム
 
-- ### [気象関連ソフトウェア](./weather-software.md)
+- ### [気象関連ソフトウェア](./weather-software)
 
     ---
 
@@ -75,7 +78,7 @@ graph TD
     - 農業・エネルギー向け気象データ
     - レーダー・衛星画像解析
 
-- ### [医療関連ソフトウェア](./medical-sa-software.md)
+- ### [医療関連ソフトウェア](./medical-sa-software)
 
     ---
 
@@ -87,7 +90,7 @@ graph TD
     - 遠隔医療・テレヘルス
     - 薬局システム・調剤支援
 
-- ### [緊急対応・危機管理ソフト](./emergency-sa-software.md)
+- ### [緊急対応・危機管理ソフト](./emergency-sa-software)
 
     ---
 
@@ -99,7 +102,7 @@ graph TD
     - 消防・救急システム
     - 防災情報配信
 
-- ### [軍事・防衛ソフトウェア](./military-sa-software.md)
+- ### [軍事・防衛ソフトウェア](./military-sa-software)
 
     ---
 
@@ -127,12 +130,8 @@ graph TD
 ### データフロー設計
 
 ```mermaid
-graph LR
+graph RL
     A[データソース] --> B[データ取得層]
-    B --> C[前処理層]
-    C --> D[分析エンジン]
-    D --> E[可視化層]
-    E --> F[ユーザーインターフェース]
     
     B --> B1[REST API]
     B --> B2[WebSocket]
@@ -149,7 +148,12 @@ graph LR
     E --> E1[ダッシュボード]
     E --> E2[アラート]
     E --> E3[レポート]
-    
+
+    B --> C[前処理層]
+    C --> D[分析エンジン]
+    D --> E[可視化層]
+    E --> F[ユーザーインターフェース]
+
     style A fill:#f9f9f9,stroke:#666
     style D fill:#e6f2ff,stroke:#4d94ff
     style F fill:#e6ffe6,stroke:#4d7fff
@@ -498,7 +502,7 @@ graph TD
 
 ## 関連リンク
 
-- [基本概念：状況認識とは](../basics/what-is-sa.md)
-- [応用分野：各分野での利用](../applications/index.md)
-- [状況認識の理論と実践：状況認識の測定方法](../situational-awareness-guide/measuring-sa.md)
-- [AIと将来展望：技術的進化](../ai-and-future/index.md)
+- [基本概念：状況認識とは](../basics/what-is-sa)
+- [応用分野：各分野での利用](../applications/)
+- [状況認識の理論と実践：状況認識の測定方法](../situational-awareness-guide/measuring-sa)
+- [AIと将来展望：技術的進化](../ai-and-future/)
