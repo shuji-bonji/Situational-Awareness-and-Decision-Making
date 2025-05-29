@@ -2,16 +2,36 @@
 
 {% block extrahead %}
   {{ super() }}
+  <!-- Meta Description -->
+  {% if page.meta and page.meta.description %}
+    <meta name="description" content="{{ page.meta.description }}">
+  {% else %}
+    <meta name="description" content="状況認識と意思決定について学び、応用を展開するサイトです。基本理論からAI技術の応用まで包括的に解説。">
+  {% endif %}
+
+  <!-- Meta Keywords (minimal usage) -->
+  {% if page.meta and page.meta.keywords %}
+    <meta name="keywords" content="{{ page.meta.keywords }}">
+  {% endif %}
+
   <!-- OpenGraph -->
-  <meta property="og:title" content="Situational Awareness and Decision Making">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }} - {% endif %}Situational Awareness and Decision Making">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
   <meta property="og:url" content="{{ page.canonical_url }}">
-  <meta property="og:description" content="状況認識と意思決定について学び、応用を展開するサイトです。">
+  {% if page.meta and page.meta.description %}
+    <meta property="og:description" content="{{ page.meta.description }}">
+  {% else %}
+    <meta property="og:description" content="状況認識と意思決定について学び、応用を展開するサイトです。">
+  {% endif %}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Situational Awareness and Decision Making">
-  <meta name="twitter:description" content="状況認識と意思決定について学び、応用を展開するサイトです。">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }} - {% endif %}Situational Awareness and Decision Making">
+  {% if page.meta and page.meta.description %}
+    <meta name="twitter:description" content="{{ page.meta.description }}">
+  {% else %}
+    <meta name="twitter:description" content="状況認識と意思決定について学び、応用を展開するサイトです。">
+  {% endif %}
   <meta name="twitter:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
 {% endblock %}
