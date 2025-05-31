@@ -87,8 +87,9 @@ nav:
     #   - メタバース: ai-and-future/metaverse.md
     #   - ブロックチェーン: ai-and-future/blockchain.md
     #   - バイオテクノロジー: ai-and-future/biotechnology.md
-  # - ケーススタディ:
-    # - 概要: case-studies/index.md
+  - ケーススタディ:
+    - 概要: case-studies/index.md
+    - 羽田空港地上衝突事故(2024/1/2): case-studies/haneda-airport-collision.md
     # - 状況認識の失敗事例:
     #   - 航空事故: case-studies/aviation-sa-failures.md
     #   - 海難事故: case-studies/maritime-sa-failures.md
