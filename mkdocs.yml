@@ -33,8 +33,8 @@ nav:
     - チーム意思決定: decision-making-guide/team-decision-making.md
     - 現代の意思決定手法:
       - AI統合OODAループ: decision-making-guide/ai-enhanced-ooda.md
-      # - データ駆動型意思決定: decision-making-guide/data-driven-decisions.md
-      # - 協調型状況認識: decision-making-guide/collaborative-sa.md
+      - データ駆動型意思決定: decision-making-guide/data-driven-decisions.md
+      - 協調型状況認識: decision-making-guide/collaborative-sa.md
     - 意思決定トレーニング: decision-making-guide/decision-training.md
   - 応用:
     - 概要: applications/index.md
