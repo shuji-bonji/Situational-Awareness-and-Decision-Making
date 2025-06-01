@@ -1,180 +1,263 @@
 ---
-description: 状況認識を支援するソフトウェアについて、航空・医療・軍事・気象など各分野の事例やアーキテクチャ、API設計、PWA対応まで包括的に解説します。
+description: 状況認識と意思決定を支援するソフトウェアについて、基本概念から各分野の具体例まで包括的に解説します。
 ---
-# 状況認識関連ソフトウェア
+# 状況認識・意思決定支援ソフトウェア
 
 !!! info "このセクションについて"
-    このセクションでは、状況認識（Situational Awareness）を支援する様々なソフトウェアアプリケーションやシステムについて解説します。実際に利用できるツールから企業向けシステムまで、幅広いソフトウェアソリューションを分野別に紹介します。
+    このセクションでは、状況認識（Situational Awareness）と意思決定（Decision Making）を支援する様々なソフトウェアアプリケーションやシステムについて解説します。実際に利用できるツールから企業向けシステムまで、幅広いソフトウェアソリューションを分野別に紹介します。
 
 ## ソフトウェアの重要性
 
-状況認識は人間の認知能力に依存する部分が大きいですが、適切なソフトウェアツールの活用により、その能力を大幅に強化することができます。現代のデジタル社会では、リアルタイムデータの処理、複雑な情報の可視化、予測分析などを通じて、より効果的な状況認識が実現されています。
+現代の複雑な環境において、状況認識と意思決定は人間の認知能力だけでは限界があります。適切なソフトウェアツールの活用により、これらの能力を大幅に強化し、より効果的で正確な判断を支援することができます。
 
-### ソフトウェアによる状況認識の強化
+### 状況認識支援ソフトウェアの役割
+
+状況認識支援ソフトウェアは、Endsleyの3レベルモデルに対応した機能を提供します：
 
 ```mermaid
 graph TD
-    A[生データ] --> B[データ処理]
-    B --> C[情報統合]
-    C --> D[可視化・分析]
-    D --> E[意思決定支援]
-    E --> F[アクション実行]
-    F --> A
+    A[Level 1: 知覚] --> A1[データ収集・統合]
+    A --> A2[センサーフュージョン]
+    A --> A3[リアルタイム監視]
     
-    B --> G[センサーフュージョン]
-    C --> H[AI・機械学習]
-    D --> I[ダッシュボード・アラート]
+    B[Level 2: 理解] --> B1[パターン認識]
+    B --> B2[関係性分析]
+    B --> B3[状況分類]
     
-    style A fill:#f9f9f9,stroke:#666
-    style D fill:#e6f2ff,stroke:#4d94ff
-    style E fill:#e6ffe6,stroke:#4d7fff
-    style F fill:#ffe6e6,stroke:#ff4d4d
+    C[Level 3: 予測] --> C1[トレンド分析]
+    C --> C2[シナリオシミュレーション]
+    C --> C3[リスク予測]
+    
+    A --> B
+    B --> C
+    C --> D[意思決定支援]
+    
+    style A fill:#e6f2ff,stroke:#4d94ff
+    style B fill:#e6ffe6,stroke:#4d7fff
+    style C fill:#ffe6e6,stroke:#ff4d4d
+    style D fill:#fff2e6,stroke:#ff8000
 ```
 
-上の図は、状況認識ソフトウェアにおける主要な処理フェーズとその相互作用を示しています。
-  
-- **生データ**: センサーや外部システムから取得され、まずデータ処理フェーズでノイズ除去や変換が行われます。  
-- **情報統合**: 複数のデータソースを融合し、意味のある情報へとまとめられます。  
-- **可視化・分析**: ユーザーに理解しやすい形で情報を提示し、洞察を得るための分析が行われます。  
-- **意思決定支援**: 可視化・分析の結果を基に意思決定支援が行われ、適切なアクションが実行されます。  
-- **アクション実行**: 実行されたアクションは新たなデータとしてフィードバックされ、システム全体のループが形成されます。
+### 意思決定支援ソフトウェアの役割
 
-## 分野別ソフトウェア概要
+意思決定支援システム（DSS: Decision Support System）は、構造化された意思決定プロセスを通じて最適な選択を支援します：
 
-このセクションでは、各分野における状況認識ソフトウェアの役割と代表的なツールを紹介します。各リンク先では、より詳細な技術的説明や実装例が提供されています。
+```mermaid
+graph LR
+    A[問題認識] --> B[代替案生成]
+    B --> C[評価・分析]
+    C --> D[選択・実行]
+    D --> E[評価・学習]
+    E --> A
+    
+    B --> B1[シナリオ生成]
+    B --> B2[制約条件考慮]
+    
+    C --> C1[多基準分析]
+    C --> C2[リスク評価]
+    C --> C3[シミュレーション]
+    
+    style A fill:#f9f9f9,stroke:#666
+    style C fill:#e6f2ff,stroke:#4d94ff
+    style D fill:#e6ffe6,stroke:#4d7fff
+```
+
+## システム統合アーキテクチャ
+
+### 統合プラットフォーム設計
+
+```mermaid
+graph TB
+    subgraph "データ層"
+        A1[センサーデータ]
+        A2[履歴データ]
+        A3[外部API]
+        A4[ユーザー入力]
+    end
+    
+    subgraph "処理層"
+        B1[データフュージョン]
+        B2[分析エンジン]
+        B3[ルールエンジン]
+        B4[機械学習モジュール]
+    end
+    
+    subgraph "アプリケーション層"
+        C1[状況認識エンジン]
+        C2[意思決定支援エンジン]
+        C3[予測分析エンジン]
+        C4[アラート管理]
+    end
+    
+    subgraph "表示層"
+        D1[ダッシュボード]
+        D2[可視化コンポーネント]
+        D3[レポート生成]
+        D4[モバイルアプリ]
+    end
+    
+    A1 --> B1
+    A2 --> B2
+    A3 --> B3
+    A4 --> B4
+    
+    B1 --> C1
+    B2 --> C2
+    B3 --> C3
+    B4 --> C4
+    
+    C1 --> D1
+    C2 --> D2
+    C3 --> D3
+    C4 --> D4
+    
+    style C1 fill:#e6f2ff,stroke:#4d94ff
+    style C2 fill:#e6ffe6,stroke:#4d7fff
+```
+
+## 分野別ソフトウェア分類
+
+### 状況認識支援システム
 
 <div class="grid cards" markdown>
 
-- ### [航空関連ソフトウェア](./aviation-sa-software)
-
+- ### [航空関連](./aviation-sa-software)
     ---
-
-    **飛行安全と効率性を支援するソフトウェア群**  
-    
+    **飛行安全と効率性を支援**
     - フライトレーダー・追跡システム
     - 航空管制支援ツール
     - 気象情報システム
     - フライトシミュレーター
 
-- ### [船舶関連ソフトウェア](./maritime-sa-software)
-
+- ### [船舶関連](./maritime-sa-software)
     ---
-
-    **海上航行の安全と効率化を支えるシステム**  
-    
+    **海上航行の安全と効率化**
     - 船舶追跡システム（AIS）
     - 電子海図（ECDIS）
     - 気象・海象情報
     - 港湾管理システム
 
-- ### [気象関連ソフトウェア](./weather-software)
-
+- ### [気象関連](./weather-software)
     ---
-
-    **気象予測と災害対策のためのツール**  
-    
+    **気象予測と災害対策**
     - 天気予報アプリケーション
     - 災害警報システム
     - 農業・エネルギー向け気象データ
     - レーダー・衛星画像解析
 
-- ### [医療関連ソフトウェア](./medical-sa-software)
-
+- ### [医療関連](./medical-sa-software)
     ---
+    **医療現場の状況認識**
+    - 患者監視システム
+    - 電子カルテ・HIS
+    - 医療機器統合プラットフォーム
+    - 遠隔医療システム
 
-    **医療現場の状況認識を支援するシステム**  
-    
-    - 医療情報統合プラットフォーム
-    - 電子カルテ・HIS（病院情報システム）
-    - 医療機器制御・モニタリング
-    - 遠隔医療・テレヘルス
-    - 薬局システム・調剤支援
-
-- ### [緊急対応・危機管理ソフト](./emergency-sa-software)
-
+- ### [緊急対応・危機管理](./emergency-sa-software)
     ---
-
-    **緊急事態対応と危機管理を支援するソフトウェア**  
-    
+    **緊急事態対応と危機管理**
     - 災害対策支援システム
     - 緊急通報・指令システム
     - 避難誘導・安否確認
     - 消防・救急システム
-    - 防災情報配信
 
-- ### [軍事・防衛ソフトウェア](./military-sa-software)
-
+- ### [軍事・防衛](./military-sa-software)
     ---
-
-    **国防と安全保障に不可欠な技術群**  
-    
+    **国防と安全保障**
     - C4ISRシステム
     - 脅威検知・分析ツール
-    - 戦術意思決定支援
+    - 戦術状況認識
     - サイバーセキュリティ
 
 </div>
 
-## 技術的分類
+### 意思決定支援システム
 
-### アーキテクチャ別分類
+<div class="grid cards" markdown>
 
-状況認識ソフトウェアは、技術アーキテクチャの観点から以下のように分類できます。
+<!-- - ### [航空関連](./aviation-dm-software) -->
+- ### 航空関連
+    ---
+    **運航・管制の意思決定支援**
+    - フライト計画最適化
+    - 航空管制意思決定支援
+    - リスクベース運航管理
+    - 緊急時対応システム
 
-| アーキテクチャ | 特徴 | 適用分野 | 技術例 |
-|---------------|------|----------|--------|
-| **リアルタイム処理** | 低遅延データ処理<br>即座の応答性 | 航空管制<br>医療監視<br>緊急対応 | Apache Kafka<br>Redis Streams<br>WebSocket |
-| **バッチ処理** | 大量データの一括処理<br>高い計算精度 | 気象予測<br>船舶ルート最適化<br>長期分析 | Apache Spark<br>Hadoop<br>Azure Batch |
-| **ハイブリッド** | リアルタイムとバッチの組合せ<br>柔軟性の確保 | 産業制御<br>スマートシティ<br>総合防災 | Lambda Architecture<br>Kappa Architecture |
+<!-- - ### [船舶関連](./maritime-dm-software) -->
+- ### 船舶関連
+    ---
+    **海上運航の意思決定支援**
+    - 航路計画・最適化
+    - 燃料効率化システム
+    - 港湾運営最適化
+    - 海上交通管理
 
-### データフロー設計
+<!-- - ### [医療関連](./medical-dm-software) -->
+- ### 医療関連
+    ---
+    **医療意思決定支援**
+    - 臨床意思決定支援システム
+    - 診断支援AI
+    - 治療計画支援
+    - 医療資源配分最適化
 
-```mermaid
-graph RL
-    A[データソース] --> B[データ取得層]
-    
-    B --> B1[REST API]
-    B --> B2[WebSocket]
-    B --> B3[MQTT]
-    
-    C --> C1[データ変換]
-    C --> C2[品質チェック]
-    C --> C3[正規化]
-    
-    D --> D1[ルールエンジン]
-    D --> D2[機械学習]
-    D --> D3[統計処理]
-    
-    E --> E1[ダッシュボード]
-    E --> E2[アラート]
-    E --> E3[レポート]
+<!-- - ### [緊急対応・軍事](./emergency-military-dm-software) -->
+- ### 緊急対応・軍事
+    ---
+    **緊急時・軍事意思決定支援**
+    - 災害対応計画策定
+    - 軍事作戦計画支援
+    - 資源配分最適化
+    - 戦術意思決定支援
 
-    B --> C[前処理層]
-    C --> D[分析エンジン]
-    D --> E[可視化層]
-    E --> F[ユーザーインターフェース]
+<!-- - ### [産業・ビジネス](./business-dm-software) -->
+- ### 産業・ビジネス
+    ---
+    **ビジネス意思決定支援**
+    - ビジネスインテリジェンス
+    - 戦略計画支援
+    - リスク管理システム
+    - サプライチェーン最適化
 
-    style A fill:#f9f9f9,stroke:#666
-    style D fill:#e6f2ff,stroke:#4d94ff
-    style F fill:#e6ffe6,stroke:#4d7fff
-```
+</div>
 
-### フロントエンド技術の役割
+## 技術アーキテクチャ分類
 
-状況認識ダッシュボードは、多様なセンサーデータをリアルタイムに表示し、ユーザーが迅速に状況を把握できるよう支援します。特に、大量のデータを効率的に扱い、ユーザーの操作に即応するための状態管理とイベントハンドリングが重要です。以下のTypeScriptインターフェースは、そのようなダッシュボードの構成要素と機能を示しています。
+### リアルタイム処理システム
+
+| 特徴 | 適用分野 | 主要技術 | TypeScript実装例 |
+|------|----------|----------|------------------|
+| 低遅延データ処理 | 航空管制、医療監視 | WebSocket、Server-Sent Events | `Observable<Data>` パターン |
+| イベント駆動アーキテクチャ | 緊急対応、軍事 | Apache Kafka、RabbitMQ | RxJS `Subject` 活用 |
+| ストリーム処理 | 金融取引、IoT | Apache Storm、Flink | `pipe()` による処理チェーン |
+
+### 分析・予測システム
+
+| 特徴 | 適用分野 | 主要技術 | TypeScript実装例 |
+|------|----------|----------|------------------|
+| 機械学習統合 | 医療診断、気象予測 | TensorFlow.js、Python API | `tf.loadLayersModel()` |
+| ビッグデータ解析 | 船舶運航、産業監視 | Hadoop、Spark | 非同期データ処理 |
+| 統計分析 | 品質管理、リスク評価 | R、Python、Julia | 統計ライブラリ連携 |
+
+## 実装技術スタック
+
+### フロントエンド技術
 
 ??? TypeScript実装例
+
     ```typescript
-    // 状況認識ダッシュボードの典型的な構成
+    // 状況認識ダッシュボードの基本構成
     interface SituationalAwarenessDashboard {
       // リアルタイムデータストリーム
       dataStream$: Observable<SensorData[]>;
       
       // 状態管理
-      applicationState: {
+      state: {
         currentSituation: SituationState;
         alerts: Alert[];
         userPreferences: UserSettings;
+        decisionContext: DecisionContext;
       };
       
       // コンポーネント構成
@@ -182,327 +265,280 @@ graph RL
         mapVisualization: MapComponent;
         dataCharts: ChartComponent[];
         alertPanel: AlertComponent;
+        decisionPanel: DecisionSupportComponent;
         controlPanel: ControlComponent;
       };
       
-      // イベントハンドリング
-      onUserAction(action: UserAction): void;
-      onDataUpdate(data: SensorData): void;
-      onAlertTriggered(alert: Alert): void;
+      // 機能メソッド
+      updateSituation(data: SensorData): void;
+      triggerAlert(alert: Alert): void;
+      supportDecision(context: DecisionContext): DecisionRecommendation;
+      executeAction(action: UserAction): void;
+    }
+
+    // 意思決定支援インターフェース
+    interface DecisionSupportSystem {
+      // 意思決定プロセス
+      identifyProblem(context: ProblemContext): Problem;
+      generateAlternatives(problem: Problem): Alternative[];
+      evaluateAlternatives(alternatives: Alternative[]): EvaluationResult[];
+      recommendSolution(evaluations: EvaluationResult[]): Recommendation;
+      
+      // 学習・改善
+      collectFeedback(decision: Decision, outcome: Outcome): void;
+      updateModel(feedback: Feedback[]): void;
     }
     ```
 
-## 開発・統合の観点
-
-### API設計とデータ統合
-
-RESTful APIは、状況認識システムと外部クライアントや他システムとのデータ連携を円滑にするための重要なインターフェースです。以下のエンドポイント例は、現在の状況取得や履歴データの参照、アラート管理、リアルタイム更新の受信など、典型的な操作をカバーしています。
-
-- `GET /api/v1/situation/current`: 現在の状況情報を取得し、最新の状態をクライアントに提供します。  
-- `GET /api/v1/situation/history?from={timestamp}&to={timestamp}`: 指定期間の履歴データを取得し、過去の状況変化を分析可能にします。  
-- `GET /api/v1/alerts`: 発生中のアラート一覧を取得します。  
-- `POST /api/v1/alerts`: 新規アラートを登録します。  
-- `PUT /api/v1/alerts/{id}`: 既存アラートの更新を行います。  
-- `DELETE /api/v1/alerts/{id}`: アラートの削除を実施します。  
-- `WebSocket /ws/realtime-updates`: リアルタイムの状況更新を双方向通信で受信します。
+### API設計パターン
 
 ??? TypeScript実装例
     ```typescript
-    // 状況認識API の典型的なエンドポイント設計
-    interface SituationalAwarenessAPI {
-      // 現在の状況取得
-      GET: '/api/v1/situation/current';
+    // 統合API設計
+    interface IntegratedSADMAPI {
+      // 状況認識エンドポイント
+      situationalAwareness: {
+        GET: '/api/v1/situation/current';
+        GET: '/api/v1/situation/history?from={timestamp}&to={timestamp}';
+        POST: '/api/v1/situation/update';
+        WebSocket: '/ws/situation-stream';
+      };
       
-      // 履歴データ取得
-      GET: '/api/v1/situation/history?from={timestamp}&to={timestamp}';
+      // 意思決定支援エンドポイント
+      decisionSupport: {
+        POST: '/api/v1/decisions/analyze';
+        GET: '/api/v1/decisions/alternatives/{problemId}';
+        POST: '/api/v1/decisions/evaluate';
+        GET: '/api/v1/decisions/recommendations/{contextId}';
+        POST: '/api/v1/decisions/execute';
+      };
       
-      // アラート管理
-      GET: '/api/v1/alerts';
-      POST: '/api/v1/alerts';
-      PUT: '/api/v1/alerts/{id}';
-      DELETE: '/api/v1/alerts/{id}';
-      
-      // リアルタイムストリーム
-      WebSocket: '/ws/realtime-updates';
+      // 統合分析エンドポイント
+      analytics: {
+        GET: '/api/v1/analytics/performance';
+        POST: '/api/v1/analytics/simulate';
+        GET: '/api/v1/analytics/insights/{domainId}';
+      };
     }
     ```
 
-### データフォーマット標準化
+## データモデル標準化
 
-状況認識システムでは、多様なデータソースからの情報を統一的に扱うために、共通のデータフォーマットを設計することが不可欠です。これにより、データの整合性が保たれ、異なるシステム間での相互運用性が向上します。以下は、その一例としてのTypeScriptインターフェースです。
+### 共通データ構造
 
 ??? TypeScript実装例
     ```typescript
-    // 共通データモデル例
+    // 状況認識データモデル
     interface SituationData {
       id: string;
       timestamp: Date;
+      domain: 'aviation' | 'maritime' | 'medical' | 'emergency' | 'military';
       source: DataSource;
       coordinates?: GeographicCoordinates;
-      metrics: {
-        [key: string]: number | string | boolean;
-      };
+      metrics: Record<string, number | string | boolean>;
       confidence: number; // 0-1の信頼度
-      priority: 'low' | 'medium' | 'high' | 'critical';
+      priority: Priority;
+      context: SituationContext;
     }
 
+    // 意思決定データモデル
+    interface DecisionData {
+      id: string;
+      problemId: string;
+      timestamp: Date;
+      context: DecisionContext;
+      alternatives: Alternative[];
+      criteria: EvaluationCriteria[];
+      recommendation: Recommendation;
+      rationale: string;
+      confidence: number;
+      stakeholders: Stakeholder[];
+    }
+
+    // アラート・通知モデル
     interface Alert {
       id: string;
       type: AlertType;
       severity: SeverityLevel;
       message: string;
+      source: string;
+      timestamp: Date;
       actionRequired: boolean;
+      decisionSupport?: DecisionSupport;
       expiresAt?: Date;
       metadata: Record<string, any>;
     }
     ```
 
-### PWA・オフライン対応
+## セキュリティ・コンプライアンス
 
-現代の状況認識アプリケーションは、常にネットワーク接続が保証されるわけではありません。PWA（Progressive Web App）対応により、オフライン時でもデータの閲覧や一時保存が可能となり、ネットワーク回復時に自動で同期を行うことでユーザー体験を向上させます。以下のサービスは、そのようなオフライン対応の実装例です。
+### セキュリティ要件
+
+| レベル | 要件 | 実装方法 | 対象分野 |
+|--------|------|----------|----------|
+| **最高機密** | 軍事級セキュリティ | エンドツーエンド暗号化、ゼロトラスト | 軍事・防衛 |
+| **機密** | 業界標準準拠 | OAuth 2.0、RBAC、監査ログ | 医療・航空 |
+| **制限** | 基本セキュリティ | HTTPS、基本認証、アクセス制御 | 一般産業 |
+
+### コンプライアンス対応
 
 ??? TypeScript実装例
     ```typescript
-    // PWA対応の状況認識アプリケーション
-    @Injectable()
-    export class OfflineCapabilityService {
-      private cache = new Map<string, any>();
+    // コンプライアンス管理インターフェース
+    interface ComplianceManager {
+      // 規制対応
+      validateGDPR(dataProcessing: DataProcessing): ComplianceResult;
+      ensureHIPAA(medicalData: MedicalData): ComplianceResult;
+      checkSOX(financialDecision: FinancialDecision): ComplianceResult;
       
-      // オフライン時のデータ管理
-      async storeDataOffline(key: string, data: any): Promise<void> {
-        // IndexedDBを使用した永続化
-        await this.indexedDB.store(key, data);
-        this.cache.set(key, data);
-      }
+      // 監査機能
+      generateAuditTrail(actions: UserAction[]): AuditTrail;
+      reportCompliance(period: TimePeriod): ComplianceReport;
       
-      // データ同期
-      async syncWhenOnline(): Promise<void> {
-        if (navigator.onLine) {
-          const unsyncedData = await this.getUnsyncedData();
-          for (const item of unsyncedData) {
-            await this.uploadToServer(item);
-          }
-        }
-      }
-      
-      // バックグラウンド同期
-      registerBackgroundSync(): void {
-        if ('serviceWorker' in navigator && 'sync' in window.ServiceWorkerRegistration.prototype) {
-          navigator.serviceWorker.ready.then(registration => {
-            return registration.sync.register('situation-data-sync');
-          });
-        }
-      }
+      // データ保護
+      anonymizeData(sensitiveData: SensitiveData): AnonymizedData;
+      enforceRetentionPolicy(data: Data[]): void;
     }
     ```
-
-### セキュリティ考慮事項
-
-状況認識システムは重要な情報を扱うため、様々なセキュリティリスクに対処する必要があります。以下の表は、主要なセキュリティ要素とそれに対する実装方法、さらに具体的なリスクシナリオと防御策を示しています。
-
-| セキュリティ要素 | 実装方法 | 重要度 | リスクシナリオ | 防御策 |
-|-----------------|----------|--------|----------------|--------|
-| **認証・認可** | OAuth 2.0 / OpenID Connect<br>JWT Token<br>Role-based Access Control | 高 | 不正アクセスによる情報漏洩 | 多要素認証、最小権限の原則 |
-| **データ暗号化** | HTTPS/TLS 1.3<br>End-to-End暗号化<br>Database暗号化 | 高 | 通信傍受、データ改ざん | 強力な暗号化アルゴリズムの採用 |
-| **入力検証** | Input Sanitization<br>SQL Injection Prevention<br>XSS Protection | 高 | 悪意ある入力によるシステム攻撃 | サニタイズとパラメタライズドクエリの使用 |
-| **監査ログ** | User Action Logging<br>Access Log<br>Change Tracking | 中 | 不正操作の追跡困難 | 詳細なログ記録と監査体制の整備 |
 
 ## パフォーマンス最適化
 
-### フロントエンド最適化
-
-大量のセンサーデータをリアルタイムで表示する状況認識ダッシュボードでは、パフォーマンスの最適化が不可欠です。仮想スクロールを用いることで、表示されるデータ項目のみをレンダリングし、UIの負荷を軽減します。さらに、デバウンスや変更検知の最適化により、描画回数を抑制しスムーズな操作性を実現しています。
+### スケーラビリティ設計
 
 ??? TypeScript実装例
     ```typescript
-    // 大量データの効率的な表示
-    @Component({
-      selector: 'sa-data-grid',
-      template: `
-        <cdk-virtual-scroll-viewport itemSize="50" class="data-viewport">
-          <div *cdkVirtualFor="let item of dataStream$ | async" class="data-item">
-            {{ item | json }}
-          </div>
-        </cdk-virtual-scroll-viewport>
-      `,
-      changeDetection: ChangeDetectionStrategy.OnPush
-    })
-    export class SituationalAwarenessDataGrid {
-      // 仮想スクロールによる大量データの効率的表示
-      dataStream$ = this.dataService.getData().pipe(
-        // デバウンス処理でUI更新頻度を制御
-        debounceTime(100),
-        // 変更のあったデータのみ再描画
-        distinctUntilChanged(),
-        // エラーハンドリング
-        catchError(error => {
-          console.error('Data loading error:', error);
-          return of([]);
-        })
-      );
-    }
-    ```
-
-### リアルタイム処理の最適化
-
-WebSocketを用いたリアルタイム通信では、接続の再利用や自動再接続機能を備えることで通信の効率化と信頼性向上を図ります。メッセージのフィルタリングや変換処理により、必要な情報のみを適切な形でアプリケーションに届けることが可能です。以下は、そのような効率的なリアルタイムデータサービスの実装例です。
-
-??? TypeScript実装例
-    ```typescript
-    // WebSocketによる効率的なリアルタイム通信
+    // 大規模システム対応
     @Injectable()
-    export class RealTimeDataService {
-      private ws$: WebSocketSubject<any>;
+    export class ScalableDataProcessingService {
+      // 分散処理
+      async processLargeDataset(dataset: LargeDataset): Promise<ProcessingResult> {
+        const chunks = this.partitionData(dataset);
+        const results = await Promise.all(
+          chunks.map(chunk => this.processChunk(chunk))
+        );
+        return this.mergeResults(results);
+      }
       
-      // Connection pooling
-      private connections = new Map<string, WebSocketSubject<any>>();
+      // キャッシュ戦略
+      private cache = new Map<string, any>();
       
-      connect(endpoint: string): Observable<any> {
-        if (!this.connections.has(endpoint)) {
-          const ws$ = webSocket({
-            url: endpoint,
-            openObserver: {
-              next: () => console.log('Connection established')
-            },
-            closeObserver: {
-              next: () => console.log('Connection closed')
-            }
-          });
-          
-          this.connections.set(endpoint, ws$);
+      async getCachedData(key: string): Promise<any> {
+        if (this.cache.has(key)) {
+          return this.cache.get(key);
         }
         
-        return this.connections.get(endpoint)!.pipe(
-          // 自動再接続
-          retryWhen(errors =>
-            errors.pipe(
-              delay(5000),
-              take(3)
-            )
-          ),
-          // メッセージフィルタリング
-          filter(message => this.isValidMessage(message)),
-          // メッセージ変換
-          map(message => this.transformMessage(message))
+        const data = await this.fetchData(key);
+        this.cache.set(key, data);
+        return data;
+      }
+      
+      // リアルタイム最適化
+      optimizeRealTimeProcessing(): Observable<OptimizedData> {
+        return this.dataStream$.pipe(
+          // バッファリング
+          bufferTime(100),
+          // 重複除去
+          map(data => this.deduplicateData(data)),
+          // 優先度順ソート
+          map(data => this.prioritizeData(data)),
+          // 並列処理
+          mergeMap(data => this.processInParallel(data), 4)
         );
       }
     }
     ```
 
-## オープンソースとクローズドソース
+## 導入・運用ガイド
 
-### 代表的なオープンソースプロジェクト
-
-| プロジェクト | 分野 | 主な機能 | ライセンス |
-|------------|------|----------|-----------|
-| **OpenStreetMap** | 地理情報 | オープンな地図データ<br>ルーティング機能 | ODbL |
-| **Grafana** | 可視化 | ダッシュボード<br>アラート機能 | Apache 2.0 |
-| **Apache Kafka** | データストリーミング | リアルタイムデータ処理<br>高可用性メッセージング | Apache 2.0 |
-| **TensorFlow** | 機械学習 | 予測モデル<br>パターン認識 | Apache 2.0 |
-
-### 商用ソフトウェアの優位性
-
-- **技術サポート**: 専門的なサポート体制
-- **統合性**: エンドツーエンドのソリューション
-- **信頼性**: 企業レベルのSLA保証
-- **セキュリティ**: 高度なセキュリティ機能
-
-## 導入・選定ガイド
-
-### 選定基準
+### 段階的導入戦略
 
 ```mermaid
-graph TD
-    A[要件定義] --> B[機能要件]
-    A --> C[非機能要件]
+graph LR
+    A[フェーズ1<br>基盤構築] --> B[フェーズ2<br>パイロット運用]
+    B --> C[フェーズ3<br>段階的展開]
+    C --> D[フェーズ4<br>全面運用]
     
-    B --> B1[必須機能の洗い出し]
-    B --> B2[カスタマイズ要件]
-    B --> B3[統合要件]
+    A --> A1[インフラ整備]
+    A --> A2[基本機能実装]
     
-    C --> C1[性能要件]
-    C --> C2[セキュリティ要件]
-    C --> C3[可用性要件]
+    B --> B1[限定ユーザーテスト]
+    B --> B2[フィードバック収集]
     
-    B1 --> D[製品評価]
-    B2 --> D
-    B3 --> D
-    C1 --> D
-    C2 --> D
-    C3 --> D
+    C --> C1[機能拡張]
+    C --> C2[ユーザー拡大]
     
-    D --> E[POC実施]
-    E --> F[意思決定]
-    F --> G[導入・展開]
-    
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style F fill:#ffe6e6,stroke:#ff4d4d
+    D --> D1[運用最適化]
+    D --> D2[継続改善]
 ```
 
-### コスト・効果分析
+### ROI測定指標
 
-#### TCO（Total Cost of Ownership）
+| 指標カテゴリ | 測定項目 | 計算方法 | 目標値 |
+|-------------|----------|----------|--------|
+| **効率性** | 意思決定時間短縮 | (導入前時間 - 導入後時間) / 導入前時間 | 30%以上短縮 |
+| **精度** | 判断精度向上 | 正確な判断数 / 総判断数 | 95%以上 |
+| **コスト** | 運用コスト削減 | 削減コスト / 投資コスト | 150%以上 |
+| **満足度** | ユーザー満足度 | アンケート評価平均 | 4.0/5.0以上 |
 
-| コスト要素 | 概算比率 | 考慮事項 |
-|-----------|----------|----------|
-| **初期導入** | 20-30% | ライセンス料、ハードウェア、開発費 |
-| **運用・保守** | 40-50% | 人件費、サポート料、インフラコスト |
-| **アップデート・拡張** | 15-25% | バージョンアップ、機能追加、スケールアウト |
-| **トレーニング・教育** | 5-15% | ユーザー教育、技術習得、継続学習 |
+## 新技術動向と将来展望
 
-## 将来の動向
+### AI・機械学習統合
 
-### 新技術の統合
+??? TypeScript実装例
+    ```typescript
+    // AIによる自動化支援
+    interface AIEnhancedSADM {
+      // 自動状況認識
+      autoDetectSituation(sensorData: SensorData[]): Promise<SituationAnalysis>;
+      
+      // 予測分析
+      predictFutureState(currentState: State, timeHorizon: number): Promise<Prediction>;
+      
+      // 最適化支援
+      optimizeDecision(context: DecisionContext): Promise<OptimizedSolution>;
+      
+      // 学習・適応
+      learnFromOutcome(decision: Decision, outcome: Outcome): Promise<void>;
+    }
+    ```
 
-=== "人工知能・機械学習"
-    **AIによる状況認識の自動化**
-    
-    - 異常検知アルゴリズムの高度化
-    - 自然言語処理による情報抽出
-    - コンピュータビジョンによる画像解析
-    - 強化学習による最適判断
+### エマージング技術
 
-=== "エッジコンピューティング"
-    **リアルタイム処理の分散化**
-    
-    - レイテンシの最小化
-    - ローカル処理による高速化
-    - 通信帯域の効率化
-    - プライバシー保護の強化
+=== "量子コンピューティング"
+    **複雑な最適化問題の解決**
+    - 組み合わせ最適化
+    - シミュレーション高速化
+    - 暗号化強化
 
-=== "5G・6G通信"
+=== "デジタルツイン"
+    **仮想環境での検証**
+    - リアルタイム同期
+    - シナリオシミュレーション
+    - 予測保全
+
+=== "6G通信"
     **超高速・低遅延通信**
-    
     - リアルタイムデータ伝送
-    - IoTデバイスの大規模接続
-    - AR/VRによる情報表示
-    - 遠隔監視・制御の高度化
-
-### 標準化の動向
-
-- **IEEE**: IoT・AI関連の標準化
-- **ISO**: 品質・セキュリティ標準
-- **W3C**: Web技術の標準化
-- **OASIS**: データ交換フォーマット
+    - エッジコンピューティング
+    - AR/VR統合
 
 ## まとめ
 
-状況認識関連ソフトウェアは、各分野の特性に応じて多様な形で発展してきました。技術の進歩により、より高度で統合的なソリューションが実現されており、人間の認知能力を大幅に拡張しています。
+状況認識と意思決定支援ソフトウェアは、各分野の特性に応じて多様な形で発展してきました。技術の進歩により、より高度で統合的なソリューションが実現されており、人間の認知能力と判断力を大幅に拡張しています。
 
-### 重要な選択指針
+### 成功の鍵
 
-1. **目的の明確化**: 何のための状況認識か
-2. **技術的適合性**: 既存システムとの統合性
-3. **拡張性**: 将来の成長への対応
-4. **セキュリティ**: データ保護とプライバシー
-5. **ユーザビリティ**: 使いやすさと学習コスト
+1. **統合的アプローチ**: 状況認識と意思決定の連携
+2. **分野特化**: 各分野の要件に応じたカスタマイズ
+3. **技術革新**: AI・機械学習の効果的活用
+4. **ユーザー中心**: 使いやすさと学習コストの配慮
+5. **継続改善**: フィードバックに基づく継続的な最適化
 
-各分野の詳細情報については、右記のリンクからご確認ください。技術的な実装方法や具体的な製品情報を通じて、より効果的な状況認識システムの構築に役立てていただければ幸いです。
+各分野の詳細情報については、下記のセクションからご確認ください。技術的な実装方法や具体的な製品情報を通じて、より効果的なシステム構築に役立てていただければ幸いです。
 
 ## 関連リンク
 
 - [基本概念：状況認識とは](../basics/what-is-sa)
+- [意思決定の理論と実践](../decision-making-guide/)
 - [応用分野：各分野での利用](../applications/)
-- [状況認識の理論と実践：状況認識の測定方法](../situational-awareness-guide/measuring-sa)
 - [AIと将来展望：技術的進化](../ai-and-future/)

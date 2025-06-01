@@ -57,7 +57,7 @@ nav:
     - 産業・インフラ: applications/industrial.md
     - 日常生活: applications/daily-life.md
   - ソフトウェア:
-    - 概要: software/index.md
+    - 概要: software/index.md  # SA・DM両方を含む統合概要
     - 状況認識支援システム:
       - 航空関連: software/aviation-sa-software.md
       - 船舶関連: software/maritime-sa-software.md
@@ -66,10 +66,11 @@ nav:
       - 緊急対応・危機管理: software/emergency-sa-software.md
       - 軍事: software/military-sa-software.md
     # - 意思決定支援システム:
-    #   - 意思決定支援概論: software/dss-overview.md
-    #   - 航空・船舶: software/aviation-maritime-dss.md
-    #   - 医療: software/medical-dss.md
-    #   - 緊急対応・軍事: software/emergency-military-dss.md
+      # - 航空関連: software/aviation-dm-software.md
+      # - 船舶関連: software/maritime-dm-software.md
+      # - 医療関連: software/medical-dm-software.md
+      # - 緊急対応・軍事: software/emergency-military-dm-software.md
+      # - 産業・ビジネス: software/business-dm-software.md
   - AIと将来展望:
     - 概要: ai-and-future/index.md
     - AIと状況認識: ai-and-future/ai-sa-context.md
