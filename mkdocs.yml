@@ -57,7 +57,10 @@ nav:
     - 産業・インフラ: applications/industrial.md
     - 日常生活: applications/daily-life.md
   - ソフトウェア:
-    - 概要: software/index.md  # SA・DM両方を含む統合概要
+    - 概要: software/index.md
+    - ソフトウェア比較分析:
+      - SA/DM系 vs 一般ソフトウェア: software/sa-dm-vs-general-software.md
+      - 状況認識 vs 意思決定システム: software/sa-vs-dm-systems.md
     - 状況認識支援システム:
       - 航空関連: software/aviation-sa-software.md
       - 船舶関連: software/maritime-sa-software.md
