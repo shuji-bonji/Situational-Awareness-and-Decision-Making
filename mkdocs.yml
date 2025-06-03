@@ -68,8 +68,8 @@ nav:
       - 医療関連: software/medical-sa-software.md
       - 緊急対応・危機管理: software/emergency-sa-software.md
       - 軍事: software/military-sa-software.md
-    # - 意思決定支援システム:
-      # - 航空関連: software/aviation-dm-software.md
+    - 意思決定支援システム:
+      - 航空関連: software/aviation-dm-software.md
       # - 船舶関連: software/maritime-dm-software.md
       # - 医療関連: software/medical-dm-software.md
       # - 緊急対応・軍事: software/emergency-military-dm-software.md
