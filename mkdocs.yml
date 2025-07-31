@@ -102,6 +102,15 @@ nav:
     #   - 危機的状況での意思決定: case-studies/crisis-decision-making.md
     #   - チーム意思決定事例: case-studies/team-decision-cases.md
     # - 安全教訓: case-studies/safety-lessons.md
+    # - NASA研究事例:
+    #   - 状況認識阻害要因分析: case-studies/nasa-sa-obstacles.md
+    #   - 意思決定改善策: case-studies/nasa-decision-improvements.md
+    #   - 実装効果測定: case-studies/nasa-implementation-results.md
+  # - 解決策・改善手法:  # 新セクション
+  #   - 概要: solutions/index.md
+  #   - 状況認識改善手法: solutions/sa-improvement-methods.md
+  #   - 意思決定支援手法: solutions/decision-support-methods.md
+  #   - 実装ガイドライン: solutions/implementation-guidelines.md
 
 theme:
   name: material

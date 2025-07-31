@@ -2,15 +2,22 @@
 
 {% block extrahead %}
   {{ super() }}
+
   <!-- Meta Keywords (minimal usage) -->
   {% if page.meta and page.meta.keywords %}
     <meta name="keywords" content="{{ page.meta.keywords }}">
   {% endif %}
 
+  <!-- 日本語サイト向けの言語設定 -->
+  <meta name="language" content="ja">
+  <meta http-equiv="content-language" content="ja">
+
   <!-- OpenGraph -->
   <meta property="og:title" content="{% if page.title %}{{ page.title }} - {% endif %}Situational Awareness and Decision Making">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+  <meta property="og:site_name" content="状況認識と意思決定">
+  <meta property="og:locale" content="ja_JP">
   <meta property="og:url" content="{{ page.canonical_url }}">
   {% if page.meta and page.meta.description %}
     <meta property="og:description" content="{{ page.meta.description }}">
@@ -27,4 +34,15 @@
     <meta name="twitter:description" content="状況認識と意思決定について学び、応用を展開するサイトです。">
   {% endif %}
   <meta name="twitter:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+
+  {% if page.meta and page.meta.author %}
+    <meta name="author" content="{{ page.meta.author }}">
+  {% endif %}
+  
+  {% if page.meta and page.meta.robots %}
+    <meta name="robots" content="{{ page.meta.robots }}">
+  {% else %}
+    <meta name="robots" content="index, follow">
+  {% endif %}
+
 {% endblock %}

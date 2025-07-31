@@ -1,3 +1,8 @@
+---
+author: shuji-bonji
+robots: index, follow
+---
+
 # 状況認識と意思決定（Situational Awareness and Decision Making）
 
 このリポジトリでは、「状況認識（Situational Awareness）」と「意思決定（Decision Making）」に関する理論、応用、ケーススタディ、そして将来的なAI活用に関する情報を体系的に整理し、公開しています。
