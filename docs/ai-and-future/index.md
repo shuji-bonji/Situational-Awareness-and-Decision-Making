@@ -12,6 +12,8 @@ description: AIと未来技術が状況認識と意思決定に与える影響�
 
 ### AI技術による状況認識の進化
 
+<div class="glightbox">
+
 ```mermaid
 graph TD
     A[生データ] --> B[AI前処理]
@@ -49,6 +51,7 @@ graph TD
     style F fill:#e6ffe6,stroke:#4d7fff
     style I fill:#ffe6e6,stroke:#ff4d4d
 ```
+</div>
 
 ## AI技術分野別概要
 

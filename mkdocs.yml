@@ -10,8 +10,11 @@ extra:
     #   link: https://linkedin.com/in/myprofile
   social_image: assets/images/logo.png
 copyright: "Copyright © 2025 shuji-bonji | <a href='https://creativecommons.org/licenses/by/4.0/deed.ja'>CC-BY-4.0ライセンス</a>に基づく"
-extra_javascript: []
-extra_css: []
+# カスタムファイルを追加
+extra_css:
+  - assets/stylesheets/mermaid-dark.css  
+extra_javascript:
+  - assets/javascripts/mermaid-zoom.js
 
 nav:
   - ホーム: index.md
@@ -158,6 +161,7 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
+          # format: pymdownx.superfences.fence_code_format
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.details
   - pymdownx.tasklist:
@@ -179,3 +183,4 @@ plugins:
   - d2
   - search
   - panzoom
+  #- glightbox
