@@ -41,10 +41,10 @@ graph LR
     B --> C[行動]
     C --> D[結果/状況の変化]
     D --> A
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#e6e9ff,stroke:#4d6aff
-    style C fill:#f2e6ff,stroke:#9d4dff
-    style D fill:#ffe6e6,stroke:#ff4d4d
+
+
+
+
 ```
 
 状況認識の3つのレベル（知覚、理解、予測）はそれぞれ意思決定プロセスに影響します。
@@ -72,15 +72,15 @@ graph TB
     H -.->|失敗した場合| A
     H -.->|新たな問題が発生した場合| I[新たな問題の認識]
     I --> A
-    style A fill:#f0f0f0,stroke:#666
-    style B fill:#f0f0f0,stroke:#666
-    style C fill:#f0f0f0,stroke:#666
-    style D fill:#f0f0f0,stroke:#666
-    style E fill:#f0f0f0,stroke:#666
-    style F fill:#f0f0f0,stroke:#666
-    style G fill:#f0f0f0,stroke:#666
-    style H fill:#f0f0f0,stroke:#666
-    style I fill:#fff2cc,stroke:#cc9900
+
+
+
+
+
+
+
+
+
 ```
 
 #### 各ステップの詳細

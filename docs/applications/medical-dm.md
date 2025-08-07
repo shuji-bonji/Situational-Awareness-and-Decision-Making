@@ -45,11 +45,11 @@ graph TD
     E --> E2[公平性]
     E --> E3[無危害の原則]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 ## 意思決定モデルと戦略
@@ -73,8 +73,8 @@ graph TD
         D --> F
         E --> F
         
-        style A fill:#f9f9f9,stroke:#666
-        style F fill:#e6f2ff,stroke:#4d94ff
+    
+    
     ```
 
     ##### EBMのステップ
@@ -116,8 +116,8 @@ graph TD
         E --> E2[調整と同意]
         E --> E3[フォローアップ計画]
         
-        style A fill:#f9f9f9,stroke:#666
-        style E fill:#e6f2ff,stroke:#4d94ff
+    
+    
     ```
 
     ##### 共有意思決定の適用
@@ -147,9 +147,9 @@ graph LR
     C --> C1[パターン認識<br>仮説演繹<br>決定木]
     D --> D1[追加情報収集<br>鑑別診断<br>確率評価]
     
-    style A fill:#f9f9f9,stroke:#666
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style E fill:#ffe6e6,stroke:#ff4d4d
+
+
+
 ```
 
 #### 臨床推論の戦略
@@ -194,8 +194,8 @@ graph LR
         D -.-> E
         E -.-> B
         
-        style A fill:#f9f9f9,stroke:#666
-        style B fill:#e6f2ff,stroke:#4d94ff,stroke-width:2px
+    
+    
     ```
 
 === "看護師（Nurse）"
@@ -275,9 +275,9 @@ graph TD
     E --> E1[専門性に基づく役割分担]
     E --> E2[フォローアップ計画]
     
-    style A fill:#f9f9f9,stroke:#666
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
+
+
+
 ```
 
 #### チーム意思決定の促進要因と障壁
@@ -380,10 +380,10 @@ graph TD
     D --> D3[継続的トレーニング]
     D --> D4[透明性確保]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#ffe6e6,stroke:#ff4d4d
-    style D fill:#e6ffe6,stroke:#4d7fff
+
+
+
+
 ```
 
 !!! warning "CDSSの限界"
@@ -450,8 +450,8 @@ graph TD
     F --> F3[チーム連携改善]
     F --> F4[安全文化促進]
     
-    style A fill:#f9f9f9,stroke:#666
-    style F fill:#e6f2ff,stroke:#4d94ff
+
+
 ```
 
 #### 症例検討会（Case Conference）
@@ -612,10 +612,10 @@ graph TD
     D --> D3[統合インターフェース]
     D --> D4[継続的評価]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#ffe6e6,stroke:#ff4d4d
-    style D fill:#e6ffe6,stroke:#4d7fff
+
+
+
+
 ```
 
 ### 精密医療と意思決定

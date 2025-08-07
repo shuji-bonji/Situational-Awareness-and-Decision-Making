@@ -46,11 +46,11 @@ graph TD
     E --> E2[信頼できる指示]
     E --> E3[説明責任の遂行]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 ## 意思決定モデルと戦略
@@ -69,9 +69,9 @@ graph TD
         C --> D[Act<br>行動]
         D --> A
         
-        style A fill:#e6f2ff,stroke:#4d94ff
-        style C fill:#ffe6e6,stroke:#ff4d4d
-        style D fill:#e6ffe6,stroke:#4d7fff
+    
+    
+    
     ```
 
     ##### OODA ループの各段階詳細
@@ -113,9 +113,9 @@ graph TD
         F --- C
         I --- C
         
-        style A fill:#f9f9f9,stroke:#666
-        style B fill:#ffe6e6,stroke:#ff4d4d
-        style C fill:#e6f2ff,stroke:#4d94ff
+    
+    
+    
     ```
 
     ##### 直感型と分析型意思決定の特性比較
@@ -178,10 +178,10 @@ graph TD
         C --> C2[防御戦略]
         C --> C3[非常時戦略]
         
-        style A fill:#f9f9f9,stroke:#666
-        style B fill:#e6f2ff,stroke:#4d94ff
-        style C fill:#ffe6e6,stroke:#ff4d4d
-        style F fill:#e6ffe6,stroke:#4d7fff
+    
+    
+    
+    
     ```
 
 === "救急隊長（EMS Leader）"
@@ -256,9 +256,9 @@ graph TD
         E --> E2[資機材管理]
         E --> E3[支援受入調整]
         
-        style A fill:#f9f9f9,stroke:#666
-        style C fill:#e6f2ff,stroke:#4d94ff
-        style C1 fill:#ffe6e6,stroke:#ff4d4d
+    
+    
+    
     ```
 
 ## チーム意思決定とインシデントマネジメント
@@ -286,9 +286,9 @@ graph TD
     E --> E1[資源調達<br>支援管理]
     F --> F1[費用追跡<br>契約管理]
     
-    style A fill:#ffe6e6,stroke:#ff4d4d,stroke-width:2px
-    style D fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
+
+
+
 ```
 
 #### ICSの意思決定原則
@@ -375,9 +375,9 @@ graph TD
     E --> E2[承認プロセス]
     E --> E3[変更履歴]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
+
+
+
 ```
 
 ### 意思決定支援ツール
@@ -442,10 +442,10 @@ graph TD
     E --> E2[改善点分析]
     E --> E3[教訓抽出]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#ffe6e6,stroke:#ff4d4d
+
+
+
+
 ```
 
 #### 効果的な訓練手法
@@ -611,10 +611,10 @@ graph TD
     D --> D3[適応的自動化]
     D --> D4[継続的学習]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#ffe6e6,stroke:#ff4d4d
-    style D fill:#e6ffe6,stroke:#4d7fff
+
+
+
+
 ```
 
 ### 新技術と災害レジリエンス

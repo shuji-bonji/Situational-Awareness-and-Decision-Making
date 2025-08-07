@@ -20,9 +20,6 @@ Endsleyのモデルでは、状況認識は階層的な3つのレベルから構
 ```mermaid
 graph TD
     L1[知覚（Perception）] --> L2[理解（Comprehension）] --> L3[予測（Projection）]
-    style L1 fill:#e6e9ff,stroke:#4d94ff
-    style L2 fill:#e6f2ff,stroke:#4da6ff
-    style L3 fill:#e6ffff,stroke:#4db8ff
 ```
 
 このモデルの重要な特徴は、**各レベルが前のレベルを基盤としている**という点です。つまり、レベル1（知覚）が不完全だと、レベル2（理解）も不完全になり、結果としてレベル3（予測）も不正確になります。
@@ -37,9 +34,6 @@ graph LR
     A[レベル1: 知覚<br>Perception] --> B[レベル2: 理解<br>Comprehension]
     B --> C[レベル3: 予測<br>Projection]
     C -.-> |フィールドバック| S
-    style A fill:#e6e9ff,stroke:#4d94ff
-    style B fill:#e6f2ff,stroke:#4da6ff
-    style C fill:#e6ffff,stroke:#4db8ff
 ```
 
 ## レベル1: 知覚（Perception）
@@ -159,10 +153,6 @@ graph TD
     A[メンタルモデル] --> B[情報の解釈]
     A --> C[欠落情報の推測]
     A --> D[将来状態の予測]
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#f0f0f0,stroke:#666
-    style C fill:#f0f0f0,stroke:#666
-    style D fill:#f0f0f0,stroke:#666
 ```
 
 ## 意思決定との関係
@@ -172,10 +162,6 @@ Endsleyのモデルでは、状況認識は意思決定の前提条件であり�
 ```mermaid
 graph LR
     A[状況認識] --> B[意思決定] --> C[行動] --> D[状況の変化] --> A
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#e6e9ff,stroke:#4d6aff
-    style C fill:#f2e6ff,stroke:#9d4dff
-    style D fill:#ffe6e6,stroke:#ff4d4d
 ```
 
 このサイクルは継続的に繰り返され、新たな状況の変化に応じて状況認識が更新されます。

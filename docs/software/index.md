@@ -32,10 +32,10 @@ graph TD
     B --> C
     C --> D[意思決定支援]
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#e6ffe6,stroke:#4d7fff
-    style C fill:#ffe6e6,stroke:#ff4d4d
-    style D fill:#fff2e6,stroke:#ff8000
+
+
+
+
 ```
 
 ### 意思決定支援ソフトウェアの役割
@@ -57,9 +57,9 @@ graph LR
     C --> C2[リスク評価]
     C --> C3[シミュレーション]
     
-    style A fill:#f9f9f9,stroke:#666
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
+
+
+
 ```
 
 ## システム統合アーキテクチャ
@@ -111,8 +111,8 @@ graph TB
     C3 --> D3
     C4 --> D4
     
-    style C1 fill:#e6f2ff,stroke:#4d94ff
-    style C2 fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 ## 分野別ソフトウェア分類

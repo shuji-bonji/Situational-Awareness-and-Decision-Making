@@ -47,8 +47,8 @@ graph TD
     D --> D3[管制官支援]
     D --> D4[運航管理]
     
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 ## 自動衝突回避システム

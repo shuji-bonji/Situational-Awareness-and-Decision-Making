@@ -46,11 +46,11 @@ graph TD
     E --> E2[補給・兵站効率]
     E --> E3[持続可能性]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 ## 意思決定モデルと戦略
@@ -72,9 +72,9 @@ graph TD
         F --> G[計画・命令の作成]
         G --> H[計画・命令の改訂]
         
-        style A fill:#e6f2ff,stroke:#4d94ff
-        style F fill:#ffe6e6,stroke:#ff4d4d
-        style G fill:#e6ffe6,stroke:#4d7fff
+    
+    
+    
     ```
 
     ##### MDMPの段階詳細
@@ -111,10 +111,10 @@ graph TD
         D -.-> C
         D -.-> A
         
-        style A fill:#e6f2ff,stroke:#4d94ff
-        style B fill:#e6ffe6,stroke:#4d7fff
-        style C fill:#ffe6e6,stroke:#ff4d4d
-        style D fill:#fff4e6,stroke:#ff8c00
+    
+    
+    
+    
     ```
 
     ##### OODAループの理論と応用
@@ -182,9 +182,9 @@ graph TD
         H --> K[作戦レベルへの展開]
         I --> L[国際協調行動]
         
-        style A fill:#f9f9f9,stroke:#666
-        style E fill:#e6f2ff,stroke:#4d94ff
-        style F fill:#ffe6e6,stroke:#ff4d4d
+    
+    
+    
     ```
 
 === "作戦レベル（Operational Level）"
@@ -240,10 +240,10 @@ graph TD
         D --> D2[戦術的支援調整]
         D --> D3[作戦目標への貢献]
         
-        style A fill:#f9f9f9,stroke:#666
-        style B fill:#ffe6e6,stroke:#ff4d4d
-        style C fill:#e6f2ff,stroke:#4d94ff
-        style D fill:#e6ffe6,stroke:#4d7fff
+    
+    
+    
+    
     ```
 
     ##### 戦術判断の時間軸
@@ -286,11 +286,11 @@ graph LR
     D --> D1[意図指向<br>分権的実行]
     E --> E1[エッジ決定<br>創発的調整]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#fff4e6,stroke:#ff8c00
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#ffe6e6,stroke:#ff4d4d
-    style E fill:#e6ffe6,stroke:#4d7fff
+
+
+
+
+
 ```
 
 #### 任務型指揮統制（Mission Command）
@@ -414,10 +414,10 @@ graph TD
     E --> E3[更新同期]
     E --> E4[帯域適応]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
-    style D fill:#ffe6e6,stroke:#ff4d4d
+
+
+
+
 ```
 
 ### 意思決定支援ツール
@@ -489,11 +489,11 @@ graph TD
     E --> E2[政策ゲーム]
     E --> E3[危機管理演習]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#ffe6e6,stroke:#ff4d4d
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 #### 効果的な訓練手法
@@ -666,11 +666,11 @@ graph TD
     E --> E3[使用制限]
     E --> E4[価値の符号化]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#ffe6e6,stroke:#ff4d4d
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 ### マルチドメイン作戦と意思決定

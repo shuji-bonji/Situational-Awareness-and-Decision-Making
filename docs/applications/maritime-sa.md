@@ -45,11 +45,11 @@ graph TB
     E --> E2[MARPOL対応]
     E --> E3[港湾国検査]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 ## 職種別の状況認識
@@ -210,10 +210,10 @@ graph TD
     H --> I[状況認識の向上]
     I --> J[安全な意思決定]
     
-    style A fill:#f9f9f9,stroke:#666
-    style H fill:#e6f2ff,stroke:#4d94ff
-    style I fill:#e6ffe6,stroke:#4d7fff
-    style J fill:#ffe6e6,stroke:#ff4d4d
+
+
+
+
 ```
 
 ### 気象・海象情報システム
@@ -392,9 +392,9 @@ graph TD
     B --> G[衝突のおそれ判定]
     B --> H[相対位置関係]
     
-    style A fill:#ffe6e6,stroke:#ff4d4d
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
+
+
+
 ```
 
 ## 将来の展望
@@ -453,9 +453,9 @@ graph LR
     C --> H[燃費最適化]
     C --> I[安全性評価]
     
-    style A fill:#f0f0f0,stroke:#666
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style F fill:#e6ffe6,stroke:#4d7fff
+
+
+
 ```
 
 #### IoT・ビッグデータの活用

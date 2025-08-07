@@ -62,9 +62,9 @@ graph LR
     D --> E[対応実行・監視]
     E --> F[結果評価・学習]
 
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
-    style D fill:#ffe6e6,stroke:#ff4d4d
+
+
+
 ```
 
 ##### ノードの役割補足

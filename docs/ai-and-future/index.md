@@ -46,10 +46,6 @@ graph TD
     F --> F1[判断根拠提示]
     F --> F2[信頼度評価]
     F --> F3[バイアス検出]
-
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style F fill:#e6ffe6,stroke:#4d7fff
-    style I fill:#ffe6e6,stroke:#ff4d4d
 ```
 </div>
 
@@ -222,11 +218,6 @@ graph TB
         E2 --> E3
         E3 --> B2
     end
-
-    style DATA fill:#f9f9f9,stroke:#666
-    style C1 fill:#e6f2ff,stroke:#4d94ff
-    style D1 fill:#e6ffe6,stroke:#4d7fff
-    style E3 fill:#ffe6e6,stroke:#ff4d4d
 ```
 
 ### 実装上の考慮事項

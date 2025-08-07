@@ -33,13 +33,13 @@ graph TD
     E --> F[継続的改善]
     A --> G[認知的側面]
     G --> C
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#e6f5ff,stroke:#4da6ff
-    style C fill:#e6f8ff,stroke:#4db8ff
-    style D fill:#e6fbff,stroke:#4dc4ff
-    style E fill:#f2e6ff,stroke:#9d4dff
-    style F fill:#ffe6e6,stroke:#ff4d4d
-    style G fill:#fff2cc,stroke:#ffcc00
+
+
+
+
+
+
+
 ```
 
 ### キートレーニング原則

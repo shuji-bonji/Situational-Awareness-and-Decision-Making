@@ -37,9 +37,9 @@ graph TD
         A3 --> A4[個人の意思決定]
     end
 
-    style A4 fill:#f9d5e5,stroke:#333
-    style B5 fill:#d3f8e2,stroke:#333
-    style C1 fill:#e6f2ff,stroke:#4d94ff
+
+
+
 ```
 
 ### 協調型状況認識の特徴
@@ -84,9 +84,9 @@ graph LR
         I1 --> A4
     end
     
-    style E1 fill:#e6f2ff,stroke:#4d94ff
-    style F1 fill:#e6ffe6,stroke:#4d7fff
-    style I1 fill:#ffe6e6,stroke:#ff4d4d
+
+
+
 ```
 
 ### Team SA vs Distributed SA
@@ -168,8 +168,8 @@ graph TD
     I --> J[...継続]
     G -->|Yes| K[最終合意]
     
-    style F fill:#e6f2ff,stroke:#4d94ff
-    style K fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 #### 段階的合意プロセス
@@ -575,7 +575,7 @@ RxJSのリアクティブプログラミングパラダイムを活用した、�
           </div>
         </div>
       `,
-      styleUrls: ['./collaborative-sa-dashboard.component.scss']
+  
     })
     export class CollaborativeSADashboardComponent implements OnInit {
       participants$: Observable<ParticipantInfo[]>;
@@ -925,8 +925,8 @@ graph TD
     E --> N[クローズドループ確認]
     E --> O[タイムアウト実施]
     
-    style E fill:#e6f2ff,stroke:#4d94ff
-    style M fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 **実装要素**:

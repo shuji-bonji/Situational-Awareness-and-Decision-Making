@@ -18,10 +18,10 @@ graph LR
     C -->|結果と影響| D[新たな状況]
     D --> A
     
-    style A fill:#f9d5e5,stroke:#333
-    style B fill:#d3f8e2,stroke:#333,stroke-width:2px
-    style C fill:#e6f2ff,stroke:#333
-    style D fill:#f9f9f9,stroke:#333
+
+
+
+
 ```
 
 ## 本セクションの目的
@@ -59,8 +59,8 @@ graph LR
     J -.-> D
     J -.-> F
     
-    style A fill:#f9f9f9,stroke:#666
-    style E fill:#d3f8e2,stroke:#333,stroke-width:2px
+
+
 ```
 
 各段階には固有の課題があり、効果的な意思決定のためには、これらの段階を意識的かつ効率的に進める必要があります。
@@ -181,9 +181,9 @@ graph LR
     I -.-> F
     F -.-> C
     
-    style A fill:#f9d5e5,stroke:#333
-    style D fill:#d3f8e2,stroke:#333
-    style G fill:#e6f2ff,stroke:#333
+
+
+
 ```
 
 ## 状況認識と意思決定の接点

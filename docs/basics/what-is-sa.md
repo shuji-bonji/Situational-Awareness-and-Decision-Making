@@ -85,10 +85,6 @@ graph LR
     A[レベル1: 知覚] --> B[レベル2: 理解]
     B --> C[レベル3: 予測]
     C -.-> |フィールドバック| S
-
-    style A fill:#e6e9ff,stroke:#4d94ff
-    style B fill:#e6f2ff,stroke:#4da6ff
-    style C fill:#e6ffff,stroke:#4db8ff
 ```
 
 !!! note "用語について"

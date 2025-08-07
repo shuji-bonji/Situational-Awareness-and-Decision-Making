@@ -46,11 +46,11 @@ graph TD
     E --> E2[廃棄物削減]
     E --> E3[持続可能性]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 ## 職種別の状況認識
@@ -211,10 +211,10 @@ graph TD
     J --> N[系統安定化・故障対応]
     K --> O[配電自動化・品質管理]
     
-    style D fill:#e6f2ff,stroke:#4d94ff
-    style E fill:#e6ffe6,stroke:#4d7fff
-    style J fill:#ffe6e6,stroke:#ff4d4d
-    style K fill:#fff4e6,stroke:#ff8c00
+
+
+
+
 ```
 
 #### 送電系統の状況認識
@@ -308,8 +308,8 @@ graph TD
     E --> I[変化の傾向分析]
     F --> J[異常の早期発見]
     
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style A fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 ### デジタルツイン
@@ -384,8 +384,8 @@ graph TD
     F --> H[リスク値<br>Risk = P × C]
     G --> H
     
-    style C fill:#ffe6e6,stroke:#ff4d4d
-    style D fill:#e6f2ff,stroke:#4d94ff
+
+
 ```
 
 ## 事故事例と教訓
@@ -482,7 +482,7 @@ graph TD
     K --> M
     L --> M
     
-    style M fill:#e6f2ff,stroke:#4d94ff
+
 ```
 
 ### 政府の政策・取り組み
@@ -542,8 +542,8 @@ graph LR
     E --> G[リサイクル]
     G --> A
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style E fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 #### 新たな状況認識要求

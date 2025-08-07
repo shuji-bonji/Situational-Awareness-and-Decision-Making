@@ -45,11 +45,11 @@ graph TD
     E --> E2[予防的介入]
     E --> E3[品質管理]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 ## 職種別の状況認識
@@ -195,10 +195,10 @@ graph TD
         D --> D2[改善点の抽出]
         D --> D3[次回への反映]
         
-        style A fill:#e6f2ff,stroke:#4d94ff
-        style B fill:#ffe6e6,stroke:#ff4d4d
-        style C fill:#e6ffe6,stroke:#4d7fff
-        style D fill:#fff4e6,stroke:#ff8c00
+    
+    
+    
+    
     ```
 
 === "集中治療室（ICU/CCU）"
@@ -282,8 +282,8 @@ graph TD
     E --> E2[傾向分析警告]
     E --> E3[複合指標評価]
     
-    style A fill:#f9f9f9,stroke:#666
-    style E fill:#ffe6e6,stroke:#ff4d4d
+
+
 ```
 
 ### AI・機械学習の活用
@@ -378,8 +378,8 @@ graph TB
 
     F ---> A
     
-    style E fill:#e6f2ff,stroke:#4d94ff
-    style F fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 ## 事故・インシデント事例と教訓
@@ -455,10 +455,10 @@ graph TD
     J --> K[AI分析・予測]
     K --> L[個別化医療]
     
-    style A fill:#f9f9f9,stroke:#666
-    style J fill:#e6f2ff,stroke:#4d94ff
-    style K fill:#e6ffe6,stroke:#4d7fff
-    style L fill:#ffe6e6,stroke:#ff4d4d
+
+
+
+
 ```
 
 #### テレメディスンと遠隔状況認識

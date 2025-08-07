@@ -25,7 +25,7 @@ graph TD
     B --> H[創造的解決策]
     B --> I[実行コミットメント]
     
-    style B fill:#d3f8e2,stroke:#333,stroke-width:2px
+
 ```
 
 ### チーム意思決定の利点と課題
@@ -73,10 +73,10 @@ graph TD
             B3 --> B4[共同実行]
         end
         
-        style A1 fill:#ffe6e6,stroke:#ff4d4d
-        style A2 fill:#ffe6e6,stroke:#ff4d4d
-        style B1 fill:#e6f2ff,stroke:#4d94ff
-        style B3 fill:#e6f2ff,stroke:#4d94ff
+    
+    
+    
+    
     ```
 
     | モデル | 適した状況 | 利点 | 課題 |
@@ -105,11 +105,11 @@ graph TD
         H -->|低い| I[CII: グループ協議]
         H -->|高い| J[GII: 集団合意形成]
         
-        style C fill:#ffe6e6,stroke:#ff4d4d
-        style E fill:#ffcccc,stroke:#ff4d4d
-        style G fill:#e6f2ff,stroke:#4d94ff
-        style I fill:#ccccff,stroke:#4d94ff
-        style J fill:#d3f8e2,stroke:#4d7fff
+    
+    
+    
+    
+    
     ```
 
     | 意思決定スタイル | 内容 | 適した状況 |
@@ -149,7 +149,7 @@ graph TD
     E --> E2[環境変化の認識]
     E --> E3[リソース状況の把握]
     
-    style A fill:#f9f9f9,stroke:#666,stroke-width:2px
+
 ```
 
 ### 共有メンタルモデル構築のアプローチ
@@ -294,10 +294,10 @@ graph TB
     G --> H[評価・学習]
     H --> A
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#d3f8e2,stroke:#4d7fff
-    style E fill:#ffe6e6,stroke:#ff4d4d
-    style F fill:#fff0e6,stroke:#ff9933
+
+
+
+
 ```
 
 
@@ -412,9 +412,9 @@ graph TD
     E --> E1[共有情報への過度の依存]
     F --> F1[集団によるリスク許容度の上昇]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style E fill:#e6f2ff,stroke:#4d94ff
+
+
+
 ```
 
 #### 集団思考 (Groupthink)
@@ -485,9 +485,9 @@ graph LR
     C --- C2
     C --- C3
     
-    style A fill:#ffe6e6,stroke:#ff4d4d
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#d3f8e2,stroke:#4d7fff
+
+
+
 ```
 
 ### 異なるモデルの比較
@@ -681,9 +681,9 @@ graph TD
     C --> C2[決定に至らなかった項目の追跡]
     C --> C3[プロセス改善のフィードバック]
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#d3f8e2,stroke:#4d7fff
-    style C fill:#ffe6e6,stroke:#ff4d4d
+
+
+
 ```
 
 ### AIと意思決定支援システム
@@ -798,7 +798,7 @@ graph TD
     F --> F1[状況に応じたスタイル]
     F --> F2[参加と決定のバランス]
     
-    style A fill:#f9f9f9,stroke:#666,stroke-width:2px
+
 ```
 
 ### 状況別チーム意思決定ガイド

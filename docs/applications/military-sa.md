@@ -46,11 +46,11 @@ graph TD
     E --> E2[戦術的主導権]
     E --> E3[抑止効果の維持]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 ## 職種別の状況認識
@@ -113,8 +113,8 @@ graph TD
         E --> F[消費・評価<br>Consumption & Evaluation]
         F --> A
         
-        style A fill:#e6f2ff,stroke:#4d94ff
-        style D fill:#ffe6e6,stroke:#ff4d4d
+    
+    
     ```
 
     #### 分析官の専門分野
@@ -190,8 +190,8 @@ graph LR
     F --> G
     G --> H[作戦計画]
     
-    style D fill:#e6f2ff,stroke:#4d94ff
-    style G fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 #### 戦略的状況認識の要素
@@ -250,8 +250,8 @@ graph TD
     G --> H[迎撃システム]
     G --> I[避難・警報]
     
-    style D fill:#e6f2ff,stroke:#4d94ff
-    style G fill:#ffe6e6,stroke:#ff4d4d
+
+
 ```
 
 #### レーダー技術の進化
@@ -318,8 +318,8 @@ graph TD
     C --> H[データ窃取]
     C --> I[システム破壊]
     
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style D fill:#e6f2ff,stroke:#4d94ff
+
+
 ```
 
 #### サイバー戦での状況認識要素
@@ -357,7 +357,7 @@ graph TD
     A <--> F[韓国]
     A <--> G[東南アジア諸国]
     
-    style A fill:#ffe6e6,stroke:#ff4d4d
+
 ```
 
 #### 情報共有の利点と課題
@@ -401,8 +401,8 @@ graph TD
     G --> H[迎撃ミサイル]
     G --> I[戦闘機発進]
     
-    style D fill:#e6f2ff,stroke:#4d94ff
-    style G fill:#ffe6e6,stroke:#ff4d4d
+
+
 ```
 
 ### 宇宙・サイバー・電磁波領域
@@ -470,8 +470,8 @@ graph TD
     
     F --> H[統合効果創出]
     
-    style F fill:#e6f2ff,stroke:#4d94ff
-    style H fill:#ffe6e6,stroke:#ff4d4d
+
+
 ```
 
 ## まとめ

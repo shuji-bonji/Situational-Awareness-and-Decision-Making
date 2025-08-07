@@ -45,11 +45,11 @@ graph TD
     E --> E2[旗国・寄港国要件]
     E --> E3[船級協会規則]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 ## 意思決定モデルと戦略
@@ -69,9 +69,9 @@ graph TD
         D --> E[効果確認<br>Evaluation]
         E --> A
         
-        style A fill:#e6f2ff,stroke:#4d94ff
-        style C fill:#e6ffe6,stroke:#4d7fff
-        style D fill:#ffe6e6,stroke:#ff4d4d
+    
+    
+    
     ```
 
     ##### マリナーモデルのステップ詳細
@@ -109,9 +109,9 @@ graph TD
         E --> E1[相互チェック]
         E --> E2[エラー検出]
         
-        style A fill:#f9f9f9,stroke:#666
-        style B fill:#e6f2ff,stroke:#4d94ff
-        style E fill:#e6ffe6,stroke:#4d7fff
+    
+    
+    
     ```
 
     ##### BRMの主要原則
@@ -146,10 +146,10 @@ graph LR
     D --> D2[最適化計画]
     D --> D3[シナリオ検討]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
+
+
+
+
 ```
 
 ## 職種別の意思決定特性
@@ -184,8 +184,8 @@ graph LR
         D -.-> E
         E -.-> B
         
-        style A fill:#f9f9f9,stroke:#666
-        style B fill:#ffe6e6,stroke:#ff4d4d,stroke-width:2px
+    
+    
     ```
 
 === "航海士（Navigation Officer）"
@@ -263,9 +263,9 @@ graph LR
         B --> B1[水路選択<br>回頭位置<br>予備計画]
         C --> C1[役割明確化<br>情報共有<br>指示伝達]
         
-        style A fill:#e6f2ff,stroke:#4d94ff
-        style D fill:#e6ffe6,stroke:#4d7fff
-        style G fill:#ffe6e6,stroke:#ff4d4d
+    
+    
+    
     ```
 
 ## 意思決定支援システム
@@ -302,9 +302,9 @@ graph TD
     F --> I[状況認識訓練]
     F --> J[冗長システム]
     
-    style A fill:#f9f9f9,stroke:#666
-    style F fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#ffe6e6,stroke:#ff4d4d
+
+
+
 ```
 
 ### 船舶管理システム
@@ -350,9 +350,9 @@ graph TD
     F --> F2[代替案評価能力]
     F --> F3[時間管理技能]
     
-    style A fill:#f9f9f9,stroke:#666
-    style E fill:#e6f2ff,stroke:#4d94ff
-    style F fill:#e6ffe6,stroke:#4d7fff
+
+
+
 ```
 
 #### BRMトレーニング
@@ -492,11 +492,11 @@ graph LR
     D --> D1[人間: 監視・例外対応<br>AI: 通常判断]
     E --> E1[人間: 目標設定<br>AI: 全判断]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
-    style D fill:#fff4e6,stroke:#ff8c00
-    style E fill:#ffe6e6,stroke:#ff4d4d
+
+
+
+
+
 ```
 
 #### AI支援意思決定の新たな課題
@@ -534,9 +534,9 @@ graph TD
     H --> H1[リスク可視化]
     H --> H2[安全余裕評価]
     
-    style A fill:#f9f9f9,stroke:#666
-    style E fill:#e6f2ff,stroke:#4d94ff
-    style F fill:#e6ffe6,stroke:#4d7fff
+
+
+
 ```
 
 ### 国際的な取り組み

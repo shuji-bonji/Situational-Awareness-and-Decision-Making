@@ -62,9 +62,9 @@ graph LR
     E --> F[効果評価・学習]
 
 
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
-    style D fill:#ffe6e6,stroke:#ff4d4d
+
+
+
 ```
 
 #### シナリオベースのアーキテクチャ例

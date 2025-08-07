@@ -43,9 +43,9 @@ graph TD
     D --> D2[気象情報統合]
     D --> D3[空域管理]
     
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style F fill:#ffe6e6,stroke:#ff4d4d
+
+
+
 ```
 ##### 各ノード・層の具体的な説明
 |構成|説明|主な入力データソース|主な処理・出力例|
@@ -198,8 +198,8 @@ graph LR
     D --> J[経路最適化]
     D --> K[遅延予測]
     
-    style D fill:#e6f2ff,stroke:#4d94ff
-    style E fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 #### 内部構造・データ処理フロー詳細
@@ -838,7 +838,7 @@ graph TD
     D --> D3[札幌管制部]
     D --> D4[那覇管制部]
     
-    style A fill:#e6f2ff,stroke:#4d94ff
+
 ```
 
 ##### システム詳細・利用シーン

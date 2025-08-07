@@ -19,8 +19,8 @@ graph LR
     C --> D[実践的洞察]
     D --> E[能力向上]
     
-    style B fill:#e6f2ff,stroke:#4d94ff,stroke-width:2px
-    style D fill:#e6ffe6,stroke:#4d7fff,stroke-width:2px
+
+
 ```
 
 ### 1. 理論と実践の橋渡し

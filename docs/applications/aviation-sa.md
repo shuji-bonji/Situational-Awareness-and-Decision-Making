@@ -38,11 +38,6 @@ graph TD
     D --> D1[空域管理]
     D --> D2[国際基準]
     D --> D3[環境規制]
-    
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
 ```
 
 ## 職種別の状況認識
@@ -204,9 +199,9 @@ graph TD
     A --> I[システム設定]
     I --> C
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style E fill:#f0f0f0,stroke:#666
-    style C fill:#e6ffe6,stroke:#4d7fff
+
+
+
 ```
 
 !!! warning "自動化のパラドックス"
@@ -383,12 +378,12 @@ graph TD
     C --> E
     E --> F[安全性向上]
     
-    style A fill:#ffe6e6,stroke:#ff4d4d
-    style B fill:#fff4e6,stroke:#ff8c00
-    style C fill:#ffe6f2,stroke:#ff1493
-    style D fill:#f0f0f0,stroke:#666
-    style E fill:#e6f2ff,stroke:#4d94ff
-    style F fill:#e6ffe6,stroke:#4d7fff
+
+
+
+
+
+
 ```
 
 ##### 脅威の種類と管理
@@ -471,8 +466,8 @@ graph LR
     D --> J[リスク評価]
     D --> K[最適化計算]
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 ### 日本における取り組み

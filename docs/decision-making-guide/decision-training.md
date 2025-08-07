@@ -36,7 +36,7 @@ graph LR
     E --> E2[判断の質の評価]
     E --> E3[学習サイクルの維持]
     
-    style A fill:#f9f9f9,stroke:#666,stroke-width:2px
+
 ```
 
 ### トレーニングの対象となる意思決定スキル
@@ -91,8 +91,8 @@ graph LR
     F --> F1[VR/AR環境]
     F --> F2[高忠実度シミュレーター]
     
-    style A fill:#f9f9f9,stroke:#666
-    style F1 fill:#d3f8e2,stroke:#4d7fff
+
+
 ```
 
 #### 効果的なシミュレーション設計の原則
@@ -194,9 +194,9 @@ graph TB
     F --> F1[訓練への反映]
     F --> F2[プロセス改善]
     
-    style A fill:#f9f9f9,stroke:#666,stroke-width:2px
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style E fill:#d3f8e2,stroke:#4d7fff
+
+
+
 ```
 
 ### AARの核心的質問フレームワーク
@@ -437,10 +437,10 @@ graph TD
     E --> E3[改善機会]
     E --> E4[長期的傾向]
     
-    style A fill:#f9f9f9,stroke:#666,stroke-width:2px
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#ffe6e6,stroke:#ff4d4d
-    style E fill:#d3f8e2,stroke:#4d7fff
+
+
+
+
 ```
 
 ### 効果的なジャーナリングのためのテンプレート例
@@ -551,9 +551,9 @@ graph LR
     E --> E1[制約内での創造]
     E --> E2[ルールの適応的適用]
     
-    style A fill:#f9f9f9,stroke:#666,stroke-width:2px
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#d3f8e2,stroke:#4d7fff
+
+
+
 ```
 
 ### 固定的専門性と適応的専門性の比較
@@ -639,9 +639,9 @@ graph TD
     F --> F2[参加者フィードバック]
     F --> F3[組織的効果]
     
-    style A fill:#f9f9f9,stroke:#666,stroke-width:2px
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style F fill:#d3f8e2,stroke:#4d7fff
+
+
+
 ```
 
 ### 階層別のトレーニングアプローチ
@@ -716,9 +716,9 @@ graph LR
     F --> F1[AIシミュレーション相手]
     F --> F2[パーソナライズド訓練]
     
-    style A fill:#f9f9f9,stroke:#666
-    style F fill:#d3f8e2,stroke:#4d7fff
-    style B fill:#e6f2ff,stroke:#4d94ff
+
+
+
 ```
 
 ### 主要なテクノロジー活用領域
@@ -1026,11 +1026,11 @@ graph LR
     F --> F1[漸進的複雑性]
     F --> F2[長期的発達視点]
     
-    style A fill:#f9f9f9,stroke:#666,stroke-width:2px
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#d3f8e2,stroke:#4d7fff
-    style D fill:#ffe6e6,stroke:#ff4d4d
-    style F fill:#fff0e6,stroke:#ff9933
+
+
+
+
+
 ```
 
 ### 実践的フレームワーク

@@ -44,12 +44,6 @@ graph TD
     E --> E1[航空法規制]
     E --> E2[国際標準]
     E --> E3[会社手順]
-    
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
 ```
 
 ## 意思決定モデルと戦略
@@ -69,10 +63,6 @@ graph TD
         D --> E[Execution<br>実行]
         E --> C[Check<br>確認]
         C --> F
-        
-        style F fill:#e6f2ff,stroke:#4d94ff
-        style D fill:#ffe6e6,stroke:#ff4d4d
-        style E fill:#e6ffe6,stroke:#4d7fff
     ```
 
     ##### FORDEC プロセスの詳細
@@ -111,10 +101,6 @@ graph TD
         
         E --- B
         F --- C
-        
-        style A fill:#f9f9f9,stroke:#666,stroke-width:2px
-        style B fill:#ffe6e6,stroke:#ff4d4d
-        style C fill:#e6f2ff,stroke:#4d94ff
     ```
 
     ##### 直感的判断と分析的判断の特徴
@@ -148,11 +134,6 @@ graph TD
     D --> D1[全情報収集]
     D --> D2[複数シナリオ検討]
     D --> D3[リソース計画]
-    
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
 ```
 
 ## 職種別の意思決定特性
@@ -196,10 +177,7 @@ graph TD
         F --> F1[明確な中止基準]
         F --> F2[悪魔の代弁者]
         F --> F3[CRMトレーニング]
-        F --> F4[構造化チェックリスト]
-        
-        style A fill:#f9f9f9,stroke:#666
-        style F fill:#e6f2ff,stroke:#4d94ff
+        F --> F4[構造化チェックリスト]f
     ```
 
 === "航空管制官（Air Traffic Controller）"
@@ -252,11 +230,6 @@ graph TD
         E --> E2[業務複雑性調整]
         E --> E3[支援要請]
         E --> E4[交通流制限]
-        
-        style C1 fill:#e6ffe6,stroke:#4d7fff
-        style B1 fill:#fff4e6,stroke:#ff8c00
-        style D1 fill:#ffe6e6,stroke:#ff4d4d
-        style E fill:#e6f2ff,stroke:#4d94ff
     ```
 
 === "運航管理者（Flight Dispatcher）"
@@ -352,11 +325,6 @@ graph TD
     E --> E2[明確な役割定義]
     E --> E3[リーダーシップ訓練]
     E --> E4[二人操縦の原則]
-    
-    style C1 fill:#e6ffe6,stroke:#4d7fff
-    style B1 fill:#ffe6e6,stroke:#ff4d4d
-    style D1 fill:#fff4e6,stroke:#ff8c00
-    style E fill:#e6f2ff,stroke:#4d94ff
 ```
 
 ## 意思決定支援システム
@@ -400,11 +368,6 @@ graph TD
     D --> D2[手動操縦維持訓練]
     D --> D3[モード理解教育]
     D --> D4[自動化の限界認識]
-    
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#ffe6e6,stroke:#ff4d4d
-    style D fill:#e6ffe6,stroke:#4d7fff
 ```
 
 !!! warning "自動化のパラドックス"
@@ -453,10 +416,6 @@ graph LR
     D --> D1[シミュレーションでの実践<br>構造化された演習]
     E --> E1[複雑シナリオでの応用<br>多様な条件]
     F --> F1[自己評価能力<br>継続的改善]
-    
-    style A fill:#f9f9f9,stroke:#666
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style E fill:#e6ffe6,stroke:#4d7fff
 ```
 
 #### 効果的な訓練手法
@@ -665,12 +624,6 @@ graph TD
     E --> E1[微小変化検出]
     E --> E2[パターン異常検知]
     E --> E3[早期警告生成]
-    
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#ffe6e6,stroke:#ff4d4d
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
 ```
 
 ### 自律運航システムと人間の意思決定

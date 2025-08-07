@@ -22,11 +22,11 @@ graph LR
     A --> D[無知<br>結果自体が不明]
     A --> E[複雑性<br>変数間の相互作用]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#d3f8e2,stroke:#4d7fff
-    style D fill:#ffe6e6,stroke:#ff4d4d
-    style E fill:#fff0e6,stroke:#ff9933
+
+
+
+
+
 ```
 
 #### 1. リスク（計算可能な不確実性）
@@ -92,8 +92,8 @@ graph LR
         C --> D[期待効用の計算]
         D --> E[最大期待効用の選択]
         
-        style D fill:#e6f2ff,stroke:#4d94ff
-        style E fill:#d3f8e2,stroke:#4d7fff
+    
+    
     ```
 
     #### 例：投資ポートフォリオ選択
@@ -133,8 +133,8 @@ graph LR
         C --> D[確率加重関数による確率変換]
         D --> E[最大主観的価値の選択]
         
-        style C fill:#ffe6e6,stroke:#ff4d4d
-        style D fill:#fff0e6,stroke:#ff9933
+    
+    
     ```
 
     #### 確率加重の例
@@ -191,10 +191,10 @@ graph LR
         F --> G[モニタリングと適応]
         G --> C
         
-        style A fill:#f9f9f9,stroke:#666
-        style B fill:#e6f2ff,stroke:#4d94ff
-        style E fill:#d3f8e2,stroke:#4d7fff
-        style G fill:#ffe6e6,stroke:#ff4d4d
+    
+    
+    
+    
     ```
 
     #### 問題の明確な構造化
@@ -327,10 +327,10 @@ graph LR
             G[多様性] --> H[複数の選択肢の維持]
         end
         
-        style A fill:#e6f2ff,stroke:#4d94ff
-        style C fill:#d3f8e2,stroke:#4d7fff,stroke-width:2px
-        style E fill:#ffe6e6,stroke:#ff4d4d
-        style G fill:#fff0e6,stroke:#ff9933
+    
+    
+    
+    
     ```
 
     #### 頑健性アプローチの主要戦略
@@ -370,9 +370,9 @@ graph LR
         F --> G[成功実験の拡大]
         F --> H[失敗からの撤退]
         
-        style B fill:#e6f2ff,stroke:#4d94ff
-        style D fill:#d3f8e2,stroke:#4d7fff
-        style F fill:#ffe6e6,stroke:#ff4d4d
+    
+    
+    
     ```
 
     #### 適応的アプローチの要素
@@ -425,8 +425,8 @@ graph LR
     D --> D3[役割の明確化]
     D --> D4[情報共有システム]
     
-    style A fill:#f9f9f9,stroke:#666
-    style D fill:#d3f8e2,stroke:#4d7fff
+
+
 ```
 
 #### 構造化された集団意思決定手法
@@ -633,11 +633,11 @@ graph TD
     E --> E1[失敗からの学習]
     E --> E2[適応プロセスの重視]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#d3f8e2,stroke:#4d7fff
-    style D fill:#ffe6e6,stroke:#ff4d4d
-    style E fill:#fff0e6,stroke:#ff9933
+
+
+
+
+
 ```
 
 #### レジリエンス向上の実践法
@@ -706,9 +706,9 @@ graph TD
         F -->|Yes| G[大規模<br>再開発]
         F -->|No| H[堤防<br>追加強化]
         
-        style A fill:#f9f9f9,stroke:#666
-        style C fill:#e6f2ff,stroke:#4d94ff
-        style F fill:#e6f2ff,stroke:#4d94ff
+    
+    
+    
     ```
 
     #### 結果

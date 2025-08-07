@@ -33,9 +33,9 @@ graph LR
         C2 --> D2[定量的評価・継続改善]
     end
     
-    style B2 fill:#e6f2ff,stroke:#4d94ff
-    style C2 fill:#e6ffe6,stroke:#4d7fff
-    style D2 fill:#ffe6e6,stroke:#ff4d4d
+
+
+
 ```
 
 | 要素 | 従来の意思決定 | データ駆動型意思決定 |
@@ -71,10 +71,10 @@ graph TD
     D2 --> E
     D3 --> E
     
-    style C1 fill:#f9f9f9,stroke:#666
-    style C2 fill:#e6f2ff,stroke:#4d94ff
-    style C3 fill:#ffe6e6,stroke:#ff4d4d
-    style E fill:#e6ffe6,stroke:#4d7fff
+
+
+
+
 ```
 
 | 分析手法 | 主な役割 | 典型的な適用場面 | 提供する価値 |
@@ -132,11 +132,11 @@ graph TD
     F --> D
     B --> A
     
-    style A fill:#f9f9f9,stroke:#666
-    style D fill:#fff2e6,stroke:#ff8c00
-    style F fill:#e6f2ff,stroke:#4d94ff
-    style H fill:#e6ffe6,stroke:#4d7fff
-    style I fill:#ffe6e6,stroke:#ff4d4d
+
+
+
+
+
 ```
 
 ## TypeScript実装：統合分析エンジン
@@ -672,9 +672,9 @@ graph TD
     D2 --> E2[需要予測<br/>顧客分類<br/>異常検知]
     D3 --> E3[現状把握<br/>因果分析<br/>効果測定]
     
-    style C1 fill:#ffe6e6,stroke:#ff4d4d
-    style C2 fill:#e6f2ff,stroke:#4d94ff
-    style C3 fill:#f9f9f9,stroke:#666
+
+
+
 ```
 
 ### 具体的な適用例
@@ -748,10 +748,10 @@ graph LR
     I[新データ追加] --> E
     J[手法アップデート] --> F
     
-    style A fill:#f9f9f9,stroke:#666
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style F fill:#ffe6e6,stroke:#ff4d4d
+
+
+
+
 ```
 
 ### 各手法の継続的改善

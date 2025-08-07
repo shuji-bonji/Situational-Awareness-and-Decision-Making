@@ -50,9 +50,9 @@ graph LR
     D --> D3[気象情報<br>（多ソース統合・予測）]
     D --> D4[緊急対応<br>（異常・災害時指示）]
     
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
-    style D fill:#ffe6e6,stroke:#ff4d4d
+
+
+
 ```
 
 #### 各システム間のデータ連携・処理の目的

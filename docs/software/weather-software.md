@@ -51,9 +51,9 @@ graph TD
     E --> E2[防災機関向け]
     E --> E3[専門機関向け]
     
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
-    style D fill:#ffe6e6,stroke:#ff4d4d
+
+
+
 ```
 
 #### 各要素の役割
@@ -4271,9 +4271,9 @@ graph TD
     D --> D2[台風予測AI]
     D --> D3[異常気象検知AI]
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#e6ffe6,stroke:#4d7fff
-    style D fill:#ffe6e6,stroke:#ff4d4d
+
+
+
 ```
 
 | システム名 | 機能 | 技術的特徴 | 導入効果 |

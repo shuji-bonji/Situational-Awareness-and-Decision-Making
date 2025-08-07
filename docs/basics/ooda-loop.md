@@ -23,10 +23,10 @@ graph LR
     C --> D[行動<br>Act]
     D -->|再観察（継続的ループ）／フィードバック| A
     
-    style A fill:#f9d5e5,stroke:#333
-    style B fill:#eeeeee,stroke:#333
-    style C fill:#d3f8e2,stroke:#333
-    style D fill:#e6f2ff,stroke:#333
+
+
+
+
 ```
 
 ## OODAループの各段階
@@ -62,7 +62,7 @@ graph TD
     F[遺伝的継承] --> B
     G[新情報] --> B
     
-    style B fill:#eeeeee,stroke:#333,stroke-width:2px
+
 ```
 
 ### 3. 決定（Decide）
@@ -176,10 +176,10 @@ graph LR
     C --> |"迂回経路選択<br>高度変更判断<br>管制との調整"| D[行動<br>Act]
     D --> |"操縦桿操作<br>出力調整<br>乗客への通知"| A
     
-    style A fill:#f9d5e5,stroke:#333
-    style B fill:#eeeeee,stroke:#333
-    style C fill:#d3f8e2,stroke:#333
-    style D fill:#e6f2ff,stroke:#333
+
+
+
+
 ```
 
 === "**観察（Observe）**"

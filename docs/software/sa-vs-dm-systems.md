@@ -23,10 +23,10 @@ graph LR
     C --> C2[最適解選択]
     C --> C3[システムが判断・決定]
     
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#ffe6e6,stroke:#ff4d4d
-    style B3 fill:#e6ffe6,stroke:#4d7fff
-    style C3 fill:#fff2e6,stroke:#ff8c00
+
+
+
+
 ```
 
 ## 主要な違い比較表
@@ -197,9 +197,9 @@ graph TD
     D --> D2[ダッシュボード]
     D --> D3[アラート]
     
-    style E fill:#e6f2ff,stroke:#4d94ff
-    style F fill:#e6ffe6,stroke:#4d7fff
-    style G fill:#fff2e6,stroke:#ff8c00
+
+
+
 ```
 
 ### 意思決定システムのフロー
@@ -225,9 +225,9 @@ graph TD
     E --> E2[状態変更]
     E --> E3[フィードバック]
     
-    style D fill:#ffe6e6,stroke:#ff4d4d
-    style E fill:#fff2e6,stroke:#ff8c00
-    style G fill:#f0f8ff,stroke:#1e90ff
+
+
+
 ```
 
 ## UI/UX設計の違い
@@ -274,7 +274,7 @@ graph TD
           <button (click)="adjustTimeScale()">時間軸調整</button>
         </div>
       `,
-      styles: [`
+  
         .radar-scope {
           width: 100%;
           height: 800px;
@@ -393,7 +393,7 @@ graph TD
           </div>
         </div>
       `,
-      styles: [`
+  
         .recommendation-panel {
           max-width: 600px;
           margin: 0 auto;

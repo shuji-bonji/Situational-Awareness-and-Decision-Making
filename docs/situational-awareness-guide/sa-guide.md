@@ -47,11 +47,11 @@ graph TD
     B --> C[状況のパターン認識]
     B --> D[欠落情報の推測]
     B --> E[将来状態の予測]
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6f5ff,stroke:#4da6ff
-    style D fill:#e6f8ff,stroke:#4db8ff
-    style E fill:#e6fbff,stroke:#4dc4ff
+
+
+
+
+
 ```
 
 #### メンタルモデルの重要性
@@ -145,10 +145,10 @@ graph TD
     B ---|情報共有| C
     C ---|情報共有| D
     D ---|情報共有| B
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#e6f5ff,stroke:#4da6ff
-    style C fill:#e6f8ff,stroke:#4db8ff
-    style D fill:#e6fbff,stroke:#4dc4ff
+
+
+
+
 ```
 
 この視点では、個々のメンバーが完全な状況認識を持つ必要はなく、各自が特定の役割と情報を担当し、必要に応じて情報を共有することで、システム全体として効果的な状況認識が実現されます。

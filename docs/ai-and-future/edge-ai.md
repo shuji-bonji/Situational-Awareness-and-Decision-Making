@@ -56,11 +56,6 @@ graph TD
         F3 --> G
         F4 --> G
     end
-    
-    style C1 fill:#e6f2ff,stroke:#4d94ff
-    style D3 fill:#e6ffe6,stroke:#4d7fff
-    style F2 fill:#ffe6e6,stroke:#ff4d4d
-    style G fill:#f0f0f0,stroke:#333,stroke-width:2px
 ```
 
 ### エッジAI技術と状況認識への応用

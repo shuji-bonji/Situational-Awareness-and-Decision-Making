@@ -45,11 +45,11 @@ graph TD
     E --> E2[社会機能回復]
     E --> E3[住民生活支援]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#fff4e6,stroke:#ff8c00
-    style D fill:#e6f2ff,stroke:#4d94ff
-    style E fill:#e6ffe6,stroke:#4d7fff
+
+
+
+
+
 ```
 
 ## 職種別の状況認識
@@ -212,8 +212,8 @@ graph TD
         C --> H[リソース需要評価]
         C --> I[安全リスク評価]
         
-        style A fill:#ffe6e6,stroke:#ff4d4d
-        style D fill:#e6f2ff,stroke:#4d94ff
+    
+    
     ```
 
     #### テロ・重大事件
@@ -254,10 +254,10 @@ graph TD
     G --> H[意思決定支援]
     H --> I[効果的な対応]
     
-    style A fill:#f9f9f9,stroke:#666
-    style G fill:#e6f2ff,stroke:#4d94ff
-    style H fill:#e6ffe6,stroke:#4d7fff
-    style I fill:#ffe6e6,stroke:#ff4d4d
+
+
+
+
 ```
 
 ### GIS・マッピング技術
@@ -316,9 +316,9 @@ graph LR
     G --> H[事後評価]
     H --> I[改善事項抽出]
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style H fill:#e6ffe6,stroke:#4d7fff
-    style I fill:#fff4e6,stroke:#ff8c00
+
+
+
 ```
 
 #### 訓練の効果
@@ -358,8 +358,8 @@ graph TD
     A --> E[ロジスティック部門<br>（資源・支援）]
     A --> F[財務・総務部門<br>（予算・文書）]
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 #### 情報管理と状況認識
@@ -412,8 +412,8 @@ graph TD
     A --> E[指定行政機関<br>指定公共機関]
     B --> F[指定地方行政機関<br>指定地方公共機関]
     
-    style A fill:#ffe6e6,stroke:#ff4d4d
-    style D fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 #### 自助・共助・公助の概念
@@ -506,8 +506,8 @@ graph LR
     A --> G[技術・ノウハウ提供]
     B --> H[地域情報・人的資源]
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 ## まとめ

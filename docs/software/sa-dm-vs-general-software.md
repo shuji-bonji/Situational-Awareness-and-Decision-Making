@@ -24,8 +24,8 @@ graph LR
     C --> C2[許容可能エラー]
     C --> C3[効率性・スピード重視]
     
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 ## 主要な違い比較表
@@ -217,10 +217,10 @@ graph TD
     J --> M
     M --> N[継続的デプロイ]
     
-    style C fill:#ffe6e6,stroke:#ff4d4d
-    style K fill:#ffe6e6,stroke:#ff4d4d
-    style H fill:#e6ffe6,stroke:#4d7fff
-    style M fill:#e6ffe6,stroke:#4d7fff
+
+
+
+
 ```
 
 ## 技術実装の特徴比較

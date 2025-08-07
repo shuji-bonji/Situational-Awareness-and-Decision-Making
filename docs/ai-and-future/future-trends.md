@@ -51,8 +51,6 @@ graph LR
     F2 --> G
     F3 --> G
     F4 --> G
-    
-    style G fill:#f0f0f0,stroke:#333,stroke-width:3px
 ```
 
 ## 短期トレンド（2025-2027年）：実用化の加速
@@ -237,9 +235,6 @@ graph TD
     B5 --> C
     
     C --> D[新たな人間-AI関係]
-    
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#ffe6e6,stroke:#ff4d4d
 ```
 
 ### 2. 自律的社会システムの出現

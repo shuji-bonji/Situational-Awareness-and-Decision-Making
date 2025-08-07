@@ -36,9 +36,6 @@ graph LR
     C -.補完.-> H
     D -.補完.-> I
     E -.補完.-> J
-    
-    style A fill:#f9d5e5,stroke:#333
-    style F fill:#d3f8e2,stroke:#333
 ```
 
 人間の状況認識には、認知バイアス、注意の限界、情報過負荷など多くの制約があります。AIはこれらの限界を補完することで、より包括的で正確な状況認識を実現します。
@@ -79,11 +76,6 @@ graph TD
     RECOMMEND --> URGENT[緊急対応]
     RECOMMEND --> TACTICAL[戦術的対応]
     RECOMMEND --> STRATEGIC[戦略的対応]
-    
-    style DATA fill:#f9f9f9,stroke:#666
-    style ANALYZE fill:#e6f2ff,stroke:#4d94ff
-    style PREDICT fill:#e6ffe6,stroke:#4d7fff
-    style RECOMMEND fill:#ffe6e6,stroke:#ff4d4d
 ```
 
 AIは上記の多層構造を通じて、生データから意味のある状況認識と行動推奨を生成します。各層で専門的なAIアルゴリズムが適用され、Endsleyの3レベルモデルに対応した状況認識を実現します。
@@ -195,10 +187,6 @@ AIは上記の多層構造を通じて、生データから意味のある状況
         G --> J
         H --> K[地上管制通知]
         I --> L[整備計画]
-        
-        style B fill:#e6f2ff,stroke:#4d94ff
-        style J fill:#ffe6e6,stroke:#ff4d4d
-        style K fill:#ffe6e6,stroke:#ff4d4d
     ```
 
 === "医療分野"
@@ -250,11 +238,6 @@ graph TD
     F --> D
     G --> D
     H --> D
-    
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
-    style D fill:#ffe6e6,stroke:#ff4d4d
 ```
 
 ### 認知負荷を考慮したAI情報提示

@@ -39,10 +39,10 @@ graph TB
     D --> D2[スポーツ]
     D --> D3[個人の安全管理]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
+
+
+
+
 ```
 
 !!! info "mermaidによるダイアグラム画像について"
@@ -155,9 +155,9 @@ graph TB
     B --> B3[実行計画]
     B --> C[行動]
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6ffe6,stroke:#4d7fff
+
+
+
 ```
 
 ### 分野別の状況認識と意思決定の特徴比較

@@ -30,7 +30,7 @@ graph TD
     H --> J
     I --> J
     
-    style J fill:#ff9999,stroke:#333,stroke-width:2px
+
 ```
 
 ## 認知バイアスのカテゴリー
@@ -117,8 +117,8 @@ graph LR
     F1[後知恵バイアス] -.-> F
     F2[帰属バイアス] -.-> F
     
-    style A fill:#f9f9f9,stroke:#666
-    style E fill:#ff9999,stroke:#333
+
+
 ```
 
 ### 各段階でのバイアスの例
@@ -207,7 +207,7 @@ graph LR
         C --> E
         D --> E
         
-        style E fill:#d3f8e2,stroke:#333,stroke-width:2px
+    
     ```
 
     #### 具体的テクニック
@@ -241,7 +241,7 @@ graph LR
         C -.-> E
         D -.-> E
         
-        style E fill:#e6f2ff,stroke:#4d94ff,stroke-width:2px
+    
     ```
 
     #### 組織的アプローチ

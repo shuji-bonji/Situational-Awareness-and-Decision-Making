@@ -46,11 +46,11 @@ graph TD
     E --> E2[満足度向上]
     E --> E3[自己実現]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 ## 場面別の状況認識
@@ -164,8 +164,8 @@ graph TD
     J --> L
     K --> L
     
-    style A fill:#f9f9f9,stroke:#666
-    style L fill:#e6f2ff,stroke:#4d94ff
+
+
 ```
 
 #### 電動キックボードの法的分類と状況認識
@@ -216,10 +216,10 @@ graph LR
     C --> D[Manage<br>管理する]
     D --> A
     
-    style A fill:#ffe6e6,stroke:#ff4d4d
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
-    style D fill:#fff4e6,stroke:#ff8c00
+
+
+
+
 ```
 
 ##### 日常場面でのSLAM適用例
@@ -295,11 +295,11 @@ graph TD
     E --> E2[避難経路確認]
     E --> E3[連絡手段確保]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#fff4e6,stroke:#ff8c00
-    style D fill:#e6f2ff,stroke:#4d94ff
-    style E fill:#e6ffe6,stroke:#4d7fff
+
+
+
+
+
 ```
 
 #### 高齢者・子供の安全管理
@@ -369,11 +369,11 @@ graph TD
     E --> E2[自動家電制御]
     E --> E3[買い物リスト管理]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#ffe6e6,stroke:#ff4d4d
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#fff4e6,stroke:#ff8c00
+
+
+
+
+
 ```
 
 #### スマートデバイスによる状況認識強化
@@ -412,8 +412,8 @@ graph LR
     E --> E1[特定条件下で<br>システムが完全制御]
     F --> F1[全ての条件で<br>システムが完全制御]
     
-    style C fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 !!! warning "自動化と状況認識の関係"
@@ -508,11 +508,11 @@ graph TD
     E --> E2[清潔・整理整頓]
     E --> E3[設備の点検]
     
-    style A fill:#f9f9f9,stroke:#666
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style C fill:#e6ffe6,stroke:#4d7fff
-    style D fill:#fff4e6,stroke:#ff8c00
-    style E fill:#ffe6e6,stroke:#ff4d4d
+
+
+
+
+
 ```
 
 #### 日常生活での防犯チェックポイント
@@ -597,10 +597,10 @@ graph LR
     D --> D1[安全な社会]
     D --> D2[互助ネットワーク]
     
-    style A fill:#e6f2ff,stroke:#4d94ff
-    style B fill:#e6ffe6,stroke:#4d7fff
-    style C fill:#fff4e6,stroke:#ff8c00
-    style D fill:#ffe6e6,stroke:#ff4d4d
+
+
+
+
 ```
 
 ### 教育・普及活動
@@ -736,9 +736,9 @@ graph TD
     E --> E2[経路選択]
     E --> E3[服装・持ち物]
     
-    style A fill:#f9f9f9,stroke:#666
-    style D fill:#ffe6e6,stroke:#ff4d4d
-    style E fill:#e6f2ff,stroke:#4d94ff
+
+
+
 ```
 
 #### 予測的安全管理
@@ -814,8 +814,8 @@ graph LR
     C1 --> E
     D1 --> E
     
-    style A fill:#ffe6e6,stroke:#ff4d4d
-    style E fill:#e6ffe6,stroke:#4d7fff
+
+
 ```
 
 ## まとめ

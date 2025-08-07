@@ -42,10 +42,10 @@ graph LR
     E --> E2[ミンツバーグモデル]
     E --> E3[サイモンモデル]
     
-    style B fill:#f9d5e5,stroke:#333
-    style C fill:#d3f8e2,stroke:#333
-    style D fill:#e6f2ff,stroke:#333
-    style E fill:#ffe6e6,stroke:#333
+
+
+
+
 ```
 
 ## 規範的意思決定モデル
@@ -171,7 +171,7 @@ graph LR
         E -->|不満足| C
         E -->|満足| F[実行]
         
-        style E fill:#d3f8e2,stroke:#333,stroke-width:2px
+    
     ```
 
     #### 例: 住宅選び
@@ -234,7 +234,7 @@ graph LR
         D --> E[計画修正]
         E --> B
         
-        style D fill:#d3f8e2,stroke:#333,stroke-width:2px
+    
     ```
 
     #### 例: スタートアップの製品開発
@@ -270,8 +270,8 @@ graph LR
         E -->|問題あり| G[修正または代替案]
         G --> E
         
-        style B fill:#f9d5e5,stroke:#333
-        style E fill:#d3f8e2,stroke:#333
+    
+    
     ```
 
     #### 例: 消防士の判断
@@ -300,8 +300,8 @@ graph LR
         B -->|異常を検出| C
         C -->|分析・修正| D
         
-        style B fill:#e6f2ff,stroke:#333
-        style C fill:#d3f8e2,stroke:#333
+    
+    
     ```
 
     #### 例: 車の運転
@@ -351,9 +351,9 @@ graph LR
         C --> D[実行と評価]
         D -.-> A
         
-        style A fill:#f9d5e5,stroke:#333
-        style B fill:#d3f8e2,stroke:#333
-        style C fill:#e6f2ff,stroke:#333
+    
+    
+    
     ```
 
     #### 長所と限界
@@ -389,7 +389,7 @@ graph LR
         C --> D3[CI: 協議的-集団]
         C --> D4[GII: 集団的]
         
-        style C fill:#d3f8e2,stroke:#333,stroke-width:2px
+    
     ```
 
     #### 長所と限界
@@ -427,9 +427,9 @@ graph LR
         C2 --> C3
         C2 --> B
         
-        style A fill:#f9d5e5,stroke:#333
-        style B fill:#d3f8e2,stroke:#333
-        style C fill:#e6f2ff,stroke:#333
+    
+    
+    
     ```
 
     #### 長所と限界

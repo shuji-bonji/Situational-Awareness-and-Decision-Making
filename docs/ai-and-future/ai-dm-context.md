@@ -36,10 +36,6 @@ graph TD
     H5[AI支援: 最適化と推奨] -.-> E
     H6[AI支援: 自動化と監視] -.-> F
     H7[AI支援: パフォーマンス分析と継続学習] -.-> G
-    
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#e6ffe6,stroke:#4d7fff
-    style E fill:#ffe6e6,stroke:#ff4d4d
 ```
 
 AIは意思決定プロセスの各段階で異なる役割を果たし、人間の認知能力を拡張します。データ分析から選択肢評価、さらには意思決定の自動化まで、AIの関与はプロセス全体に及びます。
@@ -157,9 +153,6 @@ AIは意思決定プロセスの各段階で異なる役割を果たし、人間
         D --> E[報酬/フィードバック]
         E --> F[ポリシー更新]
         F --> A
-        
-        style A fill:#f9d5e5,stroke:#333
-        style F fill:#e6ffe6,stroke:#4d7fff
     ```
 
 === "マルチエージェント集合意思決定モデル"
@@ -194,8 +187,6 @@ graph TD
     A5 --> C[協働インターフェース]
     B5 --> C
     C --> D[強化された意思決定]
-    
-    style C fill:#e6f2ff,stroke:#4d94ff,stroke-width:2px
 ```
 
 ### 協働モデルの種類
@@ -327,9 +318,6 @@ graph TD
         J --> K[取引実行]
         K --> L[パフォーマンス評価]
         L --> B
-        
-        style B fill:#e6f2ff,stroke:#4d94ff
-        style J fill:#ffe6e6,stroke:#ff4d4d
     ```
 
 === "医療分野"
@@ -512,9 +500,6 @@ graph LR
     C4 --> D
     D --> E[社会的受容]
     D --> F[責任ある利用]
-    
-    style B fill:#e6f2ff,stroke:#4d94ff
-    style D fill:#d3f8e2,stroke:#333
 ```
 
 ### 公平性とバイアス
