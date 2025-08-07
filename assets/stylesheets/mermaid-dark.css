@@ -1,0 +1,20 @@
+/* ダークモード時のMermaid図の調整 */
+[data-md-color-scheme="slate"] .mermaid {
+    /* 元の表示でも少し明るく */
+    filter: brightness(1.1);
+}
+
+/* ズーム時のダークモード対応 */
+[data-md-color-scheme="slate"] .mermaid[style*="scale"] {
+    background: #1a1a1a !important;
+}
+
+/* panzoom内のMermaid対応 */
+.panzoom-box .mermaid {
+    position: relative;
+}
+
+/* glightbox内のMermaid対応 */
+.glightbox .mermaid {
+    display: block !important;
+}
