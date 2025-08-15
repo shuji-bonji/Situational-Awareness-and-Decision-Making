@@ -47,6 +47,10 @@ Situational-Awareness-and-Decision-Making/
     mkdocs gh-deploy
     ```
 
+### ⚠️ ブラウザ互換性について
+- **推奨ブラウザ**: Chrome, Firefox, Edge
+- **Safari**: Mermaidダイアグラムの拡大表示時に画像がぼやける現象が発生します。最適な表示のためには、Chrome または Firefox の使用を推奨します。
+
 ## ✨ 主なコンテンツ
 - **基本概念**
   - 状況認識（Situational Awareness）
