@@ -30,6 +30,44 @@
       return;
     }
 
+    // クリック前にSVGの情報を取得して保存
+    let originalSvgInfo = null;
+    const findAndStoreSvgInfo = () => {
+      const svg = diagram.querySelector('svg');
+      if (svg) {
+        const viewBox = svg.getAttribute('viewBox');
+        let svgWidth = 100;
+        let svgHeight = 100;
+        
+        if (viewBox) {
+          const vbParts = viewBox.split(' ').map((v) => parseFloat(v));
+          if (vbParts.length === 4) {
+            svgWidth = vbParts[2];
+            svgHeight = vbParts[3];
+          }
+        } else {
+          const widthAttr = svg.getAttribute('width');
+          const heightAttr = svg.getAttribute('height');
+          if (widthAttr && heightAttr) {
+            svgWidth = parseFloat(widthAttr);
+            svgHeight = parseFloat(heightAttr);
+          }
+        }
+        
+        originalSvgInfo = {
+          width: svgWidth,
+          height: svgHeight,
+          aspectRatio: svgHeight / svgWidth
+        };
+        console.log('Stored original SVG info for', diagram.textContent.substring(0, 50), ':', originalSvgInfo);
+      } else {
+        console.log('No SVG found in diagram during initialization');
+      }
+    };
+    
+    // SVG情報を事前に取得
+    findAndStoreSvgInfo();
+    
     diagram.style.cursor = 'zoom-in';
     let isZoomed = false;
     let overlay = null;
@@ -92,8 +130,11 @@
         this.style.height = '90vh';
         this.style.overflow = 'auto';
         this.style.display = 'flex';
-        this.style.alignItems = 'center';
-        this.style.justifyContent = 'center';
+        
+        // safe centerを使用：内容が収まる場合は中央、収まらない場合は開始位置
+        // これによりスクロール可能な縦長の画像は自動的に上端から表示される
+        this.style.alignItems = 'safe center';
+        this.style.justifyContent = 'safe center';
 
         // Safariでのぼやけ対策
         this.style.willChange = 'transform';
@@ -115,24 +156,31 @@
         const adjustSVG = () => {
           // Shadow Root内のSVGを探す（MermaidはShadow DOMを使用）
           let svg = null;
-          let shadowHost = null;
 
           // まず直接のSVGを探す
           svg = this.querySelector('svg');
 
-          // Shadow DOM内のSVGを探す
+          // 子要素を再帰的に探索してSVGを見つける
           if (!svg) {
-            const allElements = this.querySelectorAll('*');
-            for (const el of allElements) {
-              if (el.shadowRoot) {
-                const shadowSvg = el.shadowRoot.querySelector('svg');
-                if (shadowSvg) {
-                  svg = shadowSvg;
-                  shadowHost = el;
-                  break;
+            const findSVG = (element) => {
+              // 直接の子要素にSVGがあるか確認
+              const directSvg = element.querySelector('svg');
+              if (directSvg) return directSvg;
+              
+              // Shadow DOM内を探索
+              const allElements = element.querySelectorAll('*');
+              for (const el of allElements) {
+                if (el.shadowRoot) {
+                  const shadowSvg = el.shadowRoot.querySelector('svg');
+                  if (shadowSvg) {
+                    return shadowSvg;
+                  }
                 }
               }
-            }
+              return null;
+            };
+            
+            svg = findSVG(this);
           }
 
           if (svg) {
