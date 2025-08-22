@@ -58,6 +58,12 @@
 .mermaid[style*="position: fixed"] svg {
   max-width: none !important;
   max-height: none !important;
-  width: auto !important;
-  height: auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+/* ダークモード時のモーダル背景 */
+[data-md-color-scheme='slate'] .mermaid[style*="position: fixed"] {
+  background: #2b2b2b !important;
 }

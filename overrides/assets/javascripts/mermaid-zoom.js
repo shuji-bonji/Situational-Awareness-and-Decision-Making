@@ -87,14 +87,16 @@
                 this.style.height = '90vh';
                 this.style.overflow = 'auto';
                 this.style.display = 'flex';
-                this.style.alignItems = 'flex-start';
-                this.style.justifyContent = 'flex-start';
+                this.style.alignItems = 'center';
+                this.style.justifyContent = 'center';
                 
                 // ダークモード対応
                 if (isDark) {
-                    this.style.background = '#1a1a1a';
+                    this.style.background = '#2b2b2b';
+                    this.style.boxShadow = '0 0 50px rgba(0,0,0,0.95)';
                 } else {
                     this.style.background = 'white';
+                    this.style.boxShadow = '0 0 50px rgba(0,0,0,0.8)';
                 }
                 
                 // MermaidはSVGを動的に生成するため、内部のSVGのサイズを調整
@@ -123,40 +125,20 @@
                     }
                     
                     if (svg) {
-                        // SVGのviewBoxから実際のサイズを取得
-                        const viewBox = svg.getAttribute('viewBox');
-                        let svgWidth = 800;
-                        let svgHeight = 600;
-                        
-                        if (viewBox) {
-                            const [, , width, height] = viewBox.split(' ').map(Number);
-                            svgWidth = width || 800;
-                            svgHeight = height || 600;
-                        }
-                        
-                        // コンテナのサイズを取得
-                        const containerWidth = window.innerWidth * 0.9 - 40;
-                        const containerHeight = window.innerHeight * 0.9 - 40;
-                        
-                        // アスペクト比を維持しながらスケール計算
-                        const scaleX = containerWidth / svgWidth;
-                        const scaleY = containerHeight / svgHeight;
-                        const scale = Math.min(scaleX, scaleY, 1); // 最大1倍まで
-                        
-                        // SVGのスタイル設定
-                        svg.style.width = `${svgWidth * scale}px`;
-                        svg.style.height = `${svgHeight * scale}px`;
+                        // SVGのスタイル設定（object-fit: containを使用）
+                        svg.style.maxWidth = 'none';
+                        svg.style.maxHeight = 'none';
+                        svg.style.width = '100%';
+                        svg.style.height = '100%';
+                        svg.style.objectFit = 'contain';
                         svg.style.display = 'block';
-                        svg.style.margin = 'auto';
-                        
-                        // コンテナを中央配置
-                        this.style.display = 'flex';
-                        this.style.alignItems = 'center';
-                        this.style.justifyContent = 'center';
                         
                         // ダークモードでのSVG調整
                         if (isDark) {
-                            svg.style.filter = 'invert(0.9) hue-rotate(180deg) brightness(1.1)';
+                            // SVGのテキストとラインを明るくする
+                            svg.style.filter = 'invert(0.85) hue-rotate(180deg) brightness(1.2)';
+                        } else {
+                            svg.style.filter = '';
                         }
                     }
                 };
