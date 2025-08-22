@@ -73,32 +73,100 @@
                 `;
                 document.body.appendChild(overlay);
                 
-                // 要素を拡大
+                // 元の要素を直接使用して拡大表示
                 this.style.position = 'fixed';
                 this.style.left = '50%';
                 this.style.top = '50%';
-                this.style.transform = 'translate(-50%, -50%) scale(3)';
-                this.style.transformOrigin = 'center center';
+                this.style.transform = 'translate(-50%, -50%)';
                 this.style.zIndex = '10001';
-                
-                // パディング最適化
                 this.style.padding = '20px';
                 this.style.margin = '0';
+                this.style.boxShadow = '0 0 50px rgba(0,0,0,0.8)';
+                this.style.borderRadius = '10px';
+                this.style.width = '90vw';
+                this.style.height = '90vh';
+                this.style.overflow = 'auto';
+                this.style.display = 'flex';
+                this.style.alignItems = 'flex-start';
+                this.style.justifyContent = 'flex-start';
                 
                 // ダークモード対応
                 if (isDark) {
                     this.style.background = '#1a1a1a';
-                    this.style.filter = 'invert(0.9) hue-rotate(180deg) brightness(1.1)';
                 } else {
                     this.style.background = 'white';
-                    this.style.filter = '';
                 }
                 
-                this.style.boxShadow = '0 0 50px rgba(0,0,0,0.8)';
-                this.style.borderRadius = '10px';
-                this.style.maxWidth = '90vw';
-                this.style.maxHeight = '90vh';
-                this.style.overflow = 'auto';
+                // MermaidはSVGを動的に生成するため、内部のSVGのサイズを調整
+                // Shadow DOMやslotを使う場合も考慮
+                const adjustSVG = () => {
+                    // Shadow Root内のSVGを探す（MermaidはShadow DOMを使用）
+                    let svg = null;
+                    let shadowHost = null;
+                    
+                    // まず直接のSVGを探す
+                    svg = this.querySelector('svg');
+                    
+                    // Shadow DOM内のSVGを探す
+                    if (!svg) {
+                        const allElements = this.querySelectorAll('*');
+                        for (const el of allElements) {
+                            if (el.shadowRoot) {
+                                const shadowSvg = el.shadowRoot.querySelector('svg');
+                                if (shadowSvg) {
+                                    svg = shadowSvg;
+                                    shadowHost = el;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (svg) {
+                        // SVGのviewBoxから実際のサイズを取得
+                        const viewBox = svg.getAttribute('viewBox');
+                        let svgWidth = 800;
+                        let svgHeight = 600;
+                        
+                        if (viewBox) {
+                            const [, , width, height] = viewBox.split(' ').map(Number);
+                            svgWidth = width || 800;
+                            svgHeight = height || 600;
+                        }
+                        
+                        // コンテナのサイズを取得
+                        const containerWidth = window.innerWidth * 0.9 - 40;
+                        const containerHeight = window.innerHeight * 0.9 - 40;
+                        
+                        // アスペクト比を維持しながらスケール計算
+                        const scaleX = containerWidth / svgWidth;
+                        const scaleY = containerHeight / svgHeight;
+                        const scale = Math.min(scaleX, scaleY, 1); // 最大1倍まで
+                        
+                        // SVGのスタイル設定
+                        svg.style.width = `${svgWidth * scale}px`;
+                        svg.style.height = `${svgHeight * scale}px`;
+                        svg.style.display = 'block';
+                        svg.style.margin = 'auto';
+                        
+                        // コンテナを中央配置
+                        this.style.display = 'flex';
+                        this.style.alignItems = 'center';
+                        this.style.justifyContent = 'center';
+                        
+                        // ダークモードでのSVG調整
+                        if (isDark) {
+                            svg.style.filter = 'invert(0.9) hue-rotate(180deg) brightness(1.1)';
+                        }
+                    }
+                };
+                
+                // 即座に適用
+                adjustSVG();
+                
+                // Mermaidの描画完了を待つ
+                setTimeout(adjustSVG, 100);
+                setTimeout(adjustSVG, 300);
                 
                 isZoomed = true;
                 
