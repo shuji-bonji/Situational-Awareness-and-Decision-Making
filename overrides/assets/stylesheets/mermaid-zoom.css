@@ -11,7 +11,7 @@
 }
 
 /* ホバー時にズーム可能であることを示す（オプション） */
-.mermaid[data-zoom-enabled]:not([style*="position: fixed"])::after {
+.mermaid[data-zoom-enabled]:not([style*='position: fixed'])::after {
   content: '🔍 クリックで拡大';
   position: absolute;
   bottom: 10px;
@@ -26,7 +26,7 @@
   pointer-events: none;
 }
 
-.mermaid[data-zoom-enabled]:not([style*="position: fixed"]):hover::after {
+.mermaid[data-zoom-enabled]:not([style*='position: fixed']):hover::after {
   opacity: 1;
 }
 
@@ -48,22 +48,26 @@
 }
 
 /* ズーム時のスクロール対応 */
-.mermaid[style*="position: fixed"] {
+.mermaid[style*='position: fixed'] {
   overflow: auto !important;
   overflow-x: auto !important;
   overflow-y: auto !important;
 }
 
 /* ズーム時のSVGサイズ調整 */
-.mermaid[style*="position: fixed"] svg {
+.mermaid[style*='position: fixed'] svg {
   max-width: none !important;
   max-height: none !important;
   width: 100% !important;
   height: 100% !important;
   object-fit: contain !important;
+  image-rendering: crisp-edges !important;
+  shape-rendering: geometricPrecision !important;
+  -webkit-backface-visibility: hidden !important;
+  -webkit-transform: translateZ(0) !important;
 }
 
 /* ダークモード時のモーダル背景 */
-[data-md-color-scheme='slate'] .mermaid[style*="position: fixed"] {
+[data-md-color-scheme='slate'] .mermaid[style*='position: fixed'] {
   background: #2b2b2b !important;
 }
