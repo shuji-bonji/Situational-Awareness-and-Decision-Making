@@ -183,5 +183,12 @@ markdown_extensions:
 plugins:
   - d2
   - search
+  - git-revision-date-localized:
+      enable_creation_date: false
+      type: date
+      timezone: Asia/Tokyo
+      locale: ja
+      fallback_to_build_date: false
+      enable_sitemap: true
   #- mermaid-zoom  # カスタム実装を使用するため無効化
   #- glightbox
