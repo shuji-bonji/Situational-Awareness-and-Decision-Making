@@ -1,0 +1,4162 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="海上分野における状況認識の概念と実践的活用例を、船舶運航や航海支援の文脈で解説します。">
+      
+      
+      
+        <link rel="canonical" href="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/applications/maritime-sa/">
+      
+      
+        <link rel="prev" href="../aviation-dm/">
+      
+      
+        <link rel="next" href="../maritime-dm/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>状況認識 - 状況認識と意思決定</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-dark.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-zoom.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mkdocs_d2_plugin.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  
+
+  <!-- Meta Keywords (minimal usage) -->
+  
+
+  <!-- 日本語サイト向けの言語設定 -->
+  <meta name="language" content="ja">
+  <meta http-equiv="content-language" content="ja">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="状況認識 - Situational Awareness and Decision Making">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+  <meta property="og:site_name" content="状況認識と意思決定">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/applications/maritime-sa/">
+  
+    <meta property="og:description" content="海上分野における状況認識の概念と実践的活用例を、船舶運航や航海支援の文脈で解説します。">
+  
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="状況認識 - Situational Awareness and Decision Making">
+  
+    <meta name="twitter:description" content="海上分野における状況認識の概念と実践的活用例を、船舶運航や航海支援の文脈で解説します。">
+  
+  <meta name="twitter:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+
+  
+  
+  
+    <meta name="robots" content="index, follow">
+  
+
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="状況認識と意思決定" class="md-header__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            状況認識と意思決定
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              状況認識
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../basics/" class="md-tabs__link">
+          
+  
+  
+  基本概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../situational-awareness-guide/" class="md-tabs__link">
+          
+  
+  
+  状況認識の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../decision-making-guide/" class="md-tabs__link">
+          
+  
+  
+  意思決定の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  応用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../software/" class="md-tabs__link">
+          
+  
+  
+  ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ai-and-future/" class="md-tabs__link">
+          
+  
+  
+  AIと将来展望
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../case-studies/" class="md-tabs__link">
+          
+  
+  
+  ケーススタディ
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="状況認識と意思決定" class="md-nav__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    状況認識と意思決定
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ホーム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    基本概念
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基本概念
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/what-is-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/endsley-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Endsleyの3レベルモデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/ooda-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/sa-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の基本アプローチ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/measuring-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の測定方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/training-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/decision-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定モデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/cognitive-biases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    認知バイアスと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/uncertainty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    不確実性下の意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/team-decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    チーム意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    現代の意思決定手法
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            現代の意思決定手法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/ai-enhanced-ooda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI統合OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    データ駆動型意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/collaborative-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    協調型状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/decision-training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    応用
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            応用
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    航空分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            航空分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aviation-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aviation-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    海事・船舶分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            海事・船舶分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      海事分野での状況認識の特徴
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="海事分野での状況認識の特徴">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      固有の環境特性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識が求められる理由
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      職種別の状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="職種別の状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#captain" class="md-nav__link">
+    <span class="md-ellipsis">
+      船長（Captain）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-officer" class="md-nav__link">
+    <span class="md-ellipsis">
+      航海士（Navigation Officer）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engineering-officer" class="md-nav__link">
+    <span class="md-ellipsis">
+      機関士（Engineering Officer）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      水先人（Pilot）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      技術システムと状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技術システムと状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      航海支援システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      気象・海象情報システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      自動化システムとの協調
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      航行段階別の状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="航行段階別の状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      出港・離岸
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      沖合航行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      入港・着岸
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      事故事例と教訓
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="事故事例と教訓">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      代表的な海難事故と状況認識
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識失敗の典型パターン
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      国際規則と状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="国際規則と状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solas" class="md-nav__link">
+    <span class="md-ellipsis">
+      SOLAS条約（海上人命安全条約）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colreg" class="md-nav__link">
+    <span class="md-ellipsis">
+      COLREG（海上衝突予防規則）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      将来の展望
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="将来の展望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mass-maritime-autonomous-surface-ships" class="md-nav__link">
+    <span class="md-ellipsis">
+      自律運航船（MASS: Maritime Autonomous Surface Ships）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      デジタル技術の活用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      日本での取り組み
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      重要なポイント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      システム開発への示唆
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      関連リンク
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maritime-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    医療分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            医療分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../medical-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../medical-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            緊急対応・危機管理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emergency-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emergency-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    軍事・防衛分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            軍事・防衛分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../military-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../military-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../industrial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    産業・インフラ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daily-life/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日常生活
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア比較分析
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア比較分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/sa-dm-vs-general-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SA/DM系 vs 一般ソフトウェア
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/sa-vs-dm-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識 vs 意思決定システム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/aviation-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/maritime-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    船舶関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/weather-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    気象関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/medical-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    医療関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/emergency-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/military-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    軍事
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/aviation-dm-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AIと将来展望
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            AIと将来展望
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/ai-sa-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/new-context-in-sa-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とAIの新たな文脈
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/ai-dm-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI技術分野別概要
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            AI技術分野別概要
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/machine-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    機械学習・深層学習
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/natural-language-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    自然言語処理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/computer-vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    コンピュータビジョン
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/predictive-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    予測分析
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/explainable-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    説明可能なAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/edge-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    エッジAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/future-trends/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    将来の動向
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ケーススタディ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            ケーススタディ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/haneda-airport-collision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    羽田空港地上衝突事故(2024/1/2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      海事分野での状況認識の特徴
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="海事分野での状況認識の特徴">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      固有の環境特性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識が求められる理由
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      職種別の状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="職種別の状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#captain" class="md-nav__link">
+    <span class="md-ellipsis">
+      船長（Captain）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-officer" class="md-nav__link">
+    <span class="md-ellipsis">
+      航海士（Navigation Officer）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#engineering-officer" class="md-nav__link">
+    <span class="md-ellipsis">
+      機関士（Engineering Officer）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      水先人（Pilot）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      技術システムと状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技術システムと状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      航海支援システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      気象・海象情報システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      自動化システムとの協調
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      航行段階別の状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="航行段階別の状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      出港・離岸
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      沖合航行
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      入港・着岸
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      事故事例と教訓
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="事故事例と教訓">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      代表的な海難事故と状況認識
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識失敗の典型パターン
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      国際規則と状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="国際規則と状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#solas" class="md-nav__link">
+    <span class="md-ellipsis">
+      SOLAS条約（海上人命安全条約）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colreg" class="md-nav__link">
+    <span class="md-ellipsis">
+      COLREG（海上衝突予防規則）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      将来の展望
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="将来の展望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mass-maritime-autonomous-surface-ships" class="md-nav__link">
+    <span class="md-ellipsis">
+      自律運航船（MASS: Maritime Autonomous Surface Ships）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      デジタル技術の活用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      日本での取り組み
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      重要なポイント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      システム開発への示唆
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      関連リンク
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">海事・船舶分野での状況認識<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">このページについて</p>
+<p>このページでは、海事・船舶分野における状況認識（Situational Awareness）の重要性と応用について詳しく解説します。船長、航海士、機関士、港湾関係者など、海事業界に関わる全ての職種での状況認識の実践例を学びます。</p>
+</div>
+<h2 id="_2">海事分野での状況認識の特徴<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>海事分野は、広大な海域での長期間の航行を特徴とし、航空分野とは異なる独特の状況認識要件があります。</p>
+<h3 id="_3">固有の環境特性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>説明</th>
+<th>状況認識への影響</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2次元広域移動</strong></td>
+<td>主に水平面での移動<br>数千キロの長距離航行</td>
+<td>相対位置の把握<br>長期的な航路計画</td>
+</tr>
+<tr>
+<td><strong>時間的余裕</strong></td>
+<td>航空機に比べ低速移動<br>意思決定に時間的余裕</td>
+<td>慎重な判断が可能<br>予防的対応の重要性</td>
+</tr>
+<tr>
+<td><strong>気象・海象依存</strong></td>
+<td>海風、波浪、潮流の影響<br>視界制限（霧、雨等）</td>
+<td>間接情報への高依存<br>自然条件の予測</td>
+</tr>
+<tr>
+<td><strong>国際航路</strong></td>
+<td>多国間を移動<br>異なる規則・慣習</td>
+<td>国際規則の理解<br>文化的適応力</td>
+</tr>
+<tr>
+<td><strong>限られた人員</strong></td>
+<td>少人数での長期航行<br>24時間体制の維持</td>
+<td>疲労管理<br>役割の多重化</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">状況認識が求められる理由<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TB
+    A[海事分野での状況認識の必要性] --&gt; B[安全航行]
+    A --&gt; C[効率運航]
+    A --&gt; D[環境保護]
+    A --&gt; E[規制遵守]
+
+    B --&gt; B1[衝突回避]
+    B --&gt; B2[座礁防止]
+    B --&gt; B3[悪天候対応]
+
+    C --&gt; C1[燃料効率]
+    C --&gt; C2[スケジュール管理]
+    C --&gt; C3[港湾効率]
+
+    D --&gt; D1[汚染防止]
+    D --&gt; D2[生態系保護]
+    D --&gt; D3[持続可能な運航]
+
+    E --&gt; E1[SOLAS遵守]
+    E --&gt; E2[MARPOL対応]
+    E --&gt; E3[港湾国検査]
+
+
+
+
+
+</code></pre>
+<h2 id="_5">職種別の状況認識<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">船長（Captain）</label><label for="__tabbed_1_2">航海士（Navigation Officer）</label><label for="__tabbed_1_3">機関士（Engineering Officer）</label><label for="__tabbed_1_4">水先人（Pilot）</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<h3 id="captain">船長（Captain）<a class="headerlink" href="#captain" title="Permanent link">&para;</a></h3>
+<p>船長は船舶運航の最高責任者として、総合的な状況認識が求められます。</p>
+<h4 id="3">船長の状況認識の3レベル<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">レベル1: 知覚（Perception）</label><label for="__tabbed_2_2">レベル2: 理解（Comprehension）</label><label for="__tabbed_2_3">レベル3: 予測（Projection）</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>海況・船舶・環境からの情報収集</strong></p>
+<ul>
+<li><strong>航海情報</strong>: 位置、針路、速力、水深</li>
+<li><strong>気象情報</strong>: 風向・風速、波高、視程、気圧</li>
+<li><strong>交通情報</strong>: 他船位置、AIS情報、VHF交信</li>
+<li><strong>船舶状態</strong>: 機関状況、荷役状態、安定性</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">知覚の例</p>
+<p>「現在位置：東経140度30分、北緯35度15分、針路090度、速力12ノット、南西の風15ノット、視程8海里、前方2海里に貨物船」</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p><strong>情報の統合と航行状況の把握</strong></p>
+<ul>
+<li><strong>航行安全の評価</strong>: 現在の针路は安全か、他船との関係</li>
+<li><strong>気象影響の判断</strong>: 天候変化が航行に与える影響</li>
+<li><strong>スケジュール管理</strong>: 港湾到着予定時刻との整合性</li>
+<li><strong>法規制の適用</strong>: 現在海域の適用規則、制限事項</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">理解の例</p>
+<p>「現在の針路で安全に航行中。前方の貨物船は右舷を通過予定。気圧の低下により6時間後に天候悪化の可能性。現在の速力で予定通り明朝入港可能」</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p><strong>将来状況の予測と計画策定</strong></p>
+<ul>
+<li><strong>航路予測</strong>: 現在針路の継続可能性と調整の必要性</li>
+<li><strong>気象予測</strong>: 天候変化による航行への影響</li>
+<li><strong>港湾計画</strong>: 入港時の潮汐、バース状況、荷役計画</li>
+<li><strong>緊急時対応</strong>: 異常事態発生時の対応策</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">予測の例</p>
+<p>「6時間後の低気圧接近により波高3メートル、風速25ノットと予想。現在の針路を10度南に変更し、速力を9ノットに減速することで、安全に航行し、予定より3時間遅れで入港可能」</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<h3 id="navigation-officer">航海士（Navigation Officer）<a class="headerlink" href="#navigation-officer" title="Permanent link">&para;</a></h3>
+<p>航海士は航海当直を担当し、継続的な状況監視を行います。</p>
+<h4 id="_6">航海当直での状況認識<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>当直時間帯</th>
+<th>主な監視項目</th>
+<th>特有の課題</th>
+<th>対応策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>昼間当直<br>(08:00-12:00, 12:00-16:00)</strong></td>
+<td>視覚による他船確認<br>気象観測<br>位置確認</td>
+<td>太陽による視界障害<br>交通量の多い時間帯</td>
+<td>双眼鏡活用<br>レーダー併用<br>頻繁な見張り</td>
+</tr>
+<tr>
+<td><strong>夜間当直<br>(20:00-24:00, 00:00-04:00)</strong></td>
+<td>灯火による他船識別<br>レーダー監視<br>自動操舵監視</td>
+<td>視界制限<br>疲労の蓄積<br>居眠りリスク</td>
+<td>照明調整<br>定期的な位置確認<br>アラーム設定</td>
+</tr>
+<tr>
+<td><strong>薄明当直<br>(04:00-08:00, 16:00-20:00)</strong></td>
+<td>昼夜の切り替え<br>漁船活動の監視<br>沿岸航行</td>
+<td>急激な視界変化<br>漁船群との遭遇<br>沿岸交通</td>
+<td>早期の灯火点灯<br>VHF監視強化<br>減速航行</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_7">当直交代時の引き継ぎ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>sequenceDiagram
+    participant OFF_ as 前当直者
+    participant ON as 次当直者
+    participant BR as ブリッジ
+    participant LOG as 航海日誌
+
+    OFF_-&gt;&gt;ON: 現在状況の口頭報告
+    ON-&gt;&gt;BR: 計器類・警報の確認
+    ON-&gt;&gt;LOG: 航海日誌の確認
+    OFF_-&gt;&gt;ON: 特記事項・注意点の伝達
+    ON-&gt;&gt;OFF_: 引き継ぎ内容の確認
+    OFF_-&gt;&gt;LOG: 当直交代の記録
+    ON-&gt;&gt;BR: 当直開始の宣言</code></pre>
+</div>
+<div class="tabbed-block">
+<h3 id="engineering-officer">機関士（Engineering Officer）<a class="headerlink" href="#engineering-officer" title="Permanent link">&para;</a></h3>
+<p>機関士は推進システムと船舶の動力系統の監視・管理を担当します。</p>
+<h4 id="_8">機関部の状況認識<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">主機関（メインエンジン）</label><label for="__tabbed_3_2">補機類（Auxiliary Machinery）</label><label for="__tabbed_3_3">燃料・潤滑油管理</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>推進力の管理</strong></p>
+<ul>
+<li>回転数、出力、燃料消費の監視</li>
+<li>冷却水温度、潤滑油圧力の確認</li>
+<li>振動、異音の検知</li>
+<li>環境負荷（NOx、SOx排出）の管理</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>船舶システムの維持</strong></p>
+<ul>
+<li>発電機の運転状況</li>
+<li>冷凍・空調システム</li>
+<li>舵取機、ウインドラス等の甲板機械</li>
+<li>消防・安全システム</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>エネルギー資源の最適化</strong></p>
+<ul>
+<li>燃料消費量の監視と最適化</li>
+<li>燃料品質の管理</li>
+<li>タンク液位の確認</li>
+<li>環境規制への対応</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<h3 id="pilot">水先人（Pilot）<a class="headerlink" href="#pilot" title="Permanent link">&para;</a></h3>
+<p>水先人は特定海域での専門知識により、船舶の安全な航行を支援します。</p>
+<h4 id="_9">水先業務での状況認識<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>主な活動</th>
+<th>状況認識のポイント</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>乗船前</strong></td>
+<td>船舶情報の確認<br>気象・海象の把握<br>港湾状況の確認</td>
+<td>船舶特性の理解<br>当日の環境条件<br>港湾交通状況</td>
+</tr>
+<tr>
+<td><strong>乗船時</strong></td>
+<td>船長・航海士との打合せ<br>操船設備の確認<br>航行計画の説明</td>
+<td>チーム状況認識の構築<br>設備能力の把握<br>共通理解の確立</td>
+</tr>
+<tr>
+<td><strong>航行中</strong></td>
+<td>針路・速力の指示<br>交通整理<br>緊急時対応</td>
+<td>動的状況の管理<br>予測的判断<br>リスク評価</td>
+</tr>
+<tr>
+<td><strong>着岸時</strong></td>
+<td>精密な船位制御<br>タグボート連携<br>係船作業監督</td>
+<td>複数要素の統合<br>チーム協調<br>安全確保</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<h2 id="_10">技術システムと状況認識<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="_11">航海支援システム<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>現代の船舶は高度に統合された航海支援システムにより、航海士の状況認識を支援しています。</p>
+<h4 id="ibs-integrated-bridge-system">統合ブリッジシステム（IBS: Integrated Bridge System）<a class="headerlink" href="#ibs-integrated-bridge-system" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>システム</th>
+<th>主な機能</th>
+<th>状況認識への貢献</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ECDIS<br>(Electronic Chart Display and Information System)</strong></td>
+<td>電子海図表示<br>航路計画作成</td>
+<td>精密な位置情報<br>視覚的な航路表示</td>
+</tr>
+<tr>
+<td><strong>レーダー<br>(ARPA: Automatic Radar Plotting Aid)</strong></td>
+<td>他船探知・追跡<br>衝突針路の計算</td>
+<td>他船の動静把握<br>衝突予測・回避</td>
+</tr>
+<tr>
+<td><strong>AIS<br>(Automatic Identification System)</strong></td>
+<td>船舶情報の自動交換<br>VHF統合通信</td>
+<td>他船の詳細情報<br>意図の把握</td>
+</tr>
+<tr>
+<td><strong>GPS/GNSS</strong></td>
+<td>高精度測位<br>時刻同期</td>
+<td>正確な位置情報<br>システム基準</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_12">航海データの統合表示<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>graph TD
+    A[統合ブリッジシステム] --&gt; B[ECDIS]
+    A --&gt; C[レーダー/ARPA]
+    A --&gt; D[AIS]
+    A --&gt; E[GPS/GNSS]
+    A --&gt; F[気象情報]
+    A --&gt; G[機関監視]
+
+    B --&gt; H[統合表示画面]
+    C --&gt; H
+    D --&gt; H
+    E --&gt; H
+    F --&gt; H
+    G --&gt; H
+
+    H --&gt; I[状況認識の向上]
+    I --&gt; J[安全な意思決定]
+
+
+
+
+</code></pre>
+<h3 id="_13">気象・海象情報システム<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">海上気象情報の収集・活用<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">衛星気象情報</label><label for="__tabbed_4_2">数値予報モデル</label><label for="__tabbed_4_3">リアルタイム観測</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>広域気象の把握</strong></p>
+<ul>
+<li>雲画像による天気系の確認</li>
+<li>台風・低気圧の位置・発達予測</li>
+<li>海面水温、海氷情報</li>
+<li>長期予報による航路計画</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>高精度な気象予測</strong></p>
+<ul>
+<li>48-72時間先までの詳細予報</li>
+<li>風向風速、波高、視程の予測</li>
+<li>局地的な気象変化の把握</li>
+<li>最適航路の算出</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>現在の海況把握</strong></p>
+<ul>
+<li>船上気象観測機器</li>
+<li>海洋観測ブイからの情報</li>
+<li>他船からの気象通報</li>
+<li>沿岸観測所のデータ</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="_15">自動化システムとの協調<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="_16">オートパイロット（自動操舵）システム<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>機能</th>
+<th>特徴</th>
+<th>人間の役割</th>
+<th>協調のポイント</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>針路保持</strong></td>
+<td>設定針路の自動維持<br>風・潮流の自動修正</td>
+<td>針路設定・変更<br>システム監視</td>
+<td>環境変化への適応<br>手動介入のタイミング</td>
+</tr>
+<tr>
+<td><strong>航跡追従</strong></td>
+<td>予定航路の自動追従<br>ウェイポイント間航行</td>
+<td>航路計画・修正<br>異常時対応</td>
+<td>計画の妥当性確認<br>状況変化への対応</td>
+</tr>
+<tr>
+<td><strong>動的測位</strong></td>
+<td>位置の自動保持<br>風・潮流の自動補正</td>
+<td>位置設定・監視<br>安全範囲設定</td>
+<td>環境限界の判断<br>緊急時の手動制御</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">自動化の限界</p>
+<p>海上では突発的な気象変化や他船の急激な動きなど、予測困難な状況が発生します。自動化システムへの過度の依存は危険であり、常に手動介入の準備と状況監視が必要です。</p>
+</div>
+<h2 id="_17">航行段階別の状況認識<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">出港・離岸</label><label for="__tabbed_5_2">沖合航行</label><label for="__tabbed_5_3">入港・着岸</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<h3 id="_18">出港・離岸<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h4 id="_19">港内航行での状況認識<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>段階</th>
+<th>主な課題</th>
+<th>状況認識のポイント</th>
+<th>技術的支援</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>離岸準備</strong></td>
+<td>係船索解放<br>機関始動<br>出港許可</td>
+<td>港内交通状況<br>気象条件<br>潮汐情報</td>
+<td>港湾管理システム<br>VTMS（船舶通報管制）</td>
+</tr>
+<tr>
+<td><strong>港内航行</strong></td>
+<td>狭い水路<br>他船との輻輳<br>速力制限</td>
+<td>相互運動の予測<br>操船余地の確保<br>通信による協調</td>
+<td>AIS<br>港内レーダー<br>VHF通信</td>
+</tr>
+<tr>
+<td><strong>港外へ</strong></td>
+<td>航路開始<br>外洋への変移<br>針路設定</td>
+<td>気象変化<br>航路交通<br>運航計画</td>
+<td>ECDIS<br>気象ルーティング<br>衛星通信</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<h3 id="_20">沖合航行<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<h4 id="_21">長距離航海での状況認識<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">洋上航行</label><label for="__tabbed_6_2">沿岸航行</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>外洋での状況管理</strong></p>
+<ul>
+<li><strong>気象管理</strong>: 台風回避、最適航路選択</li>
+<li><strong>燃料管理</strong>: 消費量監視、給油港計画</li>
+<li><strong>疲労管理</strong>: 当直ローテーション、十分休息</li>
+<li><strong>通信管理</strong>: 定期報告、緊急時連絡体制</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>沿岸での注意点</strong></p>
+<ul>
+<li><strong>交通密度</strong>: 漁船、プレジャーボート等</li>
+<li><strong>水深変化</strong>: 浅瀬、暗礁への注意</li>
+<li><strong>規制海域</strong>: 漁場、軍事演習場等</li>
+<li><strong>緊急避難</strong>: 避難港、錨地の把握</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<h3 id="_22">入港・着岸<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<h4 id="_23">港内操船での高度な状況認識<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>sequenceDiagram
+    participant P as 水先人
+    participant C as 船長
+    participant N as 航海士
+    participant T as タグボート
+    participant PT as 港湾管制
+
+    PT-&gt;&gt;C: 入港許可・バース指定
+    P-&gt;&gt;C: 乗船・操船計画説明
+    C-&gt;&gt;N: 操船準備指示
+    P-&gt;&gt;T: タグボート手配・指示
+    P-&gt;&gt;C: 減速・針路変更指示
+    N-&gt;&gt;C: 他船状況報告
+    T-&gt;&gt;P: 支援開始報告
+    P-&gt;&gt;C: 着岸操船指示
+    C-&gt;&gt;PT: 着岸完了報告</code></pre>
+</div>
+</div>
+</div>
+<h2 id="_24">事故事例と教訓<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h2>
+<p>海事業界の事故分析から、状況認識の重要性と失敗要因を学ぶことができます。</p>
+<h3 id="_25">代表的な海難事故と状況認識<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">タイタニック号事故（1912年）</label><label for="__tabbed_7_2">エクソンバルディーズ号事故（1989年）</label><label for="__tabbed_7_3">コスタコンコルディア号事故（2012年）</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>見張り不十分による衝突事故</strong></p>
+<ul>
+<li><strong>問題点</strong>: 氷山の発見遅れ、適切な見張り体制の欠如</li>
+<li><strong>SA関連要因</strong>:<ul>
+<li>知覚の困難（夜間、海氷の視認困難）</li>
+<li>理解の不足（氷山群の危険性軽視）</li>
+<li>予測の失敗（衝突回避行動の遅れ）</li>
+</ul>
+</li>
+<li><strong>教訓</strong>: 24時間見張り体制、レーダー・ソナーの重要性</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>座礁による大規模油流出</strong></p>
+<ul>
+<li><strong>問題点</strong>: 航海士の疲労、自動操舵への過信、ルート変更</li>
+<li><strong>SA関連要因</strong>:<ul>
+<li>疲労による注意力低下</li>
+<li>自動化システムへの過信</li>
+<li>変更航路での状況認識不足</li>
+</ul>
+</li>
+<li><strong>教訓</strong>: 疲労管理、手動監視の重要性、環境保護意識</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>不適切な操船による座礁・転覆</strong></p>
+<ul>
+<li><strong>問題点</strong>: 規定航路逸脱、危険な接岸試行、避難誘導の混乱</li>
+<li><strong>SA関連要因</strong>:<ul>
+<li>リスク評価の甘さ</li>
+<li>緊急時の状況判断ミス</li>
+<li>乗客への情報伝達の遅れ</li>
+</ul>
+</li>
+<li><strong>教訓</strong>: 安全管理の徹底、緊急時対応訓練</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="_26">状況認識失敗の典型パターン<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>失敗パターン</th>
+<th>典型的状況</th>
+<th>海事分野の特例</th>
+<th>予防策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>見張り不十分</strong></td>
+<td>他船・障害物の<br>発見遅れ</td>
+<td>霧中航行<br>夜間・悪天候</td>
+<td>レーダー活用<br>見張り要員増強</td>
+</tr>
+<tr>
+<td><strong>疲労による判断力低下</strong></td>
+<td>長時間当直<br>人員不足</td>
+<td>長期航海<br>少人数体制</td>
+<td>適切な休息<br>当直ローテーション</td>
+</tr>
+<tr>
+<td><strong>自動化への過信</strong></td>
+<td>システム監視怠慢<br>手動介入遅れ</td>
+<td>自動操舵<br>ECDIS依存</td>
+<td>定期的な手動確認<br>常時監視</td>
+</tr>
+<tr>
+<td><strong>コミュニケーション不足</strong></td>
+<td>情報共有の欠如<br>指示の不明確</td>
+<td>多言語環境<br>文化の違い</td>
+<td>標準用語使用<br>確認の徹底</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_27">国際規則と状況認識<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h2>
+<h3 id="solas">SOLAS条約（海上人命安全条約）<a class="headerlink" href="#solas" title="Permanent link">&para;</a></h3>
+<h4 id="_28">状況認識に関連する主要規定<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>章</th>
+<th>規定内容</th>
+<th>状況認識との関連</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>第V章<br>航行の安全</strong></td>
+<td>見張り、航海計画<br>航海機器の搭載</td>
+<td>継続的監視義務<br>情報収集手段の確保</td>
+</tr>
+<tr>
+<td><strong>第VI章<br>貨物</strong></td>
+<td>貨物の積載・固縛<br>危険物の管理</td>
+<td>船舶安定性の把握<br>危険要因の認識</td>
+</tr>
+<tr>
+<td><strong>第IX章<br>ISMコード</strong></td>
+<td>安全管理システム<br>会社・船舶の責任</td>
+<td>組織的SA管理<br>継続的改善</td>
+</tr>
+</tbody>
+</table>
+<h3 id="colreg">COLREG（海上衝突予防規則）<a class="headerlink" href="#colreg" title="Permanent link">&para;</a></h3>
+<h4 id="_29">衝突回避における状況認識<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>graph TD
+    A[見張り義務] --&gt; B[状況判定]
+    B --&gt; C[行動規則の適用]
+    C --&gt; D[操船動作]
+    D --&gt; E[結果確認]
+    E --&gt; A
+
+    B --&gt; F[他船の動向把握]
+    B --&gt; G[衝突のおそれ判定]
+    B --&gt; H[相対位置関係]
+
+
+
+</code></pre>
+<h2 id="_30">将来の展望<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
+<h3 id="mass-maritime-autonomous-surface-ships">自律運航船（MASS: Maritime Autonomous Surface Ships）<a class="headerlink" href="#mass-maritime-autonomous-surface-ships" title="Permanent link">&para;</a></h3>
+<h4 id="_31">自動化レベルと人間の役割<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>レベル</th>
+<th>名称</th>
+<th>特徴</th>
+<th>人間の状況認識</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>レベル1</strong></td>
+<td>船上有人<br>部分自動化</td>
+<td>一部システムの自動化<br>人間が監視・制御</td>
+<td>従来同様の SA<br>システム状態も監視</td>
+</tr>
+<tr>
+<td><strong>レベル2</strong></td>
+<td>船上有人<br>遠隔制御可能</td>
+<td>陸上からの遠隔監視<br>緊急時介入可能</td>
+<td>船上・陸上双方の SA<br>通信システム依存</td>
+</tr>
+<tr>
+<td><strong>レベル3</strong></td>
+<td>船上無人<br>遠隔制御</td>
+<td>陸上からの完全制御<br>定期的な人間判断</td>
+<td>陸上の状況認識<br>データに基づく判断</td>
+</tr>
+<tr>
+<td><strong>レベル4</strong></td>
+<td>船上無人<br>完全自律</td>
+<td>AI による自律判断<br>例外時のみ人間介入</td>
+<td>システム設計時の SA<br>例外事態の対応</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_32">技術的課題と人間の役割<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">センサー技術</label><label for="__tabbed_8_2">AI・機械学習</label><label for="__tabbed_8_3">人間・システム協調</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>環境認識の自動化</strong></p>
+<ul>
+<li>光学カメラ、赤外線カメラによる視覚情報</li>
+<li>レーダー、ライダーによる物体検知</li>
+<li>AIS、衛星通信による情報収集</li>
+<li>気象センサーによる環境監視</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>判断の自動化</strong></p>
+<ul>
+<li>画像認識による他船・障害物の識別</li>
+<li>機械学習による最適航路の選択</li>
+<li>予測モデルによる気象・海象の分析</li>
+<li>異常検知システムによる機関監視</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>新たな状況認識</strong></p>
+<ul>
+<li>システム限界の理解と適切な介入</li>
+<li>遠隔監視における状況認識の維持</li>
+<li>AI判断の妥当性評価</li>
+<li>例外事態への柔軟な対応</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="_33">デジタル技術の活用<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<h4 id="_34">デジタルツイン技術<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>graph LR
+    A[実船舶] --&gt; B[センサーデータ]
+    B --&gt; C[デジタルツイン]
+    C --&gt; D[シミュレーション]
+    D --&gt; E[最適化提案]
+    E --&gt; F[運航支援]
+    F --&gt; A
+
+    C --&gt; G[予防保全]
+    C --&gt; H[燃費最適化]
+    C --&gt; I[安全性評価]
+
+
+
+</code></pre>
+<h4 id="iot">IoT・ビッグデータの活用<a class="headerlink" href="#iot" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>船舶データの収集</strong>: 機関性能、燃料消費、航行軌跡</li>
+<li><strong>気象・海象データ</strong>: 実測値と予測モデルの統合</li>
+<li><strong>港湾データ</strong>: 入出港記録、荷役効率、待機時間</li>
+<li><strong>運航最適化</strong>: データ分析による効率向上提案</li>
+</ul>
+<h3 id="_35">日本での取り組み<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<div class="grid cards">
+<ul>
+<li>
+<h4 id="_36">国土交通省の施策<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
+<hr />
+<ul>
+<li><strong>海事生産性革命</strong>: <br>ICT活用による効率化</li>
+<li><strong>自動運航船プロジェクト</strong>: <br>実証実験の推進</li>
+<li><strong>カーボンニュートラル港湾</strong>: <br>脱炭素化の推進</li>
+</ul>
+</li>
+<li>
+<h4 id="_37">産業界の動向<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<hr />
+<ul>
+<li><strong>日本郵船・商船三井・川崎汽船</strong>: <br>自動運航船の開発</li>
+<li><strong>三菱造船・今治造船</strong>: <br>新技術船舶の建造</li>
+<li><strong>古野電気・日本無線</strong>: <br>航海機器の高度化</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_38">まとめ<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h2>
+<p>海事分野での状況認識は、以下の特徴を持ちます。</p>
+<h3 id="_39">重要なポイント<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>長期間・広域航行</strong>: 持続的な監視と疲労管理が重要</li>
+<li><strong>自然環境依存</strong>: 気象・海象への適応力が必要</li>
+<li><strong>国際性</strong>: 多様な規則・文化への対応</li>
+<li><strong>技術統合</strong>: 従来技術と新技術の効果的な組み合わせ</li>
+<li><strong>将来への対応</strong>: 自動化・AI技術との協調</li>
+</ol>
+<h3 id="_40">システム開発への示唆<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
+<p>海事分野での状況認識は、システム開発の観点から以下の示唆を与えます。</p>
+<ul>
+<li><strong>長時間運用の考慮</strong>: 疲労やモノトニーへの対策</li>
+<li><strong>外部環境の変動</strong>: 不確定要素への柔軟な対応</li>
+<li><strong>グローバル対応</strong>: 多言語・多文化への配慮</li>
+<li><strong>段階的自動化</strong>: 人間とシステムの適切な役割分担</li>
+</ul>
+<p>海事分野の状況認識は、安全性と効率性を両立させながら、環境保護と経済性も考慮した総合的なアプローチとして、今後も発展し続けることが期待されます。</p>
+<h2 id="_41">関連リンク<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../basics/what-is-sa">基本概念：状況認識とは</a></li>
+<li><a href="../../situational-awareness-guide/measuring-sa">状況認識の理論と実践：状況認識の測定方法</a></li>
+<li><a href="../../software/maritime-sa-software">ソフトウェア：船舶関連ソフトウェア</a></li>
+</ul>
+<!-- - [ケーススタディ：海難事故事例](../../case-studies/maritime-cases) -->
+
+<h2 id="_42">参考文献<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h2>
+<ol>
+<li>IMO. (2019). <em>Guidelines for the regulatory framework for Maritime Autonomous Surface Ships (MASS)</em>. International Maritime Organization.</li>
+<li>Endsley, M. R., &amp; Robertson, M. M. (2000). Situation awareness in aircraft maintenance teams. <em>International Journal of Industrial Ergonomics, 26</em>(2), 301-325.</li>
+<li>国土交通省海事局. (2021). <em>自動運航船舶の安全設計ガイドライン</em>. </li>
+<li>Chauvin, C., Lardjane, S., Morel, G., Clostermann, J. P., &amp; Langard, B. (2013). Human and organisational factors in maritime accidents: Analysis of collisions at sea using the HFACS. <em>Accident Analysis &amp; Prevention, 59</em>, 26-37.</li>
+<li>IAMSAR Manual. (2019). <em>International Aeronautical and Maritime Search and Rescue Manual</em>. IMO/ICAO Joint Publication.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最終更新日">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年8月24日 09:02:08 JST">2025年8月24日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../aviation-dm/" class="md-footer__link md-footer__link--prev" aria-label="前: 意思決定">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                意思決定
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../maritime-dm/" class="md-footer__link md-footer__link--next" aria-label="次: 意思決定">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                意思決定
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 shuji-bonji | <a href='https://creativecommons.org/licenses/by/4.0/deed.ja'>CC-BY-4.0ライセンス</a>に基づく
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shuji-bonji/Situational-Awareness-and-Decision-Making" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.tabs", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../assets/javascripts/mermaid-zoom.js"></script>
+      
+    
+  </body>
+</html>

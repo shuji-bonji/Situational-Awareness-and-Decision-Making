@@ -1,0 +1,4387 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="コンピュータビジョンによる視覚的状況認識の理論と応用、最新技術を網羅し、リアルタイム解析の実装例も紹介します。">
+      
+      
+      
+        <link rel="canonical" href="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/ai-and-future/computer-vision/">
+      
+      
+        <link rel="prev" href="../natural-language-processing/">
+      
+      
+        <link rel="next" href="../predictive-analytics/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>コンピュータビジョン - 状況認識と意思決定</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-dark.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-zoom.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mkdocs_d2_plugin.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  
+
+  <!-- Meta Keywords (minimal usage) -->
+  
+
+  <!-- 日本語サイト向けの言語設定 -->
+  <meta name="language" content="ja">
+  <meta http-equiv="content-language" content="ja">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="コンピュータビジョン - Situational Awareness and Decision Making">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+  <meta property="og:site_name" content="状況認識と意思決定">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/ai-and-future/computer-vision/">
+  
+    <meta property="og:description" content="コンピュータビジョンによる視覚的状況認識の理論と応用、最新技術を網羅し、リアルタイム解析の実装例も紹介します。">
+  
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="コンピュータビジョン - Situational Awareness and Decision Making">
+  
+    <meta name="twitter:description" content="コンピュータビジョンによる視覚的状況認識の理論と応用、最新技術を網羅し、リアルタイム解析の実装例も紹介します。">
+  
+  <meta name="twitter:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+
+  
+  
+  
+    <meta name="robots" content="index, follow">
+  
+
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="状況認識と意思決定" class="md-header__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            状況認識と意思決定
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              コンピュータビジョン
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../basics/" class="md-tabs__link">
+          
+  
+  
+  基本概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../situational-awareness-guide/" class="md-tabs__link">
+          
+  
+  
+  状況認識の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../decision-making-guide/" class="md-tabs__link">
+          
+  
+  
+  意思決定の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../applications/" class="md-tabs__link">
+          
+  
+  
+  応用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../software/" class="md-tabs__link">
+          
+  
+  
+  ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  AIと将来展望
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../case-studies/" class="md-tabs__link">
+          
+  
+  
+  ケーススタディ
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="状況認識と意思決定" class="md-nav__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    状況認識と意思決定
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ホーム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    基本概念
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基本概念
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/what-is-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/endsley-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Endsleyの3レベルモデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/ooda-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/sa-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の基本アプローチ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/measuring-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の測定方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/training-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/decision-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定モデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/cognitive-biases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    認知バイアスと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/uncertainty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    不確実性下の意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/team-decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    チーム意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    現代の意思決定手法
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            現代の意思決定手法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/ai-enhanced-ooda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI統合OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    データ駆動型意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/collaborative-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    協調型状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/decision-training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    応用
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            応用
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    航空分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            航空分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/aviation-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/aviation-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    海事・船舶分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            海事・船舶分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/maritime-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/maritime-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    医療分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            医療分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/medical-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/medical-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            緊急対応・危機管理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/emergency-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/emergency-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    軍事・防衛分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            軍事・防衛分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/military-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/military-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/industrial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    産業・インフラ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/daily-life/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日常生活
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア比較分析
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア比較分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/sa-dm-vs-general-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SA/DM系 vs 一般ソフトウェア
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/sa-vs-dm-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識 vs 意思決定システム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/aviation-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/maritime-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    船舶関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/weather-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    気象関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/medical-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    医療関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/emergency-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/military-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    軍事
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/aviation-dm-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    AIと将来展望
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            AIと将来展望
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-sa-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../new-context-in-sa-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とAIの新たな文脈
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-dm-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI技術分野別概要
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            AI技術分野別概要
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../machine-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    機械学習・深層学習
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../natural-language-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    自然言語処理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    コンピュータビジョン
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    コンピュータビジョン
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンピュータビジョンが変える状況認識の世界
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンピュータビジョンによる状況認識の基本フレームワーク
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンピュータビジョンによる状況認識の基本フレームワーク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endsley" class="md-nav__link">
+    <span class="md-ellipsis">
+      Endsleyモデルとコンピュータビジョン技術の対応
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンピュータビジョン技術と状況認識への応用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      リアルタイム映像解析による状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="リアルタイム映像解析による状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      監視・セキュリティシステム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      行動認識・パターン分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      医療・産業画像による専門的状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="医療・産業画像による専門的状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      医療画像診断支援
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      産業・製造業での画像検査
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      衛星・ドローン画像による広域状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="衛星・ドローン画像による広域状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      災害監視・被害評価
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      実装上の重要考慮事項
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実装上の重要考慮事項">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      性能最適化とリアルタイム処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      プライバシーと倫理的配慮
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      産業別応用事例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="産業別応用事例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      交通・物流分野
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      農業・環境分野
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      未来展望と技術トレンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="未来展望と技術トレンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      短期的展望（1-3年）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      中期的展望（3-5年）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      長期的展望（5-10年以上）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ：コンピュータビジョンによる状況認識の変革
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../predictive-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    予測分析
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explainable-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    説明可能なAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    エッジAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../future-trends/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    将来の動向
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ケーススタディ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            ケーススタディ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/haneda-airport-collision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    羽田空港地上衝突事故(2024/1/2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンピュータビジョンが変える状況認識の世界
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンピュータビジョンによる状況認識の基本フレームワーク
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンピュータビジョンによる状況認識の基本フレームワーク">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#endsley" class="md-nav__link">
+    <span class="md-ellipsis">
+      Endsleyモデルとコンピュータビジョン技術の対応
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      コンピュータビジョン技術と状況認識への応用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      リアルタイム映像解析による状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="リアルタイム映像解析による状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      監視・セキュリティシステム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      行動認識・パターン分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      医療・産業画像による専門的状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="医療・産業画像による専門的状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      医療画像診断支援
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      産業・製造業での画像検査
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      衛星・ドローン画像による広域状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="衛星・ドローン画像による広域状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      災害監視・被害評価
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      実装上の重要考慮事項
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実装上の重要考慮事項">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      性能最適化とリアルタイム処理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      プライバシーと倫理的配慮
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      産業別応用事例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="産業別応用事例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      交通・物流分野
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      農業・環境分野
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      未来展望と技術トレンド
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="未来展望と技術トレンド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      短期的展望（1-3年）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      中期的展望（3-5年）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      長期的展望（5-10年以上）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ：コンピュータビジョンによる状況認識の変革
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">コンピュータビジョンによる状況認識<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">このページについて</p>
+<p>このページでは、コンピュータビジョン（Computer Vision）が状況認識（Situational Awareness）にもたらす革命的変化について詳しく解説します。<br />
+画像・映像データからの物体検出、行動認識、異常検知から、最新の深層学習技術まで、視覚情報を活用した状況理解の技術を理論と実装の両面から掘り下げます。<br />
+実践的なTypeScriptコード例により、リアルタイム映像解析システムの構築方法を具体的に示します。</p>
+</div>
+<h2 id="_2">コンピュータビジョンが変える状況認識の世界<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>コンピュータビジョン（CV）は、画像や映像から意味のある情報を自動抽出する技術として、状況認識の精度と範囲を劇的に拡張しています。監視カメラ、ドローン、衛星画像、医療画像など、様々な視覚データから状況を即座に把握し、異常を検知し、将来を予測する能力は、人間の視覚による認識を大幅に超越しています。</p>
+<p>本章では、コンピュータビジョン技術が状況認識をどのように強化しているか、Endsleyモデルとの対応から最新の深層学習応用まで体系的に解説します。</p>
+<h2 id="_3">コンピュータビジョンによる状況認識の基本フレームワーク<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="endsley">Endsleyモデルとコンピュータビジョン技術の対応<a class="headerlink" href="#endsley" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    subgraph "レベル1: 知覚 (Perception)"
+        A1[静止画像] --&gt; B1[前処理・拡張]
+        A2[動画ストリーム] --&gt; B2[フレーム抽出・安定化]
+        A3[マルチカメラ] --&gt; B3[視点統合・校正]
+        A4[特殊画像] --&gt; B4[医療・衛星画像処理]
+
+        B1 --&gt; C1[物体検出&lt;br/&gt;YOLO・R-CNN]
+        B2 --&gt; C2[動作認識&lt;br/&gt;行動検出]
+        B3 --&gt; C3[3D再構成&lt;br/&gt;空間理解]
+        B4 --&gt; C4[専門画像解析&lt;br/&gt;異常検出]
+    end
+
+    subgraph "レベル2: 理解 (Comprehension)"
+        C1 --&gt; D1[シーン理解&lt;br/&gt;文脈分析]
+        C2 --&gt; D2[行動分析&lt;br/&gt;意図推定]
+        C3 --&gt; D3[空間関係&lt;br/&gt;相互作用分析]
+        C4 --&gt; D4[パターン認識&lt;br/&gt;類似性分析]
+
+        D1 --&gt; E1[状況分類]
+        D2 --&gt; E2[行動予測]
+        D3 --&gt; E3[空間的理解]
+        D4 --&gt; E4[異常・正常判定]
+    end
+
+    subgraph "レベル3: 予測 (Projection)"
+        E1 --&gt; F1[シーン予測&lt;br/&gt;次状態推定]
+        E2 --&gt; F2[軌道予測&lt;br/&gt;衝突回避]
+        E3 --&gt; F3[空間展開&lt;br/&gt;拡散予測]
+        E4 --&gt; F4[リスク予測&lt;br/&gt;警告生成]
+
+        F1 --&gt; G[統合視覚状況認識]
+        F2 --&gt; G
+        F3 --&gt; G
+        F4 --&gt; G
+    end</code></pre>
+<h3 id="_4">コンピュータビジョン技術と状況認識への応用<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>CV技術</th>
+<th>状況認識への応用</th>
+<th>主要手法</th>
+<th>具体例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>物体検出</strong></td>
+<td>重要オブジェクトの識別</td>
+<td>YOLO、Faster R-CNN、SSD</td>
+<td>人・車両・危険物の検出</td>
+</tr>
+<tr>
+<td><strong>画像分類</strong></td>
+<td>シーン・状況の分類</td>
+<td>ResNet、EfficientNet、Vision Transformer</td>
+<td>緊急時・平常時の判別</td>
+</tr>
+<tr>
+<td><strong>セマンティックセグメンテーション</strong></td>
+<td>領域ごとの詳細理解</td>
+<td>U-Net、DeepLab、Mask R-CNN</td>
+<td>災害被害範囲の特定</td>
+</tr>
+<tr>
+<td><strong>行動認識</strong></td>
+<td>人物・車両の行動分析</td>
+<td>3D CNN、LSTM、Transformer</td>
+<td>異常行動・危険行為の検出</td>
+</tr>
+<tr>
+<td><strong>顔認識・表情解析</strong></td>
+<td>個人識別・感情状態把握</td>
+<td>FaceNet、ArcFace、表情分類</td>
+<td>セキュリティ・ストレス検知</td>
+</tr>
+<tr>
+<td><strong>光学文字認識</strong></td>
+<td>テキスト情報の抽出</td>
+<td>CRAFT、TrOCR、PaddleOCR</td>
+<td>標識・文書からの情報取得</td>
+</tr>
+<tr>
+<td><strong>異常検知</strong></td>
+<td>正常パターンからの逸脱</td>
+<td>Autoencoder、One-Class SVM</td>
+<td>設備故障・不審行動の発見</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">リアルタイム映像解析による状況認識<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">監視・セキュリティシステム<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>リアルタイムでの映像監視により、セキュリティリスクや緊急事態を即座に検出します。</p>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<p>この実装では、WebRTCとCanvas APIを活用したブラウザベースのリアルタイム映像監視システムです。複数カメラからの映像を統合し、物体検出・行動認識・異常検知を並行実行し、アラート生成まで行う包括的なシステムです。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// リアルタイム映像監視による状況認識システム</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">VideoAnalysisResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">frameId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">detectedObjects</span><span class="o">:</span><span class="w"> </span><span class="kt">DetectedObject</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">recognizedActions</span><span class="o">:</span><span class="w"> </span><span class="kt">RecognizedAction</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">anomalies</span><span class="o">:</span><span class="w"> </span><span class="kt">Anomaly</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">sceneClassification</span><span class="o">:</span><span class="w"> </span><span class="kt">SceneClassification</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">riskAssessment</span><span class="o">:</span><span class="w"> </span><span class="kt">RiskAssessment</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">DetectedObject</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">class</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">confidence</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">boundingBox</span><span class="o">:</span><span class="w"> </span><span class="kt">BoundingBox</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">trackingId?</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="kt">ObjectAttributes</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">RecognizedAction</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">actionType</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">confidence</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">involvedObjects</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">riskLevel</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;low&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;medium&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;high&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;critical&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">Anomaly</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;behavior&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;object&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;scene&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;pattern&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">severity</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="kt">BoundingBox</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">confidence</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">RealTimeVideoSurveillanceSystem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">videoStreams</span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">MediaStream</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">canvasElements</span><span class="o">:</span><span class="w"> </span><span class="kt">Map</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">HTMLCanvasElement</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">objectDetector</span><span class="o">:</span><span class="w"> </span><span class="kt">ObjectDetectionModel</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">actionRecognizer</span><span class="o">:</span><span class="w"> </span><span class="kt">ActionRecognitionModel</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">anomalyDetector</span><span class="o">:</span><span class="w"> </span><span class="kt">AnomalyDetectionModel</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">trackingSystem</span><span class="o">:</span><span class="w"> </span><span class="kt">MultiObjectTracker</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">alertSystem</span><span class="o">:</span><span class="w"> </span><span class="kt">AlertSystem</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">initializeVisionModels</span><span class="p">();</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">setupRealTimeProcessing</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">initializeVisionModels</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// YOLO v8 ベースの物体検出</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">objectDetector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">YOLOv8Detector</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">modelPath</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/models/yolov8n.onnx&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">classNames</span><span class="o">:</span><span class="w"> </span><span class="kt">this.getSecurityRelevantClasses</span><span class="p">(),</span>
+<span class="w">      </span><span class="nx">confidenceThreshold</span><span class="o">:</span><span class="w"> </span><span class="kt">0.5</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">nmsThreshold</span><span class="o">:</span><span class="w"> </span><span class="kt">0.4</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// 3D CNN による行動認識</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">actionRecognizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Action3DCNNModel</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">modelPath</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/models/action_recognition_3dcnn.onnx&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">frameSequenceLength</span><span class="o">:</span><span class="w"> </span><span class="kt">16</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">actions</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s1">&#39;normal_walking&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;running&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fighting&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;falling&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;suspicious_behavior&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;crowd_gathering&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;vehicle_accident&#39;</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// オートエンコーダーベース異常検知</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">anomalyDetector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AutoencoderAnomalyDetector</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">modelPath</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/models/anomaly_detection_ae.onnx&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">reconstructionThreshold</span><span class="o">:</span><span class="w"> </span><span class="kt">0.8</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">spatialAttention</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// マルチオブジェクト追跡</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">trackingSystem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">DeepSORTTracker</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">maxAge</span><span class="o">:</span><span class="w"> </span><span class="kt">30</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">minHits</span><span class="o">:</span><span class="w"> </span><span class="kt">3</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">iouThreshold</span><span class="o">:</span><span class="w"> </span><span class="kt">0.3</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 複数カメラからの映像監視開始</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">startMultiCameraSurveillance</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">cameraConfigs</span><span class="o">:</span><span class="w"> </span><span class="kt">CameraConfig</span><span class="p">[]</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">CameraSurveillanceResult</span><span class="p">[]</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">surveillanceStreams</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">cameraConfigs</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">config</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">initializeCameraStream</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeCameraStream</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">cameraId</span><span class="p">,</span><span class="w"> </span><span class="nx">stream</span><span class="p">);</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 複数カメラの結果を統合</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">combineLatest</span><span class="p">(</span><span class="nx">surveillanceStreams</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">map</span><span class="p">(</span><span class="nx">results</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">integrateCameraResults</span><span class="p">(</span><span class="nx">results</span><span class="p">)),</span>
+<span class="w">      </span><span class="nx">tap</span><span class="p">(</span><span class="nx">integratedResults</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">processIntegratedResults</span><span class="p">(</span><span class="nx">integratedResults</span><span class="p">)),</span>
+<span class="w">      </span><span class="nx">share</span><span class="p">()</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 個別カメラストリームの分析</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">analyzeCameraStream</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">cameraId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">stream</span><span class="o">:</span><span class="w"> </span><span class="kt">MediaStream</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">CameraSurveillanceResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">CameraSurveillanceResult</span><span class="o">&gt;</span><span class="p">(</span><span class="nx">observer</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">video</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;video&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;canvas&#39;</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">&#39;2d&#39;</span><span class="p">)</span><span class="o">!</span><span class="p">;</span>
+
+<span class="w">      </span><span class="nx">video</span><span class="p">.</span><span class="nx">srcObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">stream</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">video</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+
+<span class="w">      </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">640</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">480</span><span class="p">;</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">canvasElements</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">cameraId</span><span class="p">,</span><span class="w"> </span><span class="nx">canvas</span><span class="p">);</span>
+
+<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">frameBuffer</span><span class="o">:</span><span class="w"> </span><span class="kt">ImageData</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">frameCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">      </span><span class="c1">// フレーム処理間隔（30 FPS）</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">frameInterval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">setInterval</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="c1">// フレーム取得</span>
+<span class="w">          </span><span class="nx">context</span><span class="p">.</span><span class="nx">drawImage</span><span class="p">(</span><span class="nx">video</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">imageData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">getImageData</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+
+<span class="w">          </span><span class="nx">frameBuffer</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">imageData</span><span class="p">);</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">frameBuffer</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">16</span><span class="p">)</span><span class="w"> </span><span class="nx">frameBuffer</span><span class="p">.</span><span class="nx">shift</span><span class="p">();</span>
+
+<span class="w">          </span><span class="c1">// 分析実行</span>
+<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">analysisResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeVideoFrame</span><span class="p">(</span>
+<span class="w">            </span><span class="nx">cameraId</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">imageData</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">frameBuffer</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">frameCount</span><span class="o">++</span>
+<span class="w">          </span><span class="p">);</span>
+
+<span class="w">          </span><span class="nx">observer</span><span class="p">.</span><span class="nx">next</span><span class="p">({</span>
+<span class="w">            </span><span class="nx">cameraId</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="kt">analysisResult</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">frameNumber</span><span class="o">:</span><span class="w"> </span><span class="kt">frameCount</span>
+<span class="w">          </span><span class="p">});</span>
+
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">observer</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">},</span><span class="w"> </span><span class="mf">1000</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">30</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">clearInterval</span><span class="p">(</span><span class="nx">frameInterval</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">video</span><span class="p">.</span><span class="nx">srcObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">        </span><span class="nx">stream</span><span class="p">.</span><span class="nx">getTracks</span><span class="p">().</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">track</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">track</span><span class="p">.</span><span class="nx">stop</span><span class="p">());</span>
+<span class="w">      </span><span class="p">};</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// フレーム分析の実行</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">analyzeVideoFrame</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">cameraId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">currentFrame</span><span class="o">:</span><span class="w"> </span><span class="kt">ImageData</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">frameBuffer</span><span class="o">:</span><span class="w"> </span><span class="kt">ImageData</span><span class="p">[],</span>
+<span class="w">    </span><span class="nx">frameNumber</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">VideoAnalysisResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 並列で各種分析を実行</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">objectDetectionResult</span><span class="p">,</span><span class="w"> </span><span class="nx">actionRecognitionResult</span><span class="p">,</span><span class="w"> </span><span class="nx">anomalyResult</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">detectObjects</span><span class="p">(</span><span class="nx">currentFrame</span><span class="p">),</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">recognizeActions</span><span class="p">(</span><span class="nx">frameBuffer</span><span class="p">),</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">detectAnomalies</span><span class="p">(</span><span class="nx">currentFrame</span><span class="p">,</span><span class="w"> </span><span class="nx">frameBuffer</span><span class="p">)</span>
+<span class="w">      </span><span class="p">]);</span>
+
+<span class="w">    </span><span class="c1">// オブジェクト追跡の更新</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">trackedObjects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">trackingSystem</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">objectDetectionResult</span><span class="p">.</span><span class="nx">detections</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// シーン分類</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sceneClassification</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">classifyScene</span><span class="p">(</span><span class="nx">currentFrame</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// リスク評価</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">riskAssessment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">assessRisk</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">objects</span><span class="o">:</span><span class="w"> </span><span class="kt">trackedObjects</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">actions</span><span class="o">:</span><span class="w"> </span><span class="kt">actionRecognitionResult</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">anomalies</span><span class="o">:</span><span class="w"> </span><span class="kt">anomalyResult</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">scene</span><span class="o">:</span><span class="w"> </span><span class="kt">sceneClassification</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">frameId</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">cameraId</span><span class="si">}</span><span class="sb">_</span><span class="si">${</span><span class="nx">frameNumber</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(),</span>
+<span class="w">      </span><span class="nx">detectedObjects</span><span class="o">:</span><span class="w"> </span><span class="kt">trackedObjects</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">recognizedActions</span><span class="o">:</span><span class="w"> </span><span class="kt">actionRecognitionResult</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">anomalies</span><span class="o">:</span><span class="w"> </span><span class="kt">anomalyResult</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">sceneClassification</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">riskAssessment</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 物体検出</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">detectObjects</span><span class="p">(</span><span class="nx">imageData</span><span class="o">:</span><span class="w"> </span><span class="kt">ImageData</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ObjectDetectionResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ImageData を tensor に変換</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">tensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">imageDataToTensor</span><span class="p">(</span><span class="nx">imageData</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// YOLO推論実行</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">detections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">objectDetector</span><span class="p">.</span><span class="nx">detect</span><span class="p">(</span><span class="nx">tensor</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 後処理（NMS適用、信頼度フィルタリング）</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">filteredDetections</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">postProcessDetections</span><span class="p">(</span><span class="nx">detections</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">detections</span><span class="o">:</span><span class="w"> </span><span class="kt">filteredDetections.map</span><span class="p">(</span><span class="nx">det</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">this.generateDetectionId</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">class</span><span class="o">:</span><span class="w"> </span><span class="kt">det.className</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">confidence</span><span class="o">:</span><span class="w"> </span><span class="kt">det.confidence</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">boundingBox</span><span class="o">:</span><span class="w"> </span><span class="kt">det.boundingBox</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">attributes</span><span class="o">:</span><span class="w"> </span><span class="kt">this.extractObjectAttributes</span><span class="p">(</span><span class="nx">det</span><span class="p">,</span><span class="w"> </span><span class="nx">imageData</span><span class="p">)</span>
+<span class="w">      </span><span class="p">})),</span>
+<span class="w">      </span><span class="nx">processingTime</span><span class="o">:</span><span class="w"> </span><span class="kt">performance.now</span><span class="p">()</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 行動認識</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">recognizeActions</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">frameSequence</span><span class="o">:</span><span class="w"> </span><span class="kt">ImageData</span><span class="p">[]</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">RecognizedAction</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">frameSequence</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">16</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">    </span><span class="c1">// フレームシーケンスをテンソルに変換</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sequenceTensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">frameSequenceToTensor</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">frameSequence</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">16</span><span class="p">)</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3D CNN による行動分類</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">actionProbabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">actionRecognizer</span><span class="p">.</span><span class="nx">predict</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">sequenceTensor</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 閾値を超える行動を抽出</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">recognizedActions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">actionProbabilities</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">action</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">action</span><span class="p">.</span><span class="nx">confidence</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0.7</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">action</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">        </span><span class="nx">actionType</span><span class="o">:</span><span class="w"> </span><span class="kt">action.className</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">confidence</span><span class="o">:</span><span class="w"> </span><span class="kt">action.confidence</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="kt">this.estimateActionDuration</span><span class="p">(</span><span class="nx">action</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">involvedObjects</span><span class="o">:</span><span class="w"> </span><span class="kt">this.findInvolvedObjects</span><span class="p">(</span><span class="nx">action</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">riskLevel</span><span class="o">:</span><span class="w"> </span><span class="kt">this.assessActionRisk</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">className</span><span class="p">)</span>
+<span class="w">      </span><span class="p">}));</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">recognizedActions</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 異常検知</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">detectAnomalies</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">currentFrame</span><span class="o">:</span><span class="w"> </span><span class="kt">ImageData</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">frameHistory</span><span class="o">:</span><span class="w"> </span><span class="kt">ImageData</span><span class="p">[]</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Anomaly</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">anomalies</span><span class="o">:</span><span class="w"> </span><span class="kt">Anomaly</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">    </span><span class="c1">// オートエンコーダーによる再構成異常検知</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">reconstructionError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">anomalyDetector</span><span class="p">.</span><span class="nx">getReconstructionError</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">currentFrame</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">reconstructionError</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">anomalyDetector</span><span class="p">.</span><span class="nx">threshold</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">anomalyRegions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">localizeAnomalies</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">currentFrame</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">reconstructionError</span>
+<span class="w">      </span><span class="p">);</span>
+
+<span class="w">      </span><span class="nx">anomalies</span><span class="p">.</span><span class="nx">push</span><span class="p">(...</span><span class="nx">anomalyRegions</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">region</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">        </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;scene&#39;</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="kd">const</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="sb">`異常なシーンパターンを検出`</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">severity</span><span class="o">:</span><span class="w"> </span><span class="kt">region.severity</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="kt">region.boundingBox</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">confidence</span><span class="o">:</span><span class="w"> </span><span class="kt">region.confidence</span>
+<span class="w">      </span><span class="p">})));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 時系列パターン異常検知</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">frameHistory</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">temporalAnomalies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">detectTemporalAnomalies</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">frameHistory</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">      </span><span class="nx">anomalies</span><span class="p">.</span><span class="nx">push</span><span class="p">(...</span><span class="nx">temporalAnomalies</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">anomalies</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 複数カメラ結果の統合</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">integrateCameraResults</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">cameraResults</span><span class="o">:</span><span class="w"> </span><span class="kt">CameraSurveillanceResult</span><span class="p">[]</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">IntegratedSurveillanceResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// カメラ間での物体対応付け</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">globalObjectMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">correlateObjectsAcrossCameras</span><span class="p">(</span><span class="nx">cameraResults</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 全体的な状況評価</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">overallSituation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">assessOverallSituation</span><span class="p">(</span><span class="nx">cameraResults</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 重要イベントの統合</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">consolidatedEvents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">consolidateEvents</span><span class="p">(</span><span class="nx">cameraResults</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// アラート生成</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">alerts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">generateIntegratedAlerts</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">overallSituation</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">consolidatedEvents</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(),</span>
+<span class="w">      </span><span class="nx">cameraResults</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">globalObjectMap</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">overallSituation</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">consolidatedEvents</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">alerts</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// インタラクティブな映像検索</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">searchVideoByDescription</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">timeRange</span><span class="o">:</span><span class="w"> </span><span class="kt">TimeRange</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">VideoSearchResult</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 自然言語による検索クエリ解析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">queryAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeSearchQuery</span><span class="p">(</span><span class="nx">description</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 該当する映像セグメントの検索</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">candidateSegments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">findCandidateSegments</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">queryAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">timeRange</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 類似度による順位付け</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">rankedResults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">rankSearchResults</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">candidateSegments</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">queryAnalysis</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">rankedResults</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">segment</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">      </span><span class="nx">videoId</span><span class="o">:</span><span class="w"> </span><span class="kt">segment.videoId</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">startTime</span><span class="o">:</span><span class="w"> </span><span class="kt">segment.startTime</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">endTime</span><span class="o">:</span><span class="w"> </span><span class="kt">segment.endTime</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">relevanceScore</span><span class="o">:</span><span class="w"> </span><span class="kt">segment.score</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">matchedElements</span><span class="o">:</span><span class="w"> </span><span class="kt">segment.matches</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">thumbnail</span><span class="o">:</span><span class="w"> </span><span class="kt">segment.thumbnail</span>
+<span class="w">    </span><span class="p">}));</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// リアルタイムアラート処理</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">processIntegratedResults</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">results</span><span class="o">:</span><span class="w"> </span><span class="kt">IntegratedSurveillanceResult</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 高リスクアラートの即座の処理</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">criticalAlerts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="p">.</span><span class="nx">alerts</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">alert</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">alert</span><span class="p">.</span><span class="nx">severity</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;critical&#39;</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">criticalAlerts</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">alertSystem</span><span class="p">.</span><span class="nx">triggerEmergencyResponse</span><span class="p">(</span><span class="nx">criticalAlerts</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 中程度のアラートの蓄積と分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">mediumAlerts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">results</span><span class="p">.</span><span class="nx">alerts</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">alert</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">alert</span><span class="p">.</span><span class="nx">severity</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;medium&#39;</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">mediumAlerts</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">alertSystem</span><span class="p">.</span><span class="nx">accumulateAndAnalyze</span><span class="p">(</span><span class="nx">mediumAlerts</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// ログとデータベースへの記録</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">recordSurveillanceData</span><span class="p">(</span><span class="nx">results</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 結果インターフェース</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">CameraSurveillanceResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">cameraId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">result</span><span class="o">:</span><span class="w"> </span><span class="kt">VideoAnalysisResult</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">frameNumber</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">IntegratedSurveillanceResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">cameraResults</span><span class="o">:</span><span class="w"> </span><span class="kt">CameraSurveillanceResult</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">globalObjectMap</span><span class="o">:</span><span class="w"> </span><span class="kt">GlobalObjectMap</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">overallSituation</span><span class="o">:</span><span class="w"> </span><span class="kt">OverallSituationAssessment</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">consolidatedEvents</span><span class="o">:</span><span class="w"> </span><span class="kt">ConsolidatedEvent</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">alerts</span><span class="o">:</span><span class="w"> </span><span class="kt">Alert</span><span class="p">[];</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">VideoSearchResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">videoId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">startTime</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">endTime</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">relevanceScore</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">matchedElements</span><span class="o">:</span><span class="w"> </span><span class="kt">MatchedElement</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">thumbnail</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h3 id="_7">行動認識・パターン分析<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>人や車両の行動パターンを学習し、異常な行動や危険な状況を早期に検出します。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">人物行動認識</label><label for="__tabbed_1_2">車両行動分析</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><strong>正常行動の学習</strong>: 日常的な行動パターンの統計的モデル化</li>
+<li><strong>異常行動検出</strong>: 暴力、転倒、不審行動の自動検知</li>
+<li><strong>群衆分析</strong>: 人流密度、パニック状態の検出</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>交通パターン</strong>: 正常な交通流と異常な動きの識別</li>
+<li><strong>事故予兆検出</strong>: 急停車、蛇行運転などの危険兆候</li>
+<li><strong>駐車監視</strong>: 違法駐車、長時間駐車の検出</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="_8">医療・産業画像による専門的状況認識<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">医療画像診断支援<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>医療画像から病変や異常を検出し、診断精度の向上と見落とし防止を支援します。</p>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<p>この実装では、医療画像（X線、CT、MRI等）の解析システムです。深層学習モデルによる病変検出、セグメンテーション、診断支援機能を統合し、医師の診断を支援する包括的なシステムです。DICOM形式の対応や説明可能AIも含まれています。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 医療画像診断支援システム</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">MedicalImageAnalysisResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">imageId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">modality</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;X-Ray&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;CT&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;MRI&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;Ultrasound&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;Mammography&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">findings</span><span class="o">:</span><span class="w"> </span><span class="kt">MedicalFinding</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">overallAssessment</span><span class="o">:</span><span class="w"> </span><span class="kt">DiagnosticAssessment</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">confidenceScore</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">recommendations</span><span class="o">:</span><span class="w"> </span><span class="kt">ClinicalRecommendation</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">explanation</span><span class="o">:</span><span class="w"> </span><span class="kt">DiagnosticExplanation</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">MedicalFinding</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">findingType</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">location</span><span class="o">:</span><span class="w"> </span><span class="kt">AnatomicalLocation</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">severity</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;normal&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;mild&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;moderate&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;severe&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">confidence</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">boundingBox?</span><span class="o">:</span><span class="w"> </span><span class="kt">BoundingBox</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">segmentationMask?</span><span class="o">:</span><span class="w"> </span><span class="kt">Uint8Array</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">measurements?</span><span class="o">:</span><span class="w"> </span><span class="kt">Measurement</span><span class="p">[];</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">DiagnosticAssessment</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">primaryDiagnosis</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">differentialDiagnoses</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">urgencyLevel</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;routine&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;urgent&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;emergent&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">followUpRequired</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">comparisonWithPrior?</span><span class="o">:</span><span class="w"> </span><span class="kt">PriorComparison</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">MedicalImageDiagnosticSystem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">chestXRayModel</span><span class="o">:</span><span class="w"> </span><span class="kt">ChestXRayClassifier</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">ctScanAnalyzer</span><span class="o">:</span><span class="w"> </span><span class="kt">CTScanAnalyzer</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">mriAnalyzer</span><span class="o">:</span><span class="w"> </span><span class="kt">MRIAnalyzer</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">segmentationModel</span><span class="o">:</span><span class="w"> </span><span class="kt">MedicalSegmentationModel</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">explainabilityEngine</span><span class="o">:</span><span class="w"> </span><span class="kt">MedicalXAIEngine</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">clinicalKnowledgeBase</span><span class="o">:</span><span class="w"> </span><span class="kt">ClinicalKnowledgeBase</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">initializeMedicalModels</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">initializeMedicalModels</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 胸部X線分析モデル（14種類の所見検出）</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">chestXRayModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ChestXRayClassifier</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">modelPath</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/models/chestxray_densenet121.onnx&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">diseases</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s1">&#39;Atelectasis&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Cardiomegaly&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Effusion&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Infiltration&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;Mass&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Nodule&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pneumonia&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Pneumothorax&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;Consolidation&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Edema&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Emphysema&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Fibrosis&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;Pleural_Thickening&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Hernia&#39;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nx">threshold</span><span class="o">:</span><span class="w"> </span><span class="kt">0.5</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// CT画像解析（3D CNN）</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">ctScanAnalyzer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">CTScanAnalyzer</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">lungNodulesModel</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/models/lung_nodules_3dcnn.onnx&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">liverLesionsModel</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/models/liver_lesions_unet.onnx&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">brainTumorModel</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/models/brain_tumor_resnet3d.onnx&#39;</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// MRI解析</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">mriAnalyzer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MRIAnalyzer</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">brainMRIModel</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/models/brain_mri_segmentation.onnx&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">cardiacMRIModel</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/models/cardiac_mri_analysis.onnx&#39;</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// セグメンテーション（U-Net系）</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">segmentationModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MedicalSegmentationModel</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">architecture</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;attention_unet&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">modelPath</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/models/medical_segmentation_aunet.onnx&#39;</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// 説明可能AI</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">explainabilityEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MedicalXAIEngine</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">gradcamEnabled</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">shapEnabled</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">attentionVisualization</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// 臨床知識ベース</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">clinicalKnowledgeBase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ClinicalKnowledgeBase</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">diseaseOntology</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/knowledge/disease_ontology.json&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">clinicalGuidelines</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/knowledge/clinical_guidelines.json&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">drugInteractions</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;/knowledge/drug_interactions.json&#39;</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 医療画像の包括的分析</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">analyzeMedicalImage</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">imageData</span><span class="o">:</span><span class="w"> </span><span class="kt">DICOMImageData</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">patientInfo</span><span class="o">:</span><span class="w"> </span><span class="kt">PatientInfo</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">clinicalContext</span><span class="o">:</span><span class="w"> </span><span class="kt">ClinicalContext</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MedicalImageAnalysisResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// DICOM メタデータの解析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">dicomMetadata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">parseDICOMMetadata</span><span class="p">(</span><span class="nx">imageData</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 画像前処理（正規化、強調、ノイズ除去）</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">preprocessedImage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">preprocessMedicalImage</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">imageData</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">dicomMetadata</span><span class="p">.</span><span class="nx">modality</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// モダリティ別の専門分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">modalitySpecificAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">performModalitySpecificAnalysis</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">preprocessedImage</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">dicomMetadata</span><span class="p">.</span><span class="nx">modality</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">patientInfo</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// セグメンテーション実行</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">segmentationResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">performMedicalSegmentation</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">preprocessedImage</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">dicomMetadata</span><span class="p">.</span><span class="nx">modality</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 所見の統合と評価</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">consolidatedFindings</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">consolidateFindings</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">modalitySpecificAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">segmentationResult</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 臨床的評価</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">clinicalAssessment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">performClinicalAssessment</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">consolidatedFindings</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">patientInfo</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">clinicalContext</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 説明可能性の生成</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">explanation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">generateDiagnosticExplanation</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">preprocessedImage</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">consolidatedFindings</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">clinicalAssessment</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">imageId</span><span class="o">:</span><span class="w"> </span><span class="kt">imageData.instanceUID</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">modality</span><span class="o">:</span><span class="w"> </span><span class="kt">dicomMetadata.modality</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">findings</span><span class="o">:</span><span class="w"> </span><span class="kt">consolidatedFindings</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">overallAssessment</span><span class="o">:</span><span class="w"> </span><span class="kt">clinicalAssessment</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">confidenceScore</span><span class="o">:</span><span class="w"> </span><span class="kt">this.calculateOverallConfidence</span><span class="p">(</span><span class="nx">consolidatedFindings</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">recommendations</span><span class="o">:</span><span class="w"> </span><span class="kt">this.generateClinicalRecommendations</span><span class="p">(</span><span class="nx">clinicalAssessment</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">explanation</span><span class="o">:</span><span class="w"> </span><span class="kt">explanation</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// モダリティ別専門分析</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">performModalitySpecificAnalysis</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="kt">ProcessedMedicalImage</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">modality</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">patientInfo</span><span class="o">:</span><span class="w"> </span><span class="kt">PatientInfo</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ModalitySpecificResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">modality</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;X-Ray&#39;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeChestXRay</span><span class="p">(</span><span class="nx">image</span><span class="p">,</span><span class="w"> </span><span class="nx">patientInfo</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;CT&#39;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeCTScan</span><span class="p">(</span><span class="nx">image</span><span class="p">,</span><span class="w"> </span><span class="nx">patientInfo</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;MRI&#39;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeMRIScan</span><span class="p">(</span><span class="nx">image</span><span class="p">,</span><span class="w"> </span><span class="nx">patientInfo</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;Ultrasound&#39;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeUltrasound</span><span class="p">(</span><span class="nx">image</span><span class="p">,</span><span class="w"> </span><span class="nx">patientInfo</span><span class="p">);</span>
+
+<span class="w">      </span><span class="nx">default</span><span class="o">:</span>
+<span class="w">        </span><span class="kt">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="sb">`Unsupported modality: </span><span class="si">${</span><span class="nx">modality</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 胸部X線解析</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">analyzeChestXRay</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="kt">ProcessedMedicalImage</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">patientInfo</span><span class="o">:</span><span class="w"> </span><span class="kt">PatientInfo</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ChestXRayAnalysisResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 14疾患の同時検出</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">diseaseClassification</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">chestXRayModel</span><span class="p">.</span><span class="nx">classify</span><span class="p">(</span><span class="nx">image</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 解剖学的構造の検出</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">anatomicalStructures</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">detectAnatomicalStructures</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">image</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;chest&#39;</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 心胸郭比の計算</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cardiothoracicRatio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">calculateCardiothoracicRatio</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">anatomicalStructures</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 年齢・性別を考慮した正常値との比較</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ageGenderAdjustedAssessment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">adjustForPatientDemographics</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">diseaseClassification</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">patientInfo</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">diseaseClassifications</span><span class="o">:</span><span class="w"> </span><span class="kt">ageGenderAdjustedAssessment</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">anatomicalStructures</span><span class="o">:</span><span class="w"> </span><span class="kt">anatomicalStructures</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">measurements</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">cardiothoracicRatio</span><span class="o">:</span><span class="w"> </span><span class="kt">cardiothoracicRatio</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">lungVolume</span><span class="o">:</span><span class="w"> </span><span class="kt">this.estimateLungVolume</span><span class="p">(</span><span class="nx">anatomicalStructures</span><span class="p">)</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">qualityAssessment</span><span class="o">:</span><span class="w"> </span><span class="kt">this.assessImageQuality</span><span class="p">(</span><span class="nx">image</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// CT画像解析</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">analyzeCTScan</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="kt">ProcessedMedicalImage</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">patientInfo</span><span class="o">:</span><span class="w"> </span><span class="kt">PatientInfo</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">CTAnalysisResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 3Dボリューム解析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">volumeAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">ctScanAnalyzer</span><span class="p">.</span><span class="nx">analyzeVolume</span><span class="p">(</span><span class="nx">image</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 臓器別分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">organSpecificAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">performOrganSpecificCTAnalysis</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">image</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">volumeAnalysis</span><span class="p">.</span><span class="nx">detectedOrgans</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 造影剤効果の分析（造影CT の場合）</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">contrastAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isContrastEnhanced</span><span class="p">(</span><span class="nx">image</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">contrastAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeContrastEnhancement</span><span class="p">(</span><span class="nx">image</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">volumeAnalysis</span><span class="o">:</span><span class="w"> </span><span class="kt">volumeAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">organAnalysis</span><span class="o">:</span><span class="w"> </span><span class="kt">organSpecificAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">contrastAnalysis</span><span class="o">:</span><span class="w"> </span><span class="kt">contrastAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">reconstructionMetrics</span><span class="o">:</span><span class="w"> </span><span class="kt">this.calculateReconstructionMetrics</span><span class="p">(</span><span class="nx">image</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 診断説明の生成</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">generateDiagnosticExplanation</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">image</span><span class="o">:</span><span class="w"> </span><span class="kt">ProcessedMedicalImage</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">findings</span><span class="o">:</span><span class="w"> </span><span class="kt">MedicalFinding</span><span class="p">[],</span>
+<span class="w">    </span><span class="nx">assessment</span><span class="o">:</span><span class="w"> </span><span class="kt">DiagnosticAssessment</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">DiagnosticExplanation</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Grad-CAM による注意領域の可視化</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">attentionMaps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">explainabilityEngine</span><span class="p">.</span><span class="nx">generateGradCAM</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">image</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">findings</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// SHAP値による特徴量重要度</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">featureImportance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">explainabilityEngine</span><span class="p">.</span><span class="nx">calculateSHAP</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">image</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">assessment</span><span class="p">.</span><span class="nx">primaryDiagnosis</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 自然言語での説明生成</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">naturalLanguageExplanation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">generateNaturalLanguageExplanation</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">findings</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">assessment</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">attentionMaps</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 類似症例の検索</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">similarCases</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">findSimilarCases</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">findings</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">assessment</span><span class="p">.</span><span class="nx">primaryDiagnosis</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">attentionMaps</span><span class="o">:</span><span class="w"> </span><span class="kt">attentionMaps</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">featureImportance</span><span class="o">:</span><span class="w"> </span><span class="kt">featureImportance</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">explanation</span><span class="o">:</span><span class="w"> </span><span class="kt">naturalLanguageExplanation</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">similarCases</span><span class="o">:</span><span class="w"> </span><span class="kt">similarCases</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">confidence</span><span class="o">:</span><span class="w"> </span><span class="kt">this.calculateExplanationConfidence</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">attentionMaps</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">featureImportance</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 時系列医療画像の比較分析</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">compareMedicalImageSeries</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">currentImage</span><span class="o">:</span><span class="w"> </span><span class="kt">DICOMImageData</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">priorImages</span><span class="o">:</span><span class="w"> </span><span class="kt">DICOMImageData</span><span class="p">[],</span>
+<span class="w">    </span><span class="nx">patientInfo</span><span class="o">:</span><span class="w"> </span><span class="kt">PatientInfo</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MedicalImageSeriesComparison</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 各画像の個別分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeMedicalImage</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">currentImage</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">patientInfo</span><span class="p">,</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;follow_up&#39;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">priorAnalyses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">priorImages</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">image</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeMedicalImage</span><span class="p">(</span><span class="nx">image</span><span class="p">,</span><span class="w"> </span><span class="nx">patientInfo</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;prior&#39;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 時系列変化の分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">progressionAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeProgression</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">currentAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">priorAnalyses</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 治療効果の評価</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">treatmentResponse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">evaluateTreatmentResponse</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">progressionAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">patientInfo</span><span class="p">.</span><span class="nx">treatmentHistory</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">currentAnalysis</span><span class="o">:</span><span class="w"> </span><span class="kt">currentAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">priorAnalyses</span><span class="o">:</span><span class="w"> </span><span class="kt">priorAnalyses</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">progressionAnalysis</span><span class="o">:</span><span class="w"> </span><span class="kt">progressionAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">treatmentResponse</span><span class="o">:</span><span class="w"> </span><span class="kt">treatmentResponse</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">clinicalSignificance</span><span class="o">:</span><span class="w"> </span><span class="kt">this.assessClinicalSignificance</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">progressionAnalysis</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// AI診断品質保証</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">performQualityAssurance</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">analysisResult</span><span class="o">:</span><span class="w"> </span><span class="kt">MedicalImageAnalysisResult</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">groundTruth?</span><span class="o">:</span><span class="w"> </span><span class="kt">GroundTruthData</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">QualityAssuranceReport</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 信頼度の検証</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">confidenceValidation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">validateConfidenceScores</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">analysisResult</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 一貫性チェック</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">consistencyCheck</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">checkDiagnosticConsistency</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">analysisResult</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 既知の限界との照合</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">limitationAssessment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">assessKnownLimitations</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">analysisResult</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// グラウンドトゥルースとの比較（利用可能な場合）</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">performanceMetrics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">groundTruth</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">performanceMetrics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">calculatePerformanceMetrics</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">analysisResult</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">groundTruth</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">confidenceValidation</span><span class="o">:</span><span class="w"> </span><span class="kt">confidenceValidation</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">consistencyCheck</span><span class="o">:</span><span class="w"> </span><span class="kt">consistencyCheck</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">limitationAssessment</span><span class="o">:</span><span class="w"> </span><span class="kt">limitationAssessment</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">performanceMetrics</span><span class="o">:</span><span class="w"> </span><span class="kt">performanceMetrics</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">overallQualityScore</span><span class="o">:</span><span class="w"> </span><span class="kt">this.calculateOverallQualityScore</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">confidenceValidation</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">consistencyCheck</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">limitationAssessment</span>
+<span class="w">      </span><span class="p">})</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 結果インターフェース</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">DiagnosticExplanation</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">attentionMaps</span><span class="o">:</span><span class="w"> </span><span class="kt">AttentionMap</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">featureImportance</span><span class="o">:</span><span class="w"> </span><span class="kt">FeatureImportanceMap</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">explanation</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">similarCases</span><span class="o">:</span><span class="w"> </span><span class="kt">SimilarCase</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">confidence</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">MedicalImageSeriesComparison</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">currentAnalysis</span><span class="o">:</span><span class="w"> </span><span class="kt">MedicalImageAnalysisResult</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">priorAnalyses</span><span class="o">:</span><span class="w"> </span><span class="kt">MedicalImageAnalysisResult</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">progressionAnalysis</span><span class="o">:</span><span class="w"> </span><span class="kt">ProgressionAnalysis</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">treatmentResponse</span><span class="o">:</span><span class="w"> </span><span class="kt">TreatmentResponseEvaluation</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">clinicalSignificance</span><span class="o">:</span><span class="w"> </span><span class="kt">ClinicalSignificanceAssessment</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h3 id="_10">産業・製造業での画像検査<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>製造ラインでの品質検査、設備監視、安全管理において高精度の視覚検査を実現します。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">品質検査</label><label for="__tabbed_2_2">設備監視</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><strong>外観検査</strong>: 製品表面の傷、汚れ、変色の検出</li>
+<li><strong>寸法測定</strong>: 精密な寸法・形状の自動測定</li>
+<li><strong>組立検査</strong>: 部品の正しい配置や組み付け状態の確認</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>設備状態監視</strong>: 機械の動作状態や劣化の視覚的検知</li>
+<li><strong>異常検知</strong>: 煙、火花、異常振動の早期発見</li>
+<li><strong>メンテナンス予測</strong>: 部品摩耗や故障予兆の検出</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="_11">衛星・ドローン画像による広域状況認識<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h3 id="_12">災害監視・被害評価<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>衛星画像やドローン映像から災害の規模、被害状況、復旧の進捗を定量的に評価します。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">災害検知</label><label for="__tabbed_3_2">都市・環境監視</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><strong>自然災害の早期発見</strong>: 森林火災、洪水、地震被害の自動検出</li>
+<li><strong>被害範囲の定量化</strong>: 被災面積、建物損壊数の自動集計</li>
+<li><strong>時系列変化分析</strong>: 災害前後の比較による被害評価</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>都市開発監視</strong>: 建設進捗、土地利用変化の追跡</li>
+<li><strong>環境変化検出</strong>: 森林減少、水質変化、大気汚染の監視</li>
+<li><strong>交通・人流分析</strong>: 大規模イベントや渋滞の鳥瞰監視</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="_13">実装上の重要考慮事項<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="_14">性能最適化とリアルタイム処理<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>課題</th>
+<th>影響</th>
+<th>対策手法</th>
+<th>実装アプローチ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>処理速度</strong></td>
+<td>リアルタイム性の劣化</td>
+<td>モデル軽量化、並列処理</td>
+<td>WebGL、Web Workers、WASM</td>
+</tr>
+<tr>
+<td><strong>メモリ使用量</strong></td>
+<td>ブラウザクラッシュ</td>
+<td>ストリーミング処理、メモリ管理</td>
+<td>分割処理、ガベージコレクション最適化</td>
+</tr>
+<tr>
+<td><strong>ネットワーク負荷</strong></td>
+<td>遅延・帯域制限</td>
+<td>エッジ処理、圧縮</td>
+<td>エッジAI、画像圧縮</td>
+</tr>
+<tr>
+<td><strong>バッテリー消費</strong></td>
+<td>モバイルデバイス制限</td>
+<td>効率的なアルゴリズム</td>
+<td>間欠処理、省電力モード</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_15">プライバシーと倫理的配慮<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">プライバシー保護</label><label for="__tabbed_4_2">倫理的AI</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><strong>顔のぼかし・マスキング</strong>: 個人識別情報の自動保護</li>
+<li><strong>差分プライバシー</strong>: 統計的プライバシー保護手法</li>
+<li><strong>ローカル処理</strong>: クラウド送信を避けたエッジ処理</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>バイアス軽減</strong>: 多様なデータセットによる公平性確保</li>
+<li><strong>透明性</strong>: 判断プロセスの説明可能性</li>
+<li><strong>人間の監督</strong>: AIの判断に対する人間の最終確認</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="_16">産業別応用事例<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<h3 id="_17">交通・物流分野<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">交通管理</label><label for="__tabbed_5_2">物流最適化</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><strong>交通流監視</strong>: 渋滞検知、信号制御最適化</li>
+<li><strong>事故検知</strong>: 自動事故通報、緊急車両誘導</li>
+<li><strong>駐車管理</strong>: 空き駐車場検出、違法駐車監視</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>倉庫管理</strong>: 在庫の視覚的確認、ピッキング支援</li>
+<li><strong>配送監視</strong>: 荷物状態確認、配送ルート最適化</li>
+<li><strong>品質管理</strong>: 荷物の損傷検査、温度管理</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="_18">農業・環境分野<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">精密農業</label><label for="__tabbed_6_2">環境監視</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li><strong>作物監視</strong>: 生育状況、病害虫の早期発見</li>
+<li><strong>収穫予測</strong>: 作物の成熟度判定、収量予測</li>
+<li><strong>土壌分析</strong>: 土壌状態の視覚的評価</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<ul>
+<li><strong>生態系監視</strong>: 野生動物の個体数調査、行動分析</li>
+<li><strong>汚染検知</strong>: 水質・大気汚染の視覚的監視</li>
+<li><strong>気候変動影響</strong>: 氷河・森林変化の長期追跡</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="_19">未来展望と技術トレンド<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<h3 id="1-3">短期的展望（1-3年）<a class="headerlink" href="#1-3" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>エッジAIの普及</strong>: 低遅延での現地処理能力の向上</li>
+<li><strong>3D理解の進歩</strong>: 深度推定、3D物体検出の精度向上</li>
+<li><strong>マルチモーダル統合</strong>: 視覚・音声・テキストの完全統合</li>
+</ul>
+<h3 id="3-5">中期的展望（3-5年）<a class="headerlink" href="#3-5" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Video Understanding</strong>: 長時間映像の文脈理解</li>
+<li><strong>Few-shot Learning</strong>: 少数サンプルでの新クラス学習</li>
+<li><strong>自己教師あり学習</strong>: ラベルなしでの高精度学習</li>
+</ul>
+<h3 id="5-10">長期的展望（5-10年以上）<a class="headerlink" href="#5-10" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>汎用視覚AI</strong>: 人間レベルの視覚理解能力</li>
+<li><strong>脳型視覚処理</strong>: ニューロモルフィック視覚チップ</li>
+<li><strong>量子画像処理</strong>: 量子アルゴリズムによる高速化</li>
+</ul>
+<h2 id="_20">まとめ：コンピュータビジョンによる状況認識の変革<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<p>コンピュータビジョンは、視覚情報から状況を理解する能力を飛躍的に向上させ、これまで人間の目と経験に依存していた多くの分野で自動化と精度向上を実現しています。</p>
+<h4 id="_21">成功の鍵となる要素<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>リアルタイム処理</strong>: 遅延の最小化と効率的な並列処理</li>
+<li><strong>多角的分析</strong>: 物体検出・行動認識・異常検知の統合</li>
+<li><strong>説明可能性</strong>: AI判断の根拠と信頼性の確保</li>
+<li><strong>プライバシー配慮</strong>: 個人情報保護と倫理的配慮</li>
+<li><strong>継続的学習</strong>: 新しい状況や環境への適応能力</li>
+</ol>
+<p>これらを適切に実装することで、セキュリティ、医療、製造、交通など多様な領域で安全性と効率性を大幅に向上させることができます。</p>
+<p>コンピュータビジョンによる状況認識は最も実用性の高い分野の一つであり、本章の技術と実装例が、読者の皆様の実践的システム構築に役立てば幸いです。</p>
+<h2 id="_22">参考文献<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Goodfellow, I., Bengio, Y., &amp; Courville, A. (2016). Deep Learning. MIT Press.</li>
+<li>Szeliski, R. (2021). Computer Vision: Algorithms and Applications (2nd ed.). Springer.</li>
+<li>Prince, S. J. D. (2012). Computer Vision: Models, Learning, and Inference. Cambridge University Press.</li>
+<li>Forsyth, D. A., &amp; Ponce, J. (2012). Computer Vision: A Modern Approach (2nd ed.). Pearson.</li>
+<li>Redmon, J., &amp; Farhadi, A. (2018). YOLOv3: An Incremental Improvement. arXiv preprint arXiv:1804.02767.</li>
+<li>He, K., Zhang, X., Ren, S., &amp; Sun, J. (2016). Deep Residual Learning for Image Recognition. CVPR.</li>
+<li>Long, J., Shelhamer, E., &amp; Darrell, T. (2015). Fully Convolutional Networks for Semantic Segmentation. CVPR.</li>
+<li>藤吉弘亘, 山下隆義. (2020). 画像認識 (機械学習プロフェッショナルシリーズ). 講談社.</li>
+<li>牛久祥孝. (2018). コンピュータビジョン最前線. 共立出版.</li>
+<li>森島繁生, 松山隆司. (2019). コンピュータビジョン 広がる要素技術と応用. オーム社.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最終更新日">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年8月24日 09:02:08 JST">2025年8月24日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../natural-language-processing/" class="md-footer__link md-footer__link--prev" aria-label="前: 自然言語処理">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                自然言語処理
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../predictive-analytics/" class="md-footer__link md-footer__link--next" aria-label="次: 予測分析">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                予測分析
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 shuji-bonji | <a href='https://creativecommons.org/licenses/by/4.0/deed.ja'>CC-BY-4.0ライセンス</a>に基づく
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shuji-bonji/Situational-Awareness-and-Decision-Making" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.tabs", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../assets/javascripts/mermaid-zoom.js"></script>
+      
+    
+  </body>
+</html>

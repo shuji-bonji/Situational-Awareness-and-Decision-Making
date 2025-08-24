@@ -1,0 +1,73 @@
+/* Mermaid図のズーム機能用スタイル */
+
+/* ホバー時のヒント */
+.mermaid[data-zoom-enabled] {
+  position: relative;
+  transition: box-shadow 0.3s;
+}
+
+.mermaid[data-zoom-enabled]:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* ホバー時にズーム可能であることを示す（オプション） */
+.mermaid[data-zoom-enabled]:not([style*='position: fixed'])::after {
+  content: '🔍 クリックで拡大';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.mermaid[data-zoom-enabled]:not([style*='position: fixed']):hover::after {
+  opacity: 1;
+}
+
+/* ダークモード時の調整 */
+[data-md-color-scheme='slate'] .mermaid {
+  /* 通常表示時も少し明るく */
+  filter: brightness(1.05);
+}
+
+/* panzoom-box内のMermaidの調整 */
+.panzoom-box .mermaid {
+  display: block;
+  position: relative;
+}
+
+/* glightbox内のMermaidの調整 */
+.glightbox .mermaid {
+  display: block;
+}
+
+/* ズーム時のスクロール対応 */
+.mermaid[style*='position: fixed'] {
+  overflow: auto !important;
+  overflow-x: auto !important;
+  overflow-y: auto !important;
+}
+
+/* ズーム時のSVGサイズ調整 */
+.mermaid[style*='position: fixed'] svg {
+  max-width: none !important;
+  max-height: none !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  image-rendering: crisp-edges !important;
+  shape-rendering: geometricPrecision !important;
+  -webkit-backface-visibility: hidden !important;
+  -webkit-transform: translateZ(0) !important;
+}
+
+/* ダークモード時のモーダル背景 */
+[data-md-color-scheme='slate'] .mermaid[style*='position: fixed'] {
+  background: #2b2b2b !important;
+}

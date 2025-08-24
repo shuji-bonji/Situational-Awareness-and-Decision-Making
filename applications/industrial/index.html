@@ -1,0 +1,4294 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="産業・インフラ分野における状況認識の役割と実践例を解説。プラントオペレーター、制御エンジニア、保全技術者などが直面する現場のリアルタイム判断と安全確保の重要性を学べます。">
+      
+      
+      
+        <link rel="canonical" href="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/applications/industrial/">
+      
+      
+        <link rel="prev" href="../military-dm/">
+      
+      
+        <link rel="next" href="../daily-life/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>産業・インフラ - 状況認識と意思決定</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-dark.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-zoom.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mkdocs_d2_plugin.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  
+
+  <!-- Meta Keywords (minimal usage) -->
+  
+
+  <!-- 日本語サイト向けの言語設定 -->
+  <meta name="language" content="ja">
+  <meta http-equiv="content-language" content="ja">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="産業・インフラ - Situational Awareness and Decision Making">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+  <meta property="og:site_name" content="状況認識と意思決定">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/applications/industrial/">
+  
+    <meta property="og:description" content="産業・インフラ分野における状況認識の役割と実践例を解説。プラントオペレーター、制御エンジニア、保全技術者などが直面する現場のリアルタイム判断と安全確保の重要性を学べます。">
+  
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="産業・インフラ - Situational Awareness and Decision Making">
+  
+    <meta name="twitter:description" content="産業・インフラ分野における状況認識の役割と実践例を解説。プラントオペレーター、制御エンジニア、保全技術者などが直面する現場のリアルタイム判断と安全確保の重要性を学べます。">
+  
+  <meta name="twitter:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+
+  
+  
+  
+    <meta name="robots" content="index, follow">
+  
+
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="状況認識と意思決定" class="md-header__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            状況認識と意思決定
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              産業・インフラ
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../basics/" class="md-tabs__link">
+          
+  
+  
+  基本概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../situational-awareness-guide/" class="md-tabs__link">
+          
+  
+  
+  状況認識の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../decision-making-guide/" class="md-tabs__link">
+          
+  
+  
+  意思決定の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  応用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../software/" class="md-tabs__link">
+          
+  
+  
+  ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ai-and-future/" class="md-tabs__link">
+          
+  
+  
+  AIと将来展望
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../case-studies/" class="md-tabs__link">
+          
+  
+  
+  ケーススタディ
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="状況認識と意思決定" class="md-nav__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    状況認識と意思決定
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ホーム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    基本概念
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基本概念
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/what-is-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/endsley-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Endsleyの3レベルモデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/ooda-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/sa-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の基本アプローチ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/measuring-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の測定方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/training-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/decision-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定モデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/cognitive-biases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    認知バイアスと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/uncertainty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    不確実性下の意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/team-decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    チーム意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    現代の意思決定手法
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            現代の意思決定手法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/ai-enhanced-ooda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI統合OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    データ駆動型意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/collaborative-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    協調型状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/decision-training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    応用
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            応用
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    航空分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            航空分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aviation-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aviation-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    海事・船舶分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            海事・船舶分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maritime-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maritime-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    医療分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            医療分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../medical-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../medical-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            緊急対応・危機管理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emergency-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emergency-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    軍事・防衛分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            軍事・防衛分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../military-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../military-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    産業・インフラ
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    産業・インフラ
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      産業・インフラ分野での状況認識の特徴
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="産業・インフラ分野での状況認識の特徴">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      固有の環境特性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識が求められる理由
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      職種別の状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="職種別の状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plant-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      プラントオペレーター（Plant Operator）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-engineer" class="md-nav__link">
+    <span class="md-ellipsis">
+      制御エンジニア（Control Engineer）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance-engineer" class="md-nav__link">
+    <span class="md-ellipsis">
+      保全技術者（Maintenance Engineer）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      インフラ管理者（Infrastructure Manager）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      技術分野別の状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技術分野別の状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      化学プラント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      電力システム
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      技術システムと状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技術システムと状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scada" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCADA システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      デジタルツイン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI・機械学習の活用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      安全管理と状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="安全管理と状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      機能安全（Functional Safety）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      リスクマネジメント
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      事故事例と教訓
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="事故事例と教訓">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      代表的な産業事故と状況認識
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識失敗の典型パターン
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      日本の産業・インフラの現状
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="日本の産業・インフラの現状">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      主要産業での取り組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      政府の政策・取り組み
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      将来の展望
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="将来の展望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#industry-40" class="md-nav__link">
+    <span class="md-ellipsis">
+      Industry 4.0 / スマートファクトリー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      サーキュラーエコノミー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      エネルギーシステムの変革
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      重要なポイント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      システム開発への示唆
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      関連リンク
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../daily-life/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日常生活
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア比較分析
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア比較分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/sa-dm-vs-general-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SA/DM系 vs 一般ソフトウェア
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/sa-vs-dm-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識 vs 意思決定システム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/aviation-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/maritime-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    船舶関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/weather-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    気象関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/medical-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    医療関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/emergency-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/military-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    軍事
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/aviation-dm-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AIと将来展望
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            AIと将来展望
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/ai-sa-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/new-context-in-sa-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とAIの新たな文脈
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/ai-dm-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI技術分野別概要
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            AI技術分野別概要
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/machine-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    機械学習・深層学習
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/natural-language-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    自然言語処理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/computer-vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    コンピュータビジョン
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/predictive-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    予測分析
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/explainable-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    説明可能なAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/edge-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    エッジAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/future-trends/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    将来の動向
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ケーススタディ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            ケーススタディ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/haneda-airport-collision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    羽田空港地上衝突事故(2024/1/2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      産業・インフラ分野での状況認識の特徴
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="産業・インフラ分野での状況認識の特徴">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      固有の環境特性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識が求められる理由
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      職種別の状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="職種別の状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plant-operator" class="md-nav__link">
+    <span class="md-ellipsis">
+      プラントオペレーター（Plant Operator）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-engineer" class="md-nav__link">
+    <span class="md-ellipsis">
+      制御エンジニア（Control Engineer）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance-engineer" class="md-nav__link">
+    <span class="md-ellipsis">
+      保全技術者（Maintenance Engineer）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      インフラ管理者（Infrastructure Manager）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      技術分野別の状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技術分野別の状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      化学プラント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      電力システム
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      技術システムと状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技術システムと状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scada" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCADA システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      デジタルツイン
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI・機械学習の活用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      安全管理と状況認識
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="安全管理と状況認識">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#functional-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      機能安全（Functional Safety）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      リスクマネジメント
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      事故事例と教訓
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="事故事例と教訓">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      代表的な産業事故と状況認識
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識失敗の典型パターン
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      日本の産業・インフラの現状
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="日本の産業・インフラの現状">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      主要産業での取り組み
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      政府の政策・取り組み
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      将来の展望
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="将来の展望">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#industry-40" class="md-nav__link">
+    <span class="md-ellipsis">
+      Industry 4.0 / スマートファクトリー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      サーキュラーエコノミー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      エネルギーシステムの変革
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      重要なポイント
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      システム開発への示唆
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      関連リンク
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考文献
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">産業・インフラ分野での状況認識<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">このページについて</p>
+<p>このページでは、産業・インフラ分野における状況認識（Situational Awareness）の重要性と応用について詳しく解説します。プラントオペレーター、制御エンジニア、保全技術者、インフラ管理者など、産業システムの安全・安定運用に関わる全ての職種での状況認識の実践例を学びます。</p>
+</div>
+<h2 id="_2">産業・インフラ分野での状況認識の特徴<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>産業・インフラ分野は、社会の基盤となる大規模システムの安全・安定運用を担い、24時間365日の連続運転が求められる環境として、独特の状況認識要件があります。</p>
+<h3 id="_3">固有の環境特性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>説明</th>
+<th>状況認識への影響</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>大規模・複雑システム</strong></td>
+<td>多数の機器・プロセス<br>複雑な相互依存関係</td>
+<td>全体俯瞰と詳細把握<br>システム思考の必要性</td>
+</tr>
+<tr>
+<td><strong>連続運転要求</strong></td>
+<td>24時間365日稼働<br>停止の社会的影響大</td>
+<td>疲労管理<br>交代勤務での継続性</td>
+</tr>
+<tr>
+<td><strong>経済性重視</strong></td>
+<td>効率・コスト最適化<br>収益性の追求</td>
+<td>安全性と経済性のバランス<br>長期視点の判断</td>
+</tr>
+<tr>
+<td><strong>環境・安全規制</strong></td>
+<td>厳格な法規制<br>社会的責任</td>
+<td>コンプライアンス維持<br>リスク管理の徹底</td>
+</tr>
+<tr>
+<td><strong>高度自動化</strong></td>
+<td>制御システム依存<br>人間の役割変化</td>
+<td>システム監視<br>異常時の手動介入</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">状況認識が求められる理由<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A[産業・インフラ分野での状況認識の必要性] --&gt; B[安全運転]
+    A --&gt; C[生産効率]
+    A --&gt; D[品質保証]
+    A --&gt; E[環境保護]
+
+    B --&gt; B1[事故防止]
+    B --&gt; B2[設備保全]
+    B --&gt; B3[作業者安全]
+
+    C --&gt; C1[最適運転]
+    C --&gt; C2[エネルギー効率]
+    C --&gt; C3[稼働率向上]
+
+    D --&gt; D1[製品品質]
+    D --&gt; D2[プロセス管理]
+    D --&gt; D3[顧客信頼]
+
+    E --&gt; E1[排出管理]
+    E --&gt; E2[廃棄物削減]
+    E --&gt; E3[持続可能性]
+
+
+
+
+
+</code></pre>
+<h2 id="_5">職種別の状況認識<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="plant-operator">プラントオペレーター（Plant Operator）<a class="headerlink" href="#plant-operator" title="Permanent link">&para;</a></h3>
+<p>プラントオペレーターは中央制御室から複雑なプロセスを監視・制御する責任を負います。</p>
+<h4 id="3">プラントオペレーターの状況認識の3レベル<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">レベル1: 知覚（Perception）</label><label for="__tabbed_1_2">レベル2: 理解（Comprehension）</label><label for="__tabbed_1_3">レベル3: 予測（Projection）</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>プロセス状態・警報からの情報収集</strong></p>
+<ul>
+<li><strong>プロセス値</strong>: 温度、圧力、流量、レベル、組成</li>
+<li><strong>機器状態</strong>: 運転・停止、故障・正常、効率</li>
+<li><strong>警報情報</strong>: 高警報、低警報、機器異常</li>
+<li><strong>環境条件</strong>: 外気温、風向・風速、天候状況</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">知覚の例</p>
+<p>「反応器温度350℃、圧力5.5MPa、流量120m³/h。コンプレッサー2号機に高温警報、外気温35℃、南風10m/s」</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p><strong>プロセス状況の統合的把握</strong></p>
+<ul>
+<li><strong>プロセス均衡</strong>: 物質・熱収支の適切性</li>
+<li><strong>制御性能</strong>: 制御ループの安定性、応答性</li>
+<li><strong>機器状況</strong>: 性能劣化、メンテナンス必要性</li>
+<li><strong>運転効率</strong>: エネルギー消費、収率、品質</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">理解の例</p>
+<p>「反応器温度上昇は外気温影響と負荷増加が原因。コンプレッサー高温警報は冷却系の能力低下。このまま運転継続可能だが効率低下傾向」</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p><strong>プロセス挙動と対応効果の予測</strong></p>
+<ul>
+<li><strong>トレンド予測</strong>: 現在の状況継続時の変化</li>
+<li><strong>制御効果</strong>: 操作変更による影響</li>
+<li><strong>設備寿命</strong>: 機器の残り運転可能時間</li>
+<li><strong>市場対応</strong>: 需要変化への対応能力</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">予測の例</p>
+<p>「現在のトレンドが続けば6時間後に反応器温度限界到達。冷却系能力向上により2℃低下可能。コンプレッサーは48時間以内の点検が必要」</p>
+</div>
+</div>
+</div>
+</div>
+<h3 id="control-engineer">制御エンジニア（Control Engineer）<a class="headerlink" href="#control-engineer" title="Permanent link">&para;</a></h3>
+<p>制御エンジニアは制御システムの設計・最適化・保守を担当します。</p>
+<h4 id="_6">制御システムの状況認識要素<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>制御レベル</th>
+<th>主な対象</th>
+<th>状況認識の焦点</th>
+<th>技術的課題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>基本制御<br>(Regulatory Control)</strong></td>
+<td>単一ループ制御<br>PID制御</td>
+<td>制御性能<br>安定性<br>外乱対応</td>
+<td>パラメータ調整<br>制御構造最適化</td>
+</tr>
+<tr>
+<td><strong>高度制御<br>(Advanced Control)</strong></td>
+<td>多変数制御<br>予測制御</td>
+<td>プロセス相互作用<br>制約条件<br>最適化</td>
+<td>モデル精度<br>計算負荷<br>実装性</td>
+</tr>
+<tr>
+<td><strong>最適化制御<br>(Optimization)</strong></td>
+<td>全体最適化<br>利益最大化</td>
+<td>経済性指標<br>運転制約<br>市場動向</td>
+<td>目的関数設定<br>制約条件<br>リアルタイム性</td>
+</tr>
+</tbody>
+</table>
+<h3 id="maintenance-engineer">保全技術者（Maintenance Engineer）<a class="headerlink" href="#maintenance-engineer" title="Permanent link">&para;</a></h3>
+<p>保全技術者は設備の健全性維持と寿命延長を担当します。</p>
+<h4 id="_7">保全の発展段階<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">事後保全<br>(Breakdown Maintenance)</label><label for="__tabbed_2_2">予防保全<br>(Preventive Maintenance)</label><label for="__tabbed_2_3">予知保全<br>(Predictive Maintenance)</label><label for="__tabbed_2_4">先制保全<br>(Proactive Maintenance)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>故障発生後の修理</strong></p>
+<ul>
+<li>故障現象の把握</li>
+<li>原因究明と対策</li>
+<li>修理作業の実施</li>
+<li>再発防止策の検討</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>定期的な点検・交換</strong></p>
+<ul>
+<li>運転時間・カレンダー基準</li>
+<li>定期点検の実施</li>
+<li>部品交換計画</li>
+<li>保全記録の管理</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>状態監視による適時保全</strong></p>
+<ul>
+<li>振動・温度・油分析</li>
+<li>劣化トレンドの監視</li>
+<li>故障予知アルゴリズム</li>
+<li>最適保全時期の決定</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>根本原因の除去</strong></p>
+<ul>
+<li>故障原因の根本分析</li>
+<li>設計改善・運転改善</li>
+<li>保全方式の最適化</li>
+<li>設備信頼性の向上</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="infrastructure-manager">インフラ管理者（Infrastructure Manager）<a class="headerlink" href="#infrastructure-manager" title="Permanent link">&para;</a></h3>
+<p>インフラ管理者は電力・ガス・水道・通信などの社会基盤の運用管理を担当します。</p>
+<h4 id="_8">インフラ管理の状況認識フロー<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>sequenceDiagram
+    participant MON as 監視システム
+    participant OPR as 運用管理者
+    participant MNT as 保全部門
+    participant CSR as 顧客サービス
+    participant EXT as 外部機関
+
+    MON-&gt;&gt;OPR: 系統状況・需要予測
+    OPR-&gt;&gt;OPR: 需給バランス評価
+    OPR-&gt;&gt;MNT: 設備状況確認要請
+    MNT-&gt;&gt;OPR: 保全計画・設備制約
+    OPR-&gt;&gt;CSR: 供給計画・制約事項
+    OPR-&gt;&gt;EXT: 系統連系・協調運転
+    EXT-&gt;&gt;OPR: 外部制約・緊急事態
+    OPR-&gt;&gt;MON: 運転指令・設定変更</code></pre>
+<h2 id="_9">技術分野別の状況認識<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="_10">化学プラント<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="_11">プロセス安全管理<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>プロセス安全管理（PSM: Process Safety Management）では、化学プロセスの本質的危険性を管理します。</p>
+<h5 id="psm">PSMの要素と状況認識<a class="headerlink" href="#psm" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>PSM要素</th>
+<th>状況認識の役割</th>
+<th>具体的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>プロセス安全情報</strong></td>
+<td>危険性の認識<br>安全限界の把握</td>
+<td>プロセス化学<br>設備設計<br>安全データシート</td>
+</tr>
+<tr>
+<td><strong>プロセス危険解析</strong></td>
+<td>リスクの理解<br>対策の予測</td>
+<td>HAZOP解析<br>LOPA解析<br>SIL評価</td>
+</tr>
+<tr>
+<td><strong>運転手順書</strong></td>
+<td>正常・異常時の判断<br>対応行動の標準化</td>
+<td>運転手順<br>緊急時手順<br>非定常作業手順</td>
+</tr>
+<tr>
+<td><strong>機械整備</strong></td>
+<td>設備健全性の確認<br>故障予測</td>
+<td>点検基準<br>予備品管理<br>作業許可</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_12">電力システム<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="_13">電力系統の状況認識<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>graph TD
+    A[発電所] --&gt; D[送電系統&lt;br&gt;特高・高圧]
+    B[太陽光・風力] --&gt; D
+    C[火力・原子力発電] --&gt; D
+    D --&gt; E[配電系統&lt;br&gt;高圧・低圧]
+    E --&gt; F[需要家]
+
+    B --&gt; E
+    G[家庭用太陽光] --&gt; E
+    H[蓄電池] --&gt; E
+    I[EV] --&gt; E
+
+    D --&gt; J[送電系統監視制御&lt;br&gt;EMS/SCADA]
+    E --&gt; K[配電系統監視制御&lt;br&gt;DMS/DEMS]
+
+    J --&gt; L[広域需給バランス]
+    K --&gt; M[局所需給調整]
+    J --&gt; N[系統安定化・故障対応]
+    K --&gt; O[配電自動化・品質管理]
+
+
+
+
+</code></pre>
+<h4 id="_14">送電系統の状況認識<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">需給バランス</label><label for="__tabbed_3_2">系統安定度</label><label for="__tabbed_3_3">設備保全</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>広域での需給調整</strong></p>
+<ul>
+<li>広域需要予測（気象・社会活動連動）</li>
+<li>大規模発電所の発電計画</li>
+<li>予備力確保と調整電源管理</li>
+<li>地域間電力融通</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>電力品質と供給信頼度</strong></p>
+<ul>
+<li>電圧・周波数の維持</li>
+<li>送電線潮流制御</li>
+<li>動態安定度解析</li>
+<li>保護継電器協調</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>基幹設備の管理</strong></p>
+<ul>
+<li>送電線・変電設備診断</li>
+<li>絶縁劣化・塩害対策</li>
+<li>雷害・災害対応</li>
+<li>セキュリティ強化</li>
+</ul>
+</div>
+</div>
+</div>
+<h4 id="_15">配電系統の状況認識（スマートグリッド）<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">分散電源統合管理</label><label for="__tabbed_4_2">配電自動化</label><label for="__tabbed_4_3">需要家サービス</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>多様な電源の協調制御</strong></p>
+<ul>
+<li>太陽光発電出力予測・制御</li>
+<li>蓄電池最適充放電</li>
+<li>EV急速充電需要管理</li>
+<li>家庭用燃料電池統合</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>停電範囲最小化と復旧迅速化</strong></p>
+<ul>
+<li>リアルタイム事故検出</li>
+<li>自動区間開閉制御</li>
+<li>健全区間への自動復電</li>
+<li>復旧作業支援</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>双方向コミュニケーション</strong></p>
+<ul>
+<li>スマートメーター活用</li>
+<li>家庭エネルギー管理（HEMS）</li>
+<li>デマンドレスポンス</li>
+<li>電力見える化サービス</li>
+</ul>
+</div>
+</div>
+</div>
+<h4 id="_16">最新の配電系統技術<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>主な機能</th>
+<th>状況認識への貢献</th>
+<th>実装状況</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>スマートメーター</strong></td>
+<td>30分値電力計測<br>遠隔検針・制御</td>
+<td>リアルタイム需要把握<br>停電検知</td>
+<td>普及率約95%<br>（2023年時点）</td>
+</tr>
+<tr>
+<td><strong>DMS<br>(Distribution Management System)</strong></td>
+<td>配電系統統合管理<br>最適運用計算</td>
+<td>系統状態監視<br>運用計画最適化</td>
+<td>大手電力会社<br>導入完了</td>
+</tr>
+<tr>
+<td><strong>DEMS<br>(Distribution Energy Management System)</strong></td>
+<td>分散電源協調制御<br>配電最適化</td>
+<td>分散電源統合<br>潮流制御</td>
+<td>実証段階<br>順次導入</td>
+</tr>
+<tr>
+<td><strong>Power Conditioner<br>(PCS)</strong></td>
+<td>再エネ系統連系<br>電力品質制御</td>
+<td>出力変動抑制<br>系統影響軽減</td>
+<td>全再エネ設備<br>義務化済み</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_17">技術システムと状況認識<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<h3 id="scada">SCADA システム<a class="headerlink" href="#scada" title="Permanent link">&para;</a></h3>
+<p>SCADA（Supervisory Control and Data Acquisition）は産業制御システムの中核となる監視制御システムです。</p>
+<h4 id="scada_1">SCADAシステムの構成<a class="headerlink" href="#scada_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>層</th>
+<th>構成要素</th>
+<th>機能</th>
+<th>状況認識への貢献</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>企業層<br>(Enterprise Level)</strong></td>
+<td>ERP, MIS<br>生産管理システム</td>
+<td>生産計画<br>経営判断支援</td>
+<td>経営レベルの状況認識<br>長期戦略の策定</td>
+</tr>
+<tr>
+<td><strong>制御層<br>(Control Level)</strong></td>
+<td>SCADA<br>DCS, PLC</td>
+<td>プロセス制御<br>監視操作</td>
+<td>運転レベルの状況認識<br>リアルタイム制御</td>
+</tr>
+<tr>
+<td><strong>フィールド層<br>(Field Level)</strong></td>
+<td>センサー<br>アクチュエータ</td>
+<td>データ収集<br>機器制御</td>
+<td>現場レベルの状況認識<br>直接計測制御</td>
+</tr>
+</tbody>
+</table>
+<h4 id="hmihuman-machine-interface">HMI（Human Machine Interface）設計<a class="headerlink" href="#hmihuman-machine-interface" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>graph TD
+    A[運転員] --&gt; B[HMI画面]
+    B --&gt; C[プロセス概要]
+    B --&gt; D[詳細制御画面]
+    B --&gt; E[トレンド表示]
+    B --&gt; F[警報管理]
+
+    C --&gt; G[システム全体の状況把握]
+    D --&gt; H[詳細操作・調整]
+    E --&gt; I[変化の傾向分析]
+    F --&gt; J[異常の早期発見]
+
+
+</code></pre>
+<h3 id="_18">デジタルツイン<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h4 id="_19">産業システムでのデジタルツイン活用<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">リアルタイム監視</label><label for="__tabbed_5_2">予測・最適化</label><label for="__tabbed_5_3">維持管理</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>現実とデジタルの同期</strong></p>
+<ul>
+<li>センサーデータの取り込み</li>
+<li>モデルとのリアルタイム同期</li>
+<li>仮想計測による補完</li>
+<li>状態の可視化</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>将来状況の予測</strong></p>
+<ul>
+<li>プロセスシミュレーション</li>
+<li>故障予知・寿命予測</li>
+<li>運転最適化</li>
+<li>What-if分析</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>ライフサイクル管理</strong></p>
+<ul>
+<li>設備履歴管理</li>
+<li>劣化モデル</li>
+<li>保全計画最適化</li>
+<li>更新時期予測</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="ai">AI・機械学習の活用<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h3>
+<h4 id="ai_1">産業AIの応用領域<a class="headerlink" href="#ai_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>応用分野</th>
+<th>主な技術</th>
+<th>期待効果</th>
+<th>実装課題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>異常検知</strong></td>
+<td>統計的手法<br>機械学習<br>深層学習</td>
+<td>早期発見<br>偽警報削減<br>未知異常検出</td>
+<td>データ品質<br>モデルの説明性<br>適用範囲</td>
+</tr>
+<tr>
+<td><strong>予知保全</strong></td>
+<td>時系列分析<br>生存分析<br>特徴量抽出</td>
+<td>予防的保全<br>コスト削減<br>信頼性向上</td>
+<td>データ収集<br>故障ラベル<br>ROI評価</td>
+</tr>
+<tr>
+<td><strong>プロセス最適化</strong></td>
+<td>強化学習<br>進化的計算<br>最適化手法</td>
+<td>効率向上<br>品質改善<br>省エネルギー</td>
+<td>モデル化<br>制約条件<br>実装安全性</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_20">安全管理と状況認識<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<h3 id="functional-safety">機能安全（Functional Safety）<a class="headerlink" href="#functional-safety" title="Permanent link">&para;</a></h3>
+<h4 id="iec-6150861511">IEC 61508/61511 規格<a class="headerlink" href="#iec-6150861511" title="Permanent link">&para;</a></h4>
+<p>機能安全規格では、システムの安全機能の信頼性を定量化します。</p>
+<h5 id="silsafety-integrity-level">SIL（Safety Integrity Level）<a class="headerlink" href="#silsafety-integrity-level" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th>SIL</th>
+<th>機能失敗確率<br>（1時間あたり）</th>
+<th>機能失敗確率<br>（要求時）</th>
+<th>適用例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SIL 4</strong></td>
+<td>10⁻⁹ ≤ λ &lt; 10⁻⁸</td>
+<td>10⁻⁵ ≤ PFD &lt; 10⁻⁴</td>
+<td>原子力<br>鉄道信号</td>
+</tr>
+<tr>
+<td><strong>SIL 3</strong></td>
+<td>10⁻⁸ ≤ λ &lt; 10⁻⁷</td>
+<td>10⁻⁴ ≤ PFD &lt; 10⁻³</td>
+<td>化学プラント<br>製鉄所</td>
+</tr>
+<tr>
+<td><strong>SIL 2</strong></td>
+<td>10⁻⁷ ≤ λ &lt; 10⁻⁶</td>
+<td>10⁻³ ≤ PFD &lt; 10⁻²</td>
+<td>機械安全<br>一般産業</td>
+</tr>
+<tr>
+<td><strong>SIL 1</strong></td>
+<td>10⁻⁶ ≤ λ &lt; 10⁻⁵</td>
+<td>10⁻² ≤ PFD &lt; 10⁻¹</td>
+<td>軽工業<br>建物設備</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_21">リスクマネジメント<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<h4 id="_22">リスクアセスメントプロセス<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>graph TD
+    A[危険源の特定] --&gt; B[リスクの算出]
+    B --&gt; C[リスクの評価]
+    C --&gt; D[リスク対策]
+    D --&gt; E[効果の確認]
+    E --&gt; A
+
+    B --&gt; F[発生確率&lt;br&gt;Probability]
+    B --&gt; G[影響度&lt;br&gt;Consequence]
+    F --&gt; H[リスク値&lt;br&gt;Risk = P × C]
+    G --&gt; H
+
+
+</code></pre>
+<h2 id="_23">事故事例と教訓<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
+<p>産業事故の分析から、状況認識の重要性を学ぶことができます。</p>
+<h3 id="_24">代表的な産業事故と状況認識<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">チェルノブイリ原発事故（1986年）</label><label for="__tabbed_6_2">テキサスシティ製油所事故（2005年）</label><label for="__tabbed_6_3">東日本大震災・福島第一原発事故（2011年）</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>制御システムの誤操作と安全意識の欠如</strong></p>
+<ul>
+<li><strong>問題点</strong>: 安全システムの無効化、手順無視、警告軽視</li>
+<li><strong>SA関連要因</strong>:<ul>
+<li>知覚の軽視（警告信号の無視）</li>
+<li>理解の不足（核反応の暴走メカニズム）</li>
+<li>予測の失敗（操作の深刻な結果への認識不足）</li>
+</ul>
+</li>
+<li><strong>教訓</strong>: 安全文化の重要性、多重防護、独立した安全システム</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>組織的な安全管理の欠陥</strong></p>
+<ul>
+<li><strong>問題点</strong>: コスト削減優先、安全投資不足、警告サインの軽視</li>
+<li><strong>SA関連要因</strong>:<ul>
+<li>組織レベルでの状況認識不足</li>
+<li>安全リスクへの感度低下</li>
+<li>経済性と安全性の不適切なバランス</li>
+</ul>
+</li>
+<li><strong>教訓</strong>: プロセス安全管理の体系化、安全文化の醸成</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>想定外事象への準備不足</strong></p>
+<ul>
+<li><strong>問題点</strong>: 津波想定の過小評価、電源喪失への備え不足</li>
+<li><strong>SA関連要因</strong>:<ul>
+<li>リスク認識の範囲不足（複合災害）</li>
+<li>長期的視点での状況認識不足</li>
+<li>シビアアクシデント対応の準備不足</li>
+</ul>
+</li>
+<li><strong>教訓</strong>: リスクの包括的評価、多重防護の強化、危機管理体制</li>
+</ul>
+</div>
+</div>
+</div>
+<h3 id="_25">状況認識失敗の典型パターン<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>失敗パターン</th>
+<th>産業分野での特徴</th>
+<th>対策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>正常化の偏見</strong></td>
+<td>「いつもの異常」として軽視<br>慣れによる感度低下</td>
+<td>異常管理の標準化<br>定期的な感度チェック</td>
+</tr>
+<tr>
+<td><strong>複雑性による見落とし</strong></td>
+<td>多数の警報による混乱<br>重要度の判別困難</td>
+<td>警報管理システム<br>優先順位の明確化</td>
+</tr>
+<tr>
+<td><strong>組織的要因</strong></td>
+<td>コミュニケーション不足<br>責任の曖昧さ</td>
+<td>報告体系の明確化<br>安全文化の醸成</td>
+</tr>
+<tr>
+<td><strong>技術的要因</strong></td>
+<td>計器の故障・校正不良<br>制御システムの欠陥</td>
+<td>冗長化<br>定期点検・校正</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_26">日本の産業・インフラの現状<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<h3 id="_27">主要産業での取り組み<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<h4 id="dx">製造業のDX推進<a class="headerlink" href="#dx" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">自動車産業</label><label for="__tabbed_7_2">鉄鋼業</label><label for="__tabbed_7_3">化学工業</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>トヨタ生産方式の進化</strong></p>
+<ul>
+<li>カイゼン活動の体系化</li>
+<li>見える化による状況認識向上</li>
+<li>自動化と人間の協調</li>
+<li>サプライチェーン全体の最適化</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>高炉・製鋼プロセスの最適化</strong></p>
+<ul>
+<li>プロセス制御の高度化</li>
+<li>品質管理の自動化</li>
+<li>エネルギー効率の最大化</li>
+<li>環境負荷の最小化</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>プロセス安全とDXの融合</strong></p>
+<ul>
+<li>AIによる異常検知</li>
+<li>予知保全の高度化</li>
+<li>プロセス最適化</li>
+<li>安全管理の強化</li>
+</ul>
+</div>
+</div>
+</div>
+<h4 id="_28">インフラ事業者の現状<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>graph TD
+    A[電力事業] --&gt; D[スマートグリッド]
+    B[ガス事業] --&gt; E[スマートメータ]
+    C[水道事業] --&gt; F[管路更新]
+    G[通信事業] --&gt; H[5G・光ファイバー]
+
+    D --&gt; I[需給最適化]
+    E --&gt; J[エネルギー管理]
+    F --&gt; K[漏水検知]
+    H --&gt; L[高速通信]
+
+    I --&gt; M[効率的運用]
+    J --&gt; M
+    K --&gt; M
+    L --&gt; M
+
+</code></pre>
+<h3 id="_29">政府の政策・取り組み<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<div class="grid cards">
+<ul>
+<li>
+<h4 id="society-50">Society 5.0 と産業変革<a class="headerlink" href="#society-50" title="Permanent link">&para;</a></h4>
+<hr />
+<ul>
+<li><strong>データ駆動型社会</strong>: IoT、ビッグデータ、AIの活用</li>
+<li><strong>サイバーフィジカルシステム</strong>: 現実とデジタルの統合</li>
+<li><strong>産業構造変革</strong>: 従来産業のデジタル化</li>
+<li><strong>人材育成</strong>: DXに対応した人材の育成</li>
+</ul>
+</li>
+<li>
+<h4 id="_30">インフラ長寿命化・強靭化<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<hr />
+<ul>
+<li><strong>インフラメンテナンス</strong>: 予防保全型への転換</li>
+<li><strong>災害対応力強化</strong>: 自然災害への耐性向上</li>
+<li><strong>セキュリティ対策</strong>: サイバー攻撃への対策強化</li>
+<li><strong>国際競争力</strong>: 技術革新による優位性確保</li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="_31">将来の展望<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h2>
+<h3 id="industry-40">Industry 4.0 / スマートファクトリー<a class="headerlink" href="#industry-40" title="Permanent link">&para;</a></h3>
+<h4 id="_32">第四次産業革命の特徴<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>要素技術</th>
+<th>主な機能</th>
+<th>期待効果</th>
+<th>課題</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IoT・センサー</strong></td>
+<td>データ収集<br>リアルタイム監視</td>
+<td>見える化<br>精密制御</td>
+<td>データ品質<br>通信遅延</td>
+</tr>
+<tr>
+<td><strong>AI・機械学習</strong></td>
+<td>パターン認識<br>最適化</td>
+<td>自動化<br>高度制御</td>
+<td>説明可能性<br>安全保証</td>
+</tr>
+<tr>
+<td><strong>ロボット・自動化</strong></td>
+<td>無人化<br>協働作業</td>
+<td>生産性向上<br>品質安定</td>
+<td>安全性<br>柔軟性</td>
+</tr>
+<tr>
+<td><strong>サイバーセキュリティ</strong></td>
+<td>情報保護<br>不正対策</td>
+<td>システム保護<br>信頼性確保</td>
+<td>脅威の多様化<br>対策コスト</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_33">サーキュラーエコノミー<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<h4 id="_34">循環型社会での状況認識<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<pre class="mermaid"><code>graph LR
+    A[資源投入] --&gt; B[設計・製造]
+    B --&gt; C[流通・販売]
+    C --&gt; D[使用・運用]
+    D --&gt; E[回収・再利用]
+    E --&gt; A
+
+    D --&gt; F[メンテナンス]
+    F --&gt; D
+    E --&gt; G[リサイクル]
+    G --&gt; A
+
+
+</code></pre>
+<h4 id="_35">新たな状況認識要求<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>ライフサイクル視点</strong>: 設計から廃棄まで全体最適</li>
+<li><strong>物質フロー管理</strong>: 資源の追跡・管理</li>
+<li><strong>環境影響評価</strong>: カーボンフットプリント、LCA</li>
+<li><strong>サプライチェーン</strong>: 持続可能性の確保</li>
+</ul>
+<h3 id="_36">エネルギーシステムの変革<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<h4 id="_37">再生可能エネルギーの大量導入<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">系統運用の高度化</label><label for="__tabbed_8_2">分散型エネルギー</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><strong>変動性再エネへの対応</strong></p>
+<ul>
+<li>需給予測の精度向上</li>
+<li>系統安定化技術</li>
+<li>蓄電システムの活用</li>
+<li>ディマンドレスポンス</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><strong>地域エネルギーシステム</strong></p>
+<ul>
+<li>マイクログリッド</li>
+<li>仮想発電所（VPP）</li>
+<li>ピア・ツー・ピア取引</li>
+<li>エネルギーの地産地消</li>
+</ul>
+</div>
+</div>
+</div>
+<h2 id="_38">まとめ<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h2>
+<p>産業・インフラ分野での状況認識は、以下の特徴を持ちます。</p>
+<h3 id="_39">重要なポイント<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>大規模・複雑システム</strong>: 全体俯瞰と詳細把握の両立</li>
+<li><strong>連続運転要求</strong>: 24時間365日の安定運用</li>
+<li><strong>安全と経済の両立</strong>: リスク管理と効率性の最適化</li>
+<li><strong>高度自動化</strong>: 人間とシステムの協調</li>
+<li><strong>持続可能性</strong>: 環境・社会・経済の統合的視点</li>
+</ol>
+<h3 id="_40">システム開発への示唆<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
+<p>産業・インフラ分野での状況認識は、システム開発の観点から以下の示唆を与えます。</p>
+<ul>
+<li><strong>高可用性設計</strong>: 99.9%を超える稼働率要求</li>
+<li><strong>リアルタイム処理</strong>: ミリ秒単位の応答時間要求</li>
+<li><strong>拡張性・保守性</strong>: 長期運用（20-30年）への対応</li>
+<li><strong>サイバーセキュリティ</strong>: OT（制御技術）とIT（情報技術）の融合</li>
+<li><strong>データ統合</strong>: 多種多様なデータソースの統合</li>
+<li><strong>可視化・ダッシュボード</strong>: 複雑な情報の分かりやすい表示</li>
+<li><strong>AI・機械学習</strong>: 大量データからの知見抽出</li>
+</ul>
+<p>産業・インフラシステムは、社会基盤を支える重要なシステムであり、ここで培われた技術と概念は、他の分野でのシステム開発においても重要な指針となります。特に、長期運用、高信頼性、継続的改善といった観点は、あらゆるシステム開発で参考になる要素です。</p>
+<h2 id="_41">関連リンク<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../basics/what-is-sa">基本概念：状況認識とは</a></li>
+<li><a href="../../situational-awareness-guide/measuring-sa">状況認識の理論と実践：状況認識の測定方法</a></li>
+</ul>
+<!-- - [ソフトウェア：産業・インフラ関連ソフトウェア](../../software/industrial-software) -->
+
+<h2 id="_42">参考文献<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Endsley, M. R., &amp; Kiris, E. O. (1995). The out-of-the-loop performance problem and level of control in automation. <em>Human Factors, 37</em>(2), 381-394.</li>
+<li>Sheridan, T. B. (2002). Humans and automation: System design and research issues. John Wiley &amp; Sons.</li>
+<li>経済産業省. (2021). <em>2021年版ものづくり白書</em>. </li>
+<li>IEC 61508. (2010). <em>Functional safety of electrical/electronic/programmable electronic safety-related systems</em>. International Electrotechnical Commission.</li>
+<li>Hollnagel, E., Woods, D. D., &amp; Leveson, N. (Eds.). (2006). Resilience engineering: Concepts and precepts. Ashgate Publishing.</li>
+</ol>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最終更新日">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年8月24日 09:02:08 JST">2025年8月24日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../military-dm/" class="md-footer__link md-footer__link--prev" aria-label="前: 意思決定">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                意思決定
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../daily-life/" class="md-footer__link md-footer__link--next" aria-label="次: 日常生活">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                日常生活
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 shuji-bonji | <a href='https://creativecommons.org/licenses/by/4.0/deed.ja'>CC-BY-4.0ライセンス</a>に基づく
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shuji-bonji/Situational-Awareness-and-Decision-Making" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.tabs", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../assets/javascripts/mermaid-zoom.js"></script>
+      
+    
+  </body>
+</html>

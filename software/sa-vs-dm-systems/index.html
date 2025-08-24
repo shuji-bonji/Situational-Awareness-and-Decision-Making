@@ -1,0 +1,4539 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="状況認識重視システムと意思決定重視システムの技術的特徴、アーキテクチャ、UI/UX設計の違いを詳細に比較分析し、それぞれの適用領域を解説します。">
+      
+      
+      
+        <link rel="canonical" href="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/software/sa-vs-dm-systems/">
+      
+      
+        <link rel="prev" href="../sa-dm-vs-general-software/">
+      
+      
+        <link rel="next" href="../aviation-sa-software/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>状況認識 vs 意思決定システム - 状況認識と意思決定</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-dark.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-zoom.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mkdocs_d2_plugin.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  
+
+  <!-- Meta Keywords (minimal usage) -->
+  
+
+  <!-- 日本語サイト向けの言語設定 -->
+  <meta name="language" content="ja">
+  <meta http-equiv="content-language" content="ja">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="状況認識 vs 意思決定システム - Situational Awareness and Decision Making">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+  <meta property="og:site_name" content="状況認識と意思決定">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/software/sa-vs-dm-systems/">
+  
+    <meta property="og:description" content="状況認識重視システムと意思決定重視システムの技術的特徴、アーキテクチャ、UI/UX設計の違いを詳細に比較分析し、それぞれの適用領域を解説します。">
+  
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="状況認識 vs 意思決定システム - Situational Awareness and Decision Making">
+  
+    <meta name="twitter:description" content="状況認識重視システムと意思決定重視システムの技術的特徴、アーキテクチャ、UI/UX設計の違いを詳細に比較分析し、それぞれの適用領域を解説します。">
+  
+  <meta name="twitter:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+
+  
+  
+  
+    <meta name="robots" content="index, follow">
+  
+
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#vs" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="状況認識と意思決定" class="md-header__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            状況認識と意思決定
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              状況認識 vs 意思決定システム
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../basics/" class="md-tabs__link">
+          
+  
+  
+  基本概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../situational-awareness-guide/" class="md-tabs__link">
+          
+  
+  
+  状況認識の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../decision-making-guide/" class="md-tabs__link">
+          
+  
+  
+  意思決定の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../applications/" class="md-tabs__link">
+          
+  
+  
+  応用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ai-and-future/" class="md-tabs__link">
+          
+  
+  
+  AIと将来展望
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../case-studies/" class="md-tabs__link">
+          
+  
+  
+  ケーススタディ
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="状況認識と意思決定" class="md-nav__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    状況認識と意思決定
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ホーム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    基本概念
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基本概念
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/what-is-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/endsley-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Endsleyの3レベルモデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/ooda-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/sa-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の基本アプローチ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/measuring-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の測定方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/training-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/decision-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定モデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/cognitive-biases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    認知バイアスと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/uncertainty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    不確実性下の意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/team-decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    チーム意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    現代の意思決定手法
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            現代の意思決定手法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/ai-enhanced-ooda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI統合OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    データ駆動型意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/collaborative-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    協調型状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/decision-training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    応用
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            応用
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    航空分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            航空分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/aviation-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/aviation-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    海事・船舶分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            海事・船舶分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/maritime-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/maritime-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    医療分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            医療分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/medical-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/medical-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            緊急対応・危機管理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/emergency-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/emergency-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    軍事・防衛分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            軍事・防衛分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/military-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/military-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/industrial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    産業・インフラ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/daily-life/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日常生活
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア比較分析
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア比較分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sa-dm-vs-general-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SA/DM系 vs 一般ソフトウェア
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    状況認識 vs 意思決定システム
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識 vs 意思決定システム
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      根本的な設計思想の違い
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      主要な違い比較表
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      分野別システム分類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分野別システム分類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識重視システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定重視システム
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      技術アーキテクチャの違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技術アーキテクチャの違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識重視システムの設計
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定重視システムの設計
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      データフローの比較
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="データフローの比較">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識システムのフロー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定システムのフロー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uiux" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI/UX設計の違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI/UX設計の違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識重視のUI設計
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定重視のUI設計
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      パフォーマンス要求の違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="パフォーマンス要求の違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      応答性・処理要求
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      最適化の焦点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーハンドリングの違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="エラーハンドリングの違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識系：情報品質保証
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定系：判断品質保証
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      学習・改善アプローチの違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="学習・改善アプローチの違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識系：表示品質の継続改善
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定系：判断精度の継続改善
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体的な実装例比較
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="具体的な実装例比較">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      医療分野での比較
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      重要な設計判断基準
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      技術選択のガイドライン
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      関連リンク
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aviation-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maritime-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    船舶関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../weather-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    気象関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../medical-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    医療関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../emergency-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../military-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    軍事
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aviation-dm-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AIと将来展望
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            AIと将来展望
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/ai-sa-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/new-context-in-sa-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とAIの新たな文脈
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/ai-dm-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI技術分野別概要
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            AI技術分野別概要
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/machine-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    機械学習・深層学習
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/natural-language-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    自然言語処理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/computer-vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    コンピュータビジョン
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/predictive-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    予測分析
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/explainable-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    説明可能なAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/edge-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    エッジAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/future-trends/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    将来の動向
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ケーススタディ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            ケーススタディ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/haneda-airport-collision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    羽田空港地上衝突事故(2024/1/2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      根本的な設計思想の違い
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      主要な違い比較表
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      分野別システム分類
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="分野別システム分類">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識重視システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定重視システム
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      技術アーキテクチャの違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="技術アーキテクチャの違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識重視システムの設計
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定重視システムの設計
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      データフローの比較
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="データフローの比較">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識システムのフロー
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定システムのフロー
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uiux" class="md-nav__link">
+    <span class="md-ellipsis">
+      UI/UX設計の違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UI/UX設計の違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識重視のUI設計
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ui_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定重視のUI設計
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      パフォーマンス要求の違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="パフォーマンス要求の違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      応答性・処理要求
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      最適化の焦点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      エラーハンドリングの違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="エラーハンドリングの違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識系：情報品質保証
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定系：判断品質保証
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      学習・改善アプローチの違い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="学習・改善アプローチの違い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      状況認識系：表示品質の継続改善
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定系：判断精度の継続改善
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体的な実装例比較
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="具体的な実装例比較">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      医療分野での比較
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="まとめ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      重要な設計判断基準
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      技術選択のガイドライン
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      関連リンク
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="vs">状況認識 vs 意思決定システムの特徴比較<a class="headerlink" href="#vs" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">このページについて</p>
+<p>このページでは、状況認識（Situational Awareness）重視システムと意思決定（Decision Making）重視システムの技術的な違いを詳細に分析します。同じ「状況認識・意思決定系」に分類されるシステムでも、人間とシステムの役割分担によって設計思想が大きく異なることを解説します。</p>
+</div>
+<h2 id="_1">根本的な設計思想の違い<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>状況認識システムと意思決定システムでは、<strong>人間とシステムの責任分担</strong>が根本的に異なります。</p>
+<pre class="mermaid"><code>graph LR
+    A[情報・データ] --&gt; B[状況認識システム]
+    A --&gt; C[意思決定システム]
+
+    B --&gt; B1[データ統合・可視化]
+    B --&gt; B2[状況提示]
+    B --&gt; B3[人間が判断・決定]
+
+    C --&gt; C1[選択肢生成・評価]
+    C --&gt; C2[最適解選択]
+    C --&gt; C3[システムが判断・決定]
+
+
+
+
+</code></pre>
+<h2 id="_2">主要な違い比較表<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>観点</th>
+<th>状況認識重視システム</th>
+<th>意思決定重視システム</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>主目的</strong></td>
+<td><strong>情報の統合・可視化・理解</strong></td>
+<td><strong>選択肢の評価・判断・実行</strong></td>
+</tr>
+<tr>
+<td><strong>ユーザーの役割</strong></td>
+<td>人間が判断・決定を行う</td>
+<td>システムが推薦・自動実行</td>
+</tr>
+<tr>
+<td><strong>システムの責任</strong></td>
+<td>正確な情報提示</td>
+<td>最適な選択肢提案</td>
+</tr>
+<tr>
+<td><strong>技術的焦点</strong></td>
+<td>データフュージョン・可視化</td>
+<td>最適化・AI・自動化</td>
+</tr>
+<tr>
+<td><strong>エラーの影響</strong></td>
+<td>人間の判断ミス誘発</td>
+<td>システムの自動誤動作</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">分野別システム分類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">状況認識重視システム<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>分野</th>
+<th>システム例</th>
+<th>特徴</th>
+<th>人間の役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>航空管制</strong></td>
+<td>レーダー表示システム</td>
+<td>管制官が全体状況を把握し交通整理</td>
+<td>最終判断・指示</td>
+</tr>
+<tr>
+<td><strong>医療監視</strong></td>
+<td>ICUモニタリング</td>
+<td>医師・看護師が患者状態を総合把握</td>
+<td>診断・治療決定</td>
+</tr>
+<tr>
+<td><strong>船舶航海</strong></td>
+<td>ECDIS（電子海図）</td>
+<td>船長が航路・周辺状況を総合判断</td>
+<td>航路決定・操船</td>
+</tr>
+<tr>
+<td><strong>軍事偵察</strong></td>
+<td>ISR（情報収集）システム</td>
+<td>指揮官が戦術状況を俯瞰把握</td>
+<td>作戦判断・指示</td>
+</tr>
+<tr>
+<td><strong>気象予報</strong></td>
+<td>気象データ統合表示</td>
+<td>予報官が総合的に天気を予測</td>
+<td>予報作成・警報判断</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">意思決定重視システム<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>分野</th>
+<th>システム例</th>
+<th>特徴</th>
+<th>システムの役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>航空安全</strong></td>
+<td>TCAS（衝突回避）</td>
+<td>システムが回避行動を自動指示</td>
+<td>回避判断・指示</td>
+</tr>
+<tr>
+<td><strong>医療診断</strong></td>
+<td>AI診断支援</td>
+<td>システムが診断候補を推薦</td>
+<td>診断候補提示</td>
+</tr>
+<tr>
+<td><strong>金融取引</strong></td>
+<td>アルゴリズム取引</td>
+<td>システムが自動売買判断・実行</td>
+<td>取引実行</td>
+</tr>
+<tr>
+<td><strong>製造制御</strong></td>
+<td>自動制御システム</td>
+<td>システムが製造工程を自動制御</td>
+<td>プロセス制御</td>
+</tr>
+<tr>
+<td><strong>交通制御</strong></td>
+<td>信号制御システム</td>
+<td>システムが交通流を最適制御</td>
+<td>信号制御</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">技術アーキテクチャの違い<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h3 id="_7">状況認識重視システムの設計<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// 状況認識システムの典型的な構造</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">SituationalAwarenessArchitecture</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// データ収集・統合が中心</span>
+<span class="w">  </span><span class="nx">dataCollection</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">multiSourceIntegration</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">realTimeStreaming</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">dataFusion</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="c1">// 可視化・表示に重点</span>
+<span class="w">  </span><span class="nx">visualization</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">comprehensiveDisplay</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">contextualInformation</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">alertHighlighting</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="c1">// 人間支援機能</span>
+<span class="w">  </span><span class="nx">humanInterface</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">intuitivePresentaion</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">expertiseSupport</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">decisionAiding</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span><span class="w"> </span><span class="c1">// 支援のみ</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">SituationalAwarenessSystem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">dataSources</span><span class="o">:</span><span class="w"> </span><span class="kt">DataSource</span><span class="p">[];</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">dataFusion</span><span class="o">:</span><span class="w"> </span><span class="kt">DataFusionEngine</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">visualization</span><span class="o">:</span><span class="w"> </span><span class="kt">VisualizationEngine</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 情報の統合・表示</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">generateSituationPicture</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">SituationDisplay</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. 多様なデータソースから情報収集</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">rawData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">collectFromAllSources</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 2. データの相関・統合</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fusedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">dataFusion</span><span class="p">.</span><span class="nx">integrate</span><span class="p">(</span><span class="nx">rawData</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. 可視化・表示</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">display</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">visualization</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">fusedData</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 4. 異常・重要事項のハイライト</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">alertedDisplay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">highlightAnomalies</span><span class="p">(</span><span class="nx">display</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">alertedDisplay</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 警告生成（判断は人間が行う）</span>
+<span class="w">  </span><span class="nx">generateWarnings</span><span class="p">(</span><span class="nx">situation</span><span class="o">:</span><span class="w"> </span><span class="kt">SituationData</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Warning</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">detectAnomalies</span><span class="p">(</span><span class="nx">situation</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h3 id="_8">意思決定重視システムの設計<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// 意思決定システムの典型的な構造</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">DecisionMakingArchitecture</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 判断・選択が中心</span>
+<span class="w">  </span><span class="nx">decisionEngine</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">optionGeneration</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">evaluation</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">optimization</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="c1">// 自動化・実行に重点</span>
+<span class="w">  </span><span class="nx">automation</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">automaticExecution</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">realTimeResponse</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">adaptiveBehavior</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="c1">// AI・機械学習活用</span>
+<span class="w">  </span><span class="nx">intelligence</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">machineLearning</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">predictiveAnalytics</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">    </span><span class="nx">continuousLearning</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">DecisionMakingSystem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">decisionEngine</span><span class="o">:</span><span class="w"> </span><span class="kt">DecisionEngine</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">optimizationEngine</span><span class="o">:</span><span class="w"> </span><span class="kt">OptimizationEngine</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">executionEngine</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionEngine</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// 選択肢の生成・評価・実行</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">makeDecision</span><span class="p">(</span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">DecisionContext</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">DecisionResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. 選択肢の生成</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">generateOptions</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. 各選択肢の評価</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">evaluatedOptions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">evaluateOptions</span><span class="p">(</span><span class="nx">options</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. 最適解の選択</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">bestOption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">optimizationEngine</span><span class="p">.</span><span class="nx">selectBest</span><span class="p">(</span><span class="nx">evaluatedOptions</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 4. 実行（自動または推薦）</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">executionEngine</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="nx">bestOption</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">result</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="_9">データフローの比較<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="_10">状況認識システムのフロー<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A[複数データソース] --&gt; B[データ統合]
+    B --&gt; C[状況分析]
+    C --&gt; D[可視化]
+    D --&gt; E[人間オペレーター]
+    E --&gt; F[人間の判断]
+    F --&gt; G[人間の行動]
+
+    A --&gt; A1[センサーA]
+    A --&gt; A2[センサーB]
+    A --&gt; A3[外部システム]
+
+    B --&gt; B1[データフュージョン]
+    B --&gt; B2[時系列整理]
+    B --&gt; B3[品質チェック]
+
+    D --&gt; D1[3D表示]
+    D --&gt; D2[ダッシュボード]
+    D --&gt; D3[アラート]
+
+
+
+</code></pre>
+<h3 id="_11">意思決定システムのフロー<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A[入力データ] --&gt; B[選択肢生成]
+    B --&gt; C[評価・最適化]
+    C --&gt; D[システム判断]
+    D --&gt; E[自動実行]
+    E --&gt; F[結果監視]
+    F --&gt; G[学習・改善]
+
+    B --&gt; B1[パターン認識]
+    B --&gt; B2[シナリオ生成]
+    B --&gt; B3[制約考慮]
+
+    C --&gt; C1[コスト計算]
+    C --&gt; C2[リスク評価]
+    C --&gt; C3[効果予測]
+
+    E --&gt; E1[コマンド実行]
+    E --&gt; E2[状態変更]
+    E --&gt; E3[フィードバック]
+
+
+
+</code></pre>
+<h2 id="uiux">UI/UX設計の違い<a class="headerlink" href="#uiux" title="Permanent link">&para;</a></h2>
+<h3 id="ui">状況認識重視のUI設計<a class="headerlink" href="#ui" title="Permanent link">&para;</a></h3>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// 航空管制レーダー画面の例</span>
+<span class="kd">@Component</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">selector</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;atc-situation-display&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    &lt;!-- 全体状況を一目で把握できる設計 --&gt;</span>
+<span class="sb">    &lt;div class=&quot;radar-scope&quot;&gt;</span>
+<span class="sb">      &lt;!-- 重要な情報ほど目立つ表示 --&gt;</span>
+<span class="sb">      &lt;div class=&quot;aircraft-layer&quot;&gt;</span>
+<span class="sb">        &lt;div *ngFor=&quot;let aircraft of aircraftList&quot; </span>
+<span class="sb">            [class]=&quot;getAircraftClass(aircraft)&quot;</span>
+<span class="sb">            [style.color]=&quot;getStatusColor(aircraft)&quot;&gt;</span>
+<span class="sb">          &lt;!-- 航空機情報をリッチに表示 --&gt;</span>
+<span class="sb">          &lt;span class=&quot;callsign&quot;&gt;{{aircraft.callsign}}&lt;/span&gt;</span>
+<span class="sb">          &lt;span class=&quot;altitude&quot;&gt;{{aircraft.altitude}}&lt;/span&gt;</span>
+<span class="sb">          &lt;span class=&quot;speed&quot;&gt;{{aircraft.speed}}&lt;/span&gt;</span>
+<span class="sb">        &lt;/div&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+
+<span class="sb">      &lt;!-- コンテキスト情報をレイヤー表示 --&gt;</span>
+<span class="sb">      &lt;div class=&quot;weather-overlay&quot; [style.opacity]=&quot;weatherOpacity&quot;&gt;</span>
+<span class="sb">        &lt;!-- 気象情報オーバーレイ --&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+
+<span class="sb">      &lt;!-- アラートは明確に --&gt;</span>
+<span class="sb">      &lt;div class=&quot;alert-panel&quot; *ngIf=&quot;hasAlerts&quot;&gt;</span>
+<span class="sb">        &lt;div *ngFor=&quot;let alert of alerts&quot; </span>
+<span class="sb">            [class]=&quot;&#39;alert-&#39; + alert.severity&quot;&gt;</span>
+<span class="sb">          {{alert.message}}</span>
+<span class="sb">        &lt;/div&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+<span class="sb">    &lt;/div&gt;</span>
+
+<span class="sb">    &lt;!-- 操作は補助的 --&gt;</span>
+<span class="sb">    &lt;div class=&quot;control-panel&quot;&gt;</span>
+<span class="sb">      &lt;button (click)=&quot;toggleWeatherOverlay()&quot;&gt;気象表示切替&lt;/button&gt;</span>
+<span class="sb">      &lt;button (click)=&quot;adjustTimeScale()&quot;&gt;時間軸調整&lt;/button&gt;</span>
+<span class="sb">    &lt;/div&gt;</span>
+<span class="sb">  `</span><span class="p">,</span>
+
+<span class="w">    </span><span class="p">.</span><span class="nx">radar</span><span class="o">-</span><span class="nx">scope</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">100</span><span class="o">%</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">800px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="err">#</span><span class="mo">001122</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="kt">relative</span><span class="p">;</span>
+<span class="w">      </span><span class="cm">/* 高密度情報表示 */</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">.</span><span class="nx">aircraft</span><span class="o">-</span><span class="nx">layer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="kt">absolute</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">left</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">100</span><span class="o">%</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">100</span><span class="o">%</span><span class="p">;</span>
+<span class="w">      </span><span class="cm">/* 航空機を正確に配置 */</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">.</span><span class="nx">alert</span><span class="o">-</span><span class="nx">panel</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="kt">fixed</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">top</span><span class="o">:</span><span class="w"> </span><span class="kt">20px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">right</span><span class="o">:</span><span class="w"> </span><span class="kt">20px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">z</span><span class="o">-</span><span class="nx">index</span><span class="o">:</span><span class="w"> </span><span class="kt">1000</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">.</span><span class="nx">alert</span><span class="o">-</span><span class="nx">critical</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="n">#ff0000</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="kt">white</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">font</span><span class="o">-</span><span class="nx">weight</span><span class="o">:</span><span class="w"> </span><span class="kt">bold</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">animation</span><span class="o">:</span><span class="w"> </span><span class="kt">blink</span><span class="w"> </span><span class="mf">1</span><span class="nx">s</span><span class="w"> </span><span class="nx">infinite</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="sb">`]</span>
+<span class="sb">})</span>
+<span class="sb">export class SituationDisplayComponent {</span>
+<span class="sb">  // 人間の認知を支援する表示</span>
+<span class="sb">  getStatusColor(aircraft: Aircraft): string {</span>
+<span class="sb">    // 即座に理解できる色分け</span>
+<span class="sb">    switch (aircraft.emergencyStatus) {</span>
+<span class="sb">      case &#39;emergency&#39;: return &#39;#FF0000&#39;;    // 緊急：赤</span>
+<span class="sb">      case &#39;urgent&#39;: return &#39;#FFA500&#39;;       // 緊急：オレンジ</span>
+<span class="sb">      case &#39;normal&#39;: return &#39;#00FF00&#39;;       // 正常：緑</span>
+<span class="sb">      default: return &#39;#FFFFFF&#39;;             // 不明：白</span>
+<span class="sb">    }</span>
+<span class="sb">  }</span>
+
+<span class="sb">  // 情報は提示するが、判断は人間</span>
+<span class="sb">  getAircraftClass(aircraft: Aircraft): string {</span>
+<span class="sb">    const classes = [&#39;aircraft&#39;];</span>
+<span class="sb">    if (aircraft.conflictRisk) classes.push(&#39;conflict-risk&#39;);</span>
+<span class="sb">    if (aircraft.weatherRisk) classes.push(&#39;weather-risk&#39;);</span>
+<span class="sb">    return classes.join(&#39; &#39;);</span>
+<span class="sb">  }</span>
+<span class="sb">}</span>
+</code></pre></div>
+</details>
+<h3 id="ui_1">意思決定重視のUI設計<a class="headerlink" href="#ui_1" title="Permanent link">&para;</a></h3>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// 投資推薦システムの例</span>
+<span class="kd">@Component</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">selector</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;investment-advisor&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    &lt;!-- 推薦結果を明確に提示 --&gt;</span>
+<span class="sb">    &lt;div class=&quot;recommendation-panel&quot;&gt;</span>
+<span class="sb">      &lt;h2&gt;AI投資推薦&lt;/h2&gt;</span>
+
+<span class="sb">      &lt;!-- システムの判断結果 --&gt;</span>
+<span class="sb">      &lt;div class=&quot;recommendation&quot; </span>
+<span class="sb">          [class]=&quot;recommendation.confidence&quot;&gt;</span>
+<span class="sb">        &lt;h3&gt;{{recommendation.action}}&lt;/h3&gt;</span>
+<span class="sb">        &lt;div class=&quot;confidence-meter&quot;&gt;</span>
+<span class="sb">          &lt;div class=&quot;confidence-bar&quot; </span>
+<span class="sb">              [style.width.%]=&quot;recommendation.confidence&quot;&gt;</span>
+<span class="sb">          &lt;/div&gt;</span>
+<span class="sb">          &lt;span&gt;信頼度: {{recommendation.confidence}}%&lt;/span&gt;</span>
+<span class="sb">        &lt;/div&gt;</span>
+<span class="sb">        &lt;p&gt;期待収益: {{recommendation.expectedReturn}}%&lt;/p&gt;</span>
+<span class="sb">        &lt;p&gt;リスクレベル: {{recommendation.riskLevel}}&lt;/p&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+
+<span class="sb">      &lt;!-- 実行ボタンが中心 --&gt;</span>
+<span class="sb">      &lt;div class=&quot;action-buttons&quot;&gt;</span>
+<span class="sb">        &lt;button (click)=&quot;executeRecommendation()&quot; </span>
+<span class="sb">                class=&quot;execute-btn primary&quot;</span>
+<span class="sb">                [disabled]=&quot;recommendation.confidence &lt; 70&quot;&gt;</span>
+<span class="sb">          推薦通りに実行</span>
+<span class="sb">        &lt;/button&gt;</span>
+<span class="sb">        &lt;button (click)=&quot;modifyAndExecute()&quot; </span>
+<span class="sb">                class=&quot;modify-btn secondary&quot;&gt;</span>
+<span class="sb">          調整して実行</span>
+<span class="sb">        &lt;/button&gt;</span>
+<span class="sb">        &lt;button (click)=&quot;rejectRecommendation()&quot; </span>
+<span class="sb">                class=&quot;reject-btn&quot;&gt;</span>
+<span class="sb">          推薦を拒否</span>
+<span class="sb">        &lt;/button&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+
+<span class="sb">      &lt;!-- 根拠の説明（透明性確保） --&gt;</span>
+<span class="sb">      &lt;div class=&quot;reasoning&quot; *ngIf=&quot;showReasoning&quot;&gt;</span>
+<span class="sb">        &lt;h4&gt;AI判断根拠&lt;/h4&gt;</span>
+<span class="sb">        &lt;ul&gt;</span>
+<span class="sb">          &lt;li *ngFor=&quot;let reason of recommendation.reasons&quot;&gt;</span>
+<span class="sb">            &lt;span class=&quot;weight&quot;&gt;{{reason.weight}}%&lt;/span&gt;</span>
+<span class="sb">            {{reason.description}}</span>
+<span class="sb">          &lt;/li&gt;</span>
+<span class="sb">        &lt;/ul&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+
+<span class="sb">      &lt;!-- 過去の推薦実績 --&gt;</span>
+<span class="sb">      &lt;div class=&quot;performance-history&quot;&gt;</span>
+<span class="sb">        &lt;h4&gt;過去30日の推薦成績&lt;/h4&gt;</span>
+<span class="sb">        &lt;div class=&quot;metrics&quot;&gt;</span>
+<span class="sb">          &lt;span&gt;成功率: {{performanceMetrics.successRate}}%&lt;/span&gt;</span>
+<span class="sb">          &lt;span&gt;平均収益: {{performanceMetrics.avgReturn}}%&lt;/span&gt;</span>
+<span class="sb">        &lt;/div&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+<span class="sb">    &lt;/div&gt;</span>
+<span class="sb">  `</span><span class="p">,</span>
+
+<span class="w">    </span><span class="p">.</span><span class="nx">recommendation</span><span class="o">-</span><span class="nx">panel</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">max</span><span class="o">-</span><span class="nx">width</span><span class="o">:</span><span class="w"> </span><span class="kt">600px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="kt">0</span><span class="w"> </span><span class="nx">auto</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="kt">20px</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">.</span><span class="nx">recommendation</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="kt">linear</span><span class="o">-</span><span class="nx">gradient</span><span class="p">(</span><span class="mf">135</span><span class="nx">deg</span><span class="p">,</span><span class="w"> </span><span class="err">#</span><span class="mf">667</span><span class="nx">eea</span><span class="w"> </span><span class="mf">0</span><span class="o">%</span><span class="p">,</span><span class="w"> </span><span class="err">#</span><span class="mf">764</span><span class="nx">ba2</span><span class="w"> </span><span class="mf">100</span><span class="o">%</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="kt">white</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="kt">20px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">border</span><span class="o">-</span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="kt">10px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="kt">20px</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">.</span><span class="nx">confidence</span><span class="o">-</span><span class="nx">meter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="kt">rgba</span><span class="p">(</span><span class="mf">255</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">255</span><span class="p">,</span><span class="mf">0.2</span><span class="p">);</span>
+<span class="w">      </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">20px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">border</span><span class="o">-</span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="kt">10px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">position</span><span class="o">:</span><span class="w"> </span><span class="kt">relative</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="kt">10px</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">.</span><span class="nx">confidence</span><span class="o">-</span><span class="nx">bar</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="err">#</span><span class="mo">00</span><span class="nx">ff88</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">height</span><span class="o">:</span><span class="w"> </span><span class="kt">100</span><span class="o">%</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">border</span><span class="o">-</span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="kt">10px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">transition</span><span class="o">:</span><span class="w"> </span><span class="kt">width</span><span class="w"> </span><span class="mf">0.5</span><span class="nx">s</span><span class="w"> </span><span class="nx">ease</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">.</span><span class="nx">action</span><span class="o">-</span><span class="nx">buttons</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">display</span><span class="o">:</span><span class="w"> </span><span class="kt">flex</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">gap</span><span class="o">:</span><span class="w"> </span><span class="kt">10px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">margin</span><span class="o">:</span><span class="w"> </span><span class="kt">20px</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">.</span><span class="nx">execute</span><span class="o">-</span><span class="nx">btn</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="err">#</span><span class="mf">28</span><span class="nx">a745</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">color</span><span class="o">:</span><span class="w"> </span><span class="kt">white</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">padding</span><span class="o">:</span><span class="w"> </span><span class="kt">15px</span><span class="w"> </span><span class="mf">30</span><span class="nx">px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">border</span><span class="o">:</span><span class="w"> </span><span class="kt">none</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">border</span><span class="o">-</span><span class="nx">radius</span><span class="o">:</span><span class="w"> </span><span class="kt">5px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">font</span><span class="o">-</span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="kt">16px</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">cursor</span><span class="o">:</span><span class="w"> </span><span class="kt">pointer</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="p">.</span><span class="nx">execute</span><span class="o">-</span><span class="nx">btn</span><span class="o">:</span><span class="kt">disabled</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">background</span><span class="o">:</span><span class="w"> </span><span class="err">#</span><span class="mf">6</span><span class="nx">c757d</span><span class="p">;</span>
+<span class="w">      </span><span class="nx">cursor</span><span class="o">:</span><span class="w"> </span><span class="kt">not</span><span class="o">-</span><span class="nx">allowed</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="sb">`]</span>
+<span class="sb">})</span>
+<span class="sb">export class InvestmentAdvisorComponent {</span>
+<span class="sb">  recommendation: InvestmentRecommendation;</span>
+<span class="sb">  performanceMetrics: PerformanceMetrics;</span>
+<span class="sb">  showReasoning = false;</span>
+
+<span class="sb">  // システムの判断を実行</span>
+<span class="sb">  executeRecommendation(): void {</span>
+<span class="sb">    // 確認ダイアログ</span>
+<span class="sb">    const confirmed = confirm(</span>
+<span class="sb">      `</span><span class="nx">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">recommendation</span><span class="p">.</span><span class="nx">action</span><span class="p">}</span><span class="nx">を実行しますか</span><span class="err">？\</span><span class="nx">n</span><span class="sb">` +</span>
+<span class="sb">      `</span><span class="nx">予想収益</span><span class="o">:</span><span class="w"> </span><span class="kt">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">recommendation</span><span class="p">.</span><span class="nx">expectedReturn</span><span class="p">}</span><span class="o">%</span><span class="err">\</span><span class="nx">n</span><span class="sb">` +</span>
+<span class="sb">      `</span><span class="nx">信頼度</span><span class="o">:</span><span class="w"> </span><span class="kt">$</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">recommendation</span><span class="p">.</span><span class="nx">confidence</span><span class="p">}</span><span class="o">%</span><span class="sb">`</span>
+<span class="sb">    );</span>
+
+<span class="sb">    if (confirmed) {</span>
+<span class="sb">      this.tradingService.executeStrategy(this.recommendation)</span>
+<span class="sb">        .subscribe(result =&gt; {</span>
+<span class="sb">          this.showExecutionResult(result);</span>
+<span class="sb">        });</span>
+<span class="sb">    }</span>
+<span class="sb">  }</span>
+
+<span class="sb">  // ユーザーが推薦を調整</span>
+<span class="sb">  modifyAndExecute(): void {</span>
+<span class="sb">    // 推薦パラメータの調整画面を表示</span>
+<span class="sb">    this.openModificationDialog();</span>
+<span class="sb">  }</span>
+<span class="sb">}</span>
+</code></pre></div>
+</details>
+<h2 id="_12">パフォーマンス要求の違い<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h3 id="_13">応答性・処理要求<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>要求項目</th>
+<th>状況認識重視</th>
+<th>意思決定重視</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>表示更新</strong></td>
+<td>1-2秒（視認性重視）</td>
+<td>即座（判断結果表示）</td>
+</tr>
+<tr>
+<td><strong>データ処理</strong></td>
+<td>統合・可視化処理</td>
+<td>最適化計算・推論</td>
+</tr>
+<tr>
+<td><strong>精度要求</strong></td>
+<td>表示精度（視認性）</td>
+<td>判断精度（正解率）</td>
+</tr>
+<tr>
+<td><strong>ユーザビリティ</strong></td>
+<td>直感的理解</td>
+<td>信頼できる推薦</td>
+</tr>
+<tr>
+<td><strong>メモリ使用</strong></td>
+<td>大量データ保持</td>
+<td>計算結果保持</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_14">最適化の焦点<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// 状況認識系：表示最適化</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">SituationDisplayOptimizer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 大量データの効率的な可視化</span>
+<span class="w">  </span><span class="nx">optimizeVisualization</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">SensorData</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// レベル・オブ・ディテール（LOD）による最適化</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">viewBounds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getCurrentViewBounds</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">filteredData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">item</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">isInViewBounds</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span><span class="w"> </span><span class="nx">viewBounds</span><span class="p">)</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 重要度による表示優先度</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">prioritizedData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">prioritizeByImportance</span><span class="p">(</span><span class="nx">filteredData</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// WebGL による高速描画</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">webglRenderer</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">prioritizedData</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// フレームレート維持</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">frameRate</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">30</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">reduceLevelOfDetail</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 意思決定系：計算最適化</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">DecisionOptimizer</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 最適解計算の高速化</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">optimizeDecision</span><span class="p">(</span><span class="nx">options</span><span class="o">:</span><span class="w"> </span><span class="kt">DecisionOption</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">OptimalDecision</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 並列計算による高速化</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">evaluationPromises</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">options</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">option</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">workerPool</span><span class="p">.</span><span class="nx">evaluate</span><span class="p">(</span><span class="nx">option</span><span class="p">)</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">evaluations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span><span class="nx">evaluationPromises</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 遺伝的アルゴリズムによる最適化</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">geneticOptimizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GeneticAlgorithm</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">populationSize</span><span class="o">:</span><span class="w"> </span><span class="kt">100</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">generations</span><span class="o">:</span><span class="w"> </span><span class="kt">50</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">mutationRate</span><span class="o">:</span><span class="w"> </span><span class="kt">0.01</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">geneticOptimizer</span><span class="p">.</span><span class="nx">findOptimal</span><span class="p">(</span><span class="nx">evaluations</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="_15">エラーハンドリングの違い<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h3 id="_16">状況認識系：情報品質保証<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">SituationAwarenessErrorHandling</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// データ品質の確保</span>
+<span class="w">  </span><span class="nx">validateDataQuality</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">SensorData</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nx">QualityReport</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">qualityIssues</span><span class="o">:</span><span class="w"> </span><span class="kt">QualityIssue</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">    </span><span class="c1">// データの完整性チェック</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">completeness</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">checkDataCompleteness</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">completeness</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.9</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">qualityIssues</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">        </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;INCOMPLETE_DATA&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">severity</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;HIGH&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="sb">`データ完整性: </span><span class="si">${</span><span class="nx">completeness</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="si">}</span><span class="sb">%`</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">recommendation</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;追加センサーの確認が必要&#39;</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 一貫性チェック</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">consistencyErrors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">checkDataConsistency</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">consistencyErrors</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">qualityIssues</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">        </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;INCONSISTENT_DATA&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">severity</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MEDIUM&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;複数ソース間でデータ不整合&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">recommendation</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;センサー校正の確認&#39;</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">qualityIssues</span><span class="p">,</span><span class="w"> </span><span class="nx">overallQuality</span><span class="o">:</span><span class="w"> </span><span class="kt">this.calculateOverallQuality</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 表示エラーの処理</span>
+<span class="w">  </span><span class="nx">handleDisplayError</span><span class="p">(</span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">DisplayError</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// クリティカルな表示は代替手段で表示</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">isCritical</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">fallbackToSimpleDisplay</span><span class="p">();</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">alertOperator</span><span class="p">(</span><span class="s1">&#39;表示システム障害のため簡易モードに切替&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 非クリティカルエラーは無視して継続</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">logError</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h3 id="_17">意思決定系：判断品質保証<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">DecisionMakingErrorHandling</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 判断の品質確保</span>
+<span class="w">  </span><span class="nx">validateDecisionQuality</span><span class="p">(</span><span class="nx">decision</span><span class="o">:</span><span class="w"> </span><span class="kt">Decision</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">ValidationResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">validationErrors</span><span class="o">:</span><span class="w"> </span><span class="kt">ValidationError</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">    </span><span class="c1">// 信頼度チェック</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">decision</span><span class="p">.</span><span class="nx">confidence</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">minimumConfidenceThreshold</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">validationErrors</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">        </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;LOW_CONFIDENCE&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">severity</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;HIGH&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="sb">`信頼度が閾値を下回る: </span><span class="si">${</span><span class="nx">decision</span><span class="p">.</span><span class="nx">confidence</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">recommendation</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;人間による確認を推奨&#39;</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 過去実績との比較</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">similarDecisions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">findSimilarPastDecisions</span><span class="p">(</span><span class="nx">decision</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">averageOutcome</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">calculateAverageOutcome</span><span class="p">(</span><span class="nx">similarDecisions</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">decision</span><span class="p">.</span><span class="nx">expectedOutcome</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">averageOutcome</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.8</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">validationErrors</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">        </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;POOR_EXPECTED_OUTCOME&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">severity</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MEDIUM&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;期待結果が過去実績を大幅に下回る&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">recommendation</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;パラメータの再検討&#39;</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">errors</span><span class="o">:</span><span class="w"> </span><span class="kt">validationErrors</span><span class="p">,</span><span class="w"> </span><span class="nx">isValid</span><span class="o">:</span><span class="w"> </span><span class="kt">validationErrors.length</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 実行エラーの処理</span>
+<span class="w">  </span><span class="nx">handleExecutionError</span><span class="p">(</span><span class="nx">error</span><span class="o">:</span><span class="w"> </span><span class="kt">ExecutionError</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 実行失敗時は安全な状態に戻す</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">rollbackToSafeState</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 代替案の検討</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">alternatives</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">generateAlternatives</span><span class="p">();</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">alternatives</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">executeAlternative</span><span class="p">(</span><span class="nx">alternatives</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">requestHumanIntervention</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="_18">学習・改善アプローチの違い<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<h3 id="_19">状況認識系：表示品質の継続改善<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">SituationDisplayLearning</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// ユーザー行動から表示改善</span>
+<span class="w">  </span><span class="nx">learnFromUserBehavior</span><span class="p">(</span><span class="nx">userActions</span><span class="o">:</span><span class="w"> </span><span class="kt">UserAction</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nx">DisplayImprovement</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">improvements</span><span class="o">:</span><span class="w"> </span><span class="kt">DisplayImprovement</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">    </span><span class="c1">// 見落としパターンの分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">missedAlerts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeMissedAlerts</span><span class="p">(</span><span class="nx">userActions</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">missedAlerts</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">improvements</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">        </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ENHANCE_ALERT_VISIBILITY&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;アラートの視認性向上&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">implementation</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">enhanceAlertDesign</span><span class="p">()</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 視線追跡による注目度分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">attentionPatterns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeAttentionPatterns</span><span class="p">(</span><span class="nx">userActions</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">lowAttentionAreas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">attentionPatterns</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">area</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">area</span><span class="p">.</span><span class="nx">attention</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.3</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">lowAttentionAreas</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">improvements</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">        </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;IMPROVE_LAYOUT&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;重要情報のレイアウト改善&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">implementation</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">optimizeInformationLayout</span><span class="p">(</span><span class="nx">lowAttentionAreas</span><span class="p">)</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">improvements</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h3 id="_20">意思決定系：判断精度の継続改善<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nx">DecisionLearningSystem</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 結果から判断モデルを改善</span>
+<span class="w">  </span><span class="nx">learnFromOutcomes</span><span class="p">(</span><span class="nx">decisions</span><span class="o">:</span><span class="w"> </span><span class="kt">DecisionHistory</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nx">ModelImprovement</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 成功・失敗パターンの分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">successfulDecisions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decisions</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">d</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">d</span><span class="p">.</span><span class="nx">outcome</span><span class="p">.</span><span class="nx">success</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">failedDecisions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">decisions</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">d</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="o">!</span><span class="nx">d</span><span class="p">.</span><span class="nx">outcome</span><span class="p">.</span><span class="nx">success</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 特徴量の重要度分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">featureImportance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeFeatureImportance</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">successfulDecisions</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">failedDecisions</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// モデルパラメータの調整</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">parameterAdjustments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">calculateParameterAdjustments</span><span class="p">(</span><span class="nx">featureImportance</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 新しいモデルの訓練</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">improvedModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">trainImprovedModel</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">decisions</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">parameterAdjustments</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">modelVersion</span><span class="o">:</span><span class="w"> </span><span class="kt">this.currentModelVersion</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">improvements</span><span class="o">:</span><span class="w"> </span><span class="kt">parameterAdjustments</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">expectedPerformanceGain</span><span class="o">:</span><span class="w"> </span><span class="kt">this.estimatePerformanceGain</span><span class="p">(</span><span class="nx">improvedModel</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">deploymentRecommendation</span><span class="o">:</span><span class="w"> </span><span class="kt">this.shouldDeploy</span><span class="p">(</span><span class="nx">improvedModel</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// A/Bテストによる段階的改善</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">conductABTest</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">currentModel</span><span class="o">:</span><span class="w"> </span><span class="kt">DecisionModel</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">improvedModel</span><span class="o">:</span><span class="w"> </span><span class="kt">DecisionModel</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ABTestResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">testDuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30</span><span class="p">;</span><span class="w"> </span><span class="c1">// days</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">trafficSplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">;</span><span class="w"> </span><span class="c1">// 10% to new model</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">abTestService</span><span class="p">.</span><span class="nx">run</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">modelA</span><span class="o">:</span><span class="w"> </span><span class="kt">currentModel</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">modelB</span><span class="o">:</span><span class="w"> </span><span class="kt">improvedModel</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="kt">testDuration</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">trafficSplit</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">successMetrics</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;precision&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;userSatisfaction&#39;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="_21">具体的な実装例比較<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<h3 id="_22">医療分野での比較<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<h4 id="icu">状況認識：ICU監視システム<a class="headerlink" href="#icu" title="Permanent link">&para;</a></h4>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// ICU患者監視ダッシュボード</span>
+<span class="kd">@Component</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">selector</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;icu-patient-monitor&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    &lt;div class=&quot;patient-overview&quot;&gt;</span>
+<span class="sb">      &lt;div class=&quot;vital-signs-panel&quot;&gt;</span>
+<span class="sb">        &lt;h3&gt;患者 {{patient.name}} ({{patient.age}}歳)&lt;/h3&gt;</span>
+
+<span class="sb">        &lt;!-- バイタルサインの総合表示 --&gt;</span>
+<span class="sb">        &lt;div class=&quot;vitals-grid&quot;&gt;</span>
+<span class="sb">          &lt;div class=&quot;vital-item&quot; </span>
+<span class="sb">              [class.critical]=&quot;isVitalCritical(&#39;heartRate&#39;)&quot;&gt;</span>
+<span class="sb">            &lt;span class=&quot;label&quot;&gt;心拍数&lt;/span&gt;</span>
+<span class="sb">            &lt;span class=&quot;value&quot;&gt;{{vitals.heartRate}}&lt;/span&gt;</span>
+<span class="sb">            &lt;span class=&quot;unit&quot;&gt;bpm&lt;/span&gt;</span>
+<span class="sb">          &lt;/div&gt;</span>
+
+<span class="sb">          &lt;div class=&quot;vital-item&quot;</span>
+<span class="sb">              [class.critical]=&quot;isVitalCritical(&#39;bloodPressure&#39;)&quot;&gt;</span>
+<span class="sb">            &lt;span class=&quot;label&quot;&gt;血圧&lt;/span&gt;</span>
+<span class="sb">            &lt;span class=&quot;value&quot;&gt;{{vitals.systolic}}/{{vitals.diastolic}}&lt;/span&gt;</span>
+<span class="sb">            &lt;span class=&quot;unit&quot;&gt;mmHg&lt;/span&gt;</span>
+<span class="sb">          &lt;/div&gt;</span>
+
+<span class="sb">          &lt;div class=&quot;vital-item&quot;</span>
+<span class="sb">              [class.critical]=&quot;isVitalCritical(&#39;oxygenSaturation&#39;)&quot;&gt;</span>
+<span class="sb">            &lt;span class=&quot;label&quot;&gt;酸素飽和度&lt;/span&gt;</span>
+<span class="sb">            &lt;span class=&quot;value&quot;&gt;{{vitals.oxygenSaturation}}&lt;/span&gt;</span>
+<span class="sb">            &lt;span class=&quot;unit&quot;&gt;%&lt;/span&gt;</span>
+<span class="sb">          &lt;/div&gt;</span>
+<span class="sb">        &lt;/div&gt;</span>
+
+<span class="sb">        &lt;!-- トレンド表示 --&gt;</span>
+<span class="sb">        &lt;div class=&quot;trend-charts&quot;&gt;</span>
+<span class="sb">          &lt;canvas #vitalTrendChart width=&quot;400&quot; height=&quot;200&quot;&gt;&lt;/canvas&gt;</span>
+<span class="sb">        &lt;/div&gt;</span>
+
+<span class="sb">        &lt;!-- 投薬履歴 --&gt;</span>
+<span class="sb">        &lt;div class=&quot;medication-timeline&quot;&gt;</span>
+<span class="sb">          &lt;h4&gt;投薬履歴&lt;/h4&gt;</span>
+<span class="sb">          &lt;div *ngFor=&quot;let med of recentMedications&quot; class=&quot;medication-item&quot;&gt;</span>
+<span class="sb">            &lt;span class=&quot;time&quot;&gt;{{med.timestamp | date:&#39;short&#39;}}&lt;/span&gt;</span>
+<span class="sb">            &lt;span class=&quot;drug&quot;&gt;{{med.drugName}}&lt;/span&gt;</span>
+<span class="sb">            &lt;span class=&quot;dose&quot;&gt;{{med.dosage}}&lt;/span&gt;</span>
+<span class="sb">          &lt;/div&gt;</span>
+<span class="sb">        &lt;/div&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+
+<span class="sb">      &lt;!-- アラートパネル --&gt;</span>
+<span class="sb">      &lt;div class=&quot;alert-panel&quot; *ngIf=&quot;alerts.length &gt; 0&quot;&gt;</span>
+<span class="sb">        &lt;div *ngFor=&quot;let alert of alerts&quot; </span>
+<span class="sb">            [class]=&quot;&#39;alert-&#39; + alert.severity&quot;&gt;</span>
+<span class="sb">          &lt;span class=&quot;timestamp&quot;&gt;{{alert.timestamp | date:&#39;HH:mm:ss&#39;}}&lt;/span&gt;</span>
+<span class="sb">          &lt;span class=&quot;message&quot;&gt;{{alert.message}}&lt;/span&gt;</span>
+<span class="sb">        &lt;/div&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+<span class="sb">    &lt;/div&gt;</span>
+<span class="sb">  `</span>
+<span class="p">})</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ICUPatientMonitor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">patient</span><span class="o">:</span><span class="w"> </span><span class="kt">Patient</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">vitals</span><span class="o">:</span><span class="w"> </span><span class="kt">VitalSigns</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">alerts</span><span class="o">:</span><span class="w"> </span><span class="kt">MedicalAlert</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">recentMedications</span><span class="o">:</span><span class="w"> </span><span class="kt">MedicationRecord</span><span class="p">[];</span>
+
+<span class="w">  </span><span class="c1">// 医師・看護師の判断を支援する情報提示</span>
+<span class="w">  </span><span class="nx">isVitalCritical</span><span class="p">(</span><span class="nx">vitalType</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">thresholds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getCriticalThresholds</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">patient</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">vitals</span><span class="p">[</span><span class="nx">vitalType</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">thresholds</span><span class="p">[</span><span class="nx">vitalType</span><span class="p">].</span><span class="nx">min</span><span class="w"> </span><span class="o">||</span>
+<span class="w">          </span><span class="k">this</span><span class="p">.</span><span class="nx">vitals</span><span class="p">[</span><span class="nx">vitalType</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">thresholds</span><span class="p">[</span><span class="nx">vitalType</span><span class="p">].</span><span class="nx">max</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// アラート生成（判断は医療従事者が行う）</span>
+<span class="w">  </span><span class="nx">generateAlerts</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nx">MedicalAlert</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">alerts</span><span class="o">:</span><span class="w"> </span><span class="kt">MedicalAlert</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">    </span><span class="c1">// 異常値の検出</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">vitals</span><span class="p">.</span><span class="nx">heartRate</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">120</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">alerts</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">severity</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;HIGH&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">message</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;頻脈: 心拍数が120bpmを超過&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">suggestedAction</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;医師への報告を検討&#39;</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">alerts</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h4 id="ai">意思決定：AI診断支援システム<a class="headerlink" href="#ai" title="Permanent link">&para;</a></h4>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// AI診断支援システム</span>
+<span class="kd">@Component</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">selector</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;ai-diagnostic-advisor&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">template</span><span class="o">:</span><span class="w"> </span><span class="sb">`</span>
+<span class="sb">    &lt;div class=&quot;diagnostic-assistant&quot;&gt;</span>
+<span class="sb">      &lt;h2&gt;AI診断支援&lt;/h2&gt;</span>
+
+<span class="sb">      &lt;!-- 症状入力 --&gt;</span>
+<span class="sb">      &lt;div class=&quot;symptom-input&quot;&gt;</span>
+<span class="sb">        &lt;h3&gt;症状・所見入力&lt;/h3&gt;</span>
+<span class="sb">        &lt;mat-form-field&gt;</span>
+<span class="sb">          &lt;mat-label&gt;主訴&lt;/mat-label&gt;</span>
+<span class="sb">          &lt;textarea matInput [(ngModel)]=&quot;symptoms.chiefComplaint&quot;&gt;&lt;/textarea&gt;</span>
+<span class="sb">        &lt;/mat-form-field&gt;</span>
+
+<span class="sb">        &lt;div class=&quot;vital-inputs&quot;&gt;</span>
+<span class="sb">          &lt;mat-form-field&gt;</span>
+<span class="sb">            &lt;mat-label&gt;体温&lt;/mat-label&gt;</span>
+<span class="sb">            &lt;input matInput type=&quot;number&quot; [(ngModel)]=&quot;symptoms.temperature&quot;&gt;</span>
+<span class="sb">          &lt;/mat-form-field&gt;</span>
+<span class="sb">          &lt;!-- 他のバイタル入力 --&gt;</span>
+<span class="sb">        &lt;/div&gt;</span>
+
+<span class="sb">        &lt;button mat-raised-button color=&quot;primary&quot; </span>
+<span class="sb">                (click)=&quot;generateDiagnosis()&quot;&gt;</span>
+<span class="sb">          AI診断実行</span>
+<span class="sb">        &lt;/button&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+
+<span class="sb">      &lt;!-- AI診断結果 --&gt;</span>
+<span class="sb">      &lt;div class=&quot;diagnostic-results&quot; *ngIf=&quot;diagnosticResults&quot;&gt;</span>
+<span class="sb">        &lt;h3&gt;AI診断候補&lt;/h3&gt;</span>
+
+<span class="sb">        &lt;div *ngFor=&quot;let diagnosis of diagnosticResults.candidates; let i = index&quot;</span>
+<span class="sb">            class=&quot;diagnosis-item&quot;</span>
+<span class="sb">            [class.top-candidate]=&quot;i === 0&quot;&gt;</span>
+<span class="sb">          &lt;div class=&quot;diagnosis-header&quot;&gt;</span>
+<span class="sb">            &lt;span class=&quot;rank&quot;&gt;#{{i + 1}}&lt;/span&gt;</span>
+<span class="sb">            &lt;span class=&quot;disease-name&quot;&gt;{{diagnosis.diseaseName}}&lt;/span&gt;</span>
+<span class="sb">            &lt;span class=&quot;probability&quot;&gt;{{diagnosis.probability}}%&lt;/span&gt;</span>
+<span class="sb">          &lt;/div&gt;</span>
+
+<span class="sb">          &lt;div class=&quot;supporting-evidence&quot;&gt;</span>
+<span class="sb">            &lt;h5&gt;支持する所見:&lt;/h5&gt;</span>
+<span class="sb">            &lt;ul&gt;</span>
+<span class="sb">              &lt;li *ngFor=&quot;let evidence of diagnosis.supportingEvidence&quot;&gt;</span>
+<span class="sb">                {{evidence.finding}} (重み: {{evidence.weight}})</span>
+<span class="sb">              &lt;/li&gt;</span>
+<span class="sb">            &lt;/ul&gt;</span>
+<span class="sb">          &lt;/div&gt;</span>
+
+<span class="sb">          &lt;div class=&quot;recommended-tests&quot;&gt;</span>
+<span class="sb">            &lt;h5&gt;推奨検査:&lt;/h5&gt;</span>
+<span class="sb">            &lt;div *ngFor=&quot;let test of diagnosis.recommendedTests&quot;&gt;</span>
+<span class="sb">              &lt;mat-checkbox [(ngModel)]=&quot;test.selected&quot;&gt;</span>
+<span class="sb">                {{test.testName}} (優先度: {{test.priority}})</span>
+<span class="sb">              &lt;/mat-checkbox&gt;</span>
+<span class="sb">            &lt;/div&gt;</span>
+<span class="sb">          &lt;/div&gt;</span>
+
+<span class="sb">          &lt;div class=&quot;treatment-suggestions&quot;&gt;</span>
+<span class="sb">            &lt;h5&gt;治療候補:&lt;/h5&gt;</span>
+<span class="sb">            &lt;div *ngFor=&quot;let treatment of diagnosis.treatmentOptions&quot;&gt;</span>
+<span class="sb">              &lt;button mat-stroked-button </span>
+<span class="sb">                      (click)=&quot;selectTreatment(treatment)&quot;</span>
+<span class="sb">                      [color]=&quot;treatment.recommended ? &#39;primary&#39; : &#39;basic&#39;&quot;&gt;</span>
+<span class="sb">                {{treatment.treatmentName}}</span>
+<span class="sb">                &lt;span *ngIf=&quot;treatment.recommended&quot;&gt;(推奨)&lt;/span&gt;</span>
+<span class="sb">              &lt;/button&gt;</span>
+<span class="sb">            &lt;/div&gt;</span>
+<span class="sb">          &lt;/div&gt;</span>
+<span class="sb">        &lt;/div&gt;</span>
+
+<span class="sb">        &lt;!-- AI信頼度メーター --&gt;</span>
+<span class="sb">        &lt;div class=&quot;confidence-indicator&quot;&gt;</span>
+<span class="sb">          &lt;h4&gt;AI診断信頼度&lt;/h4&gt;</span>
+<span class="sb">          &lt;mat-progress-bar mode=&quot;determinate&quot; </span>
+<span class="sb">                          [value]=&quot;diagnosticResults.overallConfidence&quot;&gt;</span>
+<span class="sb">          &lt;/mat-progress-bar&gt;</span>
+<span class="sb">          &lt;span&gt;{{diagnosticResults.overallConfidence}}%&lt;/span&gt;</span>
+
+<span class="sb">          &lt;div class=&quot;confidence-warning&quot; </span>
+<span class="sb">              *ngIf=&quot;diagnosticResults.overallConfidence &lt; 70&quot;&gt;</span>
+<span class="sb">            &lt;mat-icon&gt;warning&lt;/mat-icon&gt;</span>
+<span class="sb">            信頼度が低いため、専門医への相談を推奨します</span>
+<span class="sb">          &lt;/div&gt;</span>
+<span class="sb">        &lt;/div&gt;</span>
+
+<span class="sb">        &lt;!-- 実行ボタン --&gt;</span>
+<span class="sb">        &lt;div class=&quot;action-buttons&quot;&gt;</span>
+<span class="sb">          &lt;button mat-raised-button color=&quot;primary&quot;</span>
+<span class="sb">                  (click)=&quot;implementRecommendations()&quot;</span>
+<span class="sb">                  [disabled]=&quot;!hasValidRecommendations()&quot;&gt;</span>
+<span class="sb">            推奨検査・治療を実行</span>
+<span class="sb">          &lt;/button&gt;</span>
+
+<span class="sb">          &lt;button mat-stroked-button </span>
+<span class="sb">                  (click)=&quot;requestSecondOpinion()&quot;&gt;</span>
+<span class="sb">            セカンドオピニオン要請</span>
+<span class="sb">          &lt;/button&gt;</span>
+
+<span class="sb">          &lt;button mat-stroked-button </span>
+<span class="sb">                  (click)=&quot;modifyDiagnosis()&quot;&gt;</span>
+<span class="sb">            診断を調整</span>
+<span class="sb">          &lt;/button&gt;</span>
+<span class="sb">        &lt;/div&gt;</span>
+<span class="sb">      &lt;/div&gt;</span>
+<span class="sb">    &lt;/div&gt;</span>
+<span class="sb">  `</span>
+<span class="p">})</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">AIDiagnosticAdvisor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">symptoms</span><span class="o">:</span><span class="w"> </span><span class="kt">SymptomInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">  </span><span class="nx">diagnosticResults</span><span class="o">:</span><span class="w"> </span><span class="kt">DiagnosticResults</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// AI による診断実行</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">generateDiagnosis</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">loading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// AI診断エンジンに症状を送信</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">diagnosticResults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">aiDiagnosticService</span><span class="p">.</span><span class="nx">diagnose</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">symptoms</span><span class="o">:</span><span class="w"> </span><span class="kt">this.symptoms</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">patientHistory</span><span class="o">:</span><span class="w"> </span><span class="kt">this.patientHistory</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">labResults</span><span class="o">:</span><span class="w"> </span><span class="kt">this.latestLabResults</span>
+<span class="w">      </span><span class="p">});</span>
+
+<span class="w">      </span><span class="c1">// 診断結果をログに記録</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">auditService</span><span class="p">.</span><span class="nx">logDiagnosticSession</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">patientId</span><span class="o">:</span><span class="w"> </span><span class="kt">this.patient.id</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">symptoms</span><span class="o">:</span><span class="w"> </span><span class="kt">this.symptoms</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">aiResults</span><span class="o">:</span><span class="w"> </span><span class="kt">this.diagnosticResults</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">()</span>
+<span class="w">      </span><span class="p">});</span>
+
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">handleDiagnosticError</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">loading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 推奨治療の実行</span>
+<span class="w">  </span><span class="nx">implementRecommendations</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">selectedTreatments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getSelectedTreatments</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">selectedTests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getSelectedTests</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// 確認ダイアログ</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">confirmation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">confirmTreatmentPlan</span><span class="p">(</span><span class="nx">selectedTreatments</span><span class="p">,</span><span class="w"> </span><span class="nx">selectedTests</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">confirmation</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="c1">// 治療オーダーの自動生成</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">orderService</span><span class="p">.</span><span class="nx">createTreatmentOrders</span><span class="p">(</span><span class="nx">selectedTreatments</span><span class="p">);</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">orderService</span><span class="p">.</span><span class="nx">createTestOrders</span><span class="p">(</span><span class="nx">selectedTests</span><span class="p">);</span>
+
+<span class="w">      </span><span class="c1">// 実行結果の追跡</span>
+<span class="w">      </span><span class="k">this</span><span class="p">.</span><span class="nx">trackTreatmentOutcomes</span><span class="p">(</span><span class="nx">selectedTreatments</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// セカンドオピニオンの要請</span>
+<span class="w">  </span><span class="nx">requestSecondOpinion</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">consultationService</span><span class="p">.</span><span class="nx">requestSpecialistReview</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">patientId</span><span class="o">:</span><span class="w"> </span><span class="kt">this.patient.id</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">aiDiagnosis</span><span class="o">:</span><span class="w"> </span><span class="kt">this.diagnosticResults</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">requestingPhysician</span><span class="o">:</span><span class="w"> </span><span class="kt">this.currentUser.id</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">urgency</span><span class="o">:</span><span class="w"> </span><span class="kt">this.assessUrgency</span><span class="p">()</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="_23">まとめ<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
+<p>状況認識重視システムと意思決定重視システムは、同じ「高信頼性システム」カテゴリーに属しながら、<strong>人間とシステムの役割分担</strong>において根本的に異なります。</p>
+<h3 id="_24">重要な設計判断基準<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>判断基準</th>
+<th>状況認識重視を選択</th>
+<th>意思決定重視を選択</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>専門性</strong></td>
+<td>高度な専門知識が必要</td>
+<td>明確な判断基準がある</td>
+</tr>
+<tr>
+<td><strong>責任</strong></td>
+<td>人間が最終責任を負う</td>
+<td>システムが推薦責任を負う</td>
+</tr>
+<tr>
+<td><strong>複雑性</strong></td>
+<td>多様な要因の総合判断</td>
+<td>定量的な最適化問題</td>
+</tr>
+<tr>
+<td><strong>時間</strong></td>
+<td>検討時間が確保できる</td>
+<td>瞬時の判断が必要</td>
+</tr>
+<tr>
+<td><strong>説明責任</strong></td>
+<td>人間の判断過程が重要</td>
+<td>システムの透明性が重要</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_25">技術選択のガイドライン<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>状況認識重視</strong>: データ統合・可視化技術に投資</li>
+<li><strong>意思決定重視</strong>: AI・最適化技術に投資</li>
+<li><strong>ハイブリッド</strong>: 段階的な自動化を検討</li>
+</ol>
+<p>適切な選択により、人間の能力を最大限に活用しつつ、システムの利点を効果的に組み合わせることが可能になります。</p>
+<h2 id="_26">関連リンク<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../sa-dm-vs-general-software">SA/DM系 vs 一般ソフトウェア比較</a></li>
+<li><a href="../">ソフトウェア概要</a></li>
+<li><a href="../../situational-awareness-guide/">状況認識の理論と実践</a></li>
+<li><a href="../../decision-making-guide/">意思決定の理論と実践</a></li>
+<li><a href="../../ai-and-future/">AIと将来展望</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最終更新日">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年8月24日 09:02:08 JST">2025年8月24日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../sa-dm-vs-general-software/" class="md-footer__link md-footer__link--prev" aria-label="前: SA/DM系 vs 一般ソフトウェア">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                SA/DM系 vs 一般ソフトウェア
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../aviation-sa-software/" class="md-footer__link md-footer__link--next" aria-label="次: 航空関連">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                航空関連
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 shuji-bonji | <a href='https://creativecommons.org/licenses/by/4.0/deed.ja'>CC-BY-4.0ライセンス</a>に基づく
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shuji-bonji/Situational-Awareness-and-Decision-Making" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.tabs", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../assets/javascripts/mermaid-zoom.js"></script>
+      
+    
+  </body>
+</html>

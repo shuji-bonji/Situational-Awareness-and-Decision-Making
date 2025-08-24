@@ -1,0 +1,4011 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="データ駆動型意思決定の理論と実践について、OR・統計・機械学習の使い分けを含めて包括的に解説します。データ収集から分析、最適化、継続的改善まで網羅します。">
+      
+      
+      
+        <link rel="canonical" href="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/decision-making-guide/data-driven-decisions/">
+      
+      
+        <link rel="prev" href="../ai-enhanced-ooda/">
+      
+      
+        <link rel="next" href="../collaborative-sa/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>データ駆動型意思決定 - 状況認識と意思決定</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-dark.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-zoom.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mkdocs_d2_plugin.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  
+
+  <!-- Meta Keywords (minimal usage) -->
+  
+
+  <!-- 日本語サイト向けの言語設定 -->
+  <meta name="language" content="ja">
+  <meta http-equiv="content-language" content="ja">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="データ駆動型意思決定 - Situational Awareness and Decision Making">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+  <meta property="og:site_name" content="状況認識と意思決定">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/decision-making-guide/data-driven-decisions/">
+  
+    <meta property="og:description" content="データ駆動型意思決定の理論と実践について、OR・統計・機械学習の使い分けを含めて包括的に解説します。データ収集から分析、最適化、継続的改善まで網羅します。">
+  
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="データ駆動型意思決定 - Situational Awareness and Decision Making">
+  
+    <meta name="twitter:description" content="データ駆動型意思決定の理論と実践について、OR・統計・機械学習の使い分けを含めて包括的に解説します。データ収集から分析、最適化、継続的改善まで網羅します。">
+  
+  <meta name="twitter:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+
+  
+  
+  
+    <meta name="robots" content="index, follow">
+  
+
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="状況認識と意思決定" class="md-header__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            状況認識と意思決定
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              データ駆動型意思決定
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../basics/" class="md-tabs__link">
+          
+  
+  
+  基本概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../situational-awareness-guide/" class="md-tabs__link">
+          
+  
+  
+  状況認識の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  意思決定の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../applications/" class="md-tabs__link">
+          
+  
+  
+  応用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../software/" class="md-tabs__link">
+          
+  
+  
+  ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ai-and-future/" class="md-tabs__link">
+          
+  
+  
+  AIと将来展望
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../case-studies/" class="md-tabs__link">
+          
+  
+  
+  ケーススタディ
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="状況認識と意思決定" class="md-nav__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    状況認識と意思決定
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ホーム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    基本概念
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基本概念
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/what-is-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/endsley-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Endsleyの3レベルモデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/ooda-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/sa-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の基本アプローチ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/measuring-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の測定方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/training-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定モデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cognitive-biases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    認知バイアスと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uncertainty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    不確実性下の意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../team-decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    チーム意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    現代の意思決定手法
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            現代の意思決定手法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-enhanced-ooda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI統合OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    データ駆動型意思決定
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    データ駆動型意思決定
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      データ駆動型意思決定とは
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="データ駆動型意思決定とは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      従来の意思決定との比較
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定支援における分析手法の役割
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="意思決定支援における分析手法の役割">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      分析手法の分類と役割
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      手法の使い分け指針
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      データ駆動型意思決定のプロセス
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="データ駆動型意思決定のプロセス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crisp-dm" class="md-nav__link">
+    <span class="md-ellipsis">
+      統合的CRISP-DMプロセス
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      TypeScript実装：統合分析エンジン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TypeScript実装：統合分析エンジン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      分析手法統合システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      手法選択の自動化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      実践的な適用パターン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実践的な適用パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      業務問題別の分析手法選択指針
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体的な適用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      継続的改善とモニタリング
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="継続的改善とモニタリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      分析結果の評価サイクル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      各手法の継続的改善
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ：統合アプローチの価値
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="まとめ：統合アプローチの価値">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      統合アプローチの利点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      成功のための重要ポイント
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../collaborative-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    協調型状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../decision-training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    応用
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            応用
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    航空分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            航空分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/aviation-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/aviation-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    海事・船舶分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            海事・船舶分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/maritime-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/maritime-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    医療分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            医療分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/medical-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/medical-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            緊急対応・危機管理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/emergency-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/emergency-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    軍事・防衛分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            軍事・防衛分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/military-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/military-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/industrial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    産業・インフラ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/daily-life/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日常生活
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア比較分析
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア比較分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/sa-dm-vs-general-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SA/DM系 vs 一般ソフトウェア
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/sa-vs-dm-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識 vs 意思決定システム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/aviation-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/maritime-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    船舶関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/weather-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    気象関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/medical-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    医療関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/emergency-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/military-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    軍事
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/aviation-dm-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AIと将来展望
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            AIと将来展望
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/ai-sa-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/new-context-in-sa-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とAIの新たな文脈
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/ai-dm-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI技術分野別概要
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            AI技術分野別概要
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/machine-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    機械学習・深層学習
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/natural-language-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    自然言語処理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/computer-vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    コンピュータビジョン
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/predictive-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    予測分析
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/explainable-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    説明可能なAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/edge-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    エッジAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ai-and-future/future-trends/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    将来の動向
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ケーススタディ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            ケーススタディ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/haneda-airport-collision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    羽田空港地上衝突事故(2024/1/2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      データ駆動型意思決定とは
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="データ駆動型意思決定とは">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      従来の意思決定との比較
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      意思決定支援における分析手法の役割
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="意思決定支援における分析手法の役割">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      分析手法の分類と役割
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      手法の使い分け指針
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      データ駆動型意思決定のプロセス
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="データ駆動型意思決定のプロセス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#crisp-dm" class="md-nav__link">
+    <span class="md-ellipsis">
+      統合的CRISP-DMプロセス
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      TypeScript実装：統合分析エンジン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TypeScript実装：統合分析エンジン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      分析手法統合システム
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      手法選択の自動化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      実践的な適用パターン
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実践的な適用パターン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      業務問題別の分析手法選択指針
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      具体的な適用例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      継続的改善とモニタリング
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="継続的改善とモニタリング">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      分析結果の評価サイクル
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      各手法の継続的改善
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      まとめ：統合アプローチの価値
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="まとめ：統合アプローチの価値">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      統合アプローチの利点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      成功のための重要ポイント
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">データ駆動型意思決定<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<div class="admonition info">
+<p class="admonition-title">このページについて</p>
+<p>このページでは、データ駆動型意思決定（Data-Driven Decision Making）の理論と実践について詳しく解説します。<br />
+従来の直感や経験に依存した意思決定から、客観的なデータに基づく科学的な意思決定への転換を支援します。<br />
+統計分析、機械学習、オペレーショナルリサーチ（OR）など、各種分析手法の適切な使い分けも含めて実践的に解説します。</p>
+</div>
+<h2 id="_2">データ駆動型意思決定とは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>データ駆動型意思決定（DDDM: Data-Driven Decision Making）は、主観的な判断や直感ではなく、客観的なデータの分析結果に基づいて意思決定を行うアプローチです。このアプローチにより、バイアスを減らし、より精度の高い判断を下すことができます。</p>
+<h3 id="_3">従来の意思決定との比較<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph LR
+    subgraph "従来の意思決定"
+        A1[経験・直感] --&gt; B1[主観的判断]
+        A2[限定的情報] --&gt; B1
+        A3[個人の知識] --&gt; B1
+        B1 --&gt; C1[意思決定]
+        C1 --&gt; D1[結果の評価]
+    end
+
+    subgraph "データ駆動型意思決定"
+        A4[包括的データ収集] --&gt; B2[客観的分析]
+        A5[統計的手法] --&gt; B2
+        A6[機械学習・最適化] --&gt; B2
+        B2 --&gt; C2[科学的根拠に基づく決定]
+        C2 --&gt; D2[定量的評価・継続改善]
+    end
+
+
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>従来の意思決定</th>
+<th>データ駆動型意思決定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>情報源</strong></td>
+<td>経験、直感、限定的データ</td>
+<td>包括的なデータ、統計分析</td>
+</tr>
+<tr>
+<td><strong>プロセス</strong></td>
+<td>主観的、感情的</td>
+<td>客観的、論理的</td>
+</tr>
+<tr>
+<td><strong>再現性</strong></td>
+<td>低い</td>
+<td>高い</td>
+</tr>
+<tr>
+<td><strong>バイアス</strong></td>
+<td>多い</td>
+<td>少ない</td>
+</tr>
+<tr>
+<td><strong>評価方法</strong></td>
+<td>定性的</td>
+<td>定量的</td>
+</tr>
+<tr>
+<td><strong>改善サイクル</strong></td>
+<td>長期間</td>
+<td>短期間・継続的</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_4">意思決定支援における分析手法の役割<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>データ駆動型意思決定では、問題の性質と意思決定の段階に応じて、適切な分析手法を選択・組み合わせることが重要です。</p>
+<h3 id="_5">分析手法の分類と役割<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A[意思決定課題] --&gt; B{問題の性質分析}
+
+    B --&gt; C1[現状把握・理解&lt;br/&gt;「何が起きているか？」]
+    B --&gt; C2[将来予測・分類&lt;br/&gt;「何が起きそうか？」]
+    B --&gt; C3[最適化・選択&lt;br/&gt;「どうすべきか？」]
+
+    C1 --&gt; D1[統計分析&lt;br/&gt;- 記述統計&lt;br/&gt;- 探索的データ分析&lt;br/&gt;- 因果推論]
+
+    C2 --&gt; D2[機械学習&lt;br/&gt;- 予測モデル&lt;br/&gt;- 分類・クラスタリング&lt;br/&gt;- 異常検知]
+
+    C3 --&gt; D3[オペレーショナルリサーチ&lt;br/&gt;- 線形計画法&lt;br/&gt;- 整数計画法&lt;br/&gt;- ネットワーク最適化]
+
+    D1 --&gt; E[統合意思決定]
+    D2 --&gt; E
+    D3 --&gt; E
+
+
+
+
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>分析手法</th>
+<th>主な役割</th>
+<th>典型的な適用場面</th>
+<th>提供する価値</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>統計分析</strong></td>
+<td>パターン発見・因果推論</td>
+<td>現状把握、A/Bテスト、因果関係の検証</td>
+<td>「何が起きているか」の科学的理解</td>
+</tr>
+<tr>
+<td><strong>機械学習</strong></td>
+<td>予測・分類・パターン学習</td>
+<td>需要予測、顧客分類、異常検知</td>
+<td>「何が起きそうか」の高精度予測</td>
+</tr>
+<tr>
+<td><strong>オペレーショナルリサーチ</strong></td>
+<td>制約下での最適解導出</td>
+<td>リソース配分、スケジューリング、経路最適化</td>
+<td>「どうすべきか」の数学的最適解</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">手法の使い分け指針<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">統計分析が適している場面<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li>データの探索と現状理解</li>
+<li>施策効果の検証（A/Bテスト）</li>
+<li>因果関係の特定</li>
+<li>仮説検定による意思決定</li>
+</ul>
+<h4 id="_8">機械学習が適している場面<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li>大量データからのパターン発見</li>
+<li>複雑な予測問題</li>
+<li>自動分類・クラスタリング</li>
+<li>リアルタイム判定</li>
+</ul>
+<h4 id="_9">オペレーショナルリサーチが適している場面<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<ul>
+<li>明確な目的関数と制約条件がある問題</li>
+<li>リソースの最適配分</li>
+<li>スケジューリング・経路問題</li>
+<li>複数の選択肢からの最適選択</li>
+</ul>
+<h2 id="_10">データ駆動型意思決定のプロセス<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h3 id="crisp-dm">統合的CRISP-DMプロセス<a class="headerlink" href="#crisp-dm" title="Permanent link">&para;</a></h3>
+<p>従来のCRISP-DMを拡張し、最適化段階を組み込んだ統合プロセスです。</p>
+<pre class="mermaid"><code>graph TD
+    A[ビジネス理解&lt;br/&gt;Business Understanding] --&gt; B[データ理解&lt;br/&gt;Data Understanding]
+    B --&gt; C[データ準備&lt;br/&gt;Data Preparation]
+    C --&gt; D[分析手法選択&lt;br/&gt;Method Selection]
+
+    D --&gt; E1[統計分析&lt;br/&gt;Statistical Analysis]
+    D --&gt; E2[機械学習&lt;br/&gt;Machine Learning]
+    D --&gt; E3[最適化&lt;br/&gt;Optimization]
+
+    E1 --&gt; F[結果統合&lt;br/&gt;Integration]
+    E2 --&gt; F
+    E3 --&gt; F
+
+    F --&gt; G[評価&lt;br/&gt;Evaluation]
+    G --&gt; H[展開&lt;br/&gt;Deployment]
+    H --&gt; I[監視・改善&lt;br/&gt;Monitoring]
+
+    I --&gt; A
+    G --&gt; C
+    F --&gt; D
+    B --&gt; A
+
+
+
+
+
+</code></pre>
+<h2 id="typescript">TypeScript実装：統合分析エンジン<a class="headerlink" href="#typescript" title="Permanent link">&para;</a></h2>
+<h3 id="_11">分析手法統合システム<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<p>この実装では、統計分析、機械学習、オペレーショナルリサーチを統合した意思決定支援システムを構築しています。問題の性質を自動判定し、最適な分析手法を選択・組み合わせて、包括的な意思決定支援を提供します。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// 統合分析エンジンによる意思決定支援システム</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">AnalysisRequest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">problemType</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;descriptive&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;predictive&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;prescriptive&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">Dataset</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">objective</span><span class="o">:</span><span class="w"> </span><span class="kt">BusinessObjective</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">constraints?</span><span class="o">:</span><span class="w"> </span><span class="kt">Constraint</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">timeframe</span><span class="o">:</span><span class="w"> </span><span class="kt">TimeConstraint</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">stakeholders</span><span class="o">:</span><span class="w"> </span><span class="kt">Stakeholder</span><span class="p">[];</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">AnalysisResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">statisticalInsights</span><span class="o">:</span><span class="w"> </span><span class="kt">StatisticalInsights</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">predictions?</span><span class="o">:</span><span class="w"> </span><span class="kt">PredictionResult</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">optimization?</span><span class="o">:</span><span class="w"> </span><span class="kt">OptimizationResult</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">recommendations</span><span class="o">:</span><span class="w"> </span><span class="kt">ActionRecommendation</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">confidence</span><span class="o">:</span><span class="w"> </span><span class="kt">ConfidenceMetrics</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">methodology</span><span class="o">:</span><span class="w"> </span><span class="kt">MethodologyReport</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">BusinessObjective</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kr">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;maximize&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;minimize&#39;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s1">&#39;satisfice&#39;</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">target</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">success_metrics</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">constraints</span><span class="o">:</span><span class="w"> </span><span class="kt">OperationalConstraint</span><span class="p">[];</span>
+<span class="p">}</span>
+
+<span class="kd">class</span><span class="w"> </span><span class="nx">IntegratedDecisionAnalysisEngine</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">statisticalAnalyzer</span><span class="o">:</span><span class="w"> </span><span class="kt">StatisticalAnalyzer</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">machineLearningEngine</span><span class="o">:</span><span class="w"> </span><span class="kt">MachineLearningEngine</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">optimizationSolver</span><span class="o">:</span><span class="w"> </span><span class="kt">OperationsResearchSolver</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">methodSelector</span><span class="o">:</span><span class="w"> </span><span class="kt">AnalysisMethodSelector</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">resultIntegrator</span><span class="o">:</span><span class="w"> </span><span class="kt">ResultIntegrator</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="kt">EngineConfiguration</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">initializeAnalysisEngines</span><span class="p">(</span><span class="nx">config</span><span class="p">);</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">methodSelector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">IntelligentMethodSelector</span><span class="p">();</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">resultIntegrator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MultiMethodResultIntegrator</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">initializeAnalysisEngines</span><span class="p">(</span><span class="nx">config</span><span class="o">:</span><span class="w"> </span><span class="kt">EngineConfiguration</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 統計分析エンジン</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">statisticalAnalyzer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ComprehensiveStatisticalAnalyzer</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s1">&#39;descriptive_statistics&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;hypothesis_testing&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;regression_analysis&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;correlation_analysis&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;time_series_analysis&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;survival_analysis&#39;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nx">significance_level</span><span class="o">:</span><span class="w"> </span><span class="kt">0.05</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">correction_methods</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;bonferroni&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;fdr&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;holm&#39;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// 機械学習エンジン</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">machineLearningEngine</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">AdvancedMLEngine</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">algorithms</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">regression</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;polynomial&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ridge&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;lasso&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;elastic_net&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;random_forest&#39;</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">classification</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;logistic&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;svm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;random_forest&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;gradient_boosting&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;neural_network&#39;</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">clustering</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;kmeans&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;hierarchical&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;dbscan&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;gaussian_mixture&#39;</span><span class="p">],</span>
+<span class="w">        </span><span class="nx">time_series</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;arima&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;lstm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;prophet&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;transformer&#39;</span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">ensemble_methods</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;voting&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;bagging&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;boosting&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;stacking&#39;</span><span class="p">],</span>
+<span class="w">      </span><span class="nx">hyperparameter_tuning</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bayesian_optimization&#39;</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// オペレーショナルリサーチソルバー</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">optimizationSolver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">OROptimizationSolver</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">solvers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">linear_programming</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;simplex&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">integer_programming</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;branch_and_bound&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">nonlinear_programming</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;interior_point&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">network_optimization</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;min_cost_flow&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">dynamic_programming</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;bellman&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">metaheuristics</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;genetic_algorithm&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;simulated_annealing&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;particle_swarm&#39;</span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">tolerance</span><span class="o">:</span><span class="w"> </span><span class="kt">1e</span><span class="o">-</span><span class="mf">6</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">max_iterations</span><span class="o">:</span><span class="w"> </span><span class="kt">10000</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 統合分析の実行</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">performIntegratedAnalysis</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">request</span><span class="o">:</span><span class="w"> </span><span class="kt">AnalysisRequest</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">AnalysisResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. 問題分析と手法選択</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">methodPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">methodSelector</span><span class="p">.</span><span class="nx">selectOptimalMethods</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">request</span><span class="p">.</span><span class="nx">problemType</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">request</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">request</span><span class="p">.</span><span class="nx">objective</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. 段階的分析実行</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">analysisResults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">executeAnalysisPipeline</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">request</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">methodPlan</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. 結果統合と推奨事項生成</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">integratedResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">resultIntegrator</span><span class="p">.</span><span class="nx">integrate</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">analysisResults</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">request</span><span class="p">.</span><span class="nx">objective</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">integratedResult</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 分析パイプラインの実行</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">executeAnalysisPipeline</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">request</span><span class="o">:</span><span class="w"> </span><span class="kt">AnalysisRequest</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">methodPlan</span><span class="o">:</span><span class="w"> </span><span class="kt">AnalysisMethodPlan</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">PipelineResult</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">results</span><span class="o">:</span><span class="w"> </span><span class="kt">PipelineResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">statistical</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">ml</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">optimization</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="c1">// Phase 1: 統計分析（現状理解）</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">methodPlan</span><span class="p">.</span><span class="nx">includeStatistical</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">results</span><span class="p">.</span><span class="nx">statistical</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">executeStatisticalAnalysis</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">request</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">methodPlan</span><span class="p">.</span><span class="nx">statisticalMethods</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Phase 2: 機械学習（予測・分類）</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">methodPlan</span><span class="p">.</span><span class="nx">includeMachineLearning</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">results</span><span class="p">.</span><span class="nx">ml</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">executeMachineLearningAnalysis</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">request</span><span class="p">.</span><span class="nx">data</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">methodPlan</span><span class="p">.</span><span class="nx">mlMethods</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">results</span><span class="p">.</span><span class="nx">statistical</span><span class="w"> </span><span class="c1">// 統計分析結果を活用</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Phase 3: 最適化（意思決定）</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">methodPlan</span><span class="p">.</span><span class="nx">includeOptimization</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">results</span><span class="p">.</span><span class="nx">optimization</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">executeOptimizationAnalysis</span><span class="p">(</span>
+<span class="w">        </span><span class="nx">request</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">results</span><span class="p">.</span><span class="nx">statistical</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">results</span><span class="p">.</span><span class="nx">ml</span>
+<span class="w">      </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">results</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 統計分析の実行</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">executeStatisticalAnalysis</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">Dataset</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="kt">StatisticalMethod</span><span class="p">[]</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">StatisticalResults</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">results</span><span class="o">:</span><span class="w"> </span><span class="kt">StatisticalResults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="w">    </span><span class="c1">// 記述統計</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;descriptive&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">results</span><span class="p">.</span><span class="nx">descriptive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">statisticalAnalyzer</span><span class="p">.</span><span class="nx">computeDescriptiveStats</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 相関分析</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;correlation&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">results</span><span class="p">.</span><span class="nx">correlation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">statisticalAnalyzer</span><span class="p">.</span><span class="nx">analyzeCorrelations</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 回帰分析</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;regression&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">results</span><span class="p">.</span><span class="nx">regression</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">statisticalAnalyzer</span><span class="p">.</span><span class="nx">performRegression</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 仮説検定</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;hypothesis_testing&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">results</span><span class="p">.</span><span class="nx">hypothesis_tests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">statisticalAnalyzer</span><span class="p">.</span><span class="nx">conductHypothesisTests</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 因果推論</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">methods</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;causal_inference&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">results</span><span class="p">.</span><span class="nx">causal_analysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">statisticalAnalyzer</span><span class="p">.</span><span class="nx">performCausalInference</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">results</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 最適化分析の実行</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">executeOptimizationAnalysis</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">request</span><span class="o">:</span><span class="w"> </span><span class="kt">AnalysisRequest</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">statisticalResults</span><span class="o">:</span><span class="w"> </span><span class="kt">StatisticalResults</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">mlResults</span><span class="o">:</span><span class="w"> </span><span class="kt">MachineLearningResults</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">OptimizationResults</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 最適化問題の定式化</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">optimizationProblem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">formulateOptimizationProblem</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">request</span><span class="p">.</span><span class="nx">objective</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">request</span><span class="p">.</span><span class="nx">constraints</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">statisticalResults</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">mlResults</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 適切なソルバーの選択</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">solver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">selectOptimalSolver</span><span class="p">(</span><span class="nx">optimizationProblem</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 最適化実行</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">solution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">solver</span><span class="p">.</span><span class="nx">solve</span><span class="p">(</span><span class="nx">optimizationProblem</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 感度分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">sensitivityAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">performSensitivityAnalysis</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">optimizationProblem</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">solution</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// シナリオ分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">scenarioAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">performScenarioAnalysis</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">optimizationProblem</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">solution</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">optimal_solution</span><span class="o">:</span><span class="w"> </span><span class="kt">solution</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">sensitivity_analysis</span><span class="o">:</span><span class="w"> </span><span class="kt">sensitivityAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">scenario_analysis</span><span class="o">:</span><span class="w"> </span><span class="kt">scenarioAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">robustness_analysis</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">assessRobustness</span><span class="p">(</span><span class="nx">solution</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 具体的業務問題への適用</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">solveBusiness</span><span class="w"> </span><span class="nx">Problem</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">problemDefinition</span><span class="o">:</span><span class="w"> </span><span class="kt">BusinessProblemDefinition</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">BusinessSolution</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="nx">problemDefinition</span><span class="p">.</span><span class="nx">category</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;resource_allocation&#39;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">solveResourceAllocation</span><span class="p">(</span><span class="nx">problemDefinition</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;demand_forecasting&#39;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">solveDemandForecasting</span><span class="p">(</span><span class="nx">problemDefinition</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;price_optimization&#39;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">solvePriceOptimization</span><span class="p">(</span><span class="nx">problemDefinition</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;supply_chain_optimization&#39;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">solveSupplyChainOptimization</span><span class="p">(</span><span class="nx">problemDefinition</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">case</span><span class="w"> </span><span class="s1">&#39;customer_segmentation&#39;</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">solveCustomerSegmentation</span><span class="p">(</span><span class="nx">problemDefinition</span><span class="p">);</span>
+
+<span class="w">      </span><span class="nx">default</span><span class="o">:</span>
+<span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">solveGenericProblem</span><span class="p">(</span><span class="nx">problemDefinition</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// リソース配分問題の解決</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">solveResourceAllocation</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">problem</span><span class="o">:</span><span class="w"> </span><span class="kt">ResourceAllocationProblem</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ResourceAllocationSolution</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. 統計分析：過去のリソース利用効率分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">utilizationAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">statisticalAnalyzer</span><span class="p">.</span><span class="nx">analyzeResourceUtilization</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">problem</span><span class="p">.</span><span class="nx">historical_data</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. 機械学習：需要予測</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">demandForecast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">machineLearningEngine</span><span class="p">.</span><span class="nx">forecastDemand</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">problem</span><span class="p">.</span><span class="nx">demand_data</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">problem</span><span class="p">.</span><span class="nx">forecast_horizon</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. 最適化：制約下でのリソース配分最適化</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">allocationProblem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">LinearProgrammingProblem</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">objective</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;maximize_efficiency&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">variables</span><span class="o">:</span><span class="w"> </span><span class="kt">problem.resources</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">constraints</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">...</span><span class="nx">problem</span><span class="p">.</span><span class="nx">capacity_constraints</span><span class="p">,</span>
+<span class="w">        </span><span class="p">...</span><span class="nx">problem</span><span class="p">.</span><span class="nx">demand_constraints</span><span class="p">,</span>
+<span class="w">        </span><span class="p">...</span><span class="k">this</span><span class="p">.</span><span class="nx">generateForecastConstraints</span><span class="p">(</span><span class="nx">demandForecast</span><span class="p">)</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">optimalAllocation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">optimizationSolver</span><span class="p">.</span><span class="nx">solve</span><span class="p">(</span><span class="nx">allocationProblem</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">allocation</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalAllocation.solution</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">expected_efficiency</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalAllocation.objective_value</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">utilization_insights</span><span class="o">:</span><span class="w"> </span><span class="kt">utilizationAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">demand_forecast</span><span class="o">:</span><span class="w"> </span><span class="kt">demandForecast</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">sensitivity_analysis</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalAllocation.sensitivity</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">implementation_plan</span><span class="o">:</span><span class="w"> </span><span class="kt">this.generateImplementationPlan</span><span class="p">(</span><span class="nx">optimalAllocation</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 価格最適化問題の解決</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">solvePriceOptimization</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">problem</span><span class="o">:</span><span class="w"> </span><span class="kt">PriceOptimizationProblem</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">PriceOptimizationSolution</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. 統計分析：価格弾性の推定</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">elasticityAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">statisticalAnalyzer</span><span class="p">.</span><span class="nx">estimatePriceElasticity</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">problem</span><span class="p">.</span><span class="nx">sales_data</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">problem</span><span class="p">.</span><span class="nx">price_data</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. 機械学習：需要予測モデル</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">demandModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">machineLearningEngine</span><span class="p">.</span><span class="nx">buildDemandModel</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">problem</span><span class="p">.</span><span class="nx">features</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">problem</span><span class="p">.</span><span class="nx">target_demand</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. 最適化：利益最大化価格の決定</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">pricingProblem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">NonlinearProgrammingProblem</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">objective</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;maximize_profit&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">demand_function</span><span class="o">:</span><span class="w"> </span><span class="kt">demandModel</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">cost_function</span><span class="o">:</span><span class="w"> </span><span class="kt">problem.cost_function</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">price_bounds</span><span class="o">:</span><span class="w"> </span><span class="kt">problem.price_bounds</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">elasticity_constraints</span><span class="o">:</span><span class="w"> </span><span class="kt">elasticityAnalysis.constraints</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">optimalPricing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">optimizationSolver</span><span class="p">.</span><span class="nx">solve</span><span class="p">(</span><span class="nx">pricingProblem</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">optimal_prices</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalPricing.solution</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">expected_profit</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalPricing.objective_value</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">elasticity_insights</span><span class="o">:</span><span class="w"> </span><span class="kt">elasticityAnalysis</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">demand_sensitivity</span><span class="o">:</span><span class="w"> </span><span class="kt">this.analyzeDemandSensitivity</span><span class="p">(</span><span class="nx">demandModel</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">competitive_analysis</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">performCompetitiveAnalysis</span><span class="p">(</span><span class="nx">optimalPricing</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">implementation_strategy</span><span class="o">:</span><span class="w"> </span><span class="kt">this.designPricingStrategy</span><span class="p">(</span><span class="nx">optimalPricing</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// リアルタイム意思決定支援</span>
+<span class="w">  </span><span class="nx">createRealTimeDecisionSupport</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">context</span><span class="o">:</span><span class="w"> </span><span class="kt">DecisionContext</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">RealTimeDecisionSupport</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">interval</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nx">refresh_interval</span><span class="p">).</span><span class="nx">pipe</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">mergeMap</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// データ収集</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">currentData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">collectRealTimeData</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// 迅速分析（軽量版）</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">quickAnalysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">performQuickAnalysis</span><span class="p">(</span><span class="nx">currentData</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// 閾値チェック</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">alerts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">checkDecisionThresholds</span><span class="p">(</span><span class="nx">quickAnalysis</span><span class="p">,</span><span class="w"> </span><span class="nx">context</span><span class="p">);</span>
+
+<span class="w">        </span><span class="c1">// 推奨アクション生成</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">recommendations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">generateRealTimeRecommendations</span><span class="p">(</span>
+<span class="w">          </span><span class="nx">quickAnalysis</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">alerts</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">context</span>
+<span class="w">        </span><span class="p">);</span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(),</span>
+<span class="w">          </span><span class="nx">analysis</span><span class="o">:</span><span class="w"> </span><span class="kt">quickAnalysis</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">alerts</span><span class="o">:</span><span class="w"> </span><span class="kt">alerts</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">recommendations</span><span class="o">:</span><span class="w"> </span><span class="kt">recommendations</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">confidence</span><span class="o">:</span><span class="w"> </span><span class="kt">this.calculateRealTimeConfidence</span><span class="p">(</span><span class="nx">quickAnalysis</span><span class="p">)</span>
+<span class="w">        </span><span class="p">};</span>
+<span class="w">      </span><span class="p">}),</span>
+
+<span class="w">      </span><span class="c1">// 重要度フィルタリング</span>
+<span class="w">      </span><span class="nx">filter</span><span class="p">(</span><span class="nx">result</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">alerts</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">result</span><span class="p">.</span><span class="nx">recommendations</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">),</span>
+
+<span class="w">      </span><span class="nx">share</span><span class="p">()</span>
+<span class="w">    </span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 結果インターフェース</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">PipelineResult</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">statistical</span><span class="o">:</span><span class="w"> </span><span class="kt">StatisticalResults</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">ml</span><span class="o">:</span><span class="w"> </span><span class="kt">MachineLearningResults</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">optimization</span><span class="o">:</span><span class="w"> </span><span class="kt">OptimizationResults</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span><span class="w"> </span><span class="nx">BusinessSolution</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">solution_type</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">primary_recommendations</span><span class="o">:</span><span class="w"> </span><span class="kt">ActionRecommendation</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">supporting_analysis</span><span class="o">:</span><span class="w"> </span><span class="kt">AnalysisEvidence</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">implementation_plan</span><span class="o">:</span><span class="w"> </span><span class="kt">ImplementationPlan</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">success_metrics</span><span class="o">:</span><span class="w"> </span><span class="kt">SuccessMetric</span><span class="p">[];</span>
+<span class="w">  </span><span class="nx">risk_assessment</span><span class="o">:</span><span class="w"> </span><span class="kt">RiskAssessment</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h3 id="_12">手法選択の自動化<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>問題の特性に基づいて最適な分析手法を自動選択するシステムです。</p>
+<details class="typescript実装例">
+<summary>Typescript実装例</summary>
+<div class="highlight"><pre><span></span><code><span class="c1">// インテリジェント分析手法選択システム</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">IntelligentMethodSelector</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">problemClassifier</span><span class="o">:</span><span class="w"> </span><span class="kt">ProblemClassifier</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">methodDatabase</span><span class="o">:</span><span class="w"> </span><span class="kt">AnalysisMethodDatabase</span><span class="p">;</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">performancePredictor</span><span class="o">:</span><span class="w"> </span><span class="kt">MethodPerformancePredictor</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kr">constructor</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">problemClassifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MLProblemClassifier</span><span class="p">();</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">methodDatabase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ComprehensiveMethodDatabase</span><span class="p">();</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">performancePredictor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EnsemblePerformancePredictor</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 最適分析手法の選択</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">selectOptimalMethods</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">problemType</span><span class="o">:</span><span class="w"> </span><span class="kt">ProblemType</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">Dataset</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">objective</span><span class="o">:</span><span class="w"> </span><span class="kt">BusinessObjective</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">AnalysisMethodPlan</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 1. 問題特性の分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">problemCharacteristics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeProblemCharacteristics</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">problemType</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">objective</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 2. データ特性の分析</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">dataCharacteristics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeDataCharacteristics</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 3. 候補手法の生成</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">candidateMethods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">methodDatabase</span><span class="p">.</span><span class="nx">getCandidateMethods</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">problemCharacteristics</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">dataCharacteristics</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 4. 手法性能の予測</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">methodPerformances</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">candidateMethods</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">method</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">performancePredictor</span><span class="p">.</span><span class="nx">predict</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span><span class="w"> </span><span class="nx">problemCharacteristics</span><span class="p">,</span><span class="w"> </span><span class="nx">dataCharacteristics</span><span class="p">)</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 5. 最適組み合わせの選択</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">optimalCombination</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">selectOptimalCombination</span><span class="p">(</span>
+<span class="w">      </span><span class="nx">candidateMethods</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">methodPerformances</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">objective</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">includeStatistical</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalCombination.statistical</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">includeMachineLearning</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalCombination.ml</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">includeOptimization</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalCombination.optimization</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">statisticalMethods</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalCombination.statistical?.methods</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nx">mlMethods</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalCombination.ml?.methods</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nx">optimizationMethods</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalCombination.optimization?.methods</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">      </span><span class="nx">expectedPerformance</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalCombination.expectedPerformance</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">reasoning</span><span class="o">:</span><span class="w"> </span><span class="kt">optimalCombination.reasoning</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 問題特性の分析</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">analyzeProblemCharacteristics</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">problemType</span><span class="o">:</span><span class="w"> </span><span class="kt">ProblemType</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">Dataset</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">objective</span><span class="o">:</span><span class="w"> </span><span class="kt">BusinessObjective</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ProblemCharacteristics</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">complexity</span><span class="o">:</span><span class="w"> </span><span class="kt">this.assessProblemComplexity</span><span class="p">(</span><span class="nx">problemType</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">structure</span><span class="o">:</span><span class="w"> </span><span class="kt">this.analyzeProblemStructure</span><span class="p">(</span><span class="nx">objective</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">constraints</span><span class="o">:</span><span class="w"> </span><span class="kt">this.identifyConstraintTypes</span><span class="p">(</span><span class="nx">objective</span><span class="p">.</span><span class="nx">constraints</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">uncertainty</span><span class="o">:</span><span class="w"> </span><span class="kt">this.assessUncertaintyLevel</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">timeframe</span><span class="o">:</span><span class="w"> </span><span class="kt">this.analyzeTimeConstraints</span><span class="p">(</span><span class="nx">objective</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">stakeholder_complexity</span><span class="o">:</span><span class="w"> </span><span class="kt">this.assessStakeholderComplexity</span><span class="p">(</span><span class="nx">objective</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// データ特性の分析</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">analyzeDataCharacteristics</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">Dataset</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">DataCharacteristics</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">size</span><span class="o">:</span><span class="w"> </span><span class="kt">this.assessDataSize</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">dimensionality</span><span class="o">:</span><span class="w"> </span><span class="kt">this.calculateDimensionality</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">quality</span><span class="o">:</span><span class="w"> </span><span class="kt">this.assessDataQuality</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">distribution</span><span class="o">:</span><span class="w"> </span><span class="kt">this.analyzeDistribution</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">temporal_nature</span><span class="o">:</span><span class="w"> </span><span class="kt">this.analyzeTemporalNature</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">missing_patterns</span><span class="o">:</span><span class="w"> </span><span class="kt">this.analyzeMissingPatterns</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">correlation_structure</span><span class="o">:</span><span class="w"> </span><span class="kt">this.analyzeCorrelationStructure</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 手法組み合わせの評価</span>
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">selectOptimalCombination</span><span class="p">(</span>
+<span class="w">    </span><span class="nx">candidates</span><span class="o">:</span><span class="w"> </span><span class="kt">CandidateMethod</span><span class="p">[],</span>
+<span class="w">    </span><span class="nx">performances</span><span class="o">:</span><span class="w"> </span><span class="kt">MethodPerformance</span><span class="p">[],</span>
+<span class="w">    </span><span class="nx">objective</span><span class="o">:</span><span class="w"> </span><span class="kt">BusinessObjective</span>
+<span class="w">  </span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nx">OptimalMethodCombination</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 多目的最適化による手法選択</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">optimizer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MultiObjectiveOptimizer</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">objectives</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;interpretability&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;computational_efficiency&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="s1">&#39;robustness&#39;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nx">weights</span><span class="o">:</span><span class="w"> </span><span class="kt">this.determineObjectiveWeights</span><span class="p">(</span><span class="nx">objective</span><span class="p">)</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">combinations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">generateValidCombinations</span><span class="p">(</span><span class="nx">candidates</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">evaluatedCombinations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">combinations</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">combination</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">      </span><span class="nx">combination</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">score</span><span class="o">:</span><span class="w"> </span><span class="kt">optimizer.evaluate</span><span class="p">(</span><span class="nx">combination</span><span class="p">,</span><span class="w"> </span><span class="nx">performances</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}));</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">optimal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">evaluatedCombinations</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">best</span><span class="p">,</span><span class="w"> </span><span class="nx">current</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+<span class="w">      </span><span class="nx">current</span><span class="p">.</span><span class="nx">score</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">best</span><span class="p">.</span><span class="nx">score</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nx">current</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">best</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="p">...</span><span class="nx">optimal</span><span class="p">.</span><span class="nx">combination</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">expectedPerformance</span><span class="o">:</span><span class="w"> </span><span class="kt">optimal.score</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">reasoning</span><span class="o">:</span><span class="w"> </span><span class="kt">this.generateSelectionReasoning</span><span class="p">(</span><span class="nx">optimal</span><span class="p">.</span><span class="nx">combination</span><span class="p">,</span><span class="w"> </span><span class="nx">performances</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</details>
+<h2 id="_13">実践的な適用パターン<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="_14">業務問題別の分析手法選択指針<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph TD
+    A[業務問題] --&gt; B{問題の性質}
+
+    B --&gt; C1[運用最適化問題]
+    B --&gt; C2[予測・分類問題]
+    B --&gt; C3[現状分析問題]
+
+    C1 --&gt; D1[OR主導&lt;br/&gt;統計・ML補助]
+    C2 --&gt; D2[ML主導&lt;br/&gt;統計・OR補助]
+    C3 --&gt; D3[統計主導&lt;br/&gt;ML・OR補助]
+
+    D1 --&gt; E1[リソース配分&lt;br/&gt;スケジューリング&lt;br/&gt;経路最適化]
+    D2 --&gt; E2[需要予測&lt;br/&gt;顧客分類&lt;br/&gt;異常検知]
+    D3 --&gt; E3[現状把握&lt;br/&gt;因果分析&lt;br/&gt;効果測定]
+
+
+
+</code></pre>
+<h3 id="_15">具体的な適用例<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="1">1. 製造業での生産計画最適化<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p><strong>問題設定</strong>: 限られたリソースで最大の利益を上げる生産計画</p>
+<p><strong>分析手法の組み合わせ</strong>:</p>
+<ul>
+<li><strong>統計分析</strong>: 過去の生産効率・歩留まり分析</li>
+<li><strong>機械学習</strong>: 需要予測、品質予測</li>
+<li><strong>OR</strong>: 制約条件下での生産量最適化</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 生産計画最適化の例</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">optimizeProductionPlan</span><span class="p">(</span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="kt">ProductionData</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">ProductionPlan</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// 1. 統計分析：生産効率の分析</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">efficiency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">analyzeProductionEfficiency</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">historical</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 2. 機械学習：需要予測</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">demandForecast</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">forecastDemand</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">sales</span><span class="p">,</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">external</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// 3. OR：最適生産計画</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">optimizationProblem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ProductionOptimizationProblem</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">objective</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;maximize_profit&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">capacity_constraints</span><span class="o">:</span><span class="w"> </span><span class="kt">data.capacity</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">demand_constraints</span><span class="o">:</span><span class="w"> </span><span class="kt">demandForecast</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">efficiency_parameters</span><span class="o">:</span><span class="w"> </span><span class="kt">efficiency</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">solve</span><span class="p">(</span><span class="nx">optimizationProblem</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="2">2. 小売業での価格戦略<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p><strong>問題設定</strong>: 競合と市場動向を考慮した最適価格設定</p>
+<p><strong>分析手法の組み合わせ</strong>:</p>
+<ul>
+<li><strong>統計分析</strong>: 価格弾性・競合分析</li>
+<li><strong>機械学習</strong>: 顧客行動予測</li>
+<li><strong>OR</strong>: 利益最大化価格決定</li>
+</ul>
+<h4 id="3">3. 物流での配送ルート最適化<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<p><strong>問題設定</strong>: 交通状況と配送制約を考慮した効率的ルート</p>
+<p><strong>分析手法の組み合わせ</strong>:</p>
+<ul>
+<li><strong>統計分析</strong>: 交通パターン・配送時間分析  </li>
+<li><strong>機械学習</strong>: 交通状況・配送時間予測</li>
+<li><strong>OR</strong>: 車両ルーティング問題の最適化</li>
+</ul>
+<h2 id="_16">継続的改善とモニタリング<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<h3 id="_17">分析結果の評価サイクル<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>graph LR
+    A[分析実行] --&gt; B[結果実装]
+    B --&gt; C[パフォーマンス測定]
+    C --&gt; D[手法効果の評価]
+    D --&gt; E[改善点の特定]
+    E --&gt; F[手法・パラメータ調整]
+    F --&gt; A
+
+    G[A/Bテスト] --&gt; C
+    H[ベンチマーク比較] --&gt; D
+    I[新データ追加] --&gt; E
+    J[手法アップデート] --&gt; F
+
+
+
+
+</code></pre>
+<h3 id="_18">各手法の継続的改善<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>手法</th>
+<th>改善のポイント</th>
+<th>評価指標</th>
+<th>改善アクション</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>統計分析</strong></td>
+<td>仮説の妥当性、統計的有意性</td>
+<td>p値、効果量、信頼区間</td>
+<td>新仮説追加、検定手法変更</td>
+</tr>
+<tr>
+<td><strong>機械学習</strong></td>
+<td>予測精度、汎化性能</td>
+<td>RMSE、MAE、AUC、F1スコア</td>
+<td>ハイパーパラメータ調整、特徴量追加</td>
+</tr>
+<tr>
+<td><strong>OR</strong></td>
+<td>最適解の実現可能性、実装効果</td>
+<td>目的関数値、制約充足度</td>
+<td>制約見直し、モデル精緻化</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_19">まとめ：統合アプローチの価値<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p>データ駆動型意思決定において、統計分析、機械学習、オペレーショナルリサーチを適切に組み合わせることで、以下の価値を実現できます。</p>
+<h3 id="_20">統合アプローチの利点<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>包括的理解</strong>: 現状把握→予測→最適化の全段階をカバー</li>
+<li><strong>精度向上</strong>: 各手法の強みを活かした高精度分析</li>
+<li><strong>実装可能性</strong>: ORによる実現可能な解の提示</li>
+<li><strong>説明可能性</strong>: 統計分析による科学的根拠の提供</li>
+<li><strong>継続的改善</strong>: MLによる学習機能の組み込み</li>
+</ol>
+<h3 id="_21">成功のための重要ポイント<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>問題の性質理解</strong>: 各問題に最適な手法組み合わせの選択</li>
+<li><strong>データ品質確保</strong>: 全手法の前提となる高品質データの整備</li>
+<li><strong>段階的アプローチ</strong>: 統計→ML→ORの段階的活用</li>
+<li><strong>結果の統合</strong>: 各手法の結果を統合した総合判断</li>
+<li><strong>継続的学習</strong>: 実装結果から次回分析への改善</li>
+</ul>
+<p>データ駆動型意思決定は、単一の手法ではなく、問題に応じた最適な手法の組み合わせと継続的な改善により、その真価を発揮します。本章で紹介したフレームワークを活用し、組織の意思決定能力を体系的に向上させることができるでしょう。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最終更新日">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年8月24日 09:02:08 JST">2025年8月24日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../ai-enhanced-ooda/" class="md-footer__link md-footer__link--prev" aria-label="前: AI統合OODAループ">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                AI統合OODAループ
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../collaborative-sa/" class="md-footer__link md-footer__link--next" aria-label="次: 協調型状況認識">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                協調型状況認識
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 shuji-bonji | <a href='https://creativecommons.org/licenses/by/4.0/deed.ja'>CC-BY-4.0ライセンス</a>に基づく
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shuji-bonji/Situational-Awareness-and-Decision-Making" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.tabs", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../assets/javascripts/mermaid-zoom.js"></script>
+      
+    
+  </body>
+</html>
