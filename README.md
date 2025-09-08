@@ -3,6 +3,13 @@
 [![Documentation Status](https://github.com/shuji-bonji/Situational-Awareness-and-Decision-Making/actions/workflows/deploy.yml/badge.svg)](https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 
+## ⚠️ 重要なお知らせ
+**GitHub公式リポジトリ以外のミラーサイトは利用しないでください。**  
+本プロジェクトの正規リポジトリは以下のURLのみです：
+- 正規リポジトリ: https://github.com/shuji-bonji/Situational-Awareness-and-Decision-Making
+
+偽サイトやミラーサイトにご注意ください。
+
 ## 📌 プロジェクト概要
 「Situational Awareness and Decision Making（状況認識と意思決定）」は、複雑な環境における認知、判断、行動を最適化するための理論、モデル、およびアプリケーションに関する情報をまとめたドキュメントサイトです。
 
