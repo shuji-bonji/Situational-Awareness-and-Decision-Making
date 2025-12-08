@@ -1,6 +1,8 @@
 ---
-description: 状況認識（Situational Awareness）の定義と重要性、理論モデル（Endsleyモデル・OODAループ）を概観
+description: 状況認識（Situational Awareness）の定義と重要性、理論モデル（Endsleyモデル・OODAループ）を概観 背景理論・設計ポイント・運用ワークフロー、リスク管理、導入チェックリストをまとめました。 実務導入や訓練にすぐ使える要点とベストプラクティクスを端的に示します。 代表事例やチェックリストも含め
+title: 状況認識（Situational Awareness）とは | 理論背景・アーキテクチャ設計・運用ベストプラクティス・実例を網羅
 ---
+
 # 状況認識（Situational Awareness）とは
 
 !!! info "このページについて"

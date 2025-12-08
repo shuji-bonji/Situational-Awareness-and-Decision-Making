@@ -189,6 +189,5 @@ plugins:
       timezone: Asia/Tokyo
       locale: ja
       fallback_to_build_date: false
-      enable_sitemap: true
   #- mermaid-zoom  # カスタム実装を使用するため無効化
   #- glightbox

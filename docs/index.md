@@ -1,7 +1,8 @@
 ---
 author: shuji-bonji
 robots: index, follow
-description: 状況認識と意思決定の理論から実践まで、航空・医療・軍事などでの応用事例、AI技術との融合、そして実際のケーススタディまで包括的に解説します。
+description: 状況認識と意思決定の理論から実践まで、航空・医療・軍事などでの応用事例、AI技術との融合、そして実際のケーススタディまで包括的に解説します。 背景理論・設計ポイント・運用ワークフロー、リスク管理、導入チェックリストをまとめました。 実務導入や訓練にすぐ使える要点とベストプラクティクスを端的に示します。
+title: 状況認識と意思決定（Situational Awareness and Decision Making）
 ---
 
 # 状況認識と意思決定（Situational Awareness and Decision Making）
