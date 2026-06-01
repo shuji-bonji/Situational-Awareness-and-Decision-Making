@@ -1,0 +1,4158 @@
+
+<!doctype html>
+<html lang="ja" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="リアルタイムの状況認識・意思決定で扱うデータの「真正性」「来歴」「完全性」をどう保証するか。ハードウェア信頼の根からコンテンツ来歴 (C2PA) まで、各レイヤーの技術と標準化動向を網羅的にまとめます。ディープフェイク・センサーなりすまし・データ改竄に対抗する設計の見取り図。">
+      
+      
+      
+        <link rel="canonical" href="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/ai-and-future/data-trust-verification/">
+      
+      
+        <link rel="prev" href="../edge-ai/">
+      
+      
+        <link rel="next" href="../future-trends/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>データ真正性・信頼性の検証技術 — リアルタイムSA/DMを支える信頼の層 - 状況認識と意思決定</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-dark.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mermaid-zoom.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/mkdocs_d2_plugin.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  
+
+  <!-- Meta Keywords (minimal usage) -->
+  
+
+  <!-- 日本語サイト向けの言語設定 -->
+  <meta name="language" content="ja">
+  <meta http-equiv="content-language" content="ja">
+
+  <!-- OpenGraph -->
+  <meta property="og:title" content="データ真正性・信頼性の検証技術 - Situational Awareness and Decision Making">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+  <meta property="og:site_name" content="状況認識と意思決定">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/ai-and-future/data-trust-verification/">
+  
+    <meta property="og:description" content="リアルタイムの状況認識・意思決定で扱うデータの「真正性」「来歴」「完全性」をどう保証するか。ハードウェア信頼の根からコンテンツ来歴 (C2PA) まで、各レイヤーの技術と標準化動向を網羅的にまとめます。ディープフェイク・センサーなりすまし・データ改竄に対抗する設計の見取り図。">
+  
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="データ真正性・信頼性の検証技術 - Situational Awareness and Decision Making">
+  
+    <meta name="twitter:description" content="リアルタイムの状況認識・意思決定で扱うデータの「真正性」「来歴」「完全性」をどう保証するか。ハードウェア信頼の根からコンテンツ来歴 (C2PA) まで、各レイヤーの技術と標準化動向を網羅的にまとめます。ディープフェイク・センサーなりすまし・データ改竄に対抗する設計の見取り図。">
+  
+  <meta name="twitter:image" content="https://shuji-bonji.github.io/Situational-Awareness-and-Decision-Making/assets/images/logo.png">
+
+  
+  
+  
+    <meta name="robots" content="index, follow">
+  
+
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sadm" class="md-skip">
+          コンテンツにスキップ
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="ヘッダー">
+    <a href="../.." title="状況認識と意思決定" class="md-header__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            状況認識と意思決定
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              データ真正性・信頼性の検証技術 — リアルタイムSA/DMを支える信頼の層
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="検索" placeholder="検索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="検索">
+        
+        <button type="reset" class="md-search__icon md-icon" title="クリア" aria-label="クリア" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            検索を初期化
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="タブ" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  ホーム
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../basics/" class="md-tabs__link">
+          
+  
+  
+  基本概念
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../situational-awareness-guide/" class="md-tabs__link">
+          
+  
+  
+  状況認識の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../decision-making-guide/" class="md-tabs__link">
+          
+  
+  
+  意思決定の理論と実践
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../applications/" class="md-tabs__link">
+          
+  
+  
+  応用
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../software/" class="md-tabs__link">
+          
+  
+  
+  ソフトウェア
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  AIと将来展望
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../case-studies/" class="md-tabs__link">
+          
+  
+  
+  ケーススタディ
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="ナビゲーション" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="状況認識と意思決定" class="md-nav__button md-logo" aria-label="状況認識と意思決定" data-md-component="logo">
+      
+  <img src="../../assets/images/logo.png" alt="logo">
+
+    </a>
+    状況認識と意思決定
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ホーム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    基本概念
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            基本概念
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/what-is-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/endsley-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Endsleyの3レベルモデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定とは
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../basics/ooda-loop/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/sa-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の基本アプローチ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/measuring-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識の測定方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../situational-awareness-guide/training-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定の理論と実践
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定の理論と実践
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/decision-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定モデル
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/cognitive-biases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    認知バイアスと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/uncertainty/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    不確実性下の意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/team-decision-making/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    チーム意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    現代の意思決定手法
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            現代の意思決定手法
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/ai-enhanced-ooda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI統合OODAループ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/data-driven-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    データ駆動型意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/collaborative-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    協調型状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../decision-making-guide/decision-training/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定トレーニング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    応用
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            応用
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    航空分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            航空分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/aviation-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/aviation-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    海事・船舶分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            海事・船舶分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/maritime-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/maritime-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    医療分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            医療分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/medical-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/medical-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            緊急対応・危機管理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/emergency-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/emergency-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    軍事・防衛分野
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            軍事・防衛分野
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/military-sa/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/military-dm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/industrial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    産業・インフラ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applications/daily-life/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日常生活
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ソフトウェア比較分析
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            ソフトウェア比較分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/sa-dm-vs-general-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SA/DM系 vs 一般ソフトウェア
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/sa-vs-dm-systems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識 vs 意思決定システム
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    状況認識支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            状況認識支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/aviation-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/maritime-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    船舶関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/weather-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    気象関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/medical-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    医療関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/emergency-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    緊急対応・危機管理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/military-sa-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    軍事
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    意思決定支援システム
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            意思決定支援システム
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software/aviation-dm-software/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    航空関連
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    AIと将来展望
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            AIと将来展望
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-sa-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと状況認識
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../new-context-in-sa-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    状況認識とAIの新たな文脈
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-dm-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AIと意思決定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_5" id="__nav_7_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI技術分野別概要
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_5">
+            <span class="md-nav__icon md-icon"></span>
+            AI技術分野別概要
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../machine-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    機械学習・深層学習
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../natural-language-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    自然言語処理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../computer-vision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    コンピュータビジョン
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../predictive-analytics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    予測分析
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../explainable-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    説明可能なAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge-ai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    エッジAI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    データ真正性・信頼性の検証技術
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    データ真正性・信頼性の検証技術
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-trust-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 信頼の階層モデル (Trust Stack)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. レイヤー別カタログ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. レイヤー別カタログ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l0-root-of-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      L0: ハードウェア信頼の根 (Root of Trust)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l1-attestation" class="md-nav__link">
+    <span class="md-ellipsis">
+      L1: デバイス識別と遠隔証明 (Attestation)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      L2: 通信路の真正性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      L3: メッセージ完全性と署名
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l4" class="md-nav__link">
+    <span class="md-ellipsis">
+      L4: アイデンティティ・権限・属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l5-provenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      L5: コンテンツ来歴 (Provenance) と真正性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l6" class="md-nav__link">
+    <span class="md-ellipsis">
+      L6: 時刻保証
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l7-transparency" class="md-nav__link">
+    <span class="md-ellipsis">
+      L7: 公開検証可能性 (Transparency)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l8" class="md-nav__link">
+    <span class="md-ellipsis">
+      L8: サプライチェーン (ソフトウェア・モデル)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l9-ot-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      L9: ドメイン特化 (OT / IoT / ロボティクス)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sadm" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. SA/DM への適用シナリオ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. SA/DM への適用シナリオ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      シナリオA: 取引先からの「業務データ」
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      シナリオB: 自社管理下のセンサー配信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-snssa" class="md-nav__link">
+    <span class="md-ellipsis">
+      シナリオC: SNS・外部映像をSA入力にする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      シナリオD: 生成AIによる意思決定支援結果の真正性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 標準化マップ（団体 × レイヤー）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. TypeScript 実装の足がかり
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 見落としやすい落とし穴
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-10-2026-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 今後 10 年の動向（2026-06 時点）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-sadm" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. SA/DM 設計者向けチェックリスト
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../future-trends/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    将来の動向
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    ケーススタディ
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            ケーススタディ
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概要
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../case-studies/haneda-airport-collision/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    羽田空港地上衝突事故(2024/1/2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-trust-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 信頼の階層モデル (Trust Stack)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. レイヤー別カタログ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. レイヤー別カタログ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#l0-root-of-trust" class="md-nav__link">
+    <span class="md-ellipsis">
+      L0: ハードウェア信頼の根 (Root of Trust)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l1-attestation" class="md-nav__link">
+    <span class="md-ellipsis">
+      L1: デバイス識別と遠隔証明 (Attestation)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l2" class="md-nav__link">
+    <span class="md-ellipsis">
+      L2: 通信路の真正性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l3" class="md-nav__link">
+    <span class="md-ellipsis">
+      L3: メッセージ完全性と署名
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l4" class="md-nav__link">
+    <span class="md-ellipsis">
+      L4: アイデンティティ・権限・属性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l5-provenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      L5: コンテンツ来歴 (Provenance) と真正性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l6" class="md-nav__link">
+    <span class="md-ellipsis">
+      L6: 時刻保証
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l7-transparency" class="md-nav__link">
+    <span class="md-ellipsis">
+      L7: 公開検証可能性 (Transparency)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l8" class="md-nav__link">
+    <span class="md-ellipsis">
+      L8: サプライチェーン (ソフトウェア・モデル)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#l9-ot-iot" class="md-nav__link">
+    <span class="md-ellipsis">
+      L9: ドメイン特化 (OT / IoT / ロボティクス)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-sadm" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. SA/DM への適用シナリオ
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. SA/DM への適用シナリオ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      シナリオA: 取引先からの「業務データ」
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      シナリオB: 自社管理下のセンサー配信
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c-snssa" class="md-nav__link">
+    <span class="md-ellipsis">
+      シナリオC: SNS・外部映像をSA入力にする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      シナリオD: 生成AIによる意思決定支援結果の真正性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 標準化マップ（団体 × レイヤー）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. TypeScript 実装の足がかり
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 見落としやすい落とし穴
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-10-2026-06" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 今後 10 年の動向（2026-06 時点）
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-sadm" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. SA/DM 設計者向けチェックリスト
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="sadm">データ真正性・信頼性の検証技術 — リアルタイムSA/DMを支える信頼の層<a class="headerlink" href="#sadm" title="Permanent link">&para;</a></h1>
+<p>リアルタイムでの状況認識（SA）と意思決定（DM）は、入力となるデータが「本当に本物か」「本当にその発信源から来たのか」に決定的に依存します。
+ところが現代は、<strong>ライブ映像すらリアルタイムに改竄できる時代</strong>です。本人が怒っていても笑顔で配信できる（<a href="https://github.com/iperov/DeepFaceLive">DeepFaceLive</a> など）、テキスト・センサーデータならさらに容易に偽装できます。</p>
+<p>このページでは、SA/DM の判断材料となるデータについて「<strong>何を、どのレイヤーで、どの標準で</strong>検証するか」を網羅的にカタログ化します。</p>
+<div class="admonition note">
+<p class="admonition-title">本ページの仕様情報の最終確認日</p>
+<p>主要な標準・規格について、<strong>2026-06 時点</strong>での版数・施行状況を反映しています。標準は継続的に更新されるため、特に C2PA・W3C VC・EU CRA・eIDAS 2.0・ETSI EN 303 645・NIST AI RMF など動きの早い領域は、実装前に各団体公式サイトで版数と発効日を必ず再確認してください。</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">想定する脅威モデル</p>
+<ul>
+<li><strong>コンテンツ改竄</strong>: ディープフェイク映像・音声・画像、生成AIによる合成</li>
+<li><strong>発信源詐称</strong>: 取引先・公的機関・センサーを騙る中間者攻撃やリプレイ</li>
+<li><strong>デバイス成りすまし</strong>: 管理外のセンサーが管理下のセンサーを名乗る</li>
+<li><strong>時刻詐称</strong>: 過去のデータを「今」として配信</li>
+<li><strong>サプライチェーン汚染</strong>: モデル・ソフトウェア・ファームウェアの改変</li>
+</ul>
+</div>
+<hr />
+<h2 id="1-trust-stack">1. 信頼の階層モデル (Trust Stack)<a class="headerlink" href="#1-trust-stack" title="Permanent link">&para;</a></h2>
+<p>「信頼」は単一のプロトコルでは作れず、<strong>ハードウェアの根 → 識別 → 通信 → メッセージ → 来歴 → 時刻 → 公開検証</strong>という積み上げで担保します。</p>
+<pre class="mermaid"><code>flowchart BT
+    L0["L0: ハードウェア信頼の根&lt;br/&gt;TPM / Secure Enclave / HSM / PUF / DICE"]
+    L1["L1: デバイス識別と遠隔証明&lt;br/&gt;IEEE 802.1AR DevID / IETF RATS / EAT / FDO"]
+    L2["L2: 通信路の真正性&lt;br/&gt;TLS 1.3 / mTLS / QUIC / DTLS / Noise / IPsec"]
+    L3["L3: メッセージ完全性と署名&lt;br/&gt;JWS·JWT / COSE / JOSE / XMLDSig / CMS"]
+    L4["L4: アイデンティティと権限&lt;br/&gt;OAuth2.1·OIDC / W3C DID·VC / mDL / SD-JWT VC"]
+    L5["L5: コンテンツ来歴と真正性&lt;br/&gt;C2PA / Project Origin / JPEG Trust / W3C PROV"]
+    L6["L6: 時刻保証&lt;br/&gt;RFC 3161 TSA / NTS / Roughtime / PTP認証"]
+    L7["L7: 公開検証可能性&lt;br/&gt;Certificate Transparency / Sigstore / OpenTimestamps"]
+    L8["L8: サプライチェーン&lt;br/&gt;SLSA / in-toto / SBOM (SPDX·CycloneDX) / Model Signing"]
+    L9["L9: ドメイン特化&lt;br/&gt;OPC UA / Matter / DDS Security / LoRaWAN / SROS2"]
+    L0 --&gt; L1 --&gt; L2 --&gt; L3 --&gt; L4 --&gt; L5 --&gt; L6 --&gt; L7 --&gt; L8 --&gt; L9</code></pre>
+<p>各レイヤーが<strong>下位レイヤーを前提</strong>に成立する点が肝です。たとえば C2PA の署名は、その鍵が安全なデバイス（L0）で生成され、識別子（L1）に紐づき、時刻（L6）と監視可能性（L7）で裏付けられていなければ「絵に描いた来歴」になります。</p>
+<hr />
+<h2 id="2">2. レイヤー別カタログ<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="l0-root-of-trust">L0: ハードウェア信頼の根 (Root of Trust)<a class="headerlink" href="#l0-root-of-trust" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>役割</th>
+<th>標準化主体</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TPM 2.0</td>
+<td>鍵の隔離・PCR・Attestation Key</td>
+<td><a href="https://trustedcomputinggroup.org/">TCG</a> / ISO/IEC 11889</td>
+</tr>
+<tr>
+<td>Intel SGX / TDX, AMD SEV-SNP, ARM CCA</td>
+<td>Confidential Computing</td>
+<td>Intel / AMD / Arm, <a href="https://confidentialcomputing.io/">CCC</a></td>
+</tr>
+<tr>
+<td>Apple Secure Enclave, Android StrongBox</td>
+<td>モバイル鍵保護</td>
+<td>ベンダ独自 + Common Criteria</td>
+</tr>
+<tr>
+<td>HSM (FIPS 140-3)</td>
+<td>サーバ側鍵管理</td>
+<td><a href="https://csrc.nist.gov/pubs/fips/140-3/final">NIST FIPS 140-3</a></td>
+</tr>
+<tr>
+<td>PUF (Physical Unclonable Function)</td>
+<td>個体固有な鍵生成</td>
+<td>ISO/IEC 20897</td>
+</tr>
+<tr>
+<td>DICE (Device Identifier Composition Engine)</td>
+<td>階層的なデバイス身分証</td>
+<td><a href="https://trustedcomputinggroup.org/work-groups/dice-architectures/">TCG DICE</a></td>
+</tr>
+<tr>
+<td>GlobalPlatform TEE / SE</td>
+<td>TEE 内部 API、SE アプレット、SCP の業界仕様</td>
+<td><a href="https://globalplatform.org/specs-library/">GlobalPlatform Specifications</a></td>
+</tr>
+<tr>
+<td>GlobalPlatform SCP03 / SCP11</td>
+<td>SE への安全なチャネル</td>
+<td><a href="https://globalplatform.org/specs-library/?filter-committee=card">GP Secure Channel Protocols</a></td>
+</tr>
+</tbody>
+</table>
+<p>ポイント: 「センサーが本当にうちのものか」の最終的な根拠は、<strong>工場出荷時に焼き込まれた鍵がここに守られているか</strong>で決まります。
+GlobalPlatform は <strong>TEE (TrustZone 系) と SE (eSE/eUICC/SIM) を結ぶ業界横断の API・プロトコル仕様</strong>を提供し、Android Keystore・各種モバイル決済・eSIM の土台になっています。SE の中で鍵を生成・退避する仕組み (SCP03/SCP11) を選んで初めて、L1 以降の Attestation が意味を持ちます。</p>
+<h3 id="l1-attestation">L1: デバイス識別と遠隔証明 (Attestation)<a class="headerlink" href="#l1-attestation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>何を保証</th>
+<th>出典</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IEEE 802.1AR (IDevID / LDevID)</td>
+<td>製造由来のデバイス識別証明書</td>
+<td><a href="https://standards.ieee.org/ieee/802.1AR/6995/">IEEE 802.1AR-2018</a></td>
+</tr>
+<tr>
+<td>IETF RATS Architecture</td>
+<td>検証者・証明者の役割モデル</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc9334">RFC 9334</a></td>
+</tr>
+<tr>
+<td>EAT (Entity Attestation Token)</td>
+<td>アテステーション結果の運搬形式</td>
+<td><a href="https://datatracker.ietf.org/doc/draft-ietf-rats-eat/">draft-ietf-rats-eat</a></td>
+</tr>
+<tr>
+<td>TPM Remote Attestation (PCR + Quote)</td>
+<td>起動状態の証明</td>
+<td>TCG</td>
+</tr>
+<tr>
+<td>FIDO Device Onboard (FDO)</td>
+<td>工場〜現場のゼロタッチ鍵投入</td>
+<td><a href="https://fidoalliance.org/specs/FDO/FIDO-Device-Onboard-RD-v1.1-20211214/">FIDO Alliance FDO 1.1</a></td>
+</tr>
+<tr>
+<td>Arm PSA Certified</td>
+<td>IoT デバイス成熟度認証</td>
+<td><a href="https://www.psacertified.org/">PSA Certified</a></td>
+</tr>
+</tbody>
+</table>
+<p>センサーやエッジデバイスが「管理下のものか」を<strong>鍵だけでなく稼働状態まで含めて証明</strong>するのが Attestation の本質です。</p>
+<h3 id="l2">L2: 通信路の真正性<a class="headerlink" href="#l2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>仕様</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TLS 1.3</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc8446">RFC 8446</a></td>
+</tr>
+<tr>
+<td>QUIC</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc9000">RFC 9000</a> / <a href="https://www.rfc-editor.org/rfc/rfc9001">RFC 9001</a></td>
+</tr>
+<tr>
+<td>DTLS 1.3</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc9147">RFC 9147</a></td>
+</tr>
+<tr>
+<td>mTLS (相互認証)</td>
+<td>TLS のクライアント証明書プロファイル</td>
+</tr>
+<tr>
+<td>Noise Protocol Framework</td>
+<td><a href="https://noiseprotocol.org/">Noise spec</a> (WireGuard, Signal が採用)</td>
+</tr>
+<tr>
+<td>IPsec / IKEv2</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc7296">RFC 7296</a></td>
+</tr>
+<tr>
+<td>MASQUE / CONNECT-UDP</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc9298">RFC 9298</a></td>
+</tr>
+</tbody>
+</table>
+<p>取引先からのデータ流入は、<strong>mTLS + 証明書ピンニング</strong>が現実解。クライアント側の証明書は L0・L1 で守る。</p>
+<h3 id="l3">L3: メッセージ完全性と署名<a class="headerlink" href="#l3" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>用途</th>
+<th>仕様</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JWS / JWT</td>
+<td>JSON 系の署名</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc7515">RFC 7515</a> / <a href="https://www.rfc-editor.org/rfc/rfc7519">RFC 7519</a></td>
+</tr>
+<tr>
+<td>JWE</td>
+<td>JSON 暗号</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc7516">RFC 7516</a></td>
+</tr>
+<tr>
+<td>COSE</td>
+<td>CBOR 署名（IoT 向け）</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc9052">RFC 9052</a> / <a href="https://www.rfc-editor.org/rfc/rfc9053">RFC 9053</a></td>
+</tr>
+<tr>
+<td>XML Signature</td>
+<td>電子契約・電子署名</td>
+<td><a href="https://www.w3.org/TR/xmldsig-core2/">W3C XMLDSig</a></td>
+</tr>
+<tr>
+<td>CAdES / XAdES / PAdES</td>
+<td>長期署名</td>
+<td>ETSI EN 319 122 / 132 / 142</td>
+</tr>
+<tr>
+<td>CMS</td>
+<td>バイナリ署名</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc5652">RFC 5652</a></td>
+</tr>
+<tr>
+<td>HMAC</td>
+<td>共通鍵での MAC</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc2104">RFC 2104</a></td>
+</tr>
+<tr>
+<td>Hash-based Signatures (XMSS/LMS)</td>
+<td>量子耐性署名</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc8391">RFC 8391</a> / <a href="https://www.rfc-editor.org/rfc/rfc8554">RFC 8554</a></td>
+</tr>
+</tbody>
+</table>
+<p>「センサーがバラまく軽量データ」は COSE、「Web/SaaS 経由のデータ」は JWS が定番。</p>
+<h3 id="l4">L4: アイデンティティ・権限・属性<a class="headerlink" href="#l4" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>目的</th>
+<th>仕様</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OAuth 2.1</td>
+<td>認可</td>
+<td><a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-v2-1/">draft-ietf-oauth-v2-1</a></td>
+</tr>
+<tr>
+<td>OpenID Connect</td>
+<td>認証</td>
+<td><a href="https://openid.net/specs/openid-connect-core-1_0.html">OIDC Core</a></td>
+</tr>
+<tr>
+<td>FIDO2 / WebAuthn</td>
+<td>パスワードレス認証</td>
+<td><a href="https://www.w3.org/TR/webauthn-3/">W3C WebAuthn L3</a></td>
+</tr>
+<tr>
+<td>W3C DID</td>
+<td>自己主権型識別子</td>
+<td><a href="https://www.w3.org/TR/did-core/">W3C DID Core</a></td>
+</tr>
+<tr>
+<td>W3C Verifiable Credentials (VC) 2.0</td>
+<td>属性証明</td>
+<td><a href="https://www.w3.org/TR/vc-data-model-2.0/">W3C VC 2.0</a>（<strong>2025-05-15 に W3C Recommendation 化</strong>）</td>
+</tr>
+<tr>
+<td>SD-JWT (基盤)</td>
+<td>JWT 選択的開示の基盤仕様</td>
+<td><strong><a href="https://www.rfc-editor.org/rfc/rfc9901">RFC 9901</a>（2025-11 公開）</strong></td>
+</tr>
+<tr>
+<td>SD-JWT VC</td>
+<td>選択的開示 JWT VC</td>
+<td><a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/">draft-ietf-oauth-sd-jwt-vc</a>（v16、ドラフト継続中）</td>
+</tr>
+<tr>
+<td>ISO/IEC 18013-5 (mDL)</td>
+<td>モバイル運転免許</td>
+<td><a href="https://www.iso.org/standard/69084.html">ISO/IEC 18013-5</a></td>
+</tr>
+<tr>
+<td>eIDAS 2.0 / EUDI Wallet</td>
+<td>EU の身分証エコシステム</td>
+<td><a href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">EU eIDAS 2.0 Regulation</a></td>
+</tr>
+</tbody>
+</table>
+<p>「誰が発した情報か」を<strong>人間にも組織にもセンサーにも</strong>与える層。VC/DID は SA/DM の入力検証で今後の本命。</p>
+<h4 id="zkp">ゼロ知識証明 (ZKP) によるプライバシー保全検証<a class="headerlink" href="#zkp" title="Permanent link">&para;</a></h4>
+<p>「<strong>属性を開示せずに条件だけ証明する</strong>」技術。SA/DM では「協力者の身元は伏せたまま資格だけ確認」「機微なテレメトリの値は伏せて閾値超過のみ通知」など、<strong>情報統制と検証性を両立</strong>する場面で効きます。</p>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>用途</th>
+<th>仕様・実装</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BBS+ Signatures / BBS Signature Scheme</td>
+<td>VC の選択的開示 + 非リンク可能性</td>
+<td><a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-bbs-signatures/">IETF draft-irtf-cfrg-bbs-signatures</a></td>
+</tr>
+<tr>
+<td>Data Integrity BBS 2023 Cryptosuite</td>
+<td>W3C VC への BBS 統合</td>
+<td><a href="https://www.w3.org/TR/vc-di-bbs/">W3C VC Data Integrity BBS</a></td>
+</tr>
+<tr>
+<td>SD-JWT (Selective Disclosure JWT)</td>
+<td>開示属性のサブセット選択（厳密には非ZKP、ハッシュ開示方式）</td>
+<td><strong><a href="https://www.rfc-editor.org/rfc/rfc9901">RFC 9901</a>（2025-11 RFC 化）</strong></td>
+</tr>
+<tr>
+<td>ISO/IEC 18013-5 mDL の ZKP プロファイル</td>
+<td>「18歳以上か」だけ証明する年齢検証</td>
+<td><a href="https://www.iso.org/standard/69084.html">ISO/IEC 18013-5</a></td>
+</tr>
+<tr>
+<td>zk-SNARK (Groth16 / PLONK)</td>
+<td>汎用 ZK 回路</td>
+<td>主要実装: <a href="https://github.com/iden3/snarkjs">snarkjs</a></td>
+</tr>
+<tr>
+<td>zk-STARK</td>
+<td>量子耐性・透明セットアップ</td>
+<td><a href="https://starkware.co/">StarkWare</a></td>
+</tr>
+<tr>
+<td>ISO/IEC 18370 シリーズ</td>
+<td>盲信号（Blind Signature）の国際標準</td>
+<td><a href="https://www.iso.org/standard/62290.html">ISO/IEC 18370-1/2</a></td>
+</tr>
+</tbody>
+</table>
+<p>SA/DM での使いどころ:</p>
+<ul>
+<li><strong>匿名通報・内部告発</strong>: 通報者が「自社の正社員」であることだけを ZKP で示し、本人特定はしない</li>
+<li><strong>多国籍オペレーション</strong>: パートナー機関の人員に対し、所属国は伏せて「クリアランス保有」のみ証明</li>
+<li><strong>センサー融合</strong>: 競合企業同士が「私のセンサー群の合計値は閾値未満」を相手に開示せず証明</li>
+</ul>
+<p>注意点: ZKP は<strong>プロトコル設計コストが高く、誤実装が即プライバシー漏洩</strong>につながります。
+W3C/IETF が固めた <strong>BBS+ ベースの VC</strong> を起点に、必要な箇所だけ汎用 zk に拡張する漸進採用が現実的です。</p>
+<h3 id="l5-provenance">L5: コンテンツ来歴 (Provenance) と真正性<a class="headerlink" href="#l5-provenance" title="Permanent link">&para;</a></h3>
+<p>ディープフェイクや生成 AI への直接の打ち手はここ。<strong>「真贋判定」ではなく「来歴の連鎖」</strong>を検証する発想です。</p>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>何が分かるか</th>
+<th>仕様</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C2PA / Content Credentials</td>
+<td>撮影・編集・AI 生成の連鎖を署名付きで埋め込み</td>
+<td><a href="https://spec.c2pa.org/">C2PA Spec 2.x</a> (2.2: 2025-05, 2.3: 2025-12 でライブ配信対応, 2.4 系へ拡張中)</td>
+</tr>
+<tr>
+<td>JPEG Trust</td>
+<td>C2PA を JPEG 標準に統合</td>
+<td><a href="https://www.iso.org/standard/86831.html">ISO/IEC 21617-1:2025</a>（Part 1 発行済、Part 2/3 開発中）</td>
+</tr>
+<tr>
+<td>Project Origin</td>
+<td>報道機関向けの来歴チェーン</td>
+<td><a href="https://www.originproject.info/">Project Origin</a></td>
+</tr>
+<tr>
+<td>CAI (Content Authenticity Initiative)</td>
+<td>業界連合</td>
+<td><a href="https://contentauthenticity.org/">CAI</a></td>
+</tr>
+<tr>
+<td>W3C PROV</td>
+<td>汎用来歴オントロジー</td>
+<td><a href="https://www.w3.org/TR/prov-o/">W3C PROV-O</a></td>
+</tr>
+<tr>
+<td>SynthID</td>
+<td>AI 生成画像・テキスト・音声の電子透かし</td>
+<td><a href="https://deepmind.google/technologies/synthid/">Google DeepMind SynthID</a></td>
+</tr>
+<tr>
+<td>Leica M11-P / Sony α1 II / Nikon Z6III</td>
+<td>カメラ内蔵 C2PA 署名</td>
+<td>各社プレスリリース</td>
+</tr>
+<tr>
+<td>Samsung Galaxy S25 標準カメラ</td>
+<td>民生スマートフォン初の純正 C2PA 署名 (2025年)</td>
+<td>Samsung / C2PA 公式</td>
+</tr>
+</tbody>
+</table>
+<p>C2PA は「<strong>改竄されていない</strong>」を保証するのではなく、「<strong>誰が、どんな道具で、どう加工したか</strong>」の改竄不能な記録です。SA/DM の UI ではこの履歴を<strong>そのまま意思決定者に見せる</strong>設計が望ましい。</p>
+<h3 id="l6">L6: 時刻保証<a class="headerlink" href="#l6" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>役割</th>
+<th>仕様</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RFC 3161 Time-Stamp Protocol</td>
+<td>信頼できる第三者による時刻署名</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc3161">RFC 3161</a></td>
+</tr>
+<tr>
+<td>NTS (Network Time Security)</td>
+<td>NTP 自体の認証</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc8915">RFC 8915</a></td>
+</tr>
+<tr>
+<td>Roughtime</td>
+<td>改竄不能な近似時刻</td>
+<td><a href="https://datatracker.ietf.org/doc/draft-ietf-ntp-roughtime/">draft-ietf-ntp-roughtime-19</a>（<strong>2026-03-17 に Experimental RFC として IESG 承認</strong>、RFC 番号付与待ち）</td>
+</tr>
+<tr>
+<td>IEEE 1588 PTP + AUTHENTICATION TLV</td>
+<td>産業用高精度時刻認証</td>
+<td><a href="https://standards.ieee.org/ieee/1588/6825/">IEEE 1588-2019</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>「いつのデータか」が改竄可能だと、全レイヤーの署名がリプレイ攻撃に弱くなる。</strong></p>
+<h3 id="l7-transparency">L7: 公開検証可能性 (Transparency)<a class="headerlink" href="#l7-transparency" title="Permanent link">&para;</a></h3>
+<p>第三者が<strong>いつでも独立に検証できる</strong>ログ。発行者の鍵が漏れたとしても、過去の発行記録は隠せない。</p>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>領域</th>
+<th>仕様</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Certificate Transparency</td>
+<td>TLS 証明書発行ログ</td>
+<td><a href="https://www.rfc-editor.org/rfc/rfc9162">RFC 9162</a></td>
+</tr>
+<tr>
+<td>Sigstore / Rekor</td>
+<td>ソフトウェア署名ログ。<strong>Rekor v2 が 2025-10 に GA</strong>（タイルログ + Trillian-Tessera）</td>
+<td><a href="https://www.sigstore.dev/">Sigstore</a></td>
+</tr>
+<tr>
+<td>OpenTimestamps</td>
+<td>Bitcoin による分散タイムスタンプ</td>
+<td><a href="https://opentimestamps.org/">OpenTimestamps</a></td>
+</tr>
+<tr>
+<td>Trillian</td>
+<td>汎用 Merkle Tree ログ</td>
+<td><a href="https://github.com/google/trillian">Google Trillian</a></td>
+</tr>
+</tbody>
+</table>
+<h4 id="dlt">ブロックチェーン／分散型台帳 (DLT) によるプロベナンス<a class="headerlink" href="#dlt" title="Permanent link">&para;</a></h4>
+<p>「<strong>単一の透明性ログ運営者すら信頼しない</strong>」場合、合意形成を分散させた DLT が選択肢に上がります。</p>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>用途</th>
+<th>出典</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hyperledger Indy</td>
+<td>自己主権型 ID と VC レジストリ</td>
+<td><a href="https://www.hyperledger.org/projects/hyperledger-indy">Hyperledger Indy</a></td>
+</tr>
+<tr>
+<td>Hyperledger Fabric</td>
+<td>許可型サプライチェーン台帳</td>
+<td><a href="https://www.hyperledger.org/projects/fabric">Hyperledger Fabric</a></td>
+</tr>
+<tr>
+<td>ION (Sidetree on Bitcoin)</td>
+<td>スケーラブルな DID メソッド</td>
+<td><a href="https://identity.foundation/ion/">ION</a></td>
+</tr>
+<tr>
+<td>Guardtime KSI</td>
+<td>キーレス署名（Bitcoin 風 Merkle 集約）</td>
+<td><a href="https://guardtime.com/technology">Guardtime KSI</a></td>
+</tr>
+<tr>
+<td>EBSI (European Blockchain Services Infrastructure)</td>
+<td>EU 公的書類の検証台帳</td>
+<td><a href="https://ec.europa.eu/digital-building-blocks/sites/display/EBSI/Home">EBSI</a></td>
+</tr>
+<tr>
+<td>C2PA + Blockchain bindings (実験的)</td>
+<td>C2PA Manifest のオンチェーン公証</td>
+<td>C2PA Spec 補遺</td>
+</tr>
+<tr>
+<td>IBM Food Trust / VeChain など</td>
+<td>物理サプライチェーン来歴</td>
+<td>各社ドキュメント</td>
+</tr>
+</tbody>
+</table>
+<p>ただし<strong>現実的な評価</strong>:</p>
+<ul>
+<li>多くの SA/DM ユースケースでは、<strong>C2PA + Certificate Transparency + Sigstore（中央運営だが公開検証可能）の組み合わせの方が低コストかつ高性能</strong></li>
+<li>DLT は「<strong>運営者すら結託しても改竄不能</strong>」が必要な場面、すなわち国家間プロジェクト・規制対応・長期保存（数十年）で初めて元が取れる</li>
+<li>Bitcoin に外部ハッシュを書き込む <strong>OpenTimestamps</strong> は両者の中間で、運営者は不要だが既存 PKI と素直に併用できる現実解</li>
+<li>スループット、確定性、エネルギーコスト、規制リスクのトレードオフを設計時に明示することが必須</li>
+</ul>
+<blockquote>
+<p>設計指針: <strong>「中央運営でも検証性は十分か?」「数十年スパンで運営者が消えるリスクはあるか?」</strong>の 2 点で DLT 投入を判断する。多くの場合の答えは No（=透明性ログで十分）。</p>
+</blockquote>
+<h3 id="l8">L8: サプライチェーン (ソフトウェア・モデル)<a class="headerlink" href="#l8" title="Permanent link">&para;</a></h3>
+<p>SA/DM システム自体や、それが使う AI モデル・データセットも改竄対象です。</p>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>目的</th>
+<th>仕様</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SLSA</td>
+<td>サプライチェーン成熟度フレーム</td>
+<td><a href="https://slsa.dev/spec/v1.0/">SLSA v1.0</a></td>
+</tr>
+<tr>
+<td>in-toto</td>
+<td>ビルド工程の検証</td>
+<td><a href="https://in-toto.io/">in-toto</a></td>
+</tr>
+<tr>
+<td>SPDX</td>
+<td>SBOM 標準</td>
+<td><a href="https://www.iso.org/standard/81870.html">ISO/IEC 5962:2021</a></td>
+</tr>
+<tr>
+<td>CycloneDX</td>
+<td>SBOM / ML-BOM / SaaS-BOM</td>
+<td><a href="https://cyclonedx.org/">OWASP CycloneDX</a></td>
+</tr>
+<tr>
+<td>NIST SSDF</td>
+<td>セキュア開発フレーム</td>
+<td><a href="https://csrc.nist.gov/pubs/sp/800/218/final">NIST SP 800-218</a></td>
+</tr>
+<tr>
+<td>Model Signing</td>
+<td>ML モデル署名</td>
+<td><a href="https://github.com/sigstore/model-transparency">Sigstore Model Signing</a></td>
+</tr>
+<tr>
+<td>EU Cyber Resilience Act (CRA)</td>
+<td>EU 域内製品の必須要件化。<strong>2024-12-10 発効／報告義務 2026-09-11／全面適用 2027-12-11</strong></td>
+<td><a href="https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act">EU CRA</a></td>
+</tr>
+<tr>
+<td>NIST AI RMF + Generative AI Profile (AI 600-1)</td>
+<td>生成AIに固有のリスク領域 12 と対応アクション。<strong>2026-04 に Critical Infrastructure Profile のコンセプトノート公開、2026-02 に AI Agent Standards Initiative 始動</strong></td>
+<td><a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf">NIST AI 600-1</a></td>
+</tr>
+</tbody>
+</table>
+<h3 id="l9-ot-iot">L9: ドメイン特化 (OT / IoT / ロボティクス)<a class="headerlink" href="#l9-ot-iot" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>技術</th>
+<th>ドメイン</th>
+<th>仕様</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OPC UA Security</td>
+<td>産業オートメーション</td>
+<td><a href="https://reference.opcfoundation.org/">IEC 62541-2</a></td>
+</tr>
+<tr>
+<td>IEC 62443</td>
+<td>OT/ICS セキュリティ</td>
+<td><a href="https://www.iec.ch/blog/understanding-iec-62443">IEC 62443 シリーズ</a></td>
+</tr>
+<tr>
+<td>Matter (最新 1.5.1)</td>
+<td>スマートホーム IoT。<strong>1.5 で WebRTC ベースのカメラ・ドアベル対応 (2025-11)</strong></td>
+<td><a href="https://csa-iot.org/all-solutions/matter/">CSA Matter</a></td>
+</tr>
+<tr>
+<td>Thread</td>
+<td>IPv6 メッシュ</td>
+<td><a href="https://www.threadgroup.org/">Thread Group</a></td>
+</tr>
+<tr>
+<td>LoRaWAN セキュリティ</td>
+<td>LPWAN</td>
+<td><a href="https://lora-alliance.org/resource_hub/lorawan-security-whitepaper/">LoRa Alliance Security</a></td>
+</tr>
+<tr>
+<td>DDS Security</td>
+<td>ロボティクス・自動車</td>
+<td><a href="https://www.omg.org/spec/DDS-SECURITY/1.1/">OMG DDS Security 1.1</a></td>
+</tr>
+<tr>
+<td>SROS2</td>
+<td>ROS 2 のセキュリティ</td>
+<td><a href="https://design.ros2.org/articles/ros2_dds_security.html">SROS2</a></td>
+</tr>
+<tr>
+<td>MQTT v5 + TLS</td>
+<td>IoT メッセージング</td>
+<td><a href="https://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html">OASIS MQTT 5.0</a></td>
+</tr>
+<tr>
+<td>3GPP 5G AKA / SUCI</td>
+<td>セルラー識別子保護</td>
+<td><a href="https://www.3gpp.org/dynareport/33501.htm">3GPP TS 33.501</a></td>
+</tr>
+<tr>
+<td>ETSI EN 303 645</td>
+<td>消費者 IoT サイバーセキュリティ基準（13 項目／68 条項／33 必須要件）</td>
+<td><a href="https://www.etsi.org/deliver/etsi_en/303600_303699/303645/">ETSI EN 303 645 v3.1.3 (2024-09)</a></td>
+</tr>
+<tr>
+<td>ETSI TS 103 701</td>
+<td>EN 303 645 への適合性評価</td>
+<td><a href="https://www.etsi.org/deliver/etsi_ts/103700_103799/103701/">ETSI TS 103 701</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>ETSI EN 303 645</strong> はカメラ・スマートスピーカー・コネクテッド家電など「<strong>民生用 IoT に関する事実上の最低ライン</strong>」を定めた欧州規格で、以下の 13 の必須要件を含みます。</p>
+<ol>
+<li>デフォルトパスワード禁止</li>
+<li>脆弱性報告窓口の整備</li>
+<li>ソフトウェアの最新化（OTA）</li>
+<li>認証情報の安全な保管</li>
+<li>通信時の機密性確保</li>
+<li>攻撃対象面の最小化</li>
+<li>ソフトウェア完全性の保証</li>
+<li>個人データの保護</li>
+<li>システムレジリエンス</li>
+<li>テレメトリの異常監視</li>
+<li>個人データの容易な削除</li>
+<li>インストール／メンテナンスの容易さ</li>
+<li>入力データの検証</li>
+</ol>
+<p>英国の <strong>PSTI Act 2022</strong>（<a href="https://www.legislation.gov.uk/ukpga/2022/46">Product Security and Telecommunications Infrastructure Act</a>、2024 年 4 月施行）はこの規格を法的基準に取り込んでおり、<strong>EU CRA・シンガポール CLS・インド TEC との相互参照</strong>も進んでいます。
+SA/DM システムに民生センサーを組み込む場合、調達基準として EN 303 645 適合を要求するのが最も簡潔です。</p>
+<hr />
+<h2 id="3-sadm">3. SA/DM への適用シナリオ<a class="headerlink" href="#3-sadm" title="Permanent link">&para;</a></h2>
+<h3 id="a">シナリオA: 取引先からの「業務データ」<a class="headerlink" href="#a" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant P as 取引先システム
+    participant N as 自社受信エンドポイント
+    participant V as 検証サービス
+    participant S as SAダッシュボード
+    P-&gt;&gt;N: mTLS で接続 (L2)
+    P-&gt;&gt;N: JWS 署名済み JSON (L3)&lt;br/&gt;iss=取引先DID, kid=鍵ID
+    N-&gt;&gt;V: 署名検証要求 (L3+L4)
+    V-&gt;&gt;V: CT/Sigstore 透明性ログ照合 (L7)
+    V-&gt;&gt;V: TSA タイムスタンプ確認 (L6)
+    V--&gt;&gt;N: OK / NG + 来歴メタデータ
+    N-&gt;&gt;S: 検証済みデータと「信頼度バッジ」を表示</code></pre>
+<p>実装上の指針:</p>
+<ul>
+<li>取引先証明書は CT に載っているもののみ受理</li>
+<li>ペイロードは JWS、<code>iss</code> は W3C DID または X.509 SAN URI</li>
+<li>時刻は受信側ではなく<strong>送信側の TSA 署名</strong>を信頼の根に</li>
+</ul>
+<h3 id="b">シナリオB: 自社管理下のセンサー配信<a class="headerlink" href="#b" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>sequenceDiagram
+    participant D as センサー (TPM/Secure Element)
+    participant G as エッジゲートウェイ
+    participant C as クラウド
+    participant S as SA システム
+    D-&gt;&gt;D: 起動時 PCR 計測 (L0)
+    D-&gt;&gt;G: IDevID で接続 (L1) + DTLS (L2)
+    D-&gt;&gt;G: COSE_Sign1 ペイロード (L3)
+    G-&gt;&gt;C: 集約 + EAT で稼働証明 (L1)
+    C-&gt;&gt;S: 検証済みストリーム + 監査ログ (L7)</code></pre>
+<p>ここでの最大の落とし穴は「<strong>鍵があれば本物</strong>」と考えてしまうこと。
+鍵が漏れた・複製された場合に備え、<strong>Remote Attestation で稼働中のソフトウェアまで毎回証明</strong>するのが現代のベストプラクティス。</p>
+<h3 id="c-snssa">シナリオC: SNS・外部映像をSA入力にする<a class="headerlink" href="#c-snssa" title="Permanent link">&para;</a></h3>
+<pre class="mermaid"><code>flowchart LR
+    A[ライブ映像] --&gt;|C2PA Manifest| B{C2PA Verifier}
+    B -- 署名OK --&gt; C[来歴チェーン展開]
+    C --&gt; D{AI生成検知&lt;br/&gt;SynthID/統計分析}
+    D -- 人工物含む --&gt; E[SA UIで明示]
+    D -- 撮影由来 --&gt; F[センサー識別子をDID解決]
+    F --&gt; G[発信者の信頼度スコアと統合]
+    B -- 署名なし --&gt; H[「来歴不明」ラベル]</code></pre>
+<p>ポイント:</p>
+<ul>
+<li>C2PA は「真贋」ではなく「来歴」のみ。SA UI 側でその意味を<strong>意思決定者に明示</strong>する必要がある</li>
+<li>リアルタイム配信における C2PA は ISO/IEC 21617 シリーズで標準化が進行中</li>
+</ul>
+<h3 id="d-ai">シナリオD: 生成AIによる意思決定支援結果の真正性<a class="headerlink" href="#d-ai" title="Permanent link">&para;</a></h3>
+<p>LLM やビジョン AI が出した分析結果も検証対象です。</p>
+<ul>
+<li>モデルバイナリは <strong>Sigstore Model Signing</strong> で署名</li>
+<li>学習データの来歴は <strong>MLBOM (CycloneDX)</strong> で記述</li>
+<li>推論ログは<strong>改竄耐性ログ</strong> (Trillian / Rekor 風) に追記</li>
+<li>出力テキスト・画像には <strong>SynthID</strong> または <strong>C2PA AI Manifest</strong> を付与</li>
+</ul>
+<hr />
+<h2 id="4">4. 標準化マップ（団体 × レイヤー）<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph IETF
+      RFC9334[RATS RFC9334]
+      JOSE[JOSE/COSE RFC9052]
+      TLS13[TLS 1.3 RFC8446]
+      NTS[NTS RFC8915]
+      CT[CT RFC9162]
+      SDJWT[SD-JWT VC]
+    end
+    subgraph W3C
+      DID[DID Core]
+      VC[VC 2.0]
+      PROV[PROV-O]
+      WAUTH[WebAuthn L3]
+      WCRYPTO[Web Cryptography API]
+    end
+    subgraph ISO/IEC
+      ISO11889[ISO/IEC 11889 TPM]
+      ISO18013[ISO/IEC 18013-5 mDL]
+      ISO21617[ISO/IEC 21617 JPEG Trust]
+      ISO62443[IEC 62443 OT]
+      ISO62541[IEC 62541 OPC UA]
+      ISO5962[ISO/IEC 5962 SPDX]
+    end
+    subgraph TCG
+      TPM2[TPM 2.0]
+      DICE2[DICE]
+    end
+    subgraph C2PA
+      C2PASPEC[C2PA Spec]
+    end
+    subgraph NIST
+      FIPS140[FIPS 140-3]
+      FIPS203[FIPS 203/204/205 PQC]
+      SSDF[SP 800-218 SSDF]
+      AIRMF[AI RMF 1.0]
+    end
+    subgraph FIDO
+      FDO1[FDO 1.1]
+      F2[FIDO2]
+    end
+    subgraph GlobalPlatform
+      GPTEE[TEE Internal API]
+      GPSE[SE / SCP03·SCP11]
+    end
+    subgraph ETSI
+      EN303645[EN 303 645 IoT]
+      TS103701[TS 103 701 適合性]
+      CADES[CAdES/XAdES/PAdES]
+    end
+    subgraph IRTF/CFRG
+      BBSSig[BBS Signatures draft]
+    end
+    subgraph C2PA
+      C2PASPEC[C2PA Spec]
+    end
+    subgraph NIST
+      FIPS140[FIPS 140-3]
+      FIPS203[FIPS 203/204/205 PQC]
+      SSDF[SP 800-218 SSDF]
+      AIRMF[AI RMF 1.0]
+    end
+    subgraph EU
+      AIAct[AI Act]
+      CRA[Cyber Resilience Act]
+      EIDAS[eIDAS 2.0 / EUDI Wallet]
+      EBSI2[EBSI]
+    end
+    subgraph DLT
+      HLIndy[Hyperledger Indy]
+      ION2[ION on Bitcoin]
+      KSI[Guardtime KSI]
+      OTS[OpenTimestamps]
+    end</code></pre>
+<p>主要団体の役割を一言で:</p>
+<ul>
+<li><strong>IETF</strong>: トランスポートとデータ表現の RFC</li>
+<li><strong>IRTF/CFRG</strong>: 新規暗号方式（BBS+ など）のレビュー</li>
+<li><strong>W3C</strong>: Web ブラウザを介した識別と検証</li>
+<li><strong>ISO/IEC</strong>: 産業横断の規格と互換性</li>
+<li><strong>TCG</strong>: ハードウェア信頼の根</li>
+<li><strong>GlobalPlatform</strong>: TEE / Secure Element の業界仕様</li>
+<li><strong>ETSI</strong>: 欧州主導の通信・IoT 規格（EN 303 645 など消費者基準）</li>
+<li><strong>C2PA</strong>: コンテンツ来歴の事実上の標準</li>
+<li><strong>NIST</strong>: 暗号と AI/サプライチェーンの基準</li>
+<li><strong>FIDO Alliance</strong>: パスワードレス認証とデバイス投入</li>
+<li><strong>DLT 系</strong>: 単一運営者を信用しない長期来歴用途</li>
+<li><strong>EU</strong>: 規制によって<strong>標準採用を強制</strong>する立場（AI Act / CRA / eIDAS 2.0 / PSTI 整合）</li>
+</ul>
+<hr />
+<h2 id="5-typescript">5. TypeScript 実装の足がかり<a class="headerlink" href="#5-typescript" title="Permanent link">&para;</a></h2>
+<p>普段 TypeScript を書く読者向けに、主要レイヤーで使える OSS を挙げます。</p>
+<table>
+<thead>
+<tr>
+<th>レイヤー</th>
+<th>ライブラリ</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L2</td>
+<td>Node.js <code>tls</code> / undici</td>
+<td>mTLS クライアント・サーバ</td>
+</tr>
+<tr>
+<td>L3</td>
+<td><a href="https://github.com/panva/jose"><code>jose</code></a></td>
+<td>JWS / JWT / JWE</td>
+</tr>
+<tr>
+<td>L3 (IoT)</td>
+<td><a href="https://github.com/erdtman/cose-js"><code>cose-js</code></a></td>
+<td>COSE 署名検証</td>
+</tr>
+<tr>
+<td>L4</td>
+<td><a href="https://github.com/transmute-industries/verifiable-credentials"><code>@transmute/verifiable-credentials</code></a></td>
+<td>W3C VC</td>
+</tr>
+<tr>
+<td>L4</td>
+<td><a href="https://github.com/decentralized-identity/did-resolver"><code>did-resolver</code></a></td>
+<td>DID 解決</td>
+</tr>
+<tr>
+<td>L4</td>
+<td><a href="https://github.com/MasterKale/SimpleWebAuthn"><code>@simplewebauthn/server</code></a></td>
+<td>WebAuthn</td>
+</tr>
+<tr>
+<td>L4 (ZKP)</td>
+<td><a href="https://github.com/digitalbazaar/bbs-signatures"><code>@digitalbazaar/bbs-signatures</code></a></td>
+<td>BBS 署名・選択的開示</td>
+</tr>
+<tr>
+<td>L4 (ZKP)</td>
+<td><a href="https://github.com/openwallet-foundation-labs/sd-jwt-js"><code>@sd-jwt/core</code></a></td>
+<td>SD-JWT</td>
+</tr>
+<tr>
+<td>L4 (ZKP)</td>
+<td><a href="https://github.com/iden3/snarkjs"><code>snarkjs</code></a></td>
+<td>zk-SNARK 回路の生成・検証</td>
+</tr>
+<tr>
+<td>L5</td>
+<td><a href="https://github.com/contentauth/c2pa-node"><code>c2pa-node</code></a></td>
+<td>C2PA 検証</td>
+</tr>
+<tr>
+<td>L6</td>
+<td><a href="https://www.npmjs.com/package/@digitalbazaar/timestamp"><code>@digitalbazaar/timestamp</code></a> 等</td>
+<td>TSA 連携</td>
+</tr>
+<tr>
+<td>L7</td>
+<td><a href="https://github.com/sigstore/sigstore-js"><code>@sigstore/sign</code></a></td>
+<td>Sigstore 署名</td>
+</tr>
+</tbody>
+</table>
+<p>ブラウザ側では <strong><a href="https://www.w3.org/TR/WebCryptoAPI/">Web Cryptography API</a></strong> が標準。<code>SubtleCrypto.verify()</code> で JWS の検証は完結します。Angular なら HTTP インターセプタ層で署名検証してから NgRx に流す設計が綺麗です。</p>
+<hr />
+<h2 id="6">6. 見落としやすい落とし穴<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>時刻同期がないと署名はほぼ無意味</strong>。<code>exp/nbf</code> の検証が崩れる</li>
+<li><strong>C2PA は「改竄されていない」を証明しない</strong>。あくまで来歴。UI 上で誤解させないラベリング設計が必要</li>
+<li><strong>DevID は工場出荷時点の身分証</strong>。「今この瞬間、改竄ファームが動いてないか」は Attestation で別途確認</li>
+<li><strong>量子耐性 (PQC) への移行が始まっている</strong>。<a href="https://csrc.nist.gov/pubs/fips/203/final">FIPS 203 (ML-KEM)</a> / <a href="https://csrc.nist.gov/pubs/fips/204/final">FIPS 204 (ML-DSA)</a> / <a href="https://csrc.nist.gov/pubs/fips/205/final">FIPS 205 (SLH-DSA)</a> は 2024 年 8 月に公開済</li>
+<li><strong>取引先の鍵管理は自社の責任ではないが、CT で監視はできる</strong>。ピン留めではなく CT 監視に倒すと運用負荷が下がる</li>
+<li><strong>AI 出力にも署名を</strong>。SA UI に出る分析結果が誰の責任で出されたかを技術的に追跡可能にする</li>
+</ol>
+<hr />
+<h2 id="7-10-2026-06">7. 今後 10 年の動向（2026-06 時点）<a class="headerlink" href="#7-10-2026-06" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>PQC 全面移行</strong>: TLS, JOSE, COSE, X.509 すべてが PQ ハイブリッドへ。FIPS 203/204/205 (2024-08) を起点に IETF で hybrid キー交換のドラフトが進行中</li>
+<li><strong>Confidential Computing の主流化</strong>: クラウド側でも「他人に見えないまま計算」（Intel TDX / AMD SEV-SNP / ARM CCA）</li>
+<li><strong>EUDI Wallet と mDL の普及</strong>: 「身分の VC」が SA の前提に。<strong>EU 全加盟国で 2026-12-24 までに最低 1 つの認証済ウォレットを提供義務</strong></li>
+<li><strong>C2PA のカメラ標準搭載</strong>: Leica・Sony・Nikon に続き、<strong>Samsung Galaxy S25 で民生スマホ純正対応 (2025)</strong>。CSA Matter 1.5 のカメラ統合とも連動</li>
+<li><strong>AI Act / CRA / NIS2 の規制効果</strong>: <strong>CRA は 2026-09-11 から報告義務開始、2027-12-11 から全面適用</strong>。「来歴を出せない製品は EU で売れない」状況へ</li>
+<li><strong>Roughtime と NTS の併用</strong>: <strong>Roughtime が 2026-03 に Experimental RFC として承認</strong>、改竄不能な時刻がコモディティ化へ</li>
+<li><strong>AI エージェント標準化</strong>: NIST が 2026-02 に AI Agent Standards Initiative を始動、エージェント間の認証・来歴・責任分界が新たな標準化テーマに</li>
+</ul>
+<hr />
+<h2 id="8-sadm">8. SA/DM 設計者向けチェックリスト<a class="headerlink" href="#8-sadm" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 入力データの<strong>発信源</strong>は L4 (DID/X.509/OIDC) で識別できているか</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>通信路</strong>は mTLS かつ証明書は CT 監視下か</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>メッセージ</strong>は JWS/COSE で署名され、検証コードがアプリ層にあるか</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> センサーデータは<strong>ハードウェア鍵</strong>で署名されているか</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 配信時刻は<strong>送信側 TSA</strong>で署名されているか</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 外部メディア入力に C2PA 検証パイプラインがあるか</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> AI 出力に SynthID / C2PA AI Manifest を埋め込んでいるか</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 利用するモデル・SBOM・コンテナイメージが Sigstore で署名・透明性ログに登録されているか</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> UI 上で「来歴」「検証結果」「信頼度」を意思決定者に<strong>そのまま見せている</strong>か</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> PQC 移行計画があるか</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> 民生 IoT を採用する場合、<strong>ETSI EN 303 645 適合</strong>を調達要件にしているか</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>ZKP / 選択的開示</strong>で過剰な属性開示を避ける設計余地を検討したか</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> DLT を使うかどうかを「中央運営者の信頼性」「長期保存要件」で明示的に判断したか</li>
+</ul>
+<hr />
+<h2 id="_1">参考<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>IETF: <a href="https://www.rfc-editor.org/rfc/rfc9334">RFC 9334 RATS Architecture</a>, <a href="https://www.rfc-editor.org/rfc/rfc9052">RFC 9052 COSE</a>, <a href="https://www.rfc-editor.org/rfc/rfc8446">RFC 8446 TLS 1.3</a>, <a href="https://www.rfc-editor.org/rfc/rfc9901">RFC 9901 SD-JWT</a></li>
+<li>IRTF/CFRG: <a href="https://datatracker.ietf.org/doc/draft-irtf-cfrg-bbs-signatures/">draft-irtf-cfrg-bbs-signatures-10</a></li>
+<li>W3C: <a href="https://www.w3.org/TR/did-core/">DID Core</a>, <a href="https://www.w3.org/TR/vc-data-model-2.0/">Verifiable Credentials 2.0 (Rec 2025-05)</a>, <a href="https://www.w3.org/TR/prov-o/">PROV-O</a></li>
+<li>C2PA: <a href="https://spec.c2pa.org/">Specifications portal</a></li>
+<li>ISO/IEC: <a href="https://www.iso.org/standard/86831.html">21617-1:2025 JPEG Trust</a></li>
+<li>TCG: <a href="https://trustedcomputinggroup.org/resource/tpm-library-specification/">TPM 2.0</a>, <a href="https://trustedcomputinggroup.org/work-groups/dice-architectures/">DICE</a></li>
+<li>GlobalPlatform: <a href="https://globalplatform.org/specs-library/">Specifications Library</a></li>
+<li>ETSI: <a href="https://www.etsi.org/deliver/etsi_en/303600_303699/303645/">EN 303 645 v3.1.3</a>, <a href="https://www.etsi.org/deliver/etsi_ts/103700_103799/103701/">TS 103 701</a></li>
+<li>NIST: <a href="https://csrc.nist.gov/projects/post-quantum-cryptography">FIPS 203/204/205 PQC</a>, <a href="https://www.nist.gov/itl/ai-risk-management-framework">AI RMF 1.0</a>, <a href="https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf">AI 600-1 Generative AI Profile</a></li>
+<li>EU: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj">AI Act</a>, <a href="https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act">CRA (発効 2024-12-10／報告義務 2026-09-11／全面適用 2027-12-11)</a>, <a href="https://eur-lex.europa.eu/eli/reg/2024/1183/oj">eIDAS 2.0 (EUDI Wallet 2026-12-24 提供義務)</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="最終更新日">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年6月2日 02:29:01 JST">2026年6月2日</span>
+  </span>
+
+    
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="フッター" >
+        
+          
+          <a href="../edge-ai/" class="md-footer__link md-footer__link--prev" aria-label="前: エッジAI">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                前
+              </span>
+              <div class="md-ellipsis">
+                エッジAI
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../future-trends/" class="md-footer__link md-footer__link--next" aria-label="次: 将来の動向">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                次
+              </span>
+              <div class="md-ellipsis">
+                将来の動向
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 shuji-bonji | <a href='https://creativecommons.org/licenses/by/4.0/deed.ja'>CC-BY-4.0ライセンス</a>に基づく
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/shuji-bonji/Situational-Awareness-and-Decision-Making" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "navigation.tabs", "search.suggest"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../assets/javascripts/mermaid-zoom.js"></script>
+      
+    
+  </body>
+</html>
