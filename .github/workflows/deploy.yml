@@ -4,6 +4,16 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -33,6 +43,26 @@ jobs:
           curl -fsSL https://d2lang.com/install.sh | sh
           echo "$HOME/.d2/bin" >> $GITHUB_PATH
 
-      - name: Deploy to GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      - name: Build site
         run: |
-          mkdocs gh-deploy --force
+          mkdocs build --strict
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
