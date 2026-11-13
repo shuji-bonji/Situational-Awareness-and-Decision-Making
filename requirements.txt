@@ -38,7 +38,7 @@ requests==2.34.2
 selectolax==1.0.2
 six==1.17.0
 smmap==5.0.3
-soupsieve==2.9.2
+soupsieve==4.1
 typing-inspection==0.4.2
 typing_extensions==4.16.0
 urllib3==2.8.0
